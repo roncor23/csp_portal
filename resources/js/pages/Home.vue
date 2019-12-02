@@ -1,16 +1,142 @@
 <template>
-    <div class="container">
-        <div class="card card-default">
-            <div class="card-header">Bienvenue</div>
-
-            <div class="card-body">
-                <p>
-                    American  Main Barbary Coast scuttle hardtack spanker fire ship grapple jack code  of conduct port. Port red ensign Shiver me timbers provost salmagundi  bring a spring upon her cable pillage cog crow's nest lateen sail.  Barbary Coast quarterdeck lass coffer keel hulk mizzen me square-rigged  loot.
-                </p>
-                <p>
-                    Yardarm starboard keelhaul list schooner prow booty cackle  fruit gabion topmast. Plunder shrouds Nelsons folly jack Arr parley warp  grog blossom ballast pressgang. Knave crack Jennys tea cup flogging log  man-of-war hearties killick long clothes six pounders hulk.
-                </p>
+<div class="container" style="margin-top:100px">
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h1>Login</h1>
             </div>
+            
+                <div class="login-form mb-4">
+                    <form autocomplete="off" @submit.prevent="login" method="post">
+                        <div class="control-group">
+                        <input type="text" class="login-field" placeholder="email" id="email" v-model="email">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                        </div>
+
+                        <div class="control-group">
+                        <input type="password" class="login-field" placeholder="password" id="password" v-model="password">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                        </div>
+
+                        <button class="btn btn-primary btn-large btn-block" style="color:#fff" type="submit">login</button>
+                        <a class="login-link" href="#">&copy CSP 2019</a>
+                    </form>
+                </div>
+            
         </div>
     </div>
+</div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        email: null,
+        password: null,
+        has_error: false
+      }
+    },
+
+    mounted() {
+      //
+    },
+
+    methods: {
+      login() {
+        // get the redirect object
+        var redirect = this.$auth.redirect()
+        var app = this
+        this.$auth.login({
+          params: {
+            email: app.email,
+            password: app.password
+          },
+          success: function() {
+            // handle redirection
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'dashboard'
+
+            this.$router.push({name: redirectTo})
+          },
+          error: function() {
+            app.has_error = true
+          },
+          rememberMe: true,
+          fetchUser: true
+        })
+      }
+    }
+  }
+</script>
+
+
+
+<style scoped>
+
+ .login {
+margin: 20px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #777;
+}
+
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 10px;
+}
+
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+input:focus {
+border: 2px solid #3498DB;
+box-shadow: none;
+}
+
+.btn {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #2980B9;
+}
+
+.login-link {
+  font-size: 12px;
+  color: #444;
+  display: block;
+    margin-top: 12px;
+}
+</style>

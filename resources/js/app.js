@@ -1,6 +1,6 @@
 import 'es6-promise/auto'
 import axios from 'axios'
-import './bootstrap'
+// import './bootstrap'
 import Vue from 'vue'
 import VueAuth from '@websanova/vue-auth'
 import VueAxios from 'vue-axios'
@@ -18,11 +18,21 @@ Vue.use(VueRouter)
 
 // Set Vue authentication
 Vue.use(VueAxios, axios)
-axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
+axios.defaults.baseURL = `/api`
 Vue.use(VueAuth, auth)
 
 // Load Index
 Vue.component('index', Index)
+
+
+
+import Notifications from 'vue-notification'
+Vue.use(Notifications)
+
+// register jw pagination component globally
+import JwPagination from 'jw-vue-pagination';
+Vue.component('jw-pagination', JwPagination);
+
 
 const app = new Vue({
   el: '#app',

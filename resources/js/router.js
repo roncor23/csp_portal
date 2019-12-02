@@ -6,6 +6,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/user/Dashboard'
 import AdminDashboard from './pages/admin/Dashboard'
+import AdminActionList from './pages/admin/table/ActionList'
+import NotFound from './pages/admin/404/404'
 
 // Routes
 const routes = [
@@ -14,7 +16,7 @@ const routes = [
     name: 'home',
     component: Home,
     meta: {
-      auth: undefined
+      auth: false
     }
   },
   {
@@ -51,6 +53,15 @@ const routes = [
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  {
+    path: '/404',
+    name: '404',
+    component: NotFound,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+
 ]
 
 const router = new VueRouter({
