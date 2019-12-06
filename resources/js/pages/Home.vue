@@ -5,16 +5,18 @@
             <div class="app-title">
                 <h1>Login</h1>
             </div>
-            
+            <div class="alert alert-danger" v-if="has_error">
+                <p>Incorrect email or password.</p>
+            </div>
                 <div class="login-form mb-4">
                     <form autocomplete="off" @submit.prevent="login" method="post">
                         <div class="control-group">
-                        <input type="text" class="login-field" placeholder="email" id="email" v-model="email">
+                        <input type="email" class="login-field" placeholder="email" id="email" v-model="email" required>
                         <label class="login-field-icon fui-user" for="login-name"></label>
                         </div>
 
                         <div class="control-group">
-                        <input type="password" class="login-field" placeholder="password" id="password" v-model="password">
+                        <input type="password" class="login-field" placeholder="password" id="password" v-model="password" required>
                         <label class="login-field-icon fui-lock" for="login-pass"></label>
                         </div>
 

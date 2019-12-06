@@ -57,8 +57,8 @@
                       </tr>
                     </tfoot>  
                     <tbody v-if="filteredBlogs.length > 0">
-						<tr v-for="i in pageOfItems" :key="i.id">
-							<td>{{i.id}}</td>
+						<tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
+							<td>{{index}}</td>
 			                <td>{{i.in_out}}</td>
 			                <td>{{i.csp_kto12}}</td>
 			                <td>{{i.subject}}</td>
@@ -109,15 +109,15 @@
 		          <div class="form-group">
 		          	<span style="font-size:12px;font-weight:bold">IN/OUt</span>
 		            <select class="custom-select" v-model="selectedItem.in_out">
-					  <option value="Incoming">Incoming</option>
-					  <option value="Outgoing">Outgoing</option>
+					  <option value="Incoming">INCOMING</option>
+					  <option value="Outgoing">OUTGOING</option>
 					</select>
 		          </div>
 		          <div class="form-group">
 		          	<span style="font-size:12px;font-weight:bold">CSP/K12</span>
 		            <select class="custom-select" v-model="selectedItem.csp_kto12">
 					  <option value="CSP">CSP</option>
-					  <option value="K12">K12</option>
+					  <option value="K12">Kto12</option>
 					</select>
 		          </div>
 		          <div class="form-group" >
@@ -317,6 +317,8 @@ import axios from 'axios'
 
   		 axios.get('fetch/action_list/').then(result => {
 	                  this.items = result.data.action_list;
+	                  this.items.splice(index, 1);
+      				  //this.bin.sort(ordonner);
 	                  console.log(this.items);
 
 	              }).catch(error => {
@@ -554,6 +556,8 @@ import axios from 'axios'
 }
 </script>
 <style scoped>
+
+tr:hover {background-color:#f5f5f5;cursor:pointer}
 
 nav.navbar{
   box-shadow: 2px 2px 8px rgba(0,0,0,.5);
