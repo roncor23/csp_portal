@@ -20,7 +20,7 @@ class CreateUsersComments extends Migration
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('action_list_id')->references('id')->on('csp.action_list_models')->onDelete('cascade');
+            $table->foreign('action_list_id')->references('id')->on('action_list_models')->onDelete('cascade');
         });
     }
 

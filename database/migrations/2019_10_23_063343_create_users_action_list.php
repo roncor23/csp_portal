@@ -13,7 +13,7 @@ class CreateUsersActionList extends Migration
      */
     public function up()
     {
-        Schema::create('csp.action_list_models', function (Blueprint $table) {
+        Schema::create('action_list_models', function (Blueprint $table) {
             $table->increments('id');
             $table->string('in_out');
             $table->string('csp_kto12');
@@ -40,6 +40,6 @@ class CreateUsersActionList extends Migration
      */
     public function down()
     {
-        Schema::drop('csp.action_list_models');
+        Schema::drop('action_list_models');
     }
 }
