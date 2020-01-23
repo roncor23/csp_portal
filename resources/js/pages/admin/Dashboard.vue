@@ -259,26 +259,6 @@
 
     async mounted () {
       this.loaded = false
-      // try {
-        
-      //   this.chartdata = this.datacollection = {
-      //     labels: [1, 2],
-      //     datasets: [
-      //       {
-      //         label: 'Done',
-      //         backgroundColor: 'red',
-      //         data: [16]
-      //       }, {
-      //         label: 'Not Yet Done',
-      //         backgroundColor: '#f87979',
-      //         data: [15]
-      //       }
-      //     ]
-      //   }
-      //   this.loaded = true
-      // } catch (e) {
-      //   console.error(e)
-      // }
 
              axios.get('fetch/action_list/').then(result => {
 

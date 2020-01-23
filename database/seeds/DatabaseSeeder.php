@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Admin',
-            'email' => 'admin@test.com',
-            'password' => Hash::make('admin'),
-            'role' => 2
+            'name' => 'Super_Admin',
+            'email' => 'superadmin@ched.gov.ph',
+            'password' => Hash::make('superadmin'),
+            'role' => 4
         ]);
 
         User::create([
@@ -51,15 +51,38 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Ronan',
             'email' => 'ronan@ched.gov.ph',
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('ronan'),
             'role' => 2
         ]);
 
         User::create([
-            'name' => 'User',
-            'email' => 'user@test.com',
-            'password' => Hash::make('secret'),
-            'role' => 1
+            'name' => 'Heidi',
+            'email' => 'heidi@ched.gov.ph',
+            'password' => Hash::make('heidi'),
+            'role' => 2
         ]);
+
+        User::create([
+            'name' => 'Florena',
+            'email' => 'florena@ched.gov.ph',
+            'password' => Hash::make('florena'),
+            'role' => 2
+        ]);
+
+        User::create([
+            'name' => 'Chris',
+            'email' => 'chris@ched.gov.ph',
+            'password' => Hash::make('chris'),
+            'role' => 2
+        ]);
+
+        User::create([
+            'name' => 'Hei',
+            'email' => 'hei@ched.gov.ph',
+            'password' => Hash::make('hei'),
+            'role' => 3
+        ]);
+
+
     }
 }

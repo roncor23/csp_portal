@@ -1,6 +1,6 @@
 <template>
-    <div id="main">
-        <div id="content">
+    <div>
+        <div>
             <router-view></router-view>
         </div>
     </div>
@@ -21,6 +21,6 @@
 
   @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
 
-
+  
 
 </style>

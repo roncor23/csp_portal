@@ -9,12 +9,28 @@ import Index from './Index'
 import auth from './auth'
 import router from './router'
 
+
+//global registration
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+Vue.use(VueFormWizard)
+
 // Set Vue globally
 window.Vue = Vue
 
 // Set Vue router
 Vue.router = router
 Vue.use(VueRouter)
+
+
+
+
+
+
+
+
+
+
 
 // Set Vue authentication
 Vue.use(VueAxios, axios)
@@ -23,8 +39,6 @@ Vue.use(VueAuth, auth)
 
 // Load Index
 Vue.component('index', Index)
-
-
 
 import Notifications from 'vue-notification'
 Vue.use(Notifications)
@@ -36,5 +50,26 @@ Vue.component('jw-pagination', JwPagination);
 
 const app = new Vue({
   el: '#app',
-  router
+  router,
 });
+
+
+$('#menu-action').click(function() {
+  $('.sidebar').toggleClass('active');
+  $('.main').toggleClass('active');
+  $(this).toggleClass('active');
+
+  if ($('.sidebar').hasClass('active')) {
+    $(this).find('i').addClass('fa-close');
+    $(this).find('i').removeClass('fa-bars');
+  } else {
+    $(this).find('i').addClass('fa-bars');
+    $(this).find('i').removeClass('fa-close');
+  }
+});
+
+// Add hover feedback on menu
+$('#menu-action').hover(function() {
+    $('.sidebar').toggleClass('hovered');
+});
+
