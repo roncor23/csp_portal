@@ -7,22 +7,18 @@
 		  </a>
 		  <div class="logo">
 		    CSP
-
 		      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-		      <!-- Dropdown -->
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-		          My Profile
-		        </a>
-		        <div class="dropdown-menu">
-		          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-		        </div>
-		      </li>
-		       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-		        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-		        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
+  		      <!-- Dropdown -->
+  		      <li class="nav-item dropdown">
+  		        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+  		          My Profile
+  		        </a>
+  		        <div class="dropdown-menu">
+  		          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                 <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+  		        </div>
+  		      </li>
 		      </ul>
-
 		  </div>
 		</div>
 		<div class="sidebar">
@@ -33,13 +29,34 @@
 		    <li><a href="#"><i class="fas fa-print"></i><span>Print</span></a></li>
 		    </ul>
 		</div>
-
 		<!-- Content -->
 		<div class="main">
-		    <div class="jumbotron">
-		      <span><h4 class="mb-4">School status:&nbsp;<span style="color:green">Enrolled</span></h4></span>
-		      <span><h4 class="mb-4">CHED status:&nbsp;<span style="color:green">Validated</span></h4></span>
-		      <span><h4>Ranking status:&nbsp;<span style="color:red">Waiting list...</span></h4></span>
+		    <div class="jumbotron" v-for="applicant in applicants">
+		      <span><h4 class="mb-4">School status:&nbsp;
+            <span v-if="applicant.verified_hei === 3" style="color:blue">Not Yet Check by HEI</span>
+            <span v-if="applicant.verified_hei === 1" style="color:green">Enrolled</span>
+            <span v-if="applicant.verified_hei === 2" style="color:red">Not Enrolled</span>
+          </h4></span>
+           <span v-if="applicant.verified_hei === 2"><h4 class="mb-4">School status remarks:&nbsp;
+            <span style="color:red">{{applicant.hei_remarks}}</span>
+          </h4></span>
+		      <span><h4 class="mb-4">CHED status:&nbsp;
+            <span v-if="applicant.verified_admin === null" style="color:blue">Not Yet Check by CHED</span>
+            <span v-if="applicant.verified_admin === 1" style="color:green">Validated</span>
+            <span v-if="applicant.verified_admin === 2" style="color:red">Lacking documents</span>
+            <span v-if="applicant.verified_admin === 3" style="color:red">Invalid application</span>
+          </h4></span>
+		      <span><h4>Ranking status:&nbsp;
+            <span v-if="applicant.ranking_status === 1" style="color:blue">Ranking System Off</span>
+            <span v-if="applicant.ranking_status === 2" style="color:green">Waiting for ranking</span>
+            <span v-if="applicant.ranking_status === 3" style="color:green">Waiting list</span>
+            <span v-if="applicant.ranking_status === 4" style="color:red">did not meet the requirements, please re-apply in the next round.</span>
+            <span v-if="applicant.ranking_status === 5" style="color:green">Qualified as TDP</span>
+            <span v-if="applicant.ranking_status === 6" style="color:green">Qualified as HALF PESFA</span>
+            <span v-if="applicant.ranking_status === 7" style="color:green">Qualified as HALF SSP</span>
+            <span v-if="applicant.ranking_status === 8" style="color:green">Qualified as FULL PESFA</span>
+            <span v-if="applicant.ranking_status === 9" style="color:green">Qualified as FULL SSP</span>
+          </h4></span>
 		    </div>  
 		</div>
     </div>
@@ -331,12 +348,27 @@ table {
 </style>
 
 <script>
-
+import axios from 'axios'
   export default {
     data() {
       return {
-        //
+        applicants: {}
       }
+    },
+    methods: {
+      fetchApplicant: function() {
+
+            axios.get('applicant/fetch_applicant/').then(result => {
+                this.applicants = result.data;
+                console.log(this.applicants);            
+
+            }).catch(error => {
+                console.log(error);
+            });
+      },
+    },
+    async mounted() {
+      this.fetchApplicant();
     },
     components: {
       //

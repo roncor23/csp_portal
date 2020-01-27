@@ -16,6 +16,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
         </div>
       </li>
       </ul>
@@ -25,10 +26,10 @@
 <div class="sidebar">
   <ul>
       <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEIs</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
 </div>
 
@@ -394,9 +395,9 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     </tfoot>  
                    <tbody v-if="filteredBlogs.length > 0">
                     <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
-                        <td>{{index}}</td>
+                        <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
-                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY HEI</td>
+                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
                         <td v-if="i.ay === 8">2020</td>
                         <td v-if="i.yr_lvl === null" style="color:blue">NOT YET SET BY HEI</td>
                         <td v-if="i.yr_lvl === 1">1st Year</td>
@@ -404,7 +405,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei == null" style="color:blue">NOT YET CHECK BY HEI</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
                         <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
                         <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
                         <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECK BY CHED</td>
@@ -446,7 +447,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     </tbody>          
                     </table>
                     <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="3" @changePage="onChangePage"></jw-pagination> 
+                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
                     </nav>
                 </div>         
                   </div>

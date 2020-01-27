@@ -37,7 +37,7 @@ class CreateApplicantsTable extends Migration
             $table->integer('gender')->nullable();
             $table->double('parent_income', 8, 2)->nullable();
             $table->integer('applicant_type')->nullable();
-            $table->integer('supported_by_solo_parent')->nullable();
+            $table->integer('supported_by_solo_parent')->default(2);
             $table->integer('hei')->nullable();
             $table->text('hei_remarks')->nullable();
             $table->text('admin_remarks')->nullable();
@@ -51,8 +51,9 @@ class CreateApplicantsTable extends Migration
             $table->integer('ips')->default(2);
             $table->integer('pwd')->default(2);
             $table->integer('forps')->default(2);
+            $table->integer('applicant_solo_parent')->default(2);
             $table->integer('senior_citizen')->default(2);
-            $table->integer('verified_hei')->default(2);
+            $table->integer('verified_hei')->default(3);
             $table->integer('verified_admin')->nullable();
             $table->string('reference_no')->nullable();
             $table->string('validatedByCHED')->nullable();  
@@ -67,6 +68,7 @@ class CreateApplicantsTable extends Migration
             $table->foreign('town_city')->references('city_id')->on('mun_citys')->onDelete('cascade');
             $table->foreign('course')->references('course_id')->on('courses')->onDelete('cascade');
             $table->foreign('cong_dist')->references('district_id')->on('districts')->onDelete('cascade');
+            $table->foreign('applicant_solo_parent')->references('applicant_solo_parent_id')->on('applicant_solo_parents')->onDelete('cascade');
             $table->foreign('hei')->references('hei_id')->on('heis')->onDelete('cascade');
             $table->foreign('applicant_type')->references('applicant_type_id')->on('libapplicanttypes')->onDelete('cascade');
             $table->foreign('citizenship')->references('citizenship_id')->on('libcitizenships')->onDelete('cascade');

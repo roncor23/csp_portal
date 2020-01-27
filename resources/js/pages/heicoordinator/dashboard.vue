@@ -15,6 +15,7 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+            <router-link to="/hei-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
           </div>
         </li>
       </ul>
@@ -24,8 +25,8 @@
   <div class="sidebar">
     <ul>
       <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-      <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Applicants</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEIs</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->

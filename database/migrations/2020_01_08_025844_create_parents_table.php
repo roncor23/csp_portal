@@ -27,7 +27,7 @@ class CreateParentsTable extends Migration
             $table->string('father_contact_number')->nullable();
             $table->string('mother_occupation')->nullable();
             $table->string('father_occupation')->nullable();
-            $table->integer('number_of_siblings')->nullable();
+            $table->integer('number_of_siblings')->default(0);
             $table->string('mother_employer')->nullable();
             $table->string('father_employer')->nullable();
             $table->integer('user_id')->nullable();

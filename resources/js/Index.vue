@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div>
             <router-view></router-view>
         </div>
@@ -7,12 +8,15 @@
 </template>
 
 <script>
-
+ // import Header from './components/header.vue'
   export default {
     data() {
       return {
         //
       }
+    },
+    components: {
+      
     }
   }
 </script>

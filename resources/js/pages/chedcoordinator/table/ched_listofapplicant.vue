@@ -16,11 +16,9 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
         </div>
       </li>
-       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
       </ul>
 
   </div>
@@ -28,10 +26,10 @@
 <div class="sidebar">
   <ul>
       <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEIs</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
 </div>
 
@@ -398,10 +396,10 @@ Vue.component("ched-list-of-applicant", {
                       </tr>
                     </tfoot>  
             <tbody v-if="filteredBlogs.length > 0">
-                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
-                        <td>{{index}}</td>
+                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.index">
+                        <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
-                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY HEI</td>
+                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
                         <td v-if="i.ay === 8">2020</td>
                         <td v-if="i.yr_lvl === null" style="color:blue">NOT YET SET BY HEI</td>
                         <td v-if="i.yr_lvl === 1">1st Year</td>
@@ -409,6 +407,7 @@ Vue.component("ched-list-of-applicant", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
                         <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
                         <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
                         <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECK BY CHED</td>
@@ -454,7 +453,8 @@ Vue.component("ched-list-of-applicant", {
                
                     </table>
                     <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="3" @changePage="onChangePage"></jw-pagination> 
+                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+
                     </nav>
 
                 </div>
@@ -462,7 +462,7 @@ Vue.component("ched-list-of-applicant", {
 
               <!-- EDIT MODAL -->
               <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel" style="font-weight:bold">Applicant</h5>
@@ -475,42 +475,41 @@ Vue.component("ched-list-of-applicant", {
                     class="form" id="" method="post" action="foobar"
                     @submit.prevent="updateData(selectedItem.id)"
                   >
-                       <div class="form-row">
-                        <div class="form-group col-md-3">
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Last Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.lname">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">First Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.fname">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Middle Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.mname">
                         </div>
-                         <div class="form-group col-md-3">
+                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Extension Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.xname">
                         </div>
-                      </div>
-
-                      <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Date of Birth Name</span>
                           <input type="date" class="form-control" v-model="selectedItem.birthdate">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Place of Birth</span>
                           <input type="text" class="form-control" v-model="selectedItem.place_of_birth">
                         </div>
-                        <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Gender</span>
                            <select name="gender" class="form-control" v-model="selectedItem.gender">
                             <option value="1">Male</option>
                             <option value="2">Female</option>
                           </select>
                         </div>
-                         <div class="form-group col-md-3">
+                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Civil Status</span>
                            <select name="civil_status" class="form-control" v-model="selectedItem.civil_status">
                             <option value="1">Single</option>
@@ -520,73 +519,69 @@ Vue.component("ched-list-of-applicant", {
                             <option value="5">Widowed</option>
                           </select>
                         </div>
-                      </div>
-
-                      <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Citizenship</span>
                           <select name="citizenship" class="form-control" v-model="selectedItem.citizenship">
                             <option value="1">Filipino</option>
                             <option value="2">American</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Mobile Number</span>
                           <input type="text" class="form-control" v-model="selectedItem.contact">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">E-mail Address</span>
                           <input type="text" class="form-control" v-model="selectedItem.email">
                         </div>
-                         <div class="form-group col-md-3">
+                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Present Address</span>
                           <input type="text" class="form-control" v-model="selectedItem.present_address">
                         </div>
                       </div>
 
                       <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">City</span>
                           <select name="town_city" class="form-control" v-model="selectedItem.town_city">
                             <option v-for="city in citys" v-bind:value="city.city_id">{{ city.mun_city_name }}</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">   
+                        <div class="form-group col-md-2">   
                           <span style="font-size:10px;font-weight:bold">Barangay</span>    
                           <select  name="barangay" class="form-control" v-model="selectedItem.brgy">
                             <option v-for="brgy in brgys" v-bind:value="brgy.brgy_id">{{ brgy.name }}</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Province</span>
                            <select  name="province" class="form-control" v-model="selectedItem.province">
                             <option v-for="province in provinces" v-bind:value="province.province_id">{{ province.prov_name }}</option>
                           </select>
                         </div>
-                         <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Zipcode</span>
                           <input type="text" class="form-control" v-model="selectedItem.zipcode">
                         </div>
-                      </div>
-
-                      <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Last School Attended</span>
                           <input type="text" class="form-control" v-model="selectedItem.name_of_school_last_attended">
                         </div>
-                        <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">School Intended to enroll</span>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">School Intended</span>
                           <select name="hei" class="form-control" v-model="selectedItem.hei">
                             <option v-for="hei in heis" v-bind:value="hei.hei_id">{{ hei.hei_name}}</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Degree Program</span>
                           <select name="course" class="form-control" v-model="selectedItem.course">
                             <option v-for="program in programs" v-bind:value="program.course_id">{{ program.course_name}}</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applicant Type</span>
                           <select name="applicant_type" class="form-control" v-model="selectedItem.applicant_type">
                             <option value="1">Incoming College Freshmen</option>
@@ -595,30 +590,26 @@ Vue.component("ched-list-of-applicant", {
                             <option value="5">PEPT passer</option>
                           </select>
                         </div>
-                  
-                      </div>
-
-                      <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">PWD</span>
                           <select name="pwd" class="form-control" v-model="selectedItem.pwd">
                             <option value="1">Yes</option>
                             <option value="2">No</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Type of Disability</span>
                           <input v-if="selectedItem.pwd != 2" type="text" class="form-control" v-model="selectedItem.type_of_disability">
                           <input v-if="selectedItem.pwd == 2" type="text" class="form-control" v-model="selectedItem.type_of_disability" disabled>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">IPs</span>
                           <select name="ips" class="form-control" v-model="selectedItem.ips">
                             <option value="1">Yes</option>
                             <option value="2">No</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">4Ps</span>
                           <select name="4ps" class="form-control" v-model="selectedItem.forps">
                             <option value="1">Yes</option>
@@ -628,19 +619,26 @@ Vue.component("ched-list-of-applicant", {
                       </div>
 
                        <div class="form-row">                  
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Parents Income</span> 
                           <input type="text" id="parent_income" class="form-control" v-model="selectedItem.parent_income">
                         </div>
                             
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Solo Parent</span>
                           <select name="solo_parent" class="form-control" v-model="selectedItem.supported_by_solo_parent">
                             <option value="1">Yes</option>
                             <option value="2">No</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applicant Solo Parent</span>
+                          <select name="applicant_solo_parent" class="form-control" v-model="selectedItem.applicant_solo_parent">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applicant Status</span>
                           <select name="solo_parent" class="form-control" v-model="selectedItem.status">
                             <option value="1">Waiting List</option>
@@ -659,18 +657,14 @@ Vue.component("ched-list-of-applicant", {
                             <option value="15">Non-Priority Course</option>
                           </select>
                         </div>
-
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Senior Citizen</span>
                           <select name="seniorcitizen" class="form-control" v-model="selectedItem.senior_citizen">
                             <option value="1">Yes</option>
                             <option value="2">No</option>
                           </select>
-                        </div> 
-                             
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-3">
+                        </div>     
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">CHED Status</span>
                           <select name="ched_status" id="verified_admin_id" class="form-control" v-model="selectedItem.verified_admin">
                             <option value="1">Validated</option>
@@ -678,58 +672,42 @@ Vue.component("ched-list-of-applicant", {
                             <option value="3">Invalid application</option>
                           </select>
                         </div> 
-                        <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">CHED Status Remarks</span>
                           <input v-if="selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3" type="text" class="form-control" v-model="selectedItem.admin_remarks">
                           <input v-if="selectedItem.verified_admin == null" type="text" class="form-control" v-model="selectedItem.admin_remarks" disabled>
                           <input v-if="selectedItem.verified_admin == 1" type="text" class="form-control" v-model="selectedItem.admin_remarks" disabled>
                         </div>
-                        <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">Ranking Status</span>
-                          <select name="ranking_status" class="form-control" v-model="selectedItem.ranking_status">
-                            <option value="1">Ranking System Off</option>
-                            <option value="2">Waiting List...</option>
-                            <option value="3">Did not meet the requirements, please re-apply in the next round.</option>
-                            <option value="4">Qualified as TDP</option>
-                            <option value="5">Qualified as HALF PESFA</option>
-                            <option value="6">Qualified as HALF SSP</option>
-                            <option value="7">Qualified as FULL PESFA</option>
-                            <option value="8">Qualified as FULL SSP</option>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">HEI Status</span>
+                          <input v-if="selectedItem.verified_hei === 3" placeholder="Not Yet Check" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei === 2" placeholder="Not Enrolled" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei === 1" placeholder="Enrolled" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Academic Year</span>
+                          <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
+                            <option value="8">2020</option>
                           </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">Ranking Status Remarks</span>
-                          <input v-if="selectedItem.ranking_status == 1" type="text" class="form-control" v-model="selectedItem.ranking_remarks" disabled>
-                          <input v-if="selectedItem.ranking_status != 1" type="text" class="form-control" v-model="selectedItem.ranking_remarks">
-                        </div>
-                      </div>
-
-                      <div class="form-row">
-            
-                        <div class="form-group col-md-3">
+                        </div> 
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">GWA</span>
                           <input type="text" id="gwa" class="form-control" v-model="selectedItem.gwa">
                         </div>
-
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Ranking Points</span>
                           <input type="text" class="form-control" v-model="selectedItem.rank_points" disabled>
                         </div>
-
-                        <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">HEI Status</span>
-                          <input type="text" class="form-control" v-model="selectedItem.verified_hei" disabled>
-                        </div>
-
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applied Date</span>
                           <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
                         </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button v-if="selectedItem.verified_hei == 2" type="submit" class="btn btn-primary" disabled>Save changes</button>
-                        <button v-if="selectedItem.verified_hei == 1" type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                       </div>
                       </form>
                     </div>
@@ -783,7 +761,6 @@ Vue.component("ched-list-of-applicant", {
   methods: {
 
     fetchApplicant: function() {
-
             axios.get('ched_admin/fetch_applicant/').then(result => {
                 this.applicants = result.data;
                 console.log(this.applicants);
@@ -857,9 +834,10 @@ Vue.component("ched-list-of-applicant", {
 
           $('#parent_income').css('border-color','');
           $('#gwa').css('border-color','');  
-          $('#verified_admin_id').css('border-color','');   
+          $('#verified_admin_id').css('border-color',''); 
+          $('#ay').css('border-color','');   
 
-          if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin) {
+          if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
 
           this.formData = new FormData();
           this.formData.append('lname', this.selectedItem.lname);
@@ -894,6 +872,8 @@ Vue.component("ched-list-of-applicant", {
           this.formData.append('ranking_status_id', this.selectedItem.ranking_status);
           this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
           this.formData.append('gwa', this.selectedItem.gwa);
+          this.formData.append('ay', this.selectedItem.ay);
+          this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
           axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
 
@@ -922,6 +902,11 @@ Vue.component("ched-list-of-applicant", {
 
           if(!this.selectedItem.verified_admin) {
             $('#verified_admin_id').css('border-color','red');
+            return false;
+          }
+
+          if(!this.selectedItem.ay) {
+            $('#ay').css('border-color','red');
             return false;
           }
    

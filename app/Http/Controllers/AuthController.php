@@ -45,7 +45,6 @@ class AuthController extends Controller
         $applicants->name_of_school_last_attended = $request->schoollastattended;
         $applicants->hei = $request->schoolpreferred;
         $applicants->course = $request->degreeprogram;
-        $applicants->supported_by_solo_parent = $request->soloparent;
         $applicants->applicant_type = $request->applicanttype;
         $applicants->user_id = $user->id;
         $applicants->reference_no =  $dt->toDateString().$user->id;  

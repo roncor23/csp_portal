@@ -10,6 +10,9 @@ use App\brgyModel;
 use App\provincesModel;
 use App\heisModel;
 use App\coursesModel;
+use App\applicantsModel;
+use App\parentsModel;
+use App\User;
 use DB;
 
 class applicantController extends Controller
@@ -20,11 +23,12 @@ class applicantController extends Controller
         $users = DB::table('users')
                     ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
                     ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
-                    ->where('applicant_id',Auth::id())
+                    ->where('id', Auth::id())
                     ->get();
 
         return response()->json($users);
     }
+    
 
 	//Fetch all province
     public function fetch_province() {
@@ -72,6 +76,85 @@ class applicantController extends Controller
     	$name = Auth::user()->name;
 
         return response()->json($name);
+
+    }
+    //Update applicant
+    public function update_applicant(Request $request, $id) {
+       
+        $model = new applicantsModel();
+        $applicants = $model::where('user_id', $id)->first();
+        $applicants->fname = $request->fname;
+        $applicants->mname = $request->mname;
+        $applicants->lname = $request->lname;
+        $applicants->xname = $request->xname;
+        $applicants->birthdate = $request->birthdate;
+        $applicants->place_of_birth = $request->place_of_birth;
+        $applicants->gender = $request->gender;
+        $applicants->civil_status = $request->civil_status;
+        $applicants->citizenship = $request->citizenship;
+        $applicants->contact = $request->contact;
+        $applicants->email = $request->email;
+        $applicants->present_address = $request->present_address;
+        $applicants->town_city = $request->town_city_id;
+        $applicants->brgy = $request->brgy_id;
+        $applicants->province = $request->province;
+        $applicants->zipcode = $request->zipcode;
+        $applicants->name_of_school_last_attended = $request->name_of_school_last_attended;
+        $applicants->hei = $request->hei_id;
+        $applicants->course = $request->course_id;
+        $applicants->applicant_type = $request->applicant_type;
+        $applicants->save();
+
+        $model2 = new parentsModel();
+        $parents = $model2::where('user_id', $id)->first();
+        $parents->father_lname = $request->father_lname;
+        $parents->father_fname = $request->father_fname;
+        $parents->father_mname = $request->father_mname;
+        $parents->father_xname = $request->father_xname;
+        $parents->mother_lname = $request->mother_lname;
+        $parents->mother_fname = $request->mother_fname;
+        $parents->mother_mname = $request->mother_mname;
+        $parents->mother_xname = $request->mother_xname;
+        $parents->mother_occupation = $request->mother_occupation;
+        $parents->father_occupation = $request->father_occupation;
+        $parents->mother_employer = $request->mother_employer;
+        $parents->father_employer = $request->father_employer;
+        $parents->mother_contact_number = $request->mother_contact_number;
+        $parents->father_contact_number = $request->father_contact_number;
+        $parents->number_of_siblings = $request->number_of_siblings;
+        $parents->save();
+
+
+        return response()->json(['status' => 'success'], 200);
+
+    }
+     //Applicant change password
+    public function change_password(Request $request) {
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+
+        $verify = password_verify($request['current'], $user['password']);//verify current password
+
+
+        if($verify) {
+
+                $hash = bcrypt($request['new_password']);//hash password
+
+                $update_password = $model::where('id', Auth::id())
+                        ->update(['password' => $hash]);
+
+                $msg = "Password changed successfully!";   
+                     
+                return response()->json(1);//return true
+
+         
+        } else {
+                     
+                return response()->json(0);//return false
+        }
+
 
     }
 }

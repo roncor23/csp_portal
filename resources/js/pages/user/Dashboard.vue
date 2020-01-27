@@ -16,6 +16,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+          <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
         </div>
       </li>
        <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
@@ -30,8 +31,7 @@
     <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
      <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
     <router-link to="/student-status"><li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li></router-link>
-    <li><a href="#"><i class="fas fa-print"></i><span>Print</span></a></li>
-    </ul>
+  </ul>
 </div>
 
   <!-- Content -->

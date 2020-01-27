@@ -11,14 +11,18 @@ import NotFound from './pages/admin/404/404'
 
 import StudentInformation from './pages/user/StudentInformation'
 import StudentStatus from './pages/user/StudentStatus'
+import StudentChangePassword from './pages/user/changepassword'
 
 import ChedCoordinator from './pages/chedcoordinator/dashboard'
 import ChedCoordinatorListOfApplicants from './pages/chedcoordinator/table/ched_listofapplicant'
 import ChedCoordinatorListOfEnrolledApplicants from './pages/chedcoordinator/table/ched_listofenrolledapplicant'
 import ChedCoordinatorListOfNotEnrolledApplicants from './pages/chedcoordinator/table/ched_listofnotenrolledapplicant'
+import AdminChangePassword from './pages/chedcoordinator/changepassword'
+
 
 import HeiCoordinator from './pages/heicoordinator/dashboard'
 import HeiCoordinatorListOfApplicants from './pages/heicoordinator/hei_listofapplicant'
+import HEIChangePassword from './pages/heicoordinator/changepassword'
 
 import SuperAdmin from './pages/superadmin/dashboard'
 import SuperAdminAddAccount from './pages/superadmin/AddAccount'
@@ -74,6 +78,14 @@ const routes = [
       auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  {
+    path: '/student-dashboard/change-password',
+    name: 'student_dashboard_change_password',
+    component: StudentChangePassword,
+    meta: {
+      auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
   // CHED COORDINATOR ROUTES
   {
     path: '/ched-coordinator',
@@ -108,6 +120,14 @@ const routes = [
     }
   },
   {
+    path: '/ched-coordinator/change-password',
+    name: 'ched_coordinator_change_password',
+    component: AdminChangePassword,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
     path: '/404',
     name: '404',
     component: NotFound,
@@ -128,6 +148,14 @@ const routes = [
     path: '/hei-coordinator/list-of-applicants',
     name: 'hei_coordinator.list_of_applicants_dashboard',
     component: HeiCoordinatorListOfApplicants,
+    meta: {
+      auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/hei-coordinator/change-password',
+    name: 'hei_coordinator_change_password',
+    component: HEIChangePassword,
     meta: {
       auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

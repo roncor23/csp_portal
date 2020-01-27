@@ -6,8 +6,7 @@
     <span>Close</span>
   </a>
   <div class="logo">
-    CHED COORDINATOR DASHBOARD
-
+   {{heiname}}
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
         <!-- Dropdown -->
         <li class="nav-item dropdown">
@@ -16,7 +15,7 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+            <router-link to="/hei-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
           </div>
         </li>
       </ul>
@@ -26,18 +25,14 @@
   <div class="sidebar">
     <ul>
       <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->
   <div class="main">
       <div class="jumbotron">
-        <h1>Hello, User!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-        <p>Thank you for applying scholarship. You're all ready to go!</p><br>
-        <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
+        <hei-change-password></hei-change-password>
       </div>
   </div>
 </div>
@@ -329,17 +324,138 @@ table {
 </style>
 
 <script>
-import axios from 'axios';
 
+import Vue from 'vue'
+import axios from 'axios'
+
+Vue.use(window.vuelidate.default);
+const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
+
+
+Vue.component("hei-change-password", {
+    template: `<div>
+                  <form
+                    class="form" id="" method="post" action="foobar"
+                    @submit.prevent="submit"
+                  >
+
+                            <div class="form-group ">
+                              <label >Current</label><span style="color:red">*</span>
+                              <input class="form-control" id="current" type="password" v-model="current" @input="$v.current.$touch">
+                              <p v-if="$v.current.$dirty" style="font-size:12px">
+                                <span v-if="!$v.current.required" style="color:red">Current password is required.</span>
+                                <span v-if="!$v.current.minLength" style="color:red">Password must have at least {{ $v.current.$params.minLength.min }} letters.</span>
+                              </p>
+                            </div>
+                            <div class="form-group ">
+                              <label >New password</label><span style="color:red">*</span>
+                              <input type="password" class="form-control" v-model="new_password" @input="$v.new_password.$touch">
+                              <p v-if="$v.new_password.$dirty" style="font-size:12px">
+                                <span v-if="!$v.new_password.required" style="color:red">New password is required.</span>
+                                <span v-if="!$v.new_password.minLength" style="color:red">Password must have at least {{ $v.new_password.$params.minLength.min }} letters.</span>
+                                <span v-if="!$v.new_password.alphaNum" style="color:red">Password accept only alpha and numeric.</span>   
+                              </p>
+                            </div>
+                            <div class="form-group ">
+                              <label >Confirm password</label><span style="color:red">*</span>
+                              <input type="password" class="form-control" v-model="confirmPassword" @input="$v.confirmPassword.$touch">
+                              <p v-if="$v.confirmPassword.$dirty" style="font-size:12px">
+                                <span v-if="$v.confirmPassword.$error && !$v.confirmPassword.required" style="color:red">Confirm password is required</span>
+                                <span v-if="!$v.confirmPassword.sameAsPassword" style="color:red">Passwords must be identical.</span>
+                              </p>
+                            </div>
+          
+                    <!-- Submit -->
+                    <div class="form__group form__group--no-label form__group--button">
+                      <button
+                        type="submit" class="btn btn-primary" name="form-submit"
+                        :disabled="$v.$invalid"
+                      >Submit</button>
+                    </div>
+                  </form>
+
+        </div>`,
+    data() {
+        return {
+
+          current: '',
+          new_password: '',
+          confirmPassword: '',
+          formData: {}
+        }
+    },
+  validations: {
+
+    current: {
+      required: validators.required,
+      minLength: validators.minLength(6)
+    },
+    new_password: {
+      required: validators.required,
+      minLength: validators.minLength(6),
+      alphaNum
+    },
+    confirmPassword: {
+        required,
+        sameAsPassword: sameAs('new_password')
+    }
+  },
+  methods: {
+    submit: function() {
+
+      if (this.$v.$invalid) return;
+
+        this.formData = new FormData();
+        this.formData.append('current', this.current);
+        this.formData.append('new_password', this.new_password);
+
+      axios.post('hei_coordinator/change_password/', this.formData).then(result => {
+
+        if(result.data === 1) {
+          $('#current').css('border-color','');
+          alert("Password changed successfully!");
+          this.resetForm();
+        }
+
+        if(result.data === 0) {
+          alert("Incorrect password!");
+          $('#current').css('border-color','red');
+        }
+
+         
+         
+
+      }).catch(error => {
+          console.log(error);
+      });
+
+
+     
+    },
+
+      resetForm() {
+            this.formData = {};
+            this.current = '';
+            this.new_password = '';
+            this.confirmPassword = '';
+      },
+  },
+  async mounted() {
+
+  }
+
+});
   export default {
     data() {
       return {
-        username: ''
+        username: '',
+        heiname: ''
       }
     },
     methods: {
+
       fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
+          axios.get('hei_coordinator/fetch_user_name/').then(result => {
 
               this.username = result.data;
               console.log(this.username);
@@ -348,9 +464,21 @@ import axios from 'axios';
               console.log(error);
           });
       },
+      fetchHEIName: function() {
+          axios.get('hei_coordinator/fetch_hei_name/').then(result => {
+
+              this.heiname = result.data;
+              console.log(this.heiname);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      }
     },
     async mounted() {
+      this.fetchHEIName();
       this.fetchUsername();
+
     },
     components: {
       //

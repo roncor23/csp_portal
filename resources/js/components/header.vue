@@ -1,46 +1,29 @@
 <template>
-<div>
-<div class="header">
-  <a href="#" id="menu-action">
-    <i class="fa fa-bars"></i>
-    <span>Close</span>
-  </a>
-  <div class="logo">
-    CHED COORDINATOR DASHBOARD
+  <div>
+    <div class="header" v-if="$auth.check(2)">
+        <a href="#" id="menu-action">
+          <i class="fa fa-bars"></i>
+          <span>Close</span>
+        </a>
+        <div class="logo">
+          CHED COORDINATOR DASHBOARD
 
-      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-            {{username}} Profile
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-          </div>
-        </li>
-      </ul>
+            <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+                   Profile
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                   <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                </div>
+              </li>
+            </ul>
 
-  </div>
-</div>
-  <div class="sidebar">
-    <ul>
-      <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
-    </ul>
-  </div>
-  <!-- Content -->
-  <div class="main">
-      <div class="jumbotron">
-        <h1>Hello, User!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-        <p>Thank you for applying scholarship. You're all ready to go!</p><br>
-        <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 </template>
 
 <style scoped>
@@ -325,9 +308,7 @@ table {
   color: #5bc0de;
 }
 
-
 </style>
-
 <script>
 import axios from 'axios';
 
@@ -347,13 +328,10 @@ import axios from 'axios';
           }).catch(error => {
               console.log(error);
           });
-      },
+      }
     },
     async mounted() {
-      this.fetchUsername();
-    },
-    components: {
-      //
+      
     }
   }
 </script>

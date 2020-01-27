@@ -9,18 +9,16 @@
   {{heiname}}
 
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          {{username}} Profile
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-        </div>
-      </li>
-       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+            {{username}} Profile
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+            <router-link to="/hei-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+          </div>
+        </li>
       </ul>
 
   </div>
@@ -28,8 +26,8 @@
 <div class="sidebar">
     <ul>
       <router-link to="/hei-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of Applicants</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEIs</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
 </div>
 
@@ -387,9 +385,9 @@ Vue.component("hei-list-of-applicant", {
                     </tfoot>  
             <tbody v-if="filteredBlogs.length > 0">
                     <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
-                        <td>{{index}}</td>
+                        <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
-                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY HEI</td>
+                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
                         <td v-if="i.ay === 8">2020</td>
                         <td v-if="i.yr_lvl === null" style="color:blue">NOT YET SET BY HEI</td>
                         <td v-if="i.yr_lvl === 1">1st Year</td>
@@ -397,7 +395,7 @@ Vue.component("hei-list-of-applicant", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei === null" style="color:blue">NOT YET CHECK BY HEI</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
                         <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
                         <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
                         <td>{{i.lname}}</td>
@@ -419,15 +417,12 @@ Vue.component("hei-list-of-applicant", {
                        <tr>
                         <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
                        </tr>
-                    </tbody>
-               
+                    </tbody>           
                     </table>
                     <nav aria-label="Page navigation" style="float:right">
                         <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="3" @changePage="onChangePage"></jw-pagination> 
                     </nav>
-
                 </div>
-
 
               <!-- EDIT MODAL -->
               <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -560,10 +555,15 @@ Vue.component("hei-list-of-applicant", {
                             <option value="5">PEPT passer</option>
                           </select>
                         </div>
+
                         <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">Academic Year</span>
-                          <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
-                            <option value="8">2020</option>
+                          <span style="font-size:10px;font-weight:bold">Year Level</span>
+                          <select name="yr_lvl" id="yr_lvl" class="form-control" v-model="selectedItem.yr_lvl">
+                            <option value="1">1st year</option>
+                            <option value="2">2nd year</option>
+                            <option value="3">3rd year</option>
+                            <option value="4">4th year</option>
+                            <option value="5">5th year and above</option>
                           </select>
                         </div> 
                   
@@ -583,18 +583,10 @@ Vue.component("hei-list-of-applicant", {
                         <div class="form-group col-md-3">
                           <span style="font-size:10px;font-weight:bold">HEI Status Remarks</span>
                           <span style="font-size:10px;font-weight:bold"></span>
-                          <input type="text" class="form-control" v-model="selectedItem.hei_remarks">
+                          <input v-if="selectedItem.verified_hei == 1" type="text" class="form-control" v-model="selectedItem.hei_remarks" disabled>
+                          <input v-if="selectedItem.verified_hei == 2" type="text" class="form-control" v-model="selectedItem.hei_remarks">
                         </div>
-                        <div class="form-group col-md-3">
-                          <span style="font-size:10px;font-weight:bold">Year Level</span>
-                          <select name="yr_lvl" id="yr_lvl" class="form-control" v-model="selectedItem.yr_lvl">
-                            <option value="1">1st year</option>
-                            <option value="2">2nd year</option>
-                            <option value="3">3rd year</option>
-                            <option value="4">4th year</option>
-                            <option value="5">5th year and above</option>
-                          </select>
-                        </div> 
+
                         <div class="form-group col-md-3">
                           <span style="font-size:10px;font-weight:bold">Applied Date</span>
                           <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
@@ -631,7 +623,6 @@ Vue.component("hei-list-of-applicant", {
           heis: {},
           programs: {},
           yr_lvl: '',
-          ay: '',
           verified_hei: ''
           
         }
@@ -725,13 +716,11 @@ Vue.component("hei-list-of-applicant", {
     updateData: function($id) {
 
           $('#yr_lvl').css('border-color','');
-          $('#ay').css('border-color','');  
           $('#verified_hei_id').css('border-color','');   
 
-          if(this.selectedItem.ay && this.selectedItem.yr_lvl && this.selectedItem.verified_hei) {
+          if(this.selectedItem.yr_lvl && this.selectedItem.verified_hei) {
 
           this.formData = new FormData();
-          this.formData.append('ay', this.selectedItem.ay);
           this.formData.append('yr_lvl', this.selectedItem.yr_lvl);
           this.formData.append('verified_hei_id', this.selectedItem.verified_hei);
           this.formData.append('hei_remarks', this.selectedItem.hei_remarks);
@@ -750,10 +739,6 @@ Vue.component("hei-list-of-applicant", {
 
           }
 
-          if(!this.selectedItem.ay) {
-            $('#ay').css('border-color','red');
-            return false;
-          }
 
           if(!this.selectedItem.yr_lvl) {
             $('#yr_lvl').css('border-color','red');

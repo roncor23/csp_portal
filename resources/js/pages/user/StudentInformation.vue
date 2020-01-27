@@ -12,56 +12,458 @@
 		      <!-- Dropdown -->
 		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-		          My Profile
+		          {{username}} Profile
 		        </a>
 		        <div class="dropdown-menu">
 		          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+               <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
 		        </div>
 		      </li>
-		       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-		        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-		        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
 		      </ul>
 
 		  </div>
 		</div>
 		<div class="sidebar">
 		  <ul>
-		    <router-link to="/student-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-		    <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
-		    <li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a>
-		    <li><a href="#"><i class="fas fa-print"></i><span>Print</span></a></li>
-		    </ul>
+         <router-link to="/student-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+         <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
+        <router-link to="/student-status"><li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li></router-link>
+		  </ul>
 		</div>
 
 		<!-- Content -->
-		<div class="container main">
-			<!-- New Way -->
-			<div class="div-table">
-			  <div class="table">
-			    <div class="tr">
-			      <div class="td">Firstname</div>
-			      <div class="td">Lastname</div>
-			      <div class="td">Email</div>
-			    </div>
-			    <div class="tr">
-			      <div class="td">John</div>
-			      <div class="td">Doe</div>
-			      <div class="td">john@example.com</div>
-			    </div>
-			    <div class="tr">
-			      <div class="td">Mary</div>
-			      <div class="td">Moe</div>
-			      <div class="td">mary@example.com</div>
-			    </div>
-			    <div class="tr">
-			      <div class="td">July</div>
-			      <div class="td">Dooley</div>
-			      <div class="td">july@example.com</div>
-			    </div>
-			  </div>
-			</div>
+		<div class="container main" v-for="applicant in applicants">
+      <div class="d-flex justify-content-start">
+        <i class="fas fa-print" @click="print" style="cursor:pointer;padding:3px"><a href="#" style="padding:3px;color:#6495ED">Print</a></i>
+        <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>
+      </div>
+      <div id="applicant_information">     
+          <div class="d-flex justify-content-end" style="margin-bottom:30px">
+            <div class="d-flex justify-content-center" style="border:1px solid;height:150px;width:150px;position:absolute">
+              <p style="font-size:12px;line-height: 0.7;margin-top:70px">2x2&nbsp;ID PICTURE</p>
+            </div>
+          </div>
+
+          <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">Office of the President of the Philippines</p>
+          <img :src="logo" style="position:absolute;margin-left:300px">
+          <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">COMMISION ON HIGHER EDUCATION</p>
+          <P class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">REGIONAL OFFICE XIII</P>
+          <h4 class="d-flex justify-content-around" style="font-size:12px">CHED SCHOLARSHIP PROGRAM (CSP)</h4>
+          <h4 class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">APPLICATION FORM</h4>
+
+
+  			<!-- Applicant Information -->
+        <table class="table table-sm mt-4">
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th></th></tr></thead>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col" style="width:25%">Last Name</th>
+              <th scope="col" style="width:25%">First Name</th>
+              <th scope="col" style="width:25%">Middle Name</th>
+              <th scope="col" style="width:25%">Ext. Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">     
+              <td>{{applicant.lname}}</td>
+              <td>{{applicant.fname}}</td>
+              <td>{{applicant.mname}}</td>
+              <td>{{applicant.xname}}</td>
+            </tr>
+          </tbody>
+            <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Date of Birth</th>
+              <th scope="col">Place of Birth</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Civil Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">
+              <td>{{applicant.birthdate}}</td>
+              <td>{{applicant.place_of_birth}}</td>
+              <td v-if="applicant.gender === 1">Male</td>
+              <td v-if="applicant.gender === 2">Female</td>
+              <td v-if="applicant.civil_status === 1">Single</td>
+              <td v-if="applicant.civil_status === 2">Maried</td>
+              <td v-if="applicant.civil_status === 3">Separated</td>
+              <td v-if="applicant.civil_status === 4">Devorced</td>
+              <td v-if="applicant.civil_status === 5">Widowed</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Citizenship</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Present Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">       
+              <td v-if="applicant.citizenship === 1">Filipino</td>
+              <td v-if="applicant.citizenship === 2">American</td>
+              <td>{{applicant.contact}}</td>
+              <td>{{applicant.email}}</td>
+              <td>{{applicant.present_address}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">City</th>
+              <th scope="col">Barangay</th>
+              <th scope="col">Province</th>
+              <th scope="col">Zipcode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td v-for="city in citys" v-bind:value="city.city_id" v-if="applicant.town_city === city.city_id">{{city.mun_city_name}}</td>
+              <td v-for="brgy in brgys" v-bind:value="brgy.brgy_id" v-if="applicant.brgy === brgy.brgy_id">{{brgy.name}}</td>
+              <td v-for="province in provinces" v-bind:value="province.province_id" v-if="applicant.province === province.province_id">{{province.prov_name}}</td>
+              <td>{{applicant.zipcode}}</td>
+            </tr>
+          </tbody>
+                  <thead>
+            <tr style="font-size:10px">
+              <th scope="col">4ps</th>
+              <th scope="col">Ips</th>
+              <th scope="col">Pwd</th>
+              <th scope="col">Applicant is a solo parent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td v-if="applicant.forps === 1">Yes</td>
+              <td v-if="applicant.forps === 2">No</td>
+              <td v-if="applicant.ips === 1">Yes</td>
+              <td v-if="applicant.ips === 2">No</td>
+              <td v-if="applicant.pwd === 1">Yes</td>
+              <td v-if="applicant.pwd === 2">No</td>
+              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
+              <td v-if="applicant.applicant_solo_parent === 2">No</td>
+            </tr>
+          </tbody>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>FAMILY BACKGROUND</th><th></th><th></th><th></th></tr></thead>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Father Last Name</th>
+              <th scope="col">Father First Name</th>
+              <th scope="col">Father Middle Name</th>
+              <th scope="col">Father Ext. Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td>{{applicant.father_lname}}</td>
+              <td>{{applicant.father_fname}}</td>
+              <td>{{applicant.father_mname}}</td>
+              <td>{{applicant.father_xname}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Mother Last Name</th>
+              <th scope="col">Mother First Name</th>
+              <th scope="col">Mother Middle Name</th>
+              <th scope="col">Mother Ext. Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td>{{applicant.mother_lname}}</td>
+              <td>{{applicant.mother_fname}}</td>
+              <td>{{applicant.mother_mname}}</td>
+              <td>{{applicant.mother_xname}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Mother Occupation</th>
+              <th scope="col">Father Occupation</th>
+              <th scope="col">Mother Employer</th>
+              <th scope="col">Father Employer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td>{{applicant.mother_occupation}}</td>
+              <td>{{applicant.father_occupation}}</td>
+              <td>{{applicant.mother_employer}}</td>
+              <td>{{applicant.father_employer}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Mother Contact #</th>
+              <th scope="col">Father Contact #</th>
+              <th scope="col">No. of Siblings</th>
+              <th scope="col">Solo Parent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td>{{applicant.mother_contact_number}}</td>
+              <td>{{applicant.father_contact_number}}</td>
+              <td>{{applicant.number_of_siblings}}</td>
+              <td v-if="applicant.supported_by_solo_parent === 1">Yes</td>
+              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
+            </tr>
+          </tbody>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue;border-style:none"><th>PREFERRED SCHOOL</th><th></th><th></th><th></th></tr></thead>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Applicant Type</th>
+              <th scope="col">Name of School Last Attended</th>
+              <th scope="col">School Intended to enroll</th>
+              <th scope="col">Degree program</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td v-if="applicant.applicant_type === 1">Incoming College Freshmen</td>
+              <td v-if="applicant.applicant_type === 3">College Earned Units</td>
+              <td v-if="applicant.applicant_type === 4">ALS passer</td>
+              <td v-if="applicant.applicant_type === 5">PEPT passer</td>      
+              <td>{{applicant.name_of_school_last_attended}}</td>
+              <td v-for="hei in heis" v-bind:value="hei.hei_id" v-if="applicant.hei === hei.hei_id">{{hei.hei_name}}</td>
+              <td v-for="program in programs" v-bind:value="program.course_id" v-if="applicant.course === program.course_id">{{program.course_name}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-start">
+          <p style="font-size:10px;font-weight:bold">Evaluated/Processed by:</p>
+        </div>
+        <div class="d-flex flex-row mt-4">
+          <div class="col-md-4">
+            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">CSP Coordianator</p>
+          </div>
+          <div class="col-md-4" >
+            <p  style="font-size:10px;border:1px solid; text-align:center;border-left:none;border-right:none;border-bottom:none">Applied Date</p>
+          </div>
+          <div class="col-md-4" >
+            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">Student Signature(Over Printed Name)</p>
+          </div>
+        </div>  
+      </div>
 		</div>
+
+              <!-- EDIT MODAL -->
+              <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel" style="font-weight:bold">Applicant</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <form
+                    class="form" id="" method="post" action="foobar"
+                    @submit.prevent="updateData(selectedItem.id)"
+                  >
+                       <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Last Name</span>
+                          <input type="text" id="lname" class="form-control" v-model="selectedItem.lname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">First Name</span>
+                          <input type="text" id="fname" class="form-control" v-model="selectedItem.fname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Middle Name</span>
+                          <input type="text" id="mname" class="form-control" v-model="selectedItem.mname">
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Extension Name</span>
+                          <input type="text" id="xname" class="form-control" v-model="selectedItem.xname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Date of Birth Name</span>
+                          <input type="date" class="form-control" v-model="selectedItem.birthdate">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Place of Birth</span>
+                          <input type="text" id="place_of_birth" class="form-control" v-model="selectedItem.place_of_birth">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Gender</span>
+                           <select name="gender" class="form-control" v-model="selectedItem.gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                          </select>
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Civil Status</span>
+                           <select name="civil_status" class="form-control" v-model="selectedItem.civil_status">
+                            <option value="1">Single</option>
+                            <option value="2">Maried</option>
+                            <option value="3">Separated</option>
+                            <option value="4">Devorced</option>
+                            <option value="5">Widowed</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Citizenship</span>
+                          <select name="citizenship" class="form-control" v-model="selectedItem.citizenship">
+                            <option value="1">Filipino</option>
+                            <option value="2">American</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mobile Number</span>
+                          <input type="text" id="mobile_number" class="form-control" v-model="selectedItem.contact">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">E-mail Address</span>
+                          <input type="text" id="email" class="form-control" v-model="selectedItem.email">
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Present Address</span>
+                          <input type="text" id="present_address" class="form-control" v-model="selectedItem.present_address">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">City</span>
+                          <select name="town_city" class="form-control" v-model="selectedItem.town_city">
+                            <option v-for="city in citys" v-bind:value="city.city_id">{{ city.mun_city_name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">   
+                          <span style="font-size:10px;font-weight:bold">Barangay</span>    
+                          <select  name="barangay" class="form-control" v-model="selectedItem.brgy">
+                            <option v-for="brgy in brgys" v-bind:value="brgy.brgy_id">{{ brgy.name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Province</span>
+                           <select  name="province" class="form-control" v-model="selectedItem.province">
+                            <option v-for="province in provinces" v-bind:value="province.province_id">{{ province.prov_name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Zipcode</span>
+                          <input type="text" id="zipcode" class="form-control" v-model="selectedItem.zipcode">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Last School Attended</span>
+                          <input type="text" id="last_school_attended" class="form-control" v-model="selectedItem.name_of_school_last_attended">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">School Intended</span>
+                          <select name="hei" class="form-control" v-model="selectedItem.hei">
+                            <option v-for="hei in heis" v-bind:value="hei.hei_id">{{ hei.hei_name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Degree Program</span>
+                          <select name="course" class="form-control" v-model="selectedItem.course">
+                            <option v-for="program in programs" v-bind:value="program.course_id">{{ program.course_name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applicant Type</span>
+                          <select name="applicant_type" class="form-control" v-model="selectedItem.applicant_type">
+                            <option value="1">Incoming College Freshmen</option>
+                            <option value="3">College Earned Units</option>
+                            <option value="4">ALS passer</option>
+                            <option value="5">PEPT passer</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Last Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_lname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father First Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_fname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Middle Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_mname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Extension Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_ename">
+                        </div>           
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Last Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_lname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother First Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_fname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Middle Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_mname">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Extension Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_ename">
+                        </div> 
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Occupation</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_occupation">
+                        </div>  
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Occupation</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_occupation">
+                        </div>          
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Employer</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_employer">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Employer</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_employer">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mother Contact #</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mother_contact_number">
+                        </div> 
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Father Contact #</span>
+                          <input type="text" class="form-control" v-model="selectedItem.father_contact_number">
+                        </div> 
+                        <div class="form-group col-md-4">
+                          <span style="font-size:10px;font-weight:bold">Number of siblings</span>
+                          <select class="form-control" v-model="selectedItem.number_of_siblings">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
+                        </div>           
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
     </div>
 </template>
 
@@ -295,9 +697,7 @@ p {
   border-radius: 3px;
   background: white;
 }
-table {
-  background: white;
-}
+
 .bs-callout h4 {
   margin-top: 0;
   margin-bottom: 5px;
@@ -347,49 +747,244 @@ table {
 .bs-callout-info h4 {
   color: #5bc0de;
 }
-/*for table*/
-.table {
-  display: table;
-  border-collapse: collapse;
-}
-.table .tr {
-  display: table-row;
-  border: 1px solid #ddd;
-}
-.table .tr:first-child {
-  font-weight: bold;
-  border-bottom: 2px solid #ddd;
-}
-.table .tr:nth-child(even) {
-  background-color: #F9F9F9;
-}
-.table .tr .td {
-  display: table-cell;
-  padding: 8px;
-  border-left: 1px solid #ddd;
-}
-.table .tr .td:first-child {
-  border-left: 0;
-}
-
-/* Not necessary for table styling */
-.div-table, .table-tag {
-  float: left;
-  margin: 2em;
-}
-.div-table .title, .table-tag .title {
-  text-align: center;
-  padding-bottom: .5em;
-}
 </style>
 
 <script>
+import axios from 'axios';
+import Vue from 'vue';
+import VueHtmlToPaper from 'vue-html-to-paper';
+
+const options = {
+  name: '_blank',
+  specs: [
+    'fullscreen=yes',
+    'titlebar=yes',
+    'scrollbars=yes'
+  ],
+  styles: [
+    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+    'https://unpkg.com/kidlat-css/css/kidlat.css'
+  ]
+}
+ 
+Vue.use(VueHtmlToPaper, options);
+ 
+// or, using the defaults with no stylesheet
+ 
+// Vue.use(VueHtmlToPaper);
 
   export default {
     data() {
       return {
-        //
+        applicants: {},
+        citys: {},
+        brgys: {},
+        heis: {},
+        programs: {},
+        provinces: {},
+        username: '',
+        output: null,
+        selectedItem: {},
+        logo: 'image/ched_logo.png'
       }
+    },
+    methods: {
+      print() {
+      // Pass the element id here
+      this.$htmlToPaper('applicant_information');
+
+      },
+      fetchApplicant: function() {
+
+            axios.get('applicant/fetch_applicant/').then(result => {
+                this.applicants = result.data;
+                console.log(this.applicants);            
+
+            }).catch(error => {
+                console.log(error);
+            });
+      },
+      fetchCity: function() {
+        axios.get('applicant/fetch_city/').then(result => {
+
+            this.citys = result.data;
+            console.log(this.citys);
+
+        }).catch(error => {
+            console.log(error);
+        });
+      },
+      fetchBrgy: function() {
+        axios.get('applicant/fetch_brgy/').then(result => {
+
+            this.brgys = result.data;
+            console.log(this.brgys);
+
+        }).catch(error => {
+            console.log(error);
+        });
+      },
+      fetchProvince: function() {
+          axios.get('applicant/fetch_province/').then(result => {
+
+              this.provinces = result.data;
+              console.log(this.provinces);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
+      fetchProgram: function() {
+          axios.get('applicant/fetch_program/').then(result => {
+
+              this.programs = result.data;
+              console.log(this.programs);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
+      fetchHEI: function() {
+          axios.get('applicant/fetch_hei/').then(result => {
+
+              this.heis = result.data;
+              console.log(this.heis);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
+      fetchUsername: function() {
+          axios.get('applicant/fetch_user_name/').then(result => {
+
+              this.username = result.data;
+              console.log(this.username);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
+      editItem: function(applicant) {
+        this.selectedItem = applicant;
+      },
+      updateData: function($id) {
+
+          $('#lname').css('border-color','');
+          $('#fname').css('border-color','');  
+          $('#mname').css('border-color',''); 
+          $('#xname').css('border-color','');  
+          $('#place_of_birth').css('border-color','');  
+          $('#mobile_number').css('border-color',''); 
+          $('#email').css('border-color','');   
+          $('#present_address').css('border-color',''); 
+          $('#zipcode').css('border-color',''); 
+          $('#last_school_attended').css('border-color','');    
+ 
+        if(this.selectedItem.lname && this.selectedItem.fname && this.selectedItem.mname && this.selectedItem.xname && this.selectedItem.place_of_birth && this.selectedItem.contact && this.selectedItem.email && this.selectedItem.present_address && this.selectedItem.zipcode && this.selectedItem.name_of_school_last_attended) {
+
+          this.formData = new FormData();
+          this.formData.append('lname', this.selectedItem.lname);
+          this.formData.append('fname', this.selectedItem.fname);
+          this.formData.append('mname', this.selectedItem.mname);
+          this.formData.append('xname', this.selectedItem.xname);
+          this.formData.append('birthdate', this.selectedItem.birthdate);
+          this.formData.append('place_of_birth', this.selectedItem.place_of_birth);
+          this.formData.append('gender', this.selectedItem.gender);
+          this.formData.append('civil_status', this.selectedItem.civil_status);
+          this.formData.append('citizenship', this.selectedItem.citizenship);
+          this.formData.append('contact', this.selectedItem.contact);
+          this.formData.append('email', this.selectedItem.email);
+          this.formData.append('present_address', this.selectedItem.present_address);
+          this.formData.append('town_city_id', this.selectedItem.town_city);
+          this.formData.append('brgy_id', this.selectedItem.brgy);
+          this.formData.append('province', this.selectedItem.province);
+          this.formData.append('zipcode', this.selectedItem.zipcode);
+          this.formData.append('name_of_school_last_attended', this.selectedItem.name_of_school_last_attended);
+          this.formData.append('hei_id', this.selectedItem.hei);
+          this.formData.append('course_id', this.selectedItem.course);
+          this.formData.append('applicant_type', this.selectedItem.applicant_type);
+          this.formData.append('father_lname', this.selectedItem.father_lname);
+          this.formData.append('father_fname', this.selectedItem.father_fname);
+          this.formData.append('father_mname', this.selectedItem.father_mname);
+          this.formData.append('father_xname', this.selectedItem.father_xname);
+          this.formData.append('mother_lname', this.selectedItem.mother_lname);
+          this.formData.append('mother_fname', this.selectedItem.mother_fname);
+          this.formData.append('mother_mname', this.selectedItem.mother_mname);
+          this.formData.append('mother_xname', this.selectedItem.mother_xname);
+          this.formData.append('mother_occupation', this.selectedItem.mother_occupation);
+          this.formData.append('father_occupation', this.selectedItem.father_occupation);
+          this.formData.append('mother_employer', this.selectedItem.mother_employer);
+          this.formData.append('father_employer', this.selectedItem.father_employer);
+          this.formData.append('father_contact_number', this.selectedItem.father_contact_number);
+          this.formData.append('mother_contact_number', this.selectedItem.mother_contact_number);
+          this.formData.append('number_of_siblings', this.selectedItem.number_of_siblings);
+          axios.post('applicant/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
+            .then(response => {
+               this.fetchApplicant();
+               alert("Successfully saved!");
+               $("#applicantModal").modal("hide");
+              
+               console.log(response.data);
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+            });
+
+         }
+
+                   if(!this.selectedItem.lname) {
+            $('#lname').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.fname) {
+            $('#fname').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.mname) {
+            $('#mname').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.xname) {
+            $('#xname').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.place_of_birth) {
+            $('#place_of_birth').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.contact) {
+            $('#mobile_number').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.email) {
+            $('#email').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.present_address) {
+            $('#present_address').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.zipcode) {
+            $('#zipcode').css('border-color','red');
+            return false;
+          }
+                   if(!this.selectedItem.name_of_school_last_attended) {
+            $('#last_school_attended').css('border-color','red');
+            return false;
+          }
+
+      }
+
+    },
+    async mounted() {
+      this.fetchApplicant();
+      this.fetchUsername();
+      this.fetchCity();
+      this.fetchBrgy();
+      this.fetchProvince();
+      this.fetchProgram();
+      this.fetchHEI();
     },
     components: {
       //

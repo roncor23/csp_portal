@@ -95,8 +95,10 @@ class HEICoordinatorController extends Controller
         //Update applicant
     public function update_applicant(Request $request, $id) {
        
-        $applicants = applicantsModel::find($id);
-        $applicants->ay = $request->ay;
+        $model = new applicantsModel();
+
+        $applicants = $model::where('user_id', $id)->first();
+
         $applicants->yr_lvl = $request->yr_lvl;
         $applicants->verified_hei = $request->verified_hei_id;
         $applicants->hei_remarks = $request->hei_remarks;
@@ -105,6 +107,36 @@ class HEICoordinatorController extends Controller
 
 
         return response()->json(['status' => 'success'], 200);
+
+    }
+
+    //HEI change password
+    public function change_password(Request $request) {
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+
+        $verify = password_verify($request['current'], $user['password']);//verify current password
+
+
+        if($verify) {
+
+                $hash = bcrypt($request['new_password']);//hash password
+
+                $update_password = $model::where('id', Auth::id())
+                        ->update(['password' => $hash]);
+
+                $msg = "Password changed successfully!";   
+                     
+                return response()->json(1);//return true
+
+         
+        } else {
+                     
+                return response()->json(0);//return false
+        }
+
 
     }
 

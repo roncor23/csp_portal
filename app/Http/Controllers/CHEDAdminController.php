@@ -138,12 +138,43 @@ class CHEDAdminController extends Controller
         $applicants->admin_remarks = $request->admin_remarks;
         $applicants->ranking_status = $request->ranking_status_id;
         $applicants->ranking_remarks = $request->ranking_remarks;
+        $applicants->applicant_solo_parent = $request->applicant_solo_parent;
         $applicants->gwa = $request->gwa;
+        $applicants->ay = $request->ay;
         $applicants->validatedByCHED =  Auth::user()->name;
         $applicants->save();
 
 
         return response()->json(['status' => 'success'], 200);
+
+    }
+    //Admin change password
+    public function change_password(Request $request) {
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+
+        $verify = password_verify($request['current'], $user['password']);//verify current password
+
+
+        if($verify) {
+
+                $hash = bcrypt($request['new_password']);//hash password
+
+                $update_password = $model::where('id', Auth::id())
+                        ->update(['password' => $hash]);
+
+                $msg = "Password changed successfully!";   
+                     
+                return response()->json(1);//return true
+
+         
+        } else {
+                     
+                return response()->json(0);//return false
+        }
+
 
     }
 }
