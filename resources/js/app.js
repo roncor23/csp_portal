@@ -72,4 +72,3 @@ $('#menu-action').click(function() {
 $('#menu-action').hover(function() {
     $('.sidebar').toggleClass('hovered');
 });
-

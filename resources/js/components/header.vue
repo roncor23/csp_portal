@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header" v-if="$auth.check(2)">
+    <div class="header">
         <a href="#" id="menu-action">
           <i class="fa fa-bars"></i>
           <span>Close</span>

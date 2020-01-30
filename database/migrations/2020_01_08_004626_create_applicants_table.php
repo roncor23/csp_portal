@@ -32,7 +32,7 @@ class CreateApplicantsTable extends Migration
             $table->integer('cong_dist')->nullable();
             $table->integer('course')->nullable();
             $table->integer('yr_lvl')->nullable();
-            $table->integer('rank_points')->nullable();
+            $table->double('rank_points', 8,2)->nullable();
             $table->double('gwa', 8, 2)->nullable();
             $table->integer('gender')->nullable();
             $table->double('parent_income', 8, 2)->nullable();

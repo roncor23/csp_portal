@@ -349,7 +349,7 @@ Vue.component("hei-list-of-applicant", {
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -367,7 +367,7 @@ Vue.component("hei-list-of-applicant", {
                     </thead>
                     <tfoot >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -409,7 +409,7 @@ Vue.component("hei-list-of-applicant", {
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
-                          <button type="button" class="btn btn-info btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
+                          <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
                         </td>
                     </tr> 
                     </tbody>
@@ -583,6 +583,7 @@ Vue.component("hei-list-of-applicant", {
                         <div class="form-group col-md-3">
                           <span style="font-size:10px;font-weight:bold">HEI Status Remarks</span>
                           <span style="font-size:10px;font-weight:bold"></span>
+                          <input v-if="selectedItem.verified_hei == 3" type="text" class="form-control" v-model="selectedItem.hei_remarks" disabled>
                           <input v-if="selectedItem.verified_hei == 1" type="text" class="form-control" v-model="selectedItem.hei_remarks" disabled>
                           <input v-if="selectedItem.verified_hei == 2" type="text" class="form-control" v-model="selectedItem.hei_remarks">
                         </div>
@@ -634,9 +635,7 @@ Vue.component("hei-list-of-applicant", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
-
-
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
 
         });
       }

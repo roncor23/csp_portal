@@ -10,11 +10,11 @@
 
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
         <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff">
             {{username}} Profile
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
              <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
           </div>

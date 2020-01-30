@@ -349,7 +349,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -372,7 +372,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                     </thead>
                     <tfoot >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -439,7 +439,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
-                          <button type="button" class="btn btn-info btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
+                          <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
                         </td>
                     </tr> 
                     </tbody>
@@ -746,9 +746,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
-
-
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
 
         });
       }
@@ -870,10 +868,16 @@ Vue.component("ched-list-of-enrolled-applicant", {
           this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
           this.formData.append('gwa', this.selectedItem.gwa);
           this.formData.append('ay', this.selectedItem.ay);
+          this.formData.append('senior_citizen', this.selectedItem.senior_citizen);
           this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
           axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
 
+              if(response.data === 0) {
+                $('#gwa').css('border-color','red');
+                alert("Tarung Eskwela dodong! :-)");
+                return false;
+              }
                this.fetchEnrolledApplicant();
                alert("Successfully saved!");
                $("#applicantModal").modal("hide");

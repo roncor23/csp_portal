@@ -351,7 +351,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                   <tr>
-                    <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -373,7 +373,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     </thead>
                     <tfoot >
                   <tr>
-                    <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -472,9 +472,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
-
-
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
 
         });
       }

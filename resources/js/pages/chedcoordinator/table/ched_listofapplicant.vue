@@ -7,20 +7,18 @@
   </a>
   <div class="logo">
   CHED COORDINATOR DASHBOARD
-
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          My Profile
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-        </div>
-      </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+            My Profile
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+            <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+          </div>
+        </li>
       </ul>
-
   </div>
 </div>
 <div class="sidebar">
@@ -334,12 +332,11 @@ table {
 
 <script>
 
-import Vue from 'vue'
-import axios from 'axios'
+import Vue from 'vue';
+import axios from 'axios';
 
 Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
-
 
 
 Vue.component("ched-list-of-applicant", {
@@ -347,11 +344,11 @@ Vue.component("ched-list-of-applicant", {
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" id="list_of_applicant">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -374,7 +371,7 @@ Vue.component("ched-list-of-applicant", {
                     </thead>
                     <tfoot >
                       <tr>
-              <th>ID</th>
+                    <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
@@ -441,7 +438,7 @@ Vue.component("ched-list-of-applicant", {
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
-                          <button type="button" class="btn btn-info btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
+                          <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
                         </td>
                     </tr> 
                     </tbody>
@@ -750,7 +747,7 @@ Vue.component("ched-list-of-applicant", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
 
 
 
@@ -760,6 +757,11 @@ Vue.component("ched-list-of-applicant", {
 
   methods: {
 
+    print() {
+      // Pass the element id here
+      this.$htmlToPaper('list_of_applicant');
+
+      },
     fetchApplicant: function() {
             axios.get('ched_admin/fetch_applicant/').then(result => {
                 this.applicants = result.data;
@@ -873,10 +875,17 @@ Vue.component("ched-list-of-applicant", {
           this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
           this.formData.append('gwa', this.selectedItem.gwa);
           this.formData.append('ay', this.selectedItem.ay);
+          this.formData.append('senior_citizen', this.selectedItem.senior_citizen);
           this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
           axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
 
+
+              if(response.data === 0) {
+                $('#gwa').css('border-color','red');
+                alert("Tarung Eskwela dodong! :-)");
+                return false;
+              }
                this.fetchApplicant();
                alert("Successfully saved!");
                $("#applicantModal").modal("hide");

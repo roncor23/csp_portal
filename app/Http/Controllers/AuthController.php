@@ -26,10 +26,10 @@ class AuthController extends Controller
         $applicants = new applicantsModel;
         $dt = Carbon::now();
 
-        $applicants->fname = $request->firstname;
-        $applicants->mname = $request->middlename;
-        $applicants->lname = $request->lastname;
-        $applicants->xname = $request->extensionname;
+        $applicants->fname = strtoupper($request->firstname);
+        $applicants->mname = strtoupper($request->middlename);
+        $applicants->lname = strtoupper($request->lastname);
+        $applicants->xname = strtoupper($request->extensionname);
         $applicants->birthdate = $request->dateofbirth;
         $applicants->place_of_birth = $request->placeofbirth;
         $applicants->gender = $request->sex;

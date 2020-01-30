@@ -23,63 +23,63 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Valerie',
             'email' => 'valerie@ched.gov.ph',
-            'password' => Hash::make('valerie'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Dave',
             'email' => 'dave@ched.gov.ph',
-            'password' => Hash::make('dave'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Krizia',
             'email' => 'krizia@ched.gov.ph',
-            'password' => Hash::make('krizia'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Wenna',
             'email' => 'wenna@ched.gov.ph',
-            'password' => Hash::make('wenna'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Ronan',
             'email' => 'ronan@ched.gov.ph',
-            'password' => Hash::make('ronan'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Heidi',
             'email' => 'heidi@ched.gov.ph',
-            'password' => Hash::make('heidi'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Florena',
             'email' => 'florena@ched.gov.ph',
-            'password' => Hash::make('florena'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Chris',
             'email' => 'chris@ched.gov.ph',
-            'password' => Hash::make('chris'),
+            'password' => Hash::make('123456'),
             'role' => 2
         ]);
 
         User::create([
             'name' => 'Hei',
             'email' => 'hei@ched.gov.ph',
-            'password' => Hash::make('hei'),
+            'password' => Hash::make('123456'),
             'role' => 3
         ]);
 

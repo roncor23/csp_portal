@@ -23,6 +23,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('role',1)
+		            ->orderBy('lname', 'asc')
 		            ->get();
 
         return response()->json($users);
@@ -34,6 +35,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('verified_hei', 1)
+		            ->orderBy('lname', 'asc')
 		            ->get();
 
         return response()->json($users);
@@ -45,6 +47,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('verified_hei', 2)
+		            ->orderBy('lname', 'asc')
 		            ->get();
 
         return response()->json($users);
@@ -99,18 +102,1593 @@ class CHEDAdminController extends Controller
         return response()->json($name);
 
     }
+    //Rank Points Computation
+    public function ranking_points_computation($_dependent_solo_parent, $_applicant_solo_parent, $_senior_citizen, $_pwd, $_forps, $_ips, $gwa, $parent_income, $id) {
+
+    	if($gwa >= 99 && $gwa <= 100) {
+
+    	   	$grade_points = 100;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 97 && $gwa <= 98) {
+
+    	   	$grade_points = 95;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+ 
+    	if($gwa >= 95 && $gwa <= 96) {
+
+    	   	$grade_points = 90;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+    	if($gwa >= 93 && $gwa <= 94) {
+
+    	   	$grade_points = 85;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 91 && $gwa <= 92) {
+
+    	   	$grade_points = 80;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 89 && $gwa <= 90) {
+
+    	   	$grade_points = 75;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 87 && $gwa <= 88) {
+
+    	   	$grade_points = 70;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 85 && $gwa <= 86) {
+
+    	   	$grade_points = 65;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 83 && $gwa <= 84) {
+
+    	   	$grade_points = 60;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 81 && $gwa <= 82) {
+
+    	   	$grade_points = 55;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 79 && $gwa <= 80) {
+
+    	   	$grade_points = 50;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 77 && $gwa <= 78) {
+
+    	   	$grade_points = 45;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 75 && $gwa <= 76) {
+
+    	   	$grade_points = 40;
+
+    	    if($parent_income >= 0 && $parent_income <=70000) {
+    			$income_points = 100;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 70001 && $parent_income <=136000) {
+    			$income_points = 95;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    	    if($parent_income >= 136001 && $parent_income <=202000) {
+    			$income_points = 90;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}	
+    		if($parent_income >= 202001 && $parent_income <=268000) {
+    			$income_points = 85;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 268001 && $parent_income <=334000) {
+    			$income_points = 80;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 334001 && $parent_income <=400000) {
+    			$income_points = 75;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}
+    		if($parent_income >= 400001 && $parent_income <=900000) {
+    			$income_points = 50;
+
+    			$grade_computed = $grade_points * 0.70;
+    			$income_computed = $income_points * 0.30;
+
+    			$rank_points = $grade_computed + $income_computed;
+
+    			if($_dependent_solo_parent == 1 || $_applicant_solo_parent == 1 || $_ips == 1 || $_pwd == 1 || $_forps == 1 || $_senior_citizen == 1) {
+    				$plus_points = 5;
+    			}else { $plus_points = 0; }
+    			
+    			$total_rank_points = $rank_points + $plus_points;
+
+    			return $total_rank_points;
+    		}				  
+    	
+    	}
+
+    	if($gwa >= 0 && $gwa <= 74) {
+
+    		$total_rank_points = 50;
+
+    		return $total_rank_points;
+    	}
+    }
     //Update applicant
     public function update_applicant(Request $request, $id) {
-       
+
     	$model = new applicantsModel();
 
     	$applicants = $model::where('user_id', $id)->first();
 
+    	$_dependent_solo_parent = $request->supported_by_solo_parent;
+    	$_applicant_solo_parent = $request->applicant_solo_parent;
+    	$_senior_citizen = $request->senior_citizen;
+    	$_pwd = $request->pwd_id;
+    	$_forps = $request->forps_id;
+    	$_ips = $request->ips_id;
 
-        $applicants->fname = $request->fname;
-        $applicants->mname = $request->mname;
-        $applicants->lname = $request->lname;
-        $applicants->xname = $request->xname;
+    	//General Weight Average of Student
+    	$gwa = $request->gwa;
+    	//Gross Income of the Family
+    	$parent_income = $request->parent_income;
+    	
+    	$total_rank_points = $this->ranking_points_computation($_dependent_solo_parent, $_applicant_solo_parent, $_senior_citizen, $_pwd, $_forps, $_ips, $gwa, $parent_income, $id);
+
+    	if($total_rank_points === 50) {
+
+    		return response()->json(0);
+    	}
+
+        $applicants->fname = strtoupper($request->fname);
+        $applicants->mname = strtoupper($request->mname);
+        $applicants->lname = strtoupper($request->lname);
+        $applicants->xname = strtoupper($request->xname);
         $applicants->birthdate = $request->birthdate;
         $applicants->place_of_birth = $request->place_of_birth;
         $applicants->gender = $request->gender;
@@ -141,6 +1719,8 @@ class CHEDAdminController extends Controller
         $applicants->applicant_solo_parent = $request->applicant_solo_parent;
         $applicants->gwa = $request->gwa;
         $applicants->ay = $request->ay;
+        $applicants->senior_citizen = $request->senior_citizen;
+        $applicants->rank_points = $total_rank_points;
         $applicants->validatedByCHED =  Auth::user()->name;
         $applicants->save();
 
@@ -158,7 +1738,7 @@ class CHEDAdminController extends Controller
         $verify = password_verify($request['current'], $user['password']);//verify current password
 
 
-        if($verify) {
+        if($verify) {//Check if match the password to current
 
                 $hash = bcrypt($request['new_password']);//hash password
 
@@ -170,7 +1750,7 @@ class CHEDAdminController extends Controller
                 return response()->json(1);//return true
 
          
-        } else {
+        } else { // If not match return false
                      
                 return response()->json(0);//return false
         }
