@@ -28,6 +28,51 @@ class CHEDAdminController extends Controller
 
         return response()->json($users);
     }
+    //Fetch applicant by HEI
+    public function fetch_applicant_by_hei($id) {
+
+		$users = DB::table('users')
+		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+		            ->where('role',1)
+		            ->where('applicant_hei_id', $id)
+		            ->orderBy('lname', 'asc')
+		            ->get();
+
+        return response()->json($users);
+    }
+    //Fetch applicant by CSP Rank
+    public function fetch_applicant_by_csp_rank() {
+
+		$users = DB::table('users')
+		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+		            ->where('role',1)
+		            ->where('verified_hei', 1)
+		            ->where('verified_admin', 1)
+		            ->where('yr_lvl', 1)
+		            ->whereIn('course', [30,32,33,34,36,37,38,39,41,46,47,48,51,52,54,60,61,62,73,74,77,78,79,80,84,87,88,89,91,93,94,95,96,97,98,100,102,106,109,134,143,144,145,157,189,190,191,195,202,218,220])
+		            ->orderBy('rank_points', 'desc')
+		            ->get();
+
+        return response()->json($users);
+    }
+    //Fetch applicant by TDP Rank
+    public function fetch_applicant_by_tdp_rank() {
+
+		$users = DB::table('users')
+		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+		            ->where('role',1)
+		            ->where('verified_hei', 1)
+		            ->where('verified_admin', 1)
+		            ->where('yr_lvl', 1)
+		            ->whereIn('course', [30,32,33,34,36,37,38,39,41,46,47,48,51,52,54,60,61,62,73,74,77,78,79,80,84,87,88,89,91,93,94,95,96,97,98,100,102,106,109,134,143,144,145,157,189,190,191,195,202,218,220])
+		            ->orderBy('rank_points', 'desc')
+		            ->get();
+
+        return response()->json($users);
+    }
     //Fetch Enrolled Applicant
     public function fetch_enrolled_applicant() {
 
@@ -1756,5 +1801,15 @@ class CHEDAdminController extends Controller
         }
 
 
+    }
+    //Fetch HEI Coordinator
+    public function fetch_HEI_coordinator() {
+
+    	$model = new User();
+
+    	$all_HEI_coordinator = $model::where('role',3)
+    								->orderBy('hei_hei_id', 'asc')->get();
+
+    	return response()->json($all_HEI_coordinator);
     }
 }

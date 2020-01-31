@@ -81,12 +81,71 @@ class applicantController extends Controller
     //Update applicant
     public function update_applicant(Request $request, $id) {
        
-        $model = new applicantsModel();
-        $applicants = $model::where('user_id', $id)->first();
-        $applicants->fname = $request->fname;
-        $applicants->mname = $request->mname;
-        $applicants->lname = $request->lname;
-        $applicants->xname = $request->xname;
+      
+        $model = new User();
+        $model2 = new applicantsModel();
+
+        $users = $model::where('id', $id)->first();
+        $applicants = $model2::where('user_id', $id)->first();   
+
+        //Check current HEI and compare to request HEI
+        if($applicants['hei'] != $request->hei_id) {
+
+            $users->applicant_hei_id = $request->hei_id;   
+            $users->save();    
+
+            $applicants->fname = strtoupper($request->fname);
+            $applicants->mname = strtoupper($request->mname);
+            $applicants->lname = strtoupper($request->lname);
+            $applicants->xname = strtoupper($request->xname);
+            $applicants->birthdate = $request->birthdate;
+            $applicants->place_of_birth = $request->place_of_birth;
+            $applicants->gender = $request->gender;
+            $applicants->civil_status = $request->civil_status;
+            $applicants->citizenship = $request->citizenship;
+            $applicants->contact = $request->contact;
+            $applicants->email = $request->email;
+            $applicants->present_address = $request->present_address;
+            $applicants->town_city = $request->town_city_id;
+            $applicants->brgy = $request->brgy_id;
+            $applicants->province = $request->province;
+            $applicants->zipcode = $request->zipcode;
+            $applicants->name_of_school_last_attended = $request->name_of_school_last_attended;
+            $applicants->hei = $request->hei_id;
+            $applicants->course = $request->course_id;
+            $applicants->applicant_type = $request->applicant_type;
+            $applicants->verified_hei = 3;
+            $applicants->validatedByHEI = "";
+            $applicants->hei_remarks = "";
+            $applicants->save();
+
+            $model3 = new parentsModel();
+            $parents = $model3::where('user_id', $id)->first();
+            $parents->father_lname = $request->father_lname;
+            $parents->father_fname = $request->father_fname;
+            $parents->father_mname = $request->father_mname;
+            $parents->father_xname = $request->father_xname;
+            $parents->mother_lname = $request->mother_lname;
+            $parents->mother_fname = $request->mother_fname;
+            $parents->mother_mname = $request->mother_mname;
+            $parents->mother_xname = $request->mother_xname;
+            $parents->mother_occupation = $request->mother_occupation;
+            $parents->father_occupation = $request->father_occupation;
+            $parents->mother_employer = $request->mother_employer;
+            $parents->father_employer = $request->father_employer;
+            $parents->mother_contact_number = $request->mother_contact_number;
+            $parents->father_contact_number = $request->father_contact_number;
+            $parents->number_of_siblings = $request->number_of_siblings;
+            $parents->save();
+
+
+            return response()->json(['status' => 'success'], 200);
+        }
+
+        $applicants->fname = strtoupper($request->fname);
+        $applicants->mname = strtoupper($request->mname);
+        $applicants->lname = strtoupper($request->lname);
+        $applicants->xname = strtoupper($request->xname);
         $applicants->birthdate = $request->birthdate;
         $applicants->place_of_birth = $request->place_of_birth;
         $applicants->gender = $request->gender;
@@ -105,8 +164,8 @@ class applicantController extends Controller
         $applicants->applicant_type = $request->applicant_type;
         $applicants->save();
 
-        $model2 = new parentsModel();
-        $parents = $model2::where('user_id', $id)->first();
+        $model3 = new parentsModel();
+        $parents = $model3::where('user_id', $id)->first();
         $parents->father_lname = $request->father_lname;
         $parents->father_fname = $request->father_fname;
         $parents->father_mname = $request->father_mname;

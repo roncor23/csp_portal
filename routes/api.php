@@ -26,18 +26,6 @@ Route::prefix('auth')->group(function () {
 
 
 Route::group(['middleware' => 'auth:api'], function(){
-    // Users
-    // Route::get('users', 'UserController@index')->middleware('isAdmin');
-    // Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
-
-    // //Admin save action list
-    // Route::post('action_list/admin','AdminController@save_actionList')->middleware('isAdmin');
-    // //Admin update action list
-    // Route::post('update_action_list/admin/{id}','AdminController@update_actionList')->middleware('isAdmin');
-    // //Admin remove action list
-    // Route::post('remove_action_list/admin/{id}','AdminController@remove_actionList')->middleware('isAdmin');
-    // //Admin fetch action list
-    // Route::get('fetch/action_list','AdminController@fetch_actionList')->middleware('isAdmin');
 
 
     // Applicant return USER name
@@ -58,9 +46,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('applicant/update_applicant/{id}','applicantController@update_applicant')->middleware('isApplicant');
     // Applicant change password
     Route::post('applicant/change_password/','applicantController@change_password')->middleware('isApplicant');
-
-
-
 
 
     // Super Admin add account
@@ -92,6 +77,14 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('ched_admin/fetch_user_name','CHEDAdminController@fetch_user_name')->middleware('isCHED_admin');
     // CHED Admin change password
     Route::post('ched_admin/change_password/','CHEDAdminController@change_password')->middleware('isCHED_admin');
+    // CHED Admin fetch HEI coordinator
+    Route::get('ched_admin/fetch_HEI_coordinator/','CHEDAdminController@fetch_HEI_coordinator')->middleware('isCHED_admin');
+    // CHED Admin fetch applicant by HEI
+    Route::get('ched_admin/fetch_applicant_by_hei/{id}','CHEDAdminController@fetch_applicant_by_hei')->middleware('isCHED_admin');
+    // CHED Admin list of applicant by csp rank
+    Route::get('ched_admin/fetch_applicant_by_csp_rank','CHEDAdminController@fetch_applicant_by_csp_rank')->middleware('isCHED_admin');
+    // CHED Admin list of applicant by tdp rank
+    Route::get('ched_admin/fetch_applicant_by_tdp_rank','CHEDAdminController@fetch_applicant_by_tdp_rank')->middleware('isCHED_admin');
 
 
     // HEI COORDINATOR list of applicant

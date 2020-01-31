@@ -26,7 +26,6 @@
     <ul>
       <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
       <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->
@@ -413,12 +412,20 @@ Vue.component("hei-change-password", {
 
         if(result.data === 1) {
           $('#current').css('border-color','');
-          alert("Password changed successfully!");
+           this.$swal.fire({
+              icon: 'success',
+              title: 'Nice...',
+              text: 'Password Successfully Changed!',
+            })
           this.resetForm();
         }
 
         if(result.data === 0) {
-          alert("Incorrect password!");
+           this.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: 'Incorrect Password!',
+            })
           $('#current').css('border-color','red');
         }
 

@@ -5,9 +5,17 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/user/Dashboard'
-import AdminDashboard from './pages/admin/Dashboard'
-import AdminActionList from './pages/admin/table/ActionList'
-import NotFound from './pages/admin/404/404'
+import ForgotPassword from './pages/forgotpassword.vue'
+
+import CHED403NotFound from './pages/chedcoordinator/403/403'
+import HEI403NotFound from './pages/heicoordinator/403/403'
+import User403NotFound from './pages/user/403/403'
+
+
+// import CHED404NotFound from './pages/chedcoordinator/404/404'
+// import HEI404NotFound from './pages/heicoordinator/404/404'
+// import User404NotFound from './pages/user/404/404'
+
 
 import StudentInformation from './pages/user/StudentInformation'
 import StudentStatus from './pages/user/StudentStatus'
@@ -15,8 +23,12 @@ import StudentChangePassword from './pages/user/changepassword'
 
 import ChedCoordinator from './pages/chedcoordinator/dashboard'
 import ChedCoordinatorListOfApplicants from './pages/chedcoordinator/table/ched_listofapplicant'
+import ChedCoordinatorListOfApplicantsByHEI from './pages/chedcoordinator/table/ched_listofapplicantbyhei'
 import ChedCoordinatorListOfEnrolledApplicants from './pages/chedcoordinator/table/ched_listofenrolledapplicant'
 import ChedCoordinatorListOfNotEnrolledApplicants from './pages/chedcoordinator/table/ched_listofnotenrolledapplicant'
+import ChedCoordinatorListOfHEI from './pages/chedcoordinator/table/ched_listofheis'
+import ChedCoordinatorListOfApplicantsByCSPRank from './pages/chedcoordinator/table/ched_listofapplicantbycsprank'
+import ChedCoordinatorListOfApplicantsByTDPRank from './pages/chedcoordinator/table/ched_listofapplicantbytdprank'
 import AdminChangePassword from './pages/chedcoordinator/changepassword'
 
 
@@ -49,6 +61,14 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+    meta: {
+      auth: false
+    }
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot_password',
+    component: ForgotPassword,
     meta: {
       auth: false
     }
@@ -86,6 +106,22 @@ const routes = [
       auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  {
+    path: '/403',
+    name: 'USER_403',
+    component: User403NotFound,
+    meta: {
+      auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  // {
+  //   path: '/404',
+  //   name: 'USER_404',
+  //   component: User404NotFound,
+  //   meta: {
+  //     auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+  //   }
+  // },
   // CHED COORDINATOR ROUTES
   {
     path: '/ched-coordinator',
@@ -104,6 +140,30 @@ const routes = [
     }
   },
   {
+    path: '/ched-coordinator/list-of-applicants-by-hei/:hei_id',
+    name: 'ched_coordinator.list_of_applicants_by_hei_dashboard',
+    component: ChedCoordinatorListOfApplicantsByHEI,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/list-of-applicants-by-csp-rank',
+    name: 'ched_coordinator.list_of_applicants_by_csp_rank',
+    component: ChedCoordinatorListOfApplicantsByCSPRank,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/list-of-applicants-by-tdp-rank',
+    name: 'ched_coordinator.list_of_applicants_by_tdp_rank',
+    component: ChedCoordinatorListOfApplicantsByTDPRank,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
     path: '/ched-coordinator/list-of-enrolled-applicants',
     name: 'ched_coordinator.list_of_enrolled_applicants_dashboard',
     component: ChedCoordinatorListOfEnrolledApplicants,
@@ -111,10 +171,18 @@ const routes = [
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
-    {
+  {
     path: '/ched-coordinator/list-of-not-enrolled-applicants',
     name: 'ched_coordinator.list_of_not_enrolled_applicants_dashboard',
     component: ChedCoordinatorListOfNotEnrolledApplicants,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/list-of-heis',
+    name: 'ched_coordinator.list_of_heis',
+    component: ChedCoordinatorListOfHEI,
     meta: {
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
@@ -128,13 +196,21 @@ const routes = [
     }
   },
   {
-    path: '/404',
-    name: '404',
-    component: NotFound,
+    path: '/403',
+    name: 'CHED_403',
+    component: CHED403NotFound,
     meta: {
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  // {
+  //   path: '/404',
+  //   name: 'CHED_404',
+  //   component: CHED404NotFound,
+  //   meta: {
+  //     auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+  //   }
+  // },
   // HEI ROUTES
   {
     path: '/hei-coordinator',
@@ -160,6 +236,22 @@ const routes = [
       auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  {
+    path: '/403',
+    name: 'HEI_403',
+    component: HEI403NotFound,
+    meta: {
+      auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  // {
+  //   path: '/404',
+  //   name: 'HEI_404',
+  //   component: HEI404NotFound,
+  //   meta: {
+  //     auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+  //   }
+  // },
   // SUPER_ADMIN ROUTES
   {
     path: '/super-admin',

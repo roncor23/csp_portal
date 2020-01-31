@@ -69,7 +69,7 @@ class AuthController extends Controller
         $parents->user_id = $user->id;
         $parents->save();
 
-        return response()->json(['status' => 'success'], 200);
+        return response()->json($applicants->reference_no);
     }
 
     public function login(Request $request)

@@ -7,20 +7,18 @@
   </a>
   <div class="logo">
   CHED COORDINATOR DASHBOARD
-
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          My Profile
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-        </div>
-      </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+            My Profile
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+            <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+          </div>
+        </li>
       </ul>
-
   </div>
 </div>
 <div class="sidebar">
@@ -39,7 +37,7 @@
 <div class="main">
 
     <div class="jumbotron">
-       <ched-list-of-not-enrolled-applicant></ched-list-of-not-enrolled-applicant>
+       <ched-list-of-applicant-by-csp-rank></ched-list-of-applicant-by-csp-rank>
 
 
     </div>
@@ -336,23 +334,22 @@ table {
 
 <script>
 
-import Vue from 'vue'
-import axios from 'axios'
+import Vue from 'vue';
+import axios from 'axios';
 
 Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-
-Vue.component("ched-list-of-not-enrolled-applicant", {
+Vue.component("ched-list-of-applicant-by-csp-rank", {
     template: `<div>
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" id="list_of_applicant">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
-                  <tr>
+                      <tr>
                     <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
@@ -371,10 +368,10 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>Ranking Status</th>
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
-                  </tr>
+                      </tr>
                     </thead>
                     <tfoot >
-                  <tr>
+                      <tr>
                     <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
@@ -393,10 +390,10 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>Ranking Status</th>
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
-                  </tr>
+                      </tr>
                     </tfoot>  
-                   <tbody v-if="filteredBlogs.length > 0">
-                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
+            <tbody v-if="filteredBlogs.length > 0">
+                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.index">
                         <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
                         <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
@@ -446,15 +443,12 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                        <tr>
                         <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
                        </tr>
-                    </tbody>          
+                    </tbody>              
                     </table>
                     <nav aria-label="Page navigation" style="float:right">
                         <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-                    </nav>
-                </div>         
-                  </div>
+                   </nav>
                 </div>
-              </div>
         </div>`,
 
     data() {
@@ -464,7 +458,15 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
           formData: {},
           search: '',
           countPage: 10,
-          pageOfItems: []      
+          pageOfItems: [],
+          parent_income: '',
+          gwa: '',
+          verified_admin: '',
+          type_of_disability: '',
+          supported_by_solo_parent: '',
+          ranking_remarks: '',
+          admin_remarks: ''
+          
         }
     },
     computed: {
@@ -476,15 +478,21 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
 
            return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
 
+
+
         });
       }
     },
 
   methods: {
 
-    fetchNotEnrolledApplicant: function() {
+    print() {
+      // Pass the element id here
+      this.$htmlToPaper('list_of_applicant');
 
-            axios.get('ched_admin/fetch_not_enrolled_applicant/').then(result => {
+      },
+    fetchApplicantByCSPRank: function() {
+            axios.get('ched_admin/fetch_applicant_by_csp_rank/').then(result => {
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 
@@ -496,13 +504,12 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
     onChangePage: function(pageOfItems) {
         // update page of items
         this.pageOfItems = pageOfItems;
-    },
-
+    }
 
 
   },
   async mounted() {
-    this.fetchNotEnrolledApplicant();
+    this.fetchApplicantByCSPRank();
 
   }
 

@@ -26,7 +26,6 @@
     <ul>
       <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
       <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->
@@ -340,7 +339,6 @@ import axios from 'axios'
           axios.get('hei_coordinator/fetch_user_name/').then(result => {
 
               this.username = result.data;
-              console.log(this.username);
 
           }).catch(error => {
               console.log(error);
@@ -350,7 +348,6 @@ import axios from 'axios'
           axios.get('hei_coordinator/fetch_hei_name/').then(result => {
 
               this.heiname = result.data;
-              console.log(this.heiname);
 
           }).catch(error => {
               console.log(error);

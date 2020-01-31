@@ -37,7 +37,7 @@
 <div class="main">
 
     <div class="jumbotron">
-       <ched-list-of-applicant></ched-list-of-applicant>
+       <ched-list-of-applicant-by-hei></ched-list-of-applicant-by-hei>
 
 
     </div>
@@ -341,7 +341,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ched-list-of-applicant", {
+Vue.component("ched-list-of-applicant-by-hei", {
     template: `<div>
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
@@ -724,7 +724,7 @@ Vue.component("ched-list-of-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 10,
+          countPage: 5,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},
@@ -759,13 +759,8 @@ Vue.component("ched-list-of-applicant", {
 
   methods: {
 
-    print() {
-      // Pass the element id here
-      this.$htmlToPaper('list_of_applicant');
-
-      },
-    fetchApplicant: function() {
-            axios.get('ched_admin/fetch_applicant/').then(result => {
+    fetchApplicant_by_hei: function() {
+            axios.get('ched_admin/fetch_applicant_by_hei/' + this.$route.params.hei_id).then(result => {
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 
@@ -926,7 +921,7 @@ Vue.component("ched-list-of-applicant", {
 
   },
   async mounted() {
-    this.fetchApplicant();
+    this.fetchApplicant_by_hei();
     this.fetchBrgy();
     this.fetchCity();
     this.fetchProvince();

@@ -1,70 +1,50 @@
 <template>
     <div class="">
-		<div class="header">
-		  <a href="#" id="menu-action">
-		    <i class="fa fa-bars"></i>
-		    <span>Close</span>
-		  </a>
-		  <div class="logo">
-		    CSP
-		      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-  		      <!-- Dropdown -->
-  		      <li class="nav-item dropdown">
-  		        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-  		          My Profile
-  		        </a>
-  		        <div class="dropdown-menu">
-  		          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                 <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-  		        </div>
-  		      </li>
-		      </ul>
-		  </div>
-		</div>
-		<div class="sidebar">
-		  <ul>
-		    <router-link to="/student-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-		    <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
-		    <li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a>
-		    <li><a href="#"><i class="fas fa-print"></i><span>Print</span></a></li>
-		    </ul>
-		</div>
-		<!-- Content -->
-		<div class="main">
-		    <div class="jumbotron" v-for="applicant in applicants">
-		      <span><h4 class="mb-4">School status:&nbsp;
-            <span v-if="applicant.verified_hei === 3" style="color:blue">Not Yet Check by HEI</span>
-            <span v-if="applicant.verified_hei === 1" style="color:green">Enrolled</span>
-            <span v-if="applicant.verified_hei === 2" style="color:red">Not Enrolled</span>
-          </h4></span>
-           <span v-if="applicant.verified_hei === 2"><h4 class="mb-4">School status remarks:&nbsp;
-            <span style="color:red">{{applicant.hei_remarks}}</span>
-          </h4></span>
-		      <span><h4 class="mb-4">CHED status:&nbsp;
-            <span v-if="applicant.verified_admin === null" style="color:blue">Not Yet Check by CHED</span>
-            <span v-if="applicant.verified_admin === 1" style="color:green">Validated</span>
-            <span v-if="applicant.verified_admin === 2" style="color:red">Lacking documents</span>
-            <span v-if="applicant.verified_admin === 3" style="color:red">Invalid application</span>
-          </h4></span>
-          <span v-if="applicant.verified_admin === 2"><h4 class="mb-4">CHED status remarks:&nbsp;
-            <span style="color:red">{{applicant.admin_remarks}}</span>
-          </h4></span>
-           <span v-if="applicant.verified_admin === 3"><h4 class="mb-4">CHED status remarks:&nbsp;
-            <span style="color:red">{{applicant.admin_remarks}}</span>
-          </h4></span>
-		      <span><h4>Ranking status:&nbsp;
-            <span v-if="applicant.ranking_status === 1" style="color:blue">Ranking System Off</span>
-            <span v-if="applicant.ranking_status === 2" style="color:green">Waiting for ranking</span>
-            <span v-if="applicant.ranking_status === 3" style="color:green">Waiting list</span>
-            <span v-if="applicant.ranking_status === 4" style="color:red">did not meet the requirements, please re-apply in the next round.</span>
-            <span v-if="applicant.ranking_status === 5" style="color:green">Qualified as TDP</span>
-            <span v-if="applicant.ranking_status === 6" style="color:green">Qualified as HALF PESFA</span>
-            <span v-if="applicant.ranking_status === 7" style="color:green">Qualified as HALF SSP</span>
-            <span v-if="applicant.ranking_status === 8" style="color:green">Qualified as FULL PESFA</span>
-            <span v-if="applicant.ranking_status === 9" style="color:green">Qualified as FULL SSP</span>
-          </h4></span>
-		    </div>  
-		</div>
+<div class="header">
+  <a href="#" id="menu-action">
+    <i class="fa fa-bars"></i>
+    <span>Close</span>
+  </a>
+  <div class="logo">
+  CHED COORDINATOR DASHBOARD
+
+      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+          My Profile
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+        </div>
+      </li>
+      </ul>
+
+  </div>
+</div>
+<div class="sidebar">
+    <ul>
+      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+    </ul>
+</div>
+
+<!-- Content -->
+<div class="main">
+
+    <div class="jumbotron">
+       <ched-list-of-heis></ched-list-of-heis>
+
+
+    </div>
+
+</div>
     </div>
 </template>
 
@@ -351,30 +331,144 @@ table {
 }
 
 
+
 </style>
 
 <script>
+
+import Vue from 'vue'
 import axios from 'axios'
-  export default {
+
+Vue.use(window.vuelidate.default);
+const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
+
+
+
+Vue.component("ched-list-of-heis", {
+    template: `<div>
+                <div style="float:right;margin-bottom:10px">
+                  <span>Search:</span>&nbsp;<input type="text" v-model="search">
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
+                    <thead >
+                  <tr>
+                    <th>No.</th>
+                    <th>HEI</th>
+                    <th>Coordinator</th>
+                    <th>Email</th>
+
+                  </tr>
+                    </thead>
+                    <tfoot >
+                  <tr>
+                    <th>No.</th>  
+                    <th>HEI</th>
+                    <th>Coordinator</th>
+                    <th>Email</th>
+                  </tr>
+                    </tfoot>  
+                   <tbody v-if="filteredBlogs.length > 0">
+                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
+                        <td>{{index+1}}</td>
+                        <td v-for="complete_hei in complete_heis" v-bind:value="complete_hei.hei_id" v-if="i.hei_hei_id === complete_hei.hei_id"><router-link :to="{ name: 'ched_coordinator.list_of_applicants_by_hei_dashboard', params: { hei_id: complete_hei.hei_id} }"><a href="#">{{complete_hei.hei_name}}</a></router-link></td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.email}}</td>             
+                    </tr> 
+                    </tbody>
+                    <tbody  v-else>
+                       <tr>
+                        <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
+                       </tr>
+                    </tbody>          
+                    </table>
+                    <nav aria-label="Page navigation" style="float:right">
+                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                    </nav>
+                </div>         
+                  </div>
+                </div>
+              </div>
+        </div>`,
+
     data() {
-      return {
-        applicants: {}
+        return {
+
+          heis: [],
+          complete_heis: [],
+          formData: {},
+          search: '',
+          countPage: 10,
+          pageOfItems: []      
+        }
+    },
+    computed: {
+        filteredBlogs: function() {
+
+        var filter_search = this.search;
+
+        return this.heis.filter((heis) => {
+
+           return heis.name.match(filter_search) || applicants.email.match(filter_search);
+        });
       }
     },
-    methods: {
-      fetchApplicant: function() {
 
-            axios.get('applicant/fetch_applicant/').then(result => {
-                this.applicants = result.data;
-                console.log(this.applicants);            
+  methods: {
+
+    fetchHEIs: function() {
+
+            axios.get('ched_admin/fetch_HEI_coordinator/').then(result => {
+                this.heis = result.data;
+                console.log(this.heis);
+                this.heis.splice(index, 1);
+                
 
             }).catch(error => {
                 console.log(error);
             });
-      },
+    },
+    test(id) {
+      alert(id);
+    },
+    //complete HEI
+    fetchHEI: function() {
+        axios.get('ched_admin/fetch_hei/').then(result => {
+
+            this.complete_heis = result.data;
+
+        }).catch(error => {
+            console.log(error);
+        });
+    },
+    onChangePage: function(pageOfItems) {
+        // update page of items
+        this.pageOfItems = pageOfItems;
+    },
+
+
+
+  },
+  async mounted() {
+    this.fetchHEIs();
+    this.fetchHEI();
+
+  }
+
+});
+
+
+  export default {
+    data() {
+      return {
+        
+      }
+    },
+    methods: {
+
     },
     async mounted() {
-      this.fetchApplicant();
+      
     },
     components: {
       //

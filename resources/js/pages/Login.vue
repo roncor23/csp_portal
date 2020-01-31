@@ -17,7 +17,7 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1" class="text-uppercase">Password</label>
                       <input type="password" class="form-control" v-model="password" required>
-                      <small><a href="#">Forgot password?</a></small>
+                      <small><router-link to="/forgot-password">Forgot password?</router-link></small>
                     </div>
                     
                     
@@ -25,7 +25,7 @@
                       <button type="submit" class="btn btn-login float-right">Submit</button>
                     </div> 
                   </form>
-          <!-- <div class="copy-text">Created with <i class="fa fa-heart"></i> by <a href="http://grafreez.com">Grafreez.com</a></div> -->
+          <div class="copy-text"><p class="small mb-4 mb-lg-0">&copy; CSP 2020. All Rights Reserved.</p></div>
               </div>
               <div class="col-md-8 banner-sec">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -100,7 +100,7 @@ h6 {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   float: left;
   width: 100%;
-  padding: 40.1px 0;
+  padding: 41.1px 0;
 }
 
 .banner-sec {

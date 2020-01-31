@@ -24,11 +24,13 @@
   </div>
 </div>
 <div class="sidebar">
-  <ul>
+    <ul>
       <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
 </div>
@@ -721,7 +723,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 5,
+          countPage: 10,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},
@@ -758,7 +760,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
 
             axios.get('ched_admin/fetch_enrolled_applicant/').then(result => {
                 this.applicants = result.data;
-                console.log(this.applicants);
                 this.applicants.splice(index, 1);
                 
 
@@ -771,7 +772,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
         axios.get('ched_admin/fetch_brgy/').then(result => {
 
             this.brgys = result.data;
-            console.log(this.brgys);
 
         }).catch(error => {
             console.log(error);
@@ -781,7 +781,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
         axios.get('ched_admin/fetch_city/').then(result => {
 
             this.citys = result.data;
-            console.log(this.citys);
 
         }).catch(error => {
             console.log(error);
@@ -791,7 +790,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
         axios.get('ched_admin/fetch_province/').then(result => {
 
             this.provinces = result.data;
-            console.log(this.provinces);
 
         }).catch(error => {
             console.log(error);
@@ -801,7 +799,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
         axios.get('ched_admin/fetch_program/').then(result => {
 
             this.programs = result.data;
-            console.log(this.programs);
 
         }).catch(error => {
             console.log(error);
@@ -811,7 +808,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
         axios.get('ched_admin/fetch_hei/').then(result => {
 
             this.heis = result.data;
-            console.log(this.heis);
 
         }).catch(error => {
             console.log(error);
@@ -875,14 +871,21 @@ Vue.component("ched-list-of-enrolled-applicant", {
 
               if(response.data === 0) {
                 $('#gwa').css('border-color','red');
-                alert("Tarung Eskwela dodong! :-)");
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: 'GWA too low!',
+                })
                 return false;
               }
                this.fetchEnrolledApplicant();
-               alert("Successfully saved!");
+               this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: 'Updated Successfully!',
+                })
                $("#applicantModal").modal("hide");
               
-               console.log(response.data);
             })
             .catch(error => {
                 this.errors = error.response.data.errors;

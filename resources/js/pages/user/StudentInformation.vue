@@ -918,7 +918,13 @@ Vue.use(VueHtmlToPaper, options);
           axios.post('applicant/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
                this.fetchApplicant();
-               alert("Successfully saved!");
+
+               this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: 'Updated Successfully!',
+                })
+
                $("#applicantModal").modal("hide");
               
                console.log(response.data);

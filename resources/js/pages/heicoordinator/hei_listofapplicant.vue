@@ -27,7 +27,6 @@
     <ul>
       <router-link to="/hei-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
       <router-link to="/hei-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/hei-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
     </ul>
 </div>
 
@@ -647,7 +646,6 @@ Vue.component("hei-list-of-applicant", {
 
             axios.get('hei_coordinator/fetch_applicant/').then(result => {
                 this.applicants = result.data;
-                console.log(this.applicants);
                 this.applicants.splice(index, 1);
                 
 
@@ -659,7 +657,6 @@ Vue.component("hei-list-of-applicant", {
         axios.get('hei_coordinator/fetch_brgy/').then(result => {
 
             this.brgys = result.data;
-            console.log(this.brgys);
 
         }).catch(error => {
             console.log(error);
@@ -669,7 +666,6 @@ Vue.component("hei-list-of-applicant", {
         axios.get('hei_coordinator/fetch_city/').then(result => {
 
             this.citys = result.data;
-            console.log(this.citys);
 
         }).catch(error => {
             console.log(error);
@@ -679,7 +675,6 @@ Vue.component("hei-list-of-applicant", {
         axios.get('hei_coordinator/fetch_province/').then(result => {
 
             this.provinces = result.data;
-            console.log(this.provinces);
 
         }).catch(error => {
             console.log(error);
@@ -689,7 +684,6 @@ Vue.component("hei-list-of-applicant", {
         axios.get('hei_coordinator/fetch_program/').then(result => {
 
             this.programs = result.data;
-            console.log(this.programs);
 
         }).catch(error => {
             console.log(error);
@@ -699,7 +693,6 @@ Vue.component("hei-list-of-applicant", {
         axios.get('hei_coordinator/fetch_hei/').then(result => {
 
             this.heis = result.data;
-            console.log(this.heis);
 
         }).catch(error => {
             console.log(error);
@@ -727,7 +720,11 @@ Vue.component("hei-list-of-applicant", {
           axios.post('hei_coordinator/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
                this.fetchApplicant();
-               alert("Successfully saved!");
+                this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: 'Updated Successfully!',
+                })
                $("#applicantModal").modal("hide");
 
             })
@@ -779,7 +776,6 @@ Vue.component("hei-list-of-applicant", {
           axios.get('hei_coordinator/fetch_user_name/').then(result => {
 
               this.username = result.data;
-              console.log(this.username);
 
           }).catch(error => {
               console.log(error);
@@ -789,7 +785,6 @@ Vue.component("hei-list-of-applicant", {
           axios.get('hei_coordinator/fetch_hei_name/').then(result => {
 
               this.heiname = result.data;
-              console.log(this.heiname);
 
           }).catch(error => {
               console.log(error);

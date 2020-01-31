@@ -418,12 +418,20 @@ Vue.component("applicant-change-password", {
 
         if(result.data === 1) {
           $('#current').css('border-color','');
-          alert("Password changed successfully!");
+            this.$swal.fire({
+              icon: 'success',
+              title: 'Nice...',
+              text: 'Password Successfully Changed!',
+            })
           this.resetForm();
         }
 
         if(result.data === 0) {
-          alert("Incorrect password!");
+            this.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: 'Incorrect Password!',
+            })
           $('#current').css('border-color','red');
         }
 
