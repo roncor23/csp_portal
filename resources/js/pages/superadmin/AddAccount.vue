@@ -28,8 +28,8 @@
 <div class="sidebar">
   <ul>
     <router-link to="/super-admin"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-    <router-link to="/student-status"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEI</span></a></li></router-link>
-    <router-link to="/student-information"><li><a href="#"><i class="fas fa-unlock-alt"></i><span>Reset Pasword</span></a></li></router-link>
+    <li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEI</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Reset Pasword</span></a></li>
     <li><a href="#"><i class="fas fa-address-card"></i><span>Add HEI Account</span></a></li>
     </ul>
 </div>
@@ -128,7 +128,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -155,7 +155,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -179,7 +179,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;
@@ -378,30 +378,17 @@ Vue.component("add-account", {
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Select Account</label>
                               <select class="form-control" v-model="selectAccount" @input="$v.selectAccount.$touch">
                                 <option value="3">HEI Coordinator</option>
-                                <option value="2">CHED Coordinator</option>
                               </select>
                               <p v-if="$v.selectAccount.$dirty" style="font-size:12px">
                                 <span v-if="!$v.selectAccount.required" style="color:red">Select Account is required.</span>
                               </p>
-                            </div>
-
-                
+                            </div>           
                             
-         
-        
-                    <!-- Agreement -->
-                    <label class="form__group form__group--no-label form__group--checkbox">
-                      <input
-                        class="form__input" type="checkbox" name="form-agreement"
-                        v-model="agreement"
-                      >
-                      <span class="form__label">I agree</span>
-                    </label>
                     <!-- Submit -->
                     <div class="form__group form__group--no-label form__group--button">
                       <button
                         type="submit" class="btn btn-primary" name="form-submit"
-                        :disabled="!agreement || $v.$invalid"
+                        :disabled="$v.$invalid"
                       >Submit</button>
                     </div>
                   </form>
@@ -449,7 +436,12 @@ Vue.component("add-account", {
 
       axios.post('super_admin/add_account/', this.formData).then(result => {
 
-         alert("added successfully!");
+
+            this.$swal.fire({
+              icon: 'success',
+              title: 'Great...',
+              text: 'Account added successfully!',
+            })
          this.resetForm();
 
       }).catch(error => {

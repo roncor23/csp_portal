@@ -663,12 +663,20 @@ Vue.component("step4", {
                 applicanttype: app.applicationModel.applicant_type
               },
               success: function (response) {
-                alert(response.data);
+                if(response.data == 0) {
+                  this.$swal.fire({
+                    icon: 'error',
+                    title: 'Opps...',
+                    text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern.',
+                    footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
+                  })
+                  return false;
+                }
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Application successfully submitted!',
-                  footer: '<h2 style="color:red">Reference #:</h2>'
+                  footer: `<h2>Reference #:<h2 style="color:red">&nbsp;${response.data}</h2></h2>`
                 })
                 this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
               },

@@ -11,7 +11,7 @@
   		      <!-- Dropdown -->
   		      <li class="nav-item dropdown">
   		        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-  		          My Profile
+  		          {{username}} Profile
   		        </a>
   		        <div class="dropdown-menu">
   		          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
@@ -25,8 +25,7 @@
 		  <ul>
 		    <router-link to="/student-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
 		    <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
-		    <li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a>
-		    <li><a href="#"><i class="fas fa-print"></i><span>Print</span></a></li>
+		    <li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li>
 		    </ul>
 		</div>
 		<!-- Content -->
@@ -151,7 +150,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -178,7 +177,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -202,7 +201,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;
@@ -358,7 +357,8 @@ import axios from 'axios'
   export default {
     data() {
       return {
-        applicants: {}
+        applicants: {},
+        username: ''
       }
     },
     methods: {
@@ -372,9 +372,20 @@ import axios from 'axios'
                 console.log(error);
             });
       },
+      fetchUsername: function() {
+          axios.get('applicant/fetch_user_name/').then(result => {
+
+              this.username = result.data;
+              console.log(this.username);
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
     },
     async mounted() {
       this.fetchApplicant();
+      this.fetchUsername();
     },
     components: {
       //

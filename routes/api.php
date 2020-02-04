@@ -119,3 +119,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('fetch/hei','applicantController@fetch_hei');
     //Public fetch all program
     Route::get('fetch/program','applicantController@fetch_program');
+
+    //Reset applicant password
+    Route::post('reset/password/','AuthController@reset');

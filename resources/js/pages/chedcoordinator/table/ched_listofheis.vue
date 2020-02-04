@@ -5,22 +5,9 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
+  <ched-six-user-name></ched-six-user-name>
   <div class="logo">
   CHED COORDINATOR DASHBOARD
-
-      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          My Profile
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-        </div>
-      </li>
-      </ul>
-
   </div>
 </div>
 <div class="sidebar">
@@ -131,7 +118,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -158,7 +145,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -182,7 +169,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;
@@ -457,11 +444,48 @@ Vue.component("ched-list-of-heis", {
 
 });
 
+Vue.component("ched-six-user-name", {
+    template: `<div>
+            <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+                  {{ username }} Profile
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                </div>
+              </li>
+            </ul>
+        </div>`,
+    data() {
+        return {
+            username: ''
+        }
+    },
+
+    methods: {
+      fetchUsername: function() {
+          axios.get('ched_admin/fetch_user_name/').then(result => {
+
+              this.username = result.data;
+
+          }).catch(error => {
+              console.log(error);
+          });
+      }
+    },
+    async mounted() {
+      this.fetchUsername();
+    }
+});
+
 
   export default {
     data() {
       return {
-        
+       
       }
     },
     methods: {

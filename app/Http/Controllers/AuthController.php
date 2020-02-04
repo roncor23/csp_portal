@@ -9,12 +9,24 @@ use App\User;
 use App\applicantsModel;
 use App\parentsModel;
 use Carbon\Carbon;
+use Mail;
 
 class AuthController extends Controller
 {
 
     public function register(Request $request)
     {
+        $applicants = new applicantsModel;
+
+        //Check if applicant is already in the system.
+        $result = $applicants::where('lname', strtoupper($request->lastname))
+                            ->where('fname', strtoupper($request->firstname))
+                            ->where('mname', strtoupper($request->middlename))
+                            ->first();
+
+        if($result) {
+            return response()->json(0); // Already in the system.
+        }
 
         $user = new User;
        
@@ -23,7 +35,7 @@ class AuthController extends Controller
         $user->applicant_hei_id = $request->schoolpreferred;
         $user->password = bcrypt($request->password);
         $user->save();
-        $applicants = new applicantsModel;
+
         $dt = Carbon::now();
 
         $applicants->fname = strtoupper($request->firstname);
@@ -69,6 +81,7 @@ class AuthController extends Controller
         $parents->user_id = $user->id;
         $parents->save();
 
+
         return response()->json($applicants->reference_no);
     }
 
@@ -81,6 +94,44 @@ class AuthController extends Controller
         }
 
         return response()->json(['error' => 'login_error'], 401);
+
+        // Mail::send('welcome', array('key' => 'value'), function($message)
+        // {
+        //     $message->to('ronanotaza@gmail.com', 'Sender Name')->subject('Welcome!');
+        // });
+
+        // return response()->json(1);
+
+    }
+
+        public function reset(Request $request)
+    {
+        $model = new applicantsModel();
+        //Check if birthdate and phone number are correct.
+        $result = $model::where('birthdate', $request->birthdate)
+                            ->where('contact', $request->phone_number)
+                            ->first();
+        //return correct                    
+        if($result) {
+
+            $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+            $shuffle =  substr(str_shuffle($data),0,7);
+
+            $user_id = $result['user_id'];
+            $model2 = new User();
+
+            $user = $model2::where('id', $user_id)->first(); 
+
+            $user->password = bcrypt($shuffle);
+            $user->save();
+
+            //return not
+            return response()->json($shuffle);
+        }                    
+
+
+
+            return response()->json(0);
     }
 
     public function logout()

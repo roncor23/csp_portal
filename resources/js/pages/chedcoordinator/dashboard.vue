@@ -16,7 +16,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#" style="text-decoration:none">Change Password</a></router-link>
           </div>
         </li>
       </ul>
@@ -128,7 +128,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -155,7 +155,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -179,7 +179,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;

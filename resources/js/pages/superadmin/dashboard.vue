@@ -28,64 +28,19 @@
 <div class="sidebar">
   <ul>
     <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-    <router-link to="/student-status"><li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEI</span></a></li></router-link>
-    <router-link to="/student-information"><li><a href="#"><i class="fas fa-unlock-alt"></i><span>Reset Pasword</span></a></li></router-link>
+    <li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEI</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Reset Pasword</span></a></li>
     <router-link to="/add-account"><li><a href="#"><i class="fas fa-address-card"></i><span>Add HEI Account</span></a></li></router-link>
     </ul>
 </div>
 
 <!-- Content -->
 <div class="main">
-  <div class="">
     <div class="jumbotron">
       <h1>Hello, User!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
       <p>Thank you for applying scholarship. You're all ready to go!</p><br>
       <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
     </div>
-    <div class="bs-callout bs-callout-danger">
-  <h4>Danger</h4>
-  Something horribad happened.
-    </div>
-    <p><p>FRENCH SAILOR. Hist, boys! let's have a jig or two before we ride to anchor in Blanket Bay. What say ye? There comes the other watch. Stand by all legs! Pip! little Pip! hurrah with your tambourine!</p>
-
-<p>PIP. (SULKY AND SLEEPY) Don't know where it is.</p>
-
-<p>FRENCH SAILOR. Beat thy belly, then, and wag thy ears. Jig it, men, I say; merry's the word; hurrah! Damn me, won't you dance? Form, now, Indian-file, and gallop into the double-shuffle? Throw yourselves! Legs! legs!</p>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Hoo-Hoo began to laugh.</p>
-
-<p>"The woodtick sucks the blood of the dog, but the germ, being so very  small, goes right into the blood of the body, and there it has  many children. In those days there would be as many as a billion&mdash;a  crab-shell, please&mdash;as many as that crab-shell in one man's body. We  called germs micro-organisms. When a few million, or a billion, of them  were in a man, in all the blood of a man, he was sick. These germs were  a disease. There were many different kinds of them&mdash;more different kinds  than there are grains of sand on this beach. We knew only a few of the  kinds. The micro-organic world was an invisible world, a world we could  not see, and we knew very little about it. Yet we did know something.  There was the bacillus anthracis; there was the micrococcus; there  was the Bacterium termo, and the Bacterium lactis&mdash;that's what  turns the goat milk sour even to this day, Hare-Lip; and there were  Schizomycetes without end. And there were many others...."</p>
-
-  </div>
 </div>
     </div>
 </template>
@@ -173,7 +128,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -200,7 +155,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -224,7 +179,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;

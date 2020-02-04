@@ -76,12 +76,6 @@ class DatabaseSeeder extends Seeder
             'role' => 2
         ]);
 
-        User::create([
-            'name' => 'Hei',
-            'email' => 'hei@ched.gov.ph',
-            'password' => Hash::make('123456'),
-            'role' => 3
-        ]);
 
 
     }

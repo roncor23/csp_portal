@@ -45,7 +45,7 @@
           </div>
 
           <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">Office of the President of the Philippines</p>
-          <img :src="logo" style="position:absolute;margin-left:300px">
+          <img class="_logo" :src="logo" style="position:absolute;margin-left:300px">
           <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">COMMISION ON HIGHER EDUCATION</p>
           <P class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">REGIONAL OFFICE XIII</P>
           <h4 class="d-flex justify-content-around" style="font-size:12px">CHED SCHOLARSHIP PROGRAM (CSP)</h4>
@@ -551,7 +551,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #fff;
+  background: #3490dc;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -578,7 +578,7 @@ p {
   white-space: nowrap;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
-  color: #444;
+  color: #fff;
   text-align: left;
 }
 .sidebar ul li a i {
@@ -602,7 +602,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #eee;
+  background-color: #2a87d4;
 }
 .main {
   position: relative;
@@ -747,6 +747,10 @@ p {
 .bs-callout-info h4 {
   color: #5bc0de;
 }
+._logo {
+  width: 50px;
+  height: 50px;
+}
 </style>
 
 <script>
@@ -782,7 +786,7 @@ Vue.use(VueHtmlToPaper, options);
         username: '',
         output: null,
         selectedItem: {},
-        logo: 'image/ched_logo.png'
+        logo: 'image/logo.png'
       }
     },
     methods: {

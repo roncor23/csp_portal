@@ -4,23 +4,23 @@
         <div class="w3-bar w3-white w3-wide w3-padding w3-card">
           <a class="navbar-brand" style="font-size:14px"><img class="logo" :src="logo"> CSP</a>
           <div class="w3-right">               
-            <router-link to="/register"><button href="#projects" class="btn btn-primary">Apply Now</button></router-link>
-            <router-link to="/login"><button href="#projects" class="btn btn-primary">Sign In</button></router-link>
+            <router-link to="/register"><button class="btn btn-primary">Apply Now</button></router-link>
+            <router-link to="/login"><button class="btn btn-primary">Sign In</button></router-link>
           </div>
         </div>
       </div>
       <!-- Header -->
-      <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-        <img class="w3-image" :src="background" alt="Architecture" width="1500" height="800">
+      <header class="w3-display-container w3-content w3-wide" id="home">
+        <img class="w3-image" :src="background" alt="Architecture">
         <div class="w3-display-middle w3-margin-top w3-center">
-          <h1 class="applicants w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>APPLICANTS: 6,231</b></span> <span class="w3-hide-small w3-text-light-grey"></span></h1>
+          <h1 class="applicants w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>APPLICANTS: 6,231</b></span></h1>
         </div>
       </header>
     <!-- Icons Grid -->
-    <section class="features-icons bg-light text-center">
-      <div class="container">
+    <div class="features-icons bg-light text-center container-fluid">
+      <div>
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-screen-desktop m-auto text-primary fas fa-keyboard"></i>
@@ -29,7 +29,7 @@
                   <p style="text-align:justify">Start from March 1 to May 31 of every academic year after the effectivity of this CMO. Policies and Guidelines for CHED Scholarship Programs (CSPs) <a href="https://ched.gov.ph/wp-content/uploads/CMO-8-s.-2019-Policies-and-Guidelines-for-CHED-Scholarship-Programs-CSPs.pdf" target="_blank" style="color:#3490dc">click here. </a>Priority Courses for CHED Scholarship Programs (CSPs) for Academic Year 2019-2020 <a href="https://ched.gov.ph/wp-content/uploads/CMO-No.-05-Series-2019-Priority-Courses-for-CHED-Scholarship-Programs-CSPs-for-Academic-Year-2019-2020.pdf" target="_blank" style="color:#3490dc">click here.</a></p>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto text-primary fas fa-file-alt"></i>
@@ -42,7 +42,7 @@
                 <p style="text-align:justify"><span style="font-weight:bold">Other documents: </span><span style="color:#3490dc">(a)</span> Certificate as dependent to a solo parent; <span style="color:#3490dc">(b)</span> Certificate of disability; <span style="color:#3490dc">(c)</span> Certificate of membership to indigenous community; <span style="color:#3490dc">(d)</span> Certificate of 4ps; <span style="color:#3490dc">(e)</span> Certificate of senior citizen.</p>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto text-primary fas fa-list-ul"></i>
@@ -54,9 +54,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
     <!-- Image Showcases -->
-    <section class="showcase">
+    <div class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
 
@@ -85,41 +85,41 @@
         </div>
 
       </div>
-    </section>
+    </div>
     <!-- Testimonials -->
-    <section class="testimonials text-center bg-light">
-      <div class="container">
-        <h2 class="label mb-5">What people are saying...</h2>
+    <div class="testimonials text-center bg-light container-fluid">
+      <div>
+        <h3 class="label mb-5">What people are saying...</h3>
         <div class="row">
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
               <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
-              <h5>Brisbane Q. Titular</h5>
+              <h4>Brisbane Q. Titular</h4>
               <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
               <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
-              <h5>Fred S.</h5>
+              <h4>Fred S.</h4>
               <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
               <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
-              <h5>Sarah W.</h5>
+              <h4>Sarah W.</h4>
               <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
  <!-- Footer -->
     <footer class="footer" style="background-color:#3490dc">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-6  col-xl-6 col-sm-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">About</a>
@@ -129,10 +129,10 @@
                 <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">Contact</a>
               </li>
             </ul>
-            <p class="small mb-4 mb-lg-0" style="color:#fff">&copy; CSP 2020. All Rights Reserved.</p>
+            <small class="small mb-4 mb-lg-0" style="color:#fff">&copy; CSP 2020. All Rights Reserved.</small>
           </div>
-          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-            <ul class="list-inline mb-0">
+          <div class="col-lg-6 col-xl-6 col-sm-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0 mt-2">
               <li class="list-inline-item mr-3">
                 <a class="ic1" href="https://www.facebook.com/stufaps.chedcaraga" target="_blank">
                   <i class="fab fa-facebook fa-2x fa-fw"></i>
@@ -292,11 +292,6 @@ a.ic1:hover {color: #dcdcdc;}
   background-size: cover;
 }
 
-@media (min-width: 768px) {
-  .showcase .showcase-text {
-    padding: 7rem;
-  }
-}
 
 .features-icons {
   padding-top: 7rem;
@@ -339,25 +334,207 @@ footer.footer {
   padding-bottom: 2rem;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="col-"] {
-    width: 100%;
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .w3-image {
+      margin-top: 45px;
+    }
+
+    .w3-padding {
+    padding: 4px 8px!important;
+    }
+
+    b {
+      font-size: 10px;
+    }
+
+}
+/* Extra large devices (large laptops and desktops, 1366px and up) */
+@media only screen and (max-width: 1366px) {
+
+  h3 {
+    font-size: 25px;
+  }
+  h4 {
+    font-size:  25px;
+  }
+  p {
+    font-size: 18px;
   }
 
-  .applicants {
-    font-size: 10px;
+  .w3-xxlarge {
+      font-size: 30px!important;
   }
   .label {
-    font-size: 24px;
+    font-size: 30px;
   }
-  .w3-display-container {
-    margin-top: 50px;
-  } 
+
+  .w3-image {
+      width: 100%;
+      height: auto;
+  }
+
+  .w3-bar {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .w3-bar .w3-button {
+      white-space: normal;
+  }
+
+  .w3-bar .w3-bar-item {
+      padding: 8px 16px;
+      float: left;
+      width: auto;
+      border: none;
+      display: block;
+      outline: 0;
+  }
+
+
+  .showcase .showcase-text {
+    padding: 3rem;
+  }
+
+  .showcase .showcase-img {
+    min-height: 30rem;
+    background-size: cover;
+  }
+
+
+
+  .features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .features-icons .features-icons-item {
+    max-width: 25rem;
+  }
+
+  .features-icons .features-icons-item .features-icons-icon {
+    height: 7rem;
+  }
+
+  .features-icons .features-icons-item .features-icons-icon i {
+    font-size: 5rem;
+  }
+
+  .features-icons .features-icons-item:hover .features-icons-icon i {
+    font-size: 6rem;
+  }
+
+  .testimonials {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .testimonials .testimonial-item {
+    max-width: 20rem;
+  }
+
+  .testimonials .testimonial-item img {
+    max-width: 16rem;
+    box-shadow: 0px 5px 5px 0px #adb5bd;
+  }
 
 
 }
 
+/* Extra large devices (large laptops and desktops, 1367px and up) */
+@media only screen and (min-width: 1367px) {
+
+  h3 {
+    font-size: 30px;
+  }
+  h4 {
+    font-size:  25px;
+  }
+  p {
+    font-size: 25px;
+  }
+
+  .w3-xxlarge {
+      font-size: 50px!important;
+  }
+  .label {
+    font-size: 30px;
+  }
+
+  .w3-image {
+      width: 100%;
+      height: auto;
+  }
+
+  .w3-bar {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .w3-bar .w3-button {
+      white-space: normal;
+  }
+
+  .w3-bar .w3-bar-item {
+      padding: 8px 16px;
+      float: left;
+      width: auto;
+      border: none;
+      display: block;
+      outline: 0;
+  }
+
+
+  .showcase .showcase-text {
+    padding: 3rem;
+  }
+
+  .showcase .showcase-img {
+    min-height: 45rem;
+    background-size: cover;
+  }
+
+
+
+  .features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .features-icons .features-icons-item {
+    max-width: 30rem;
+  }
+
+  .features-icons .features-icons-item .features-icons-icon {
+    height: 7rem;
+  }
+
+  .features-icons .features-icons-item .features-icons-icon i {
+    font-size: 6rem;
+  }
+
+  .features-icons .features-icons-item:hover .features-icons-icon i {
+    font-size: 7rem;
+  }
+
+  .testimonials {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .testimonials .testimonial-item {
+    max-width: 30rem;
+  }
+
+  .testimonials .testimonial-item img {
+    max-width: 20rem;
+    box-shadow: 0px 5px 5px 0px #adb5bd;
+  }
+
+
+}
 
 </style>
 <script>
