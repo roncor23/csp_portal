@@ -331,6 +331,9 @@ Vue.component("hei-list-of-applicant", {
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
+                <div v-if="loading" class="loading">
+                  Loading...
+                </div>
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
@@ -405,9 +408,18 @@ Vue.component("hei-list-of-applicant", {
                        </tr>
                     </tbody>           
                     </table>
-                    <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="3" @changePage="onChangePage"></jw-pagination> 
-                    </nav>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <span style="font-weight:bold">Total Applicants: </span>{{filteredBlogs.length}}
+                      </div>
+                      <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <nav aria-label="Page navigation" style="float:right">
+                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                        </nav>
+                      </div>
+                     </div>
                 </div>
 
               <!-- EDIT MODAL -->
@@ -551,6 +563,9 @@ Vue.component("hei-list-of-applicant", {
                             <option value="4">4th year</option>
                             <option value="5">5th year and above</option>
                           </select>
+                           <p v-if="v_year_level" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                   
                       </div>
@@ -565,6 +580,9 @@ Vue.component("hei-list-of-applicant", {
                             <option value="1">Enrolled</option>
                             <option value="2">Not Enrolled</option>
                           </select>
+                           <p v-if="v_hei_status" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                         <div class="form-group col-md-3">
                           <span style="font-size:10px;font-weight:bold">HEI Status Remarks</span>
@@ -610,7 +628,10 @@ Vue.component("hei-list-of-applicant", {
           heis: {},
           programs: {},
           yr_lvl: '',
-          verified_hei: ''
+          verified_hei: '',
+          v_year_level: false,
+          v_hei_status: false,
+          loading: false
           
         }
     },
@@ -629,9 +650,10 @@ Vue.component("hei-list-of-applicant", {
 
   methods: {
 
-    fetchApplicant: function() {
-
+    fetchApplicant: function() {  
+            this.loading = true;
             axios.get('hei_coordinator/fetch_applicant/').then(result => {
+                this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 
@@ -696,8 +718,10 @@ Vue.component("hei-list-of-applicant", {
 
           $('#yr_lvl').css('border-color','');
           $('#verified_hei_id').css('border-color','');   
+          this.v_hei_status = false;
+          this.v_year_level = false;
 
-          if(this.selectedItem.yr_lvl && this.selectedItem.verified_hei) {
+          if(this.selectedItem.yr_lvl && this.selectedItem.verified_hei != 3) {
 
           this.formData = new FormData();
           this.formData.append('yr_lvl', this.selectedItem.yr_lvl);
@@ -725,11 +749,13 @@ Vue.component("hei-list-of-applicant", {
 
           if(!this.selectedItem.yr_lvl) {
             $('#yr_lvl').css('border-color','red');
+            this.v_year_level = true;
             return false;
           }
 
-          if(!this.selectedItem.verified_hei) {
+          if(this.selectedItem.verified_hei == 3) {
             $('#verified_hei_id').css('border-color','red');
+            this.v_hei_status = true;
             return false;
           }
    

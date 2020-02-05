@@ -333,6 +333,9 @@ Vue.component("ched-list-of-applicant", {
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
+                <div v-if="loading" class="loading">
+                  Loading...
+                </div>
                 <div class="table-responsive" id="list_of_applicant">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
@@ -435,16 +438,21 @@ Vue.component("ched-list-of-applicant", {
                        <tr>
                         <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
                        </tr>
-                    </tbody>
-               
+                    </tbody>              
                     </table>
-                    <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-
-                    </nav>
-
-                </div>
-
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <span style="font-weight:bold">Total Applicants: </span>{{filteredBlogs.length}}
+                      </div>
+                      <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <nav aria-label="Page navigation" style="float:right">
+                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                        </nav>
+                      </div>
+                     </div>
+                  </div>
 
               <!-- EDIT MODAL -->
               <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -608,6 +616,9 @@ Vue.component("ched-list-of-applicant", {
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Parents Income</span> 
                           <input type="text" id="parent_income" class="form-control" v-model="selectedItem.parent_income">
+                            <p v-if="v_parentsincome" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div>
                             
                         <div class="form-group col-md-2">
@@ -657,6 +668,9 @@ Vue.component("ched-list-of-applicant", {
                             <option value="2">Lacking documents</option>
                             <option value="3">Invalid application</option>
                           </select>
+                            <p v-if="v_verified_admin" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                       </div>
                       <div class="form-row">
@@ -677,10 +691,16 @@ Vue.component("ched-list-of-applicant", {
                           <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
                             <option value="8">2020</option>
                           </select>
+                            <p v-if="v_ay" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">GWA</span>
                           <input type="text" id="gwa" class="form-control" v-model="selectedItem.gwa">
+                            <p v-if="v_gwa" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Ranking Points</span>
@@ -725,7 +745,12 @@ Vue.component("ched-list-of-applicant", {
           type_of_disability: '',
           supported_by_solo_parent: '',
           ranking_remarks: '',
-          admin_remarks: ''
+          admin_remarks: '',
+          v_parentsincome: false,
+          v_gwa: false,
+          v_ay: false,
+          v_verified_admin: false,
+          loading: false
           
         }
     },
@@ -752,11 +777,11 @@ Vue.component("ched-list-of-applicant", {
 
       },
     fetchApplicant: function() {
+            this.loading = true;
             axios.get('ched_admin/fetch_applicant/').then(result => {
+                this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
-                
-
             }).catch(error => {
                 console.log(error);
             });
@@ -820,7 +845,13 @@ Vue.component("ched-list-of-applicant", {
           $('#parent_income').css('border-color','');
           $('#gwa').css('border-color','');  
           $('#verified_admin_id').css('border-color',''); 
-          $('#ay').css('border-color','');   
+          $('#ay').css('border-color','');  
+
+          this.v_parentsincome = false;
+          this.v_gwa = false;
+          this.v_verified_admin = false;
+          this.v_ay = false; 
+
 
           if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
 
@@ -891,20 +922,24 @@ Vue.component("ched-list-of-applicant", {
 
           if(!this.selectedItem.parent_income) {
             $('#parent_income').css('border-color','red');
+            this.v_parentsincome = true;
             return false;
           }
 
           if(!this.selectedItem.gwa) {
             $('#gwa').css('border-color','red');
+            this.v_gwa = true;
             return false;
           }
 
           if(!this.selectedItem.verified_admin) {
             $('#verified_admin_id').css('border-color','red');
+            this.v_verified_admin = true;
             return false;
           }
 
           if(!this.selectedItem.ay) {
+            this.v_ay = true;
             $('#ay').css('border-color','red');
             return false;
           }

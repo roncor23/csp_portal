@@ -336,6 +336,9 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
+                <div v-if="loading" class="loading">
+                  Loading...
+                </div>
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
@@ -435,9 +438,18 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                        </tr>
                     </tbody>          
                     </table>
-                    <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-                    </nav>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <span style="font-weight:bold">Total Not Enrolled: </span>{{filteredBlogs.length}}
+                      </div>
+                      <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <nav aria-label="Page navigation" style="float:right">
+                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                        </nav>
+                      </div>
+                     </div>
                 </div>         
                   </div>
                 </div>
@@ -451,7 +463,8 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
           formData: {},
           search: '',
           countPage: 10,
-          pageOfItems: []      
+          pageOfItems: [],
+          loading: false      
         }
     },
     computed: {
@@ -469,9 +482,10 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
 
   methods: {
 
-    fetchNotEnrolledApplicant: function() {
-
+    fetchNotEnrolledApplicant: function() { 
+            this.loading = true;
             axios.get('ched_admin/fetch_not_enrolled_applicant/').then(result => {
+                this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 

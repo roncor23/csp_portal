@@ -335,6 +335,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
                 </div>
+                <div v-if="loading" class="loading">
+                  Loading...
+                </div>
                 <div class="table-responsive" id="list_of_applicant">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
@@ -357,6 +360,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>Ranking Status</th>
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
+                    <th>Action</th>
                       </tr>
                     </thead>
                     <tfoot >
@@ -379,6 +383,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>Ranking Status</th>
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
+                    <th>Action</th>
                       </tr>
                     </tfoot>  
             <tbody v-if="filteredBlogs.length > 0">
@@ -411,7 +416,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.gwa === null" style="color:blue">GWA NOT YET SET</td>
                         <td v-if="i.gwa != null">{{i.gwa}}</td>
                         <td v-if="i.rank_points === null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>
-                        <td v-if="i.rank_points != null">{{i.rank_points}}</td>
+                        <td v-if="i.rank_points != null" style="color:green">{{i.rank_points}}</td>
                         <td v-if="i.ranking_status === null" style="color:blue">NOT YET ASSIGN</td>
                         <td v-if="i.ranking_status === 1">Ranking System Off</td>
                         <td v-if="i.ranking_status === 2">WAITING FOR RANKING</td>
@@ -426,6 +431,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
+                        <td>
+                          <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
+                        </td>
                     </tr> 
                     </tbody>
                     <tbody  v-else>
@@ -434,10 +442,275 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                        </tr>
                     </tbody>              
                     </table>
-                    <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-                   </nav>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <span style="font-weight:bold">Total CSP: </span>{{filteredBlogs.length}}
+                      </div>
+                      <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <nav aria-label="Page navigation" style="float:right">
+                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                        </nav>
+                      </div>
+                     </div>
                 </div>
+
+                <!-- EDIT MODAL -->
+              <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel" style="font-weight:bold">Applicant</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <form
+                    class="form" id="" method="post" action="foobar"
+                    @submit.prevent="updateData(selectedItem.id)"
+                  >
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Last Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.lname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">First Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.fname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Middle Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.mname">
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Extension Name</span>
+                          <input type="text" class="form-control" v-model="selectedItem.xname">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Date of Birth Name</span>
+                          <input type="date" class="form-control" v-model="selectedItem.birthdate">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Place of Birth</span>
+                          <input type="text" class="form-control" v-model="selectedItem.place_of_birth">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Gender</span>
+                           <select name="gender" class="form-control" v-model="selectedItem.gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                          </select>
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Civil Status</span>
+                           <select name="civil_status" class="form-control" v-model="selectedItem.civil_status">
+                            <option value="1">Single</option>
+                            <option value="2">Maried</option>
+                            <option value="3">Separated</option>
+                            <option value="4">Devorced</option>
+                            <option value="5">Widowed</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Citizenship</span>
+                          <select name="citizenship" class="form-control" v-model="selectedItem.citizenship">
+                            <option value="1">Filipino</option>
+                            <option value="2">American</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Mobile Number</span>
+                          <input type="text" class="form-control" v-model="selectedItem.contact">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">E-mail Address</span>
+                          <input type="text" class="form-control" v-model="selectedItem.email">
+                        </div>
+                         <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Present Address</span>
+                          <input type="text" class="form-control" v-model="selectedItem.present_address">
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">City</span>
+                          <select name="town_city" class="form-control" v-model="selectedItem.town_city">
+                            <option v-for="city in citys" v-bind:value="city.city_id">{{ city.mun_city_name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">   
+                          <span style="font-size:10px;font-weight:bold">Barangay</span>    
+                          <select  name="barangay" class="form-control" v-model="selectedItem.brgy">
+                            <option v-for="brgy in brgys" v-bind:value="brgy.brgy_id">{{ brgy.name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Province</span>
+                           <select  name="province" class="form-control" v-model="selectedItem.province">
+                            <option v-for="province in provinces" v-bind:value="province.province_id">{{ province.prov_name }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Zipcode</span>
+                          <input type="text" class="form-control" v-model="selectedItem.zipcode">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Last School Attended</span>
+                          <input type="text" class="form-control" v-model="selectedItem.name_of_school_last_attended">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">School Intended</span>
+                          <select name="hei" class="form-control" v-model="selectedItem.hei">
+                            <option v-for="hei in heis" v-bind:value="hei.hei_id">{{ hei.hei_name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Degree Program</span>
+                          <select name="course" class="form-control" v-model="selectedItem.course">
+                            <option v-for="program in programs" v-bind:value="program.course_id">{{ program.course_name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applicant Type</span>
+                          <select name="applicant_type" class="form-control" v-model="selectedItem.applicant_type">
+                            <option value="1">Incoming College Freshmen</option>
+                            <option value="3">College Earned Units</option>
+                            <option value="4">ALS passer</option>
+                            <option value="5">PEPT passer</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">PWD</span>
+                          <select name="pwd" class="form-control" v-model="selectedItem.pwd">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Type of Disability</span>
+                          <input v-if="selectedItem.pwd != 2" type="text" class="form-control" v-model="selectedItem.type_of_disability">
+                          <input v-if="selectedItem.pwd == 2" type="text" class="form-control" v-model="selectedItem.type_of_disability" disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">IPs</span>
+                          <select name="ips" class="form-control" v-model="selectedItem.ips">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">4Ps</span>
+                          <select name="4ps" class="form-control" v-model="selectedItem.forps">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>                   
+                      </div>
+
+                       <div class="form-row">                  
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Parents Income</span> 
+                          <input type="text" id="parent_income" class="form-control" v-model="selectedItem.parent_income">
+                        </div>
+                            
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Solo Parent</span>
+                          <select name="solo_parent" class="form-control" v-model="selectedItem.supported_by_solo_parent">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applicant Solo Parent</span>
+                          <select name="applicant_solo_parent" class="form-control" v-model="selectedItem.applicant_solo_parent">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applicant Status</span>
+                          <select name="solo_parent" class="form-control" v-model="selectedItem.status">
+                            <option value="1">Waiting List</option>
+                            <option value="2">Active</option>
+                            <option value="3">Deferred</option>
+                            <option value="4">Terminated</option>
+                            <option value="5">Dropped</option>
+                            <option value="6">Waived</option>
+                            <option value="7">Graduated</option>
+                            <option value="8">Name not found</option>
+                            <option value="9">Not enrolled</option>
+                            <option value="11">For validation</option>
+                            <option value="12">Duplicate</option>
+                            <option value="13">Underload</option>
+                            <option value="14">Failed</option>
+                            <option value="15">Non-Priority Course</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Senior Citizen</span>
+                          <select name="seniorcitizen" class="form-control" v-model="selectedItem.senior_citizen">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>     
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">CHED Status</span>
+                          <select name="ched_status" id="verified_admin_id" class="form-control" v-model="selectedItem.verified_admin">
+                            <option value="1">Validated</option>
+                            <option value="2">Lacking documents</option>
+                            <option value="3">Invalid application</option>
+                          </select>
+                        </div> 
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">CHED Status Remarks</span>
+                          <input v-if="selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3" type="text" class="form-control" v-model="selectedItem.admin_remarks">
+                          <input v-if="selectedItem.verified_admin == null" type="text" class="form-control" v-model="selectedItem.admin_remarks" disabled>
+                          <input v-if="selectedItem.verified_admin == 1" type="text" class="form-control" v-model="selectedItem.admin_remarks" disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">HEI Status</span>
+                          <input v-if="selectedItem.verified_hei === 3" placeholder="Not Yet Check" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei === 2" placeholder="Not Enrolled" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei === 1" placeholder="Enrolled" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Academic Year</span>
+                          <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
+                            <option value="8">2020</option>
+                          </select>
+                        </div> 
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">GWA</span>
+                          <input type="text" id="gwa" class="form-control" v-model="selectedItem.gwa">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Ranking Points</span>
+                          <input type="text" class="form-control" v-model="selectedItem.rank_points" disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <span style="font-size:10px;font-weight:bold">Applied Date</span>
+                          <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                      </form>
+                    </div>
+               
+                  </div>
+                </div>
+              </div>
         </div>`,
 
     data() {
@@ -445,6 +718,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
           applicants: [],
           formData: {},
+          selectedItem: {},
           search: '',
           countPage: 10,
           pageOfItems: [],
@@ -454,7 +728,13 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
           type_of_disability: '',
           supported_by_solo_parent: '',
           ranking_remarks: '',
-          admin_remarks: ''
+          admin_remarks: '',
+          citys: {},
+          brgys: {},
+          provinces: {},
+          heis: {},
+          programs: {},
+          loading: false
           
         }
     },
@@ -470,7 +750,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
 
         });
-      }
+      },
+
     },
 
   methods: {
@@ -481,7 +762,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
       },
     fetchApplicantByCSPRank: function() {
+                this.loading = true;
             axios.get('ched_admin/fetch_applicant_by_csp_rank/').then(result => {
+                this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 
@@ -490,15 +773,165 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                 console.log(error);
             });
     },
+    fetchBrgy: function() {
+      axios.get('ched_admin/fetch_brgy/').then(result => {
+
+          this.brgys = result.data;
+
+      }).catch(error => {
+          console.log(error);
+      });
+    },
+    fetchCity: function() {
+        axios.get('ched_admin/fetch_city/').then(result => {
+
+            this.citys = result.data;
+
+        }).catch(error => {
+            console.log(error);
+        });
+    },
+    fetchProvince: function() {
+        axios.get('ched_admin/fetch_province/').then(result => {
+
+            this.provinces = result.data;
+
+        }).catch(error => {
+            console.log(error);
+        });
+    },
+    fetchProgram: function() {
+        axios.get('ched_admin/fetch_program/').then(result => {
+
+            this.programs = result.data;
+
+        }).catch(error => {
+            console.log(error);
+        });
+    },
+    fetchHEI: function() {
+        axios.get('ched_admin/fetch_hei/').then(result => {
+
+            this.heis = result.data;
+
+        }).catch(error => {
+            console.log(error);
+        });
+    },
     onChangePage: function(pageOfItems) {
         // update page of items
         this.pageOfItems = pageOfItems;
-    }
+    },
+    editItem: function(i) {
+      this.selectedItem = i;
+    },
+        updateData: function($id) {
+
+          $('#parent_income').css('border-color','');
+          $('#gwa').css('border-color','');  
+          $('#verified_admin_id').css('border-color',''); 
+          $('#ay').css('border-color','');  
+
+
+          if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
+
+          this.formData = new FormData();
+          this.formData.append('lname', this.selectedItem.lname);
+          this.formData.append('fname', this.selectedItem.fname);
+          this.formData.append('mname', this.selectedItem.mname);
+          this.formData.append('xname', this.selectedItem.xname);
+          this.formData.append('birthdate', this.selectedItem.birthdate);
+          this.formData.append('place_of_birth', this.selectedItem.place_of_birth);
+          this.formData.append('gender', this.selectedItem.gender);
+          this.formData.append('civil_status', this.selectedItem.civil_status);
+          this.formData.append('citizenship', this.selectedItem.citizenship);
+          this.formData.append('contact', this.selectedItem.contact);
+          this.formData.append('email', this.selectedItem.email);
+          this.formData.append('present_address', this.selectedItem.present_address);
+          this.formData.append('town_city_id', this.selectedItem.town_city);
+          this.formData.append('brgy_id', this.selectedItem.brgy);
+          this.formData.append('province', this.selectedItem.province);
+          this.formData.append('zipcode', this.selectedItem.zipcode);
+          this.formData.append('name_of_school_last_attended', this.selectedItem.name_of_school_last_attended);
+          this.formData.append('hei_id', this.selectedItem.hei);
+          this.formData.append('course_id', this.selectedItem.course);
+          this.formData.append('applicant_type', this.selectedItem.applicant_type);
+          this.formData.append('pwd_id', this.selectedItem.pwd);
+          this.formData.append('type_of_disability', this.selectedItem.type_of_disability);
+          this.formData.append('ips_id', this.selectedItem.ips);
+          this.formData.append('forps_id', this.selectedItem.forps);
+          this.formData.append('parent_income', this.selectedItem.parent_income);
+          this.formData.append('supported_by_solo_parent', this.selectedItem.supported_by_solo_parent);
+          this.formData.append('status', this.selectedItem.status);
+          this.formData.append('verified_admin_id', this.selectedItem.verified_admin);
+          this.formData.append('admin_remarks', this.selectedItem.admin_remarks);
+          this.formData.append('ranking_status_id', this.selectedItem.ranking_status);
+          this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
+          this.formData.append('gwa', this.selectedItem.gwa);
+          this.formData.append('ay', this.selectedItem.ay);
+          this.formData.append('senior_citizen', this.selectedItem.senior_citizen);
+          this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
+          axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
+            .then(response => {
+
+
+              if(response.data === 0) {
+                $('#gwa').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: 'GWA too low!',
+                })
+                return false;
+              }
+               this.fetchApplicantByCSPRank();
+                this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: 'Updated Successfully!',
+                })
+               $("#applicantModal").modal("hide");
+              
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+            });
+
+          }
+
+          if(!this.selectedItem.parent_income) {
+            $('#parent_income').css('border-color','red');
+            return false;
+          }
+
+          if(!this.selectedItem.gwa) {
+            $('#gwa').css('border-color','red');
+            return false;
+          }
+
+          if(!this.selectedItem.verified_admin) {
+            $('#verified_admin_id').css('border-color','red');
+            return false;
+          }
+
+          if(!this.selectedItem.ay) {
+            $('#ay').css('border-color','red');
+            return false;
+          }
+   
+      },
 
 
   },
   async mounted() {
     this.fetchApplicantByCSPRank();
+    this.fetchBrgy();
+    this.fetchCity();
+    this.fetchProvince();
+    this.fetchProgram();
+    this.fetchHEI();
+
 
   }
 

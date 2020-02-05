@@ -30,7 +30,7 @@
 		</div>
 		<!-- Content -->
 		<div class="main">
-		    <div class="jumbotron" v-for="applicant in applicants">
+		    <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
 		      <span><h4 class="mb-4">School status:&nbsp;
             <span v-if="applicant.verified_hei === 3" style="color:blue">Not Yet Check by HEI</span>
             <span v-if="applicant.verified_hei === 1" style="color:green">Enrolled</span>

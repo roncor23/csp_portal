@@ -9,6 +9,7 @@ use App\User;
 use App\applicantsModel;
 use App\parentsModel;
 use Carbon\Carbon;
+use App\Mail\SendMailable;
 use Mail;
 
 class AuthController extends Controller
@@ -28,15 +29,21 @@ class AuthController extends Controller
             return response()->json(0); // Already in the system.
         }
 
+        //Confirmation Code
+        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+        $shuffle =  substr(str_shuffle($data),0,7);
+
         $user = new User;
        
         $user->name = $request->username;
         $user->email = $request->email;
         $user->applicant_hei_id = $request->schoolpreferred;
+        $user->confirmation_code = $shuffle;
         $user->password = bcrypt($request->password);
         $user->save();
-
+        //Date
         $dt = Carbon::now();
+
 
         $applicants->fname = strtoupper($request->firstname);
         $applicants->mname = strtoupper($request->middlename);
@@ -82,7 +89,20 @@ class AuthController extends Controller
         $parents->save();
 
 
-        return response()->json($applicants->reference_no);
+        $username = $request->username;
+        $email = $request->email;
+        $code = $shuffle;
+
+        $objDemo = new \stdClass();
+
+        $objDemo->code =  $code;
+        $objDemo->username = $username;
+
+        Mail::to($email)->send(new SendMailable($objDemo));
+
+
+
+        return response()->json(['success'=>true, 'reference_no'=>$applicants->reference_no, 'username'=>$username,'code'=>$code]);
     }
 
     public function login(Request $request)
@@ -95,12 +115,6 @@ class AuthController extends Controller
 
         return response()->json(['error' => 'login_error'], 401);
 
-        // Mail::send('welcome', array('key' => 'value'), function($message)
-        // {
-        //     $message->to('ronanotaza@gmail.com', 'Sender Name')->subject('Welcome!');
-        // });
-
-        // return response()->json(1);
 
     }
 

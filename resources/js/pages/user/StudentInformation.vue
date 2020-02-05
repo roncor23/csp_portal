@@ -31,8 +31,10 @@
 		  </ul>
 		</div>
 
+    
+
 		<!-- Content -->
-		<div class="container main" v-for="applicant in applicants">
+		<div class="container main" v-for="applicant in applicants" v-if="applicant.confirm === 1">
       <div class="d-flex justify-content-start">
         <i class="fas fa-print" @click="print" style="cursor:pointer;padding:3px"><a href="#" style="padding:3px;color:#6495ED">Print</a></i>
         <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>

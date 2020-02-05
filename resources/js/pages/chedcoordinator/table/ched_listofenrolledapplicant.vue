@@ -332,8 +332,11 @@ const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.
 
 Vue.component("ched-list-of-enrolled-applicant", {
     template: `<div>
-                                <div style="float:right;margin-bottom:10px">
+                <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
+                </div>
+                <div v-if="loading" class="loading">
+                  Loading...
                 </div>
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
@@ -413,7 +416,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         <td v-if="i.gwa === null" style="color:blue">GWA NOT YET SET</td>
                         <td v-if="i.gwa != null">{{i.gwa}}</td>
                         <td v-if="i.rank_points === null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>
-                        <td v-if="i.rank_points != null">{{i.rank_points}}</td>
+                        <td v-if="i.rank_points != null" style="color:green">{{i.rank_points}}</td>
                         <td v-if="i.ranking_status === null" style="color:blue">NOT YET ASSIGN</td>
                         <td v-if="i.ranking_status === 1">Ranking System Off</td>
                         <td v-if="i.ranking_status === 2">WAITING FOR RANKING</td>
@@ -440,9 +443,18 @@ Vue.component("ched-list-of-enrolled-applicant", {
                     </tbody>
                
                     </table>
-                    <nav aria-label="Page navigation" style="float:right">
-                        <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-                    </nav>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <span style="font-weight:bold">Total Enrolled: </span>{{filteredBlogs.length}}
+                      </div>
+                      <div class="form-group col-md-3">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <nav aria-label="Page navigation" style="float:right">
+                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
+                        </nav>
+                      </div>
+                     </div>
 
                 </div>
 
@@ -725,7 +737,8 @@ Vue.component("ched-list-of-enrolled-applicant", {
           type_of_disability: '',
           supported_by_solo_parent: '',
           ranking_remarks: '',
-          admin_remarks: ''
+          admin_remarks: '',
+          loading: false
           
         }
     },
@@ -745,8 +758,9 @@ Vue.component("ched-list-of-enrolled-applicant", {
   methods: {
 
     fetchEnrolledApplicant: function() {
-
+            this.loading = true;
             axios.get('ched_admin/fetch_enrolled_applicant/').then(result => {
+                this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
                 

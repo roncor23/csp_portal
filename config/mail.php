@@ -29,8 +29,7 @@ return [
     |
     */
 
-    // 'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,11 +55,11 @@ return [
     |
     */
 
-    // 'from' => [
-    //     'address' => env('ronanotaza@gmail.com'),
-    //     'name' => env('MAIL_ENCRYPTION', 'tls'),
-    // ],
-    'from' => ['address' => 'ronanotaza@gmail.com', 'name' => 'ron'],
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -100,6 +99,8 @@ return [
     |
     */
 
+    'sendmail' => '/usr/sbin/sendmail -bs',
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings
@@ -110,8 +111,6 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'pretend' => false,
 
     'markdown' => [
         'theme' => 'default',
@@ -121,6 +120,17 @@ return [
         ],
     ],
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | If you are using the "log" driver, you may specify the logging channel
+    | if you prefer to keep mail messages separate from other log entries
+    | for simpler reading. Otherwise, the default channel will be used.
+    |
+    */
+
+    'log_channel' => env('MAIL_LOG_CHANNEL'),
 
 ];

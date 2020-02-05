@@ -1,49 +1,59 @@
 <template>
-    <div class="">
-<div class="header">
-  <a href="#" id="menu-action">
-    <i class="fa fa-bars"></i>
-    <span>Close</span>
-  </a>
-  <div class="logo">
-    CSP
-
-      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          {{username}} Profile
+    <div >
+      <div class="header">
+        <a href="#" id="menu-action">
+          <i class="fa fa-bars"></i>
+          <span>Close</span>
         </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-          <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+        <div class="logo">
+          CSP
+
+            <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+                {{username}} Profile
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+              </div>
+            </li>
+             <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
+              <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
+              <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
+            </ul>
+
         </div>
-      </li>
-       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
-      </ul>
-
-  </div>
-</div>
-<div class="sidebar">
-  <ul>
-    <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-     <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
-    <router-link to="/student-status"><li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li></router-link>
-  </ul>
-</div>
-
-  <!-- Content -->
-  <div class="main">
-
-      <div class="jumbotron">
-        <h1>Hello, {{username}}!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-        <p>Thank you for applying scholarship. You're all ready to go!</p><br>
-        <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
+      </div>
+      <div class="sidebar">
+        <ul>
+          <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
+           <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
+          <router-link to="/student-status"><li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li></router-link>
+        </ul>
       </div>
 
-  </div>
+        <!-- Content -->
+        <div class="main">
+
+            <div class="jumbotron" style="background-color:#ff000024">
+              <p v-for="applicant in applicants" v-if="applicant.confirm === null">Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 6 characters in length.</p>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <input class="form-control" type="text">
+                  <button class="btn btn-primary mt-2" type="button">Verify</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
+              <h1>Hello, {{username}}!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
+              <p>Thank you for applying scholarship. You're all ready to go!</p><br>
+              <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
+            </div>
+
+        </div>
 </div>
 </template>
 
@@ -338,7 +348,8 @@ import axios from 'axios';
   export default {
     data() {
       return {
-        username: ''
+        username: '',
+        applicants: {}
       }
     },
     methods: {

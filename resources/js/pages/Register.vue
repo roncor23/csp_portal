@@ -11,7 +11,6 @@
                 <step3 ref="step3" @on-validate="mergePartialModels"></step3>
             </tab-content>
 
-
             <tab-content title="Preferred School" icon="ti-home" :before-change="()=>validateStep('step4')">
                 <step4 ref="step4" @on-validate="mergePartialModels"></step4>
             </tab-content>
@@ -410,7 +409,7 @@ Vue.component("step3", {
                            <span class="text-danger" v-if="$v.fatherContact.$error && !$v.fatherContact.numeric">Accepts only alphabet characters.</span>
                         </div>
                         <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.sibblings.$error }" >
-                          <label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old and below</label>
+                          <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old and below</label>
                           <select id="no_of_siblings" name="no_of_siblings" class="form-control" v-model="sibblings" @input="$v.sibblings.$touch()">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -614,7 +613,8 @@ Vue.component("step4", {
  export default {
     data() {
       return {
-        applicationModel: {}
+        applicationModel: {},
+        success:false
       }
     },
      methods: {
@@ -663,7 +663,7 @@ Vue.component("step4", {
                 applicanttype: app.applicationModel.applicant_type
               },
               success: function (response) {
-                if(response.data == 0) {
+                if(response.data.success == 0) {
                   this.$swal.fire({
                     icon: 'error',
                     title: 'Opps...',
@@ -676,9 +676,19 @@ Vue.component("step4", {
                   icon: 'success',
                   title: 'Great...',
                   text: 'Application successfully submitted!',
-                  footer: `<h2>Reference #:<h2 style="color:red">&nbsp;${response.data}</h2></h2>`
+                  footer: `<h2>Reference #:<h2 style="color:red">&nbsp;${response.data.reference_no}</h2></h2>`
                 })
-                this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+                // this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+
+                this.$router.push({name:'success_mail',
+                    params:{
+                      success:response.data.success,
+                      email:response.data.email,
+                      bodycontent:response.data.bodycontent
+                    }
+                 });
+
+
               },
               error: function (res) {
                 console.log(res.response.data.errors)

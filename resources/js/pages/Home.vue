@@ -19,6 +19,7 @@
     <!-- Icons Grid -->
     <div class="features-icons bg-light text-center container-fluid">
       <div>
+        <h1 style="margin-bottom:50px">Be a CHED Scholar in <span style="border: 1px solid #3490dc;border-top:none;border-right:none;border-left:none;border-width:thick">3 steps.</span></h1>
         <div class="row">
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
@@ -100,16 +101,16 @@
           </div>
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
-              <h4>Fred S.</h4>
-              <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+              <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
+              <h4>Brisbane Q. Titular</h4>
+              <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
-              <h4>Sarah W.</h4>
-              <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+              <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
+              <h4>Brisbane Q. Titular</h4>
+              <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
             </div>
           </div>
         </div>
@@ -186,11 +187,6 @@ a.ic1:hover {color: #dcdcdc;}
   color:  #fff;
 }
 
-.w3-image {
-    max-width: 100%;
-    height: auto;
-}
-
 .w3-text-white, .w3-hover-text-white:hover {
     color: #fff!important;
 }
@@ -204,15 +200,6 @@ a.ic1:hover {color: #dcdcdc;}
     background-color: #fff!important;
 }
 
-.w3-top {
-    top: 0;
-}
-
-.w3-top {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-}
 
 .w3-right{float:right!important}
 
@@ -411,24 +398,24 @@ footer.footer {
   }
 
   .features-icons .features-icons-item {
-    max-width: 25rem;
+    max-width: 22rem;
   }
 
   .features-icons .features-icons-item .features-icons-icon {
-    height: 7rem;
+    height: 6rem;
   }
 
   .features-icons .features-icons-item .features-icons-icon i {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 
   .features-icons .features-icons-item:hover .features-icons-icon i {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   .testimonials {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .testimonials .testimonial-item {

@@ -1,7 +1,9 @@
 <template>
     <div>
         <div>
+          <transition name="fade" mode="out-in" v-on:after-enter="afterEnter" appear>
             <router-view></router-view>
+          </transition>
         </div>
     </div>
 </template>
@@ -14,6 +16,12 @@
         //
       }
     },
+    methods: {
+      afterEnter: function( el ) {
+      // how to have this per-route
+        console.log( 'Route entered' );
+      }
+    },
     components: {
       
     }
@@ -22,5 +30,12 @@
 
 <style scoped>
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
 
 </style>
