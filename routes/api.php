@@ -130,3 +130,6 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     //Reset applicant password
     Route::post('reset/password/','AuthController@reset');
+
+    // Applicant register
+    Route::post('applicant/register/','AuthController@register');

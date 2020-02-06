@@ -61,7 +61,7 @@
 
   			<!-- Applicant Information -->
         <table class="table table-sm mt-4">
-          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th></th></tr></thead>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th></tr></thead>
           <thead>
             <tr style="font-size:10px">
               <th scope="col" style="width:25%">Last Name</th>

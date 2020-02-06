@@ -29,17 +29,10 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        // return $this->from('ronanotaza@gmail.com')
-        //         ->view('welcome');
 
-        return $this->from('chedcaragastufaps@ched.gov.ph')
+        return $this->from('ronanotaza@gmail.com')
                     ->subject('Confirmation Code')
-                    ->view('information')
-                    // ->text('success')
-                    ->with(
-                      [
-                            'message' => 'Ban co the kiem tra email',
-                      ]);
+                    ->view('information');
 
                     
     }

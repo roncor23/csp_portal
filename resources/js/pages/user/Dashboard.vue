@@ -475,10 +475,10 @@ import axios from 'axios';
                   text: 'Incorrect code!',
                 })
                 $('#ve_code').css('border-color','red');
-                this.v_v_code = false;
+                this.v_v_code = true;
                 return false;
             }
-
+                this.v_v_code = false;
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',

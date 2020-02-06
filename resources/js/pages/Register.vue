@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
         <div v-if="loading" class="se-pre-con"></div>
         <form-wizard @on-complete="onComplete" shape="circle" color="#3498db">
             <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
@@ -83,7 +83,8 @@ Vue.component("step1", {
             userName: "",
             password: "",
             confirmPassword: "",
-            emailAddress: ""
+            emailAddress: "",
+            formData: {}
         }
     },
     validations: {
@@ -121,13 +122,11 @@ Vue.component("step2", {
                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Last Name</label>
                               <input type="text" class="form-control" name="lname" id="lname" placeholder="Last name" v-model.trim="lastName" @input="$v.lastName.$touch()">
                               <span class="text-danger" v-if="$v.lastName.$error && !$v.lastName.required">Last name is required</span>
-                              <span class="text-danger" v-if="$v.lastName.$error && !$v.lastName.alpha">Accepts only alphabet characters.</span>
                             </div>
                             <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.firstName.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">First Name</label>
                               <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" v-model.trim="firstName" @input="$v.firstName.$touch()">
                               <span class="text-danger" v-if="$v.firstName.$error && !$v.firstName.required">First name is required</span>
-                              <span class="text-danger" v-if="$v.firstName.$error && !$v.firstName.alpha">Accepts only alphabet characters.</span>
                             </div>
                              <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.middleName.$error }">
                              <label style="float:left;font-size:12px;font-weight:bold">Middle Name</label>
@@ -250,18 +249,16 @@ Vue.component("step2", {
     },
     validations: {
           lastName: {
-            required,
-            alpha
+            required
         },
           firstName: {
-            required,
-            alpha
+            required
         },
           middleName: {
             alpha
         },
         extensionName: {
-            minLength: minLength(3)
+            minLength: minLength(2)
         },
           dateOfBirth: {
             required
@@ -313,7 +310,6 @@ Vue.component("step2", {
             axios.get('fetch/province/').then(result => {
 
                 this.provinces = result.data;
-                console.log(this.provinces);
 
             }).catch(error => {
                 console.log(error);
@@ -323,7 +319,6 @@ Vue.component("step2", {
             axios.get('fetch/city/').then(result => {
 
                 this.citys = result.data;
-                console.log(this.citys);
 
             }).catch(error => {
                 console.log(error);
@@ -333,7 +328,6 @@ Vue.component("step2", {
             axios.get('fetch/brgy/').then(result => {
 
                 this.brgys = result.data;
-                console.log(this.brgys);
 
             }).catch(error => {
                 console.log(error);
@@ -418,16 +412,21 @@ Vue.component("step3", {
                         <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherContact.$error }">
                           <label style="float:left;font-size:12px;font-weight:bold">Mother Contact #</label>
                           <input type="text" class="form-control" placeholder="Ex: 0900..." v-model.trim="motherContact" @input="$v.motherContact.$touch()">
-                           <span class="text-danger" v-if="$v.motherContact.$error && !$v.motherContact.numeric">Accepts only alphabet characters.</span>
+                           <span class="text-danger" v-if="$v.motherContact.$error && !$v.motherContact.numeric">Accepts only numbers.</span>
+                           <span class="text-danger" v-if="!$v.motherContact.minLength">Mobile number must have at least {{ $v.motherContact.$params.minLength.min }} numbers.</span>
+                            <span class="text-danger" v-if="!$v.motherContact.maxLength">Mobile number must have maximum of{{ $v.motherContact.$params.maxLength.max }} numbers.</span>
                         </div>
                         <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherContact.$error }">
                           <label style="float:left;font-size:12px;font-weight:bold">Father Contact #</label>
                           <input type="text" class="form-control"  placeholder="Ex: 0900..." v-model.trim="fatherContact" @input="$v.fatherContact.$touch()">
-                           <span class="text-danger" v-if="$v.fatherContact.$error && !$v.fatherContact.numeric">Accepts only alphabet characters.</span>
+                           <span class="text-danger" v-if="$v.fatherContact.$error && !$v.fatherContact.numeric">Accepts only numbers.</span>
+                            <span class="text-danger" v-if="!$v.fatherContact.minLength">Mobile number must have at least {{ $v.fatherContact.$params.minLength.min }} numbers.</span>
+                            <span class="text-danger" v-if="!$v.fatherContact.maxLength">Mobile number must have maximum of{{ $v.fatherContact.$params.maxLength.max }} numbers.</span>
                         </div>
                         <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.sibblings.$error }" >
                           <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old and below</label>
                           <select id="no_of_siblings" name="no_of_siblings" class="form-control" v-model="sibblings" @input="$v.sibblings.$touch()">
+                            <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -468,42 +467,39 @@ Vue.component("step3", {
     },
     validations: {
         fatherLastName: {
-            alpha
+
         },
           fatherFirstName: {
-            alpha
+
         },
           fatherMiddleName: {
-            alpha
+
         },
           fatherExtensionName: {
-            alpha,
             minLength: minLength(3)
         },
           motherLastName: {
-            alpha
         },
           motherFirstName: {
-            alpha
         },
           motherMiddleName: {
-            alpha
         },
           motherExtensionName: {
-            alpha,
             minLength: minLength(3)
         },
         motherEmployer: {
-            alpha
         },
         fatherEmployer: {
-          alpha
         },
           motherContact: {
-            numeric       
+            numeric,
+            minLength: minLength(11),
+            maxLength: maxLength(11)       
         },
           fatherContact: {
-            numeric
+            numeric,
+            minLength: minLength(11),
+            maxLength: maxLength(11) 
         },
           sibblings: {
             required
@@ -604,7 +600,6 @@ Vue.component("step4", {
             axios.get('fetch/hei/').then(result => {
 
                 this.heis = result.data;
-                console.log(this.heis);
 
             }).catch(error => {
                 console.log(error);
@@ -614,7 +609,6 @@ Vue.component("step4", {
             axios.get('fetch/program/').then(result => {
 
                 this.programs = result.data;
-                console.log(this.programs);
 
             }).catch(error => {
                 console.log(error);
@@ -631,73 +625,71 @@ Vue.component("step4", {
     data() {
       return {
         applicationModel: {},
-        success:false,
-        loading: false
+        success: false,
+        loading: false,
+        formData: {}
       }
     },
      methods: {
+
     onComplete: function() {
 
-            var app = this
-            app.loading = true;
-            this.$auth.register({
-              data: {
-                username: app.applicationModel.userName,
-                email: app.applicationModel.emailAddress,
-                password: app.applicationModel.password,
-                lastname: app.applicationModel.lastName,
-                firstname: app.applicationModel.firstName,
-                middlename: app.applicationModel.middleName,
-                extensionname: app.applicationModel.extensionName,
-                dateofbirth: app.applicationModel.dateOfBirth,
-                placeofbirth: app.applicationModel.placeOfBirth,
-                sex: app.applicationModel.sex,
-                civilstatus: app.applicationModel.civilStatus,
-                citizenship: app.applicationModel.citizenship,
-                mobilenumber: app.applicationModel.mobileNumber,
-                emailaddress: app.applicationModel.emailAddress,
-                presentaddress: app.applicationModel.presentAddress,
-                city: app.applicationModel.city,
-                barangay: app.applicationModel.barangay,
-                province: app.applicationModel.province,
-                zipcode: app.applicationModel.zipCode,
-                fatherlastname: app.applicationModel.fatherLastName,
-                fatherfirstname: app.applicationModel.fatherFirstName,
-                fathermiddlename: app.applicationModel.fatherMiddleName,
-                fatherextensionname: app.applicationModel.fatherExtensionName,
-                motherlastname: app.applicationModel.motherLastName,
-                motherfirstname: app.applicationModel.motherFirstName,
-                mothermiddlename: app.applicationModel.motherMiddleName,
-                motherextensionname: app.applicationModel.motherExtensionName,
-                motheroccupation: app.applicationModel.motherOccupation,
-                fatheroccupation: app.applicationModel.fatherOccupation,
-                motheremployer: app.applicationModel.motherEmployer,
-                fatheremployer: app.applicationModel.fatherEmployer,
-                mothercontact: app.applicationModel.motherContact,
-                fathercontact: app.applicationModel.fatherContact,
-                sibblings: app.applicationModel.sibblings,
-                schoollastattended: app.applicationModel.schoolLastAttended,
-                schoolpreferred: app.applicationModel.schoolPreferred,
-                degreeprogram: app.applicationModel.degreeProgram,
-                applicanttype: app.applicationModel.applicant_type
-              },
-              
-              success: function (response) {
-                if(response.data === 0) { //Applicants already in the system.
+
+          this.formData = new FormData();
+          this.formData.append('userName', this.applicationModel.userName);
+          this.formData.append('emailAddress', this.applicationModel.emailAddress);
+          this.formData.append('password', this.applicationModel.password);
+          this.formData.append('lastName', this.applicationModel.lastName);
+          this.formData.append('firstName', this.applicationModel.firstName);
+          this.formData.append('middleName', this.applicationModel.middleName);
+          this.formData.append('extensionName', this.applicationModel.extensionName);
+          this.formData.append('dateOfBirth', this.applicationModel.dateOfBirth);
+          this.formData.append('placeOfBirth', this.applicationModel.placeOfBirth);
+          this.formData.append('sex', this.applicationModel.sex);
+          this.formData.append('civilStatus', this.applicationModel.civilStatus);
+          this.formData.append('citizenship', this.applicationModel.citizenship);
+          this.formData.append('mobileNumber', this.applicationModel.mobileNumber);
+          this.formData.append('presentAddress', this.applicationModel.presentAddress);
+          this.formData.append('city', this.applicationModel.city);
+          this.formData.append('barangay', this.applicationModel.barangay);
+          this.formData.append('province', this.applicationModel.province);
+          this.formData.append('zipcode', this.applicationModel.zipcode);
+          this.formData.append('fatherLastName', this.applicationModel.fatherLastName);
+          this.formData.append('fatherFirstName', this.applicationModel.fatherFirstName);
+          this.formData.append('fatherMiddleName', this.applicationModel.fatherMiddleName);
+          this.formData.append('fatherExtensionName', this.applicationModel.fatherExtensionName);
+          this.formData.append('motherOccupation', this.applicationModel.motherOccupation);
+          this.formData.append('fatherOccupation', this.applicationModel.fatherOccupation);
+          this.formData.append('motherEmployer', this.applicationModel.motherEmployer);
+          this.formData.append('fatherEmployer', this.applicationModel.fatherEmployer);
+          this.formData.append('motherContact', this.applicationModel.motherContact);
+          this.formData.append('fatherContact', this.applicationModel.fatherContact);
+          this.formData.append('sibblings', this.applicationModel.sibblings);
+          this.formData.append('schoolLastAttended', this.applicationModel.schoolLastAttended);
+          this.formData.append('schoolPreferred', this.applicationModel.schoolPreferred);
+          this.formData.append('degreeProgram', this.applicationModel.degreeProgram);
+          this.formData.append('applicant_type', this.applicationModel.applicant_type);
+          this.loading = true;
+          axios.post('applicant/register/', this.formData, {headers: {'content-Type': 'multipart/form-data'}})
+            .then(response => {
+
+                 if(response.data === 0) { //Applicants already in the system.
                   this.$swal.fire({
                     icon: 'error',
                     title: 'Opps...',
                     text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern.',
                     footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
                   })
+                  this.loading = false;
                   return false;
                 }
                 if(response.data === 2) { //Email already in used.
                   this.$swal.fire({
                     icon: 'error',
                     title: 'Opps...',
-                    text: 'Email is already in used in this system. Please try new one.',
+                    text: 'Email address is already in used in this system. Please try new one.',
                   })
+                  this.loading = false;
                   return false;
                 }
                 this.loading = false;
@@ -705,24 +697,22 @@ Vue.component("step4", {
                   icon: 'success',
                   title: 'Great...',
                   text: `Application successfully submitted! A verification code sent to ${response.data.email}. Please check your email and verify your account, you must login first.`,
-                  footer: `<h2>Reference #:<h2 style="color:red">&nbsp;${response.data.reference_no}</h2></h2>`
+                  footer: `<h3>Reference #:<h3 style="color:red">&nbsp;${response.data.reference_no}</h3></h3>`
                 })
-                // this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+                this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
 
-
-
-              },
-              error: function (res) {
-                console.log(res.response.data.errors)
-                app.has_error = true
-                app.error = res.response.data.error
-                app.errors = res.response.data.errors || {}
-              }
+              
             })
-           
-      
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+            });
 
-    },
+   
+
+
+   
+      },
      validateStep(name) {
          var refToValidate = this.$refs[name];
          return refToValidate.validate();
@@ -737,7 +727,6 @@ Vue.component("step4", {
 
     },
     async mounted() {
-        // this.fetchCity();
     },
     components: {
       FormWizard,

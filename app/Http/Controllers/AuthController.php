@@ -22,12 +22,12 @@ class AuthController extends Controller
         $user = new User;
 
         //Check if applicant is already in the system.
-        $result = $applicants::where('lname', strtoupper($request->lastname))
-                            ->where('fname', strtoupper($request->firstname))
-                            ->where('mname', strtoupper($request->middlename))
+        $result = $applicants::where('lname', strtoupper($request->lastName))
+                            ->where('fname', strtoupper($request->firstName))
+                            ->where('mname', strtoupper($request->middleName))
                             ->first();
 
-        $email = $user::where('email', $request->email)->first();
+        $email = $user::where('email', $request->emailAddress)->first();
 
         if($result) {
             return response()->json(0); // Already in the system.
@@ -42,9 +42,9 @@ class AuthController extends Controller
         $shuffle =  substr(str_shuffle($data),0,7);
   
        
-        $user->name = $request->username;
-        $user->email = $request->email;
-        $user->applicant_hei_id = $request->schoolpreferred;
+        $user->name = $request->userName;
+        $user->email = $request->emailAddress;
+        $user->applicant_hei_id = $request->schoolPreferred;
         $user->confirmation_code = $shuffle;
         $user->password = bcrypt($request->password);
         $user->save();
@@ -52,51 +52,51 @@ class AuthController extends Controller
         $dt = Carbon::now();
 
 
-        $applicants->fname = strtoupper($request->firstname);
-        $applicants->mname = strtoupper($request->middlename);
-        $applicants->lname = strtoupper($request->lastname);
-        $applicants->xname = strtoupper($request->extensionname);
-        $applicants->birthdate = $request->dateofbirth;
-        $applicants->place_of_birth = $request->placeofbirth;
+        $applicants->fname = strtoupper($request->firstName);
+        $applicants->mname = strtoupper($request->middleName);
+        $applicants->lname = strtoupper($request->lastName);
+        $applicants->xname = strtoupper($request->extensionName);
+        $applicants->birthdate = $request->dateOfBirth;
+        $applicants->place_of_birth = $request->placeOfBirth;
         $applicants->gender = $request->sex;
-        $applicants->civil_status = $request->civilstatus;
+        $applicants->civil_status = $request->civilStatus;
         $applicants->citizenship = $request->citizenship;
-        $applicants->contact = $request->mobilenumber;
-        $applicants->present_address = $request->presentaddress;
+        $applicants->contact = $request->mobileNumber;
+        $applicants->present_address = $request->presentAddress;
         $applicants->town_city = $request->city;
         $applicants->brgy = $request->barangay;
         $applicants->province = $request->province;
-        $applicants->zipcode = $request->zipcode;
-        $applicants->name_of_school_last_attended = $request->schoollastattended;
-        $applicants->hei = $request->schoolpreferred;
-        $applicants->course = $request->degreeprogram;
-        $applicants->applicant_type = $request->applicanttype;
+        $applicants->zipcode = $request->zipCode;
+        $applicants->name_of_school_last_attended = $request->schoolLastAttended;
+        $applicants->hei = $request->schoolPreferred;
+        $applicants->course = $request->degreeProgram;
+        $applicants->applicant_type = $request->applicant_type;
         $applicants->user_id = $user->id;
         $applicants->reference_no =  $dt->toDateString().$user->id;  
         $applicants->save();
 
         $parents = new parentsModel;
-        $parents->father_lname = $request->fatherlastname;
-        $parents->father_fname = $request->fatherfirstname;
-        $parents->father_mname = $request->fathermiddlename;
-        $parents->father_xname = $request->fatherextensionname;
-        $parents->mother_lname = $request->motherlastname;
-        $parents->mother_fname = $request->motherfirstname;
-        $parents->mother_mname = $request->mothermiddlename;
-        $parents->mother_xname = $request->motherextensionname;
-        $parents->mother_occupation = $request->motheroccupation;
-        $parents->father_occupation = $request->fatheroccupation;
-        $parents->mother_employer = $request->motheremployer;
-        $parents->father_employer = $request->fatheremployer;
+        $parents->father_lname = $request->fatherLastName;
+        $parents->father_fname = $request->fatherFirstName;
+        $parents->father_mname = $request->fatherMiddleName;
+        $parents->father_xname = $request->fatherExtensionName;
+        $parents->mother_lname = $request->motherLastName;
+        $parents->mother_fname = $request->motherFirstName;
+        $parents->mother_mname = $request->motherMiddleName;
+        $parents->mother_xname = $request->motherExtensionName;
+        $parents->mother_occupation = $request->motherOccupation;
+        $parents->father_occupation = $request->fatherOccupation;
+        $parents->mother_employer = $request->motherEmployer;
+        $parents->father_employer = $request->fatherEmployer;
         $parents->number_of_siblings = $request->sibblings;
-        $parents->mother_contact_number = $request->mothercontact;
-        $parents->father_contact_number = $request->fathercontact;
+        $parents->mother_contact_number = $request->motherContact;
+        $parents->father_contact_number = $request->fatherContact;
         $parents->user_id = $user->id;
         $parents->save();
 
 
-        $username = $request->username;
-        $email = $request->email;
+        $username = $request->userName;
+        $email = $request->emailAddress;
         $code = $shuffle;
 
         $objDemo = new \stdClass();
@@ -105,8 +105,6 @@ class AuthController extends Controller
         $objDemo->username = $username;
 
         Mail::to($email)->send(new SendMailable($objDemo));
-
-
 
         return response()->json(['success'=>true, 'reference_no'=>$applicants->reference_no, 'username'=>$username, 'email'=>$email, 'code'=>$code]);
     }
