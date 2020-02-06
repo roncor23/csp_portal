@@ -26,6 +26,7 @@ class HEICoordinatorController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('applicant_hei_id',$hei_id)
+                    ->where('confirm', 1)
                     ->orderBy('lname', 'asc')
 		            ->get();
 

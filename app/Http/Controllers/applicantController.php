@@ -13,7 +13,9 @@ use App\coursesModel;
 use App\applicantsModel;
 use App\parentsModel;
 use App\User;
+use App\Mail\SendMailable;
 use DB;
+use Mail;
 
 class applicantController extends Controller
 {
@@ -88,6 +90,13 @@ class applicantController extends Controller
         $users = $model::where('id', $id)->first();
         $applicants = $model2::where('user_id', $id)->first();   
 
+        //Check applicant if they have award or not
+        if($applicants->status === 2) {
+
+            return response()->json(0); // Applicant has award.
+            
+        }
+
         //Check current HEI and compare to request HEI
         if($applicants['hei'] != $request->hei_id) {
 
@@ -152,7 +161,6 @@ class applicantController extends Controller
         $applicants->civil_status = $request->civil_status;
         $applicants->citizenship = $request->citizenship;
         $applicants->contact = $request->contact;
-        $applicants->email = $request->email;
         $applicants->present_address = $request->present_address;
         $applicants->town_city = $request->town_city_id;
         $applicants->brgy = $request->brgy_id;
@@ -215,5 +223,65 @@ class applicantController extends Controller
         }
 
 
+    }
+
+    //Applicant resend code
+    public function resendcode() {
+
+        //Confirmation Code
+        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+        $shuffle =  substr(str_shuffle($data),0,7);
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+        $user->confirmation_code = $shuffle;
+        $user->save();
+
+
+        $username = $user['name'];
+        $email = $user['email'];
+        $code = $shuffle;
+
+        $objDemo = new \stdClass();
+
+        $objDemo->code =  $code;
+        $objDemo->username = $username;
+
+        Mail::to($email)->send(new SendMailable($objDemo));
+
+        return response()->json($email);
+
+
+    }
+
+    //Applicant new email
+    public function new_email(Request $request) {
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+        $user->email = $request->n_email;
+        $user->save();
+
+        return response()->json(1);
+    }
+
+    //Applicant verify code
+    public function verify_code(Request $request) {
+
+        $model = new User();
+
+        $user = $model::where('id', Auth::id())->first();
+
+        if($user->confirmation_code === $request->v_code) { // Check if verified or not
+            $user->confirm = 1; // Verified
+            $user->save();
+
+            return response()->json(1); //True
+        }
+
+
+            return response()->json(0); //False
     }
 }

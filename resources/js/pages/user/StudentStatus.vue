@@ -30,6 +30,9 @@
 		</div>
 		<!-- Content -->
 		<div class="main">
+        <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
+           <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length. Verify first before you use this portal. Thanks!</p>
+        </div>
 		    <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
 		      <span><h4 class="mb-4">School status:&nbsp;
             <span v-if="applicant.verified_hei === 3" style="color:blue">Not Yet Check by HEI</span>

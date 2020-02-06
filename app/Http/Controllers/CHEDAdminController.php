@@ -23,8 +23,22 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('role',1)
+                    ->where('confirm', 1)
 		            ->orderBy('lname', 'asc')
 		            ->get();
+
+        return response()->json($users);
+    }
+    //Fetch all list of unverified Applicant
+    public function fetch_unverified_applicant() {
+
+        $users = DB::table('users')
+                    ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+                    ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('role',1)
+                    ->where('confirm', 0)
+                    ->orderBy('lname', 'asc')
+                    ->get();
 
         return response()->json($users);
     }
@@ -36,6 +50,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('role',1)
 		            ->where('applicant_hei_id', $id)
+                    ->where('confirm', 1)
 		            ->orderBy('lname', 'asc')
 		            ->get();
 
@@ -48,6 +63,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('role',1)
+                    ->where('confirm', 1)
 		            ->where('verified_hei', 1)
 		            ->where('verified_admin', 1)
 		            ->where('yr_lvl', 1)
@@ -64,6 +80,7 @@ class CHEDAdminController extends Controller
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
 		            ->where('role',1)
+                    ->where('confirm', 5)
 		            ->where('verified_hei', 1)
 		            ->where('verified_admin', 1)
 		            ->where('yr_lvl', 1)
@@ -79,6 +96,7 @@ class CHEDAdminController extends Controller
 		$users = DB::table('users')
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('confirm', 1)
 		            ->where('verified_hei', 1)
 		            ->orderBy('lname', 'asc')
 		            ->get();
@@ -91,6 +109,7 @@ class CHEDAdminController extends Controller
 		$users = DB::table('users')
 		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
 		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('confirm', 1)
 		            ->where('verified_hei', 2)
 		            ->orderBy('lname', 'asc')
 		            ->get();
@@ -1740,7 +1759,6 @@ class CHEDAdminController extends Controller
         $applicants->civil_status = $request->civil_status;
         $applicants->citizenship = $request->citizenship;
         $applicants->contact = $request->contact;
-        $applicants->email = $request->email;
         $applicants->present_address = $request->present_address;
         $applicants->town_city = $request->town_city_id;
         $applicants->brgy = $request->brgy_id;

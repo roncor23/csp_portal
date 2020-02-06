@@ -46,6 +46,12 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('applicant/update_applicant/{id}','applicantController@update_applicant')->middleware('isApplicant');
     // Applicant change password
     Route::post('applicant/change_password/','applicantController@change_password')->middleware('isApplicant');
+    // Applicant change password
+    Route::post('applicant/resendcode/','applicantController@resendcode')->middleware('isApplicant');
+    // Applicant new email
+    Route::post('applicant/new_email/','applicantController@new_email')->middleware('isApplicant');
+    // Applicant verify code
+    Route::post('applicant/verify_code/','applicantController@verify_code')->middleware('isApplicant');
 
 
     // Super Admin add account
@@ -57,6 +63,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     // CHED Admin list of applicant
     Route::get('ched_admin/fetch_applicant','CHEDAdminController@fetch_applicant')->middleware('isCHED_admin');
+    // CHED Admin list of unverified applicant
+    Route::get('ched_admin/fetch_unverified_applicant','CHEDAdminController@fetch_unverified_applicant')->middleware('isCHED_admin');
     // CHED Admin list of enrolled applicant
     Route::get('ched_admin/fetch_enrolled_applicant','CHEDAdminController@fetch_enrolled_applicant')->middleware('isCHED_admin');
     // CHED Admin list of not enrolled applicant

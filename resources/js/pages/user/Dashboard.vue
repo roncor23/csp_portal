@@ -1,5 +1,6 @@
 <template>
     <div >
+      <div v-if="loading" class="se-pre-con"></div>
       <div class="header">
         <a href="#" id="menu-action">
           <i class="fa fa-bars"></i>
@@ -37,12 +38,23 @@
         <!-- Content -->
         <div class="main">
 
-            <div class="jumbotron" style="background-color:#ff000024">
-              <p v-for="applicant in applicants" v-if="applicant.confirm === null">Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 6 characters in length.</p>
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                  <input class="form-control" type="text">
-                  <button class="btn btn-primary mt-2" type="button">Verify</button>
+            <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
+              <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length.</p><a href="#" @click="reSendCode"><i class="fas fa-recycle" style="padding:5px"></i>Resend code</a><a href="#"  @click="c_email"><i class="far fa-envelope" style="padding:5px"></i>Change email</a>
+              <div class="form-row" >
+                <div v-if="verify_code" class="form-group col-md-12">
+                  <input class="form-control" type="text" id="ve_code" placeholder="Enter code.." v-model="v_code">
+                  <p v-if="v_v_code" style="font-size:12px">
+                    <span  style="color:red">Required.</span>
+                  </p>
+                  <button class="btn btn-primary mt-2" type="button" @click="verify">Verify</button>
+                </div>
+                <div v-if="change_email" class="form-group col-md-12">
+                  <input class="form-control" type="text" id="ne_email" placeholder="Enter new email.." v-model="n_email">
+                  <p v-if="v_n_email" style="font-size:12px">
+                    <span  style="color:red">Required.</span>
+                  </p>
+                  <button class="btn btn-primary mt-2" type="button" @click="back">Back</button>
+                  <button class="btn btn-primary mt-2" type="button" @click="new_email">Change Email</button>
                 </div>
               </div>
             </div>
@@ -58,6 +70,17 @@
 </template>
 
 <style scoped>
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
+}
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -349,10 +372,27 @@ import axios from 'axios';
     data() {
       return {
         username: '',
-        applicants: {}
+        applicants: {},
+        code: '',
+        verify_code: true,
+        change_email: false,
+        n_email: '',
+        formData: {},
+        v_n_email: false,
+        v_v_code: false,
+        v_code: '',
+        loading: false
       }
     },
     methods: {
+      c_email() {
+        this.verify_code = false;
+        this.change_email = true;
+      },
+      back() {
+        this.change_email = false;
+        this.verify_code = true;
+      },
       fetchApplicant: function() {
 
             axios.get('applicant/fetch_applicant/').then(result => {
@@ -374,6 +414,92 @@ import axios from 'axios';
           }).catch(error => {
               console.log(error);
           });
+      },
+      reSendCode: function() {
+          this.loading = true;
+          axios.post('applicant/resendcode/').then(result => {
+                this.loading = false;
+                this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: `A verification code has been sent to ${result.data}.`,
+                })
+
+          }).catch(error => {
+              console.log(error);
+          });
+      },
+      new_email: function() {
+
+          this.formData = new FormData();
+          this.formData.append('n_email', this.n_email);
+          $('#ne_email').css('border-color','');
+          this.v_n_email = false;
+          if(this.n_email) {
+
+          axios.post('applicant/new_email/', this.formData).then(result => {
+
+            if(result.data === 1) {
+                this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: `New email successfully changed.`,
+                })
+                this.fetchApplicant();
+                this.reset();
+            }
+
+          }).catch(error => {
+              console.log(error);
+          });
+        }
+          if(!this.n_email) {
+            $('#ne_email').css('border-color','red');
+            this.v_n_email = true;
+            return false;
+          }
+      },
+      verify() {
+          this.formData = new FormData();
+          this.formData.append('v_code', this.v_code);
+          $('#ve_code').css('border-color','');
+          this.v_v_code = false;
+          if(this.v_code) {
+
+          axios.post('applicant/verify_code/', this.formData).then(result => {
+
+            if(result.data === 0) {
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: 'Incorrect code!',
+                })
+                $('#ve_code').css('border-color','red');
+                this.v_v_code = false;
+                return false;
+            }
+
+                this.$swal.fire({
+                  icon: 'success',
+                  title: 'Great...',
+                  text: `You are successfully verified.`,
+                })
+                this.fetchApplicant();
+                this.reset();
+
+          }).catch(error => {
+              console.log(error);
+          });
+        }
+          if(!this.n_email) {
+            $('#ve_code').css('border-color','red');
+            this.v_v_code = true;
+            return false;
+          }
+      },
+      reset() {
+        this.n_email = '';
+        this.v_code = '';
       },
     },
     async mounted() {

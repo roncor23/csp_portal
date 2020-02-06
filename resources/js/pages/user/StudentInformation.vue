@@ -34,7 +34,12 @@
     
 
 		<!-- Content -->
-		<div class="container main" v-for="applicant in applicants" v-if="applicant.confirm === 1">
+
+		<div class="main">
+      <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
+         <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length. Verify first before you use this portal. Thanks!</p>
+      </div>
+     <div class="container" v-for="applicant in applicants" v-if="applicant.confirm === 1">
       <div class="d-flex justify-content-start">
         <i class="fas fa-print" @click="print" style="cursor:pointer;padding:3px"><a href="#" style="padding:3px;color:#6495ED">Print</a></i>
         <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>
@@ -249,6 +254,7 @@
           </div>
         </div>  
       </div>
+     </div>
 		</div>
 
               <!-- EDIT MODAL -->
@@ -873,9 +879,7 @@ Vue.use(VueHtmlToPaper, options);
       updateData: function($id) {
 
           $('#lname').css('border-color','');
-          $('#fname').css('border-color','');  
-          $('#mname').css('border-color',''); 
-          $('#xname').css('border-color','');  
+          $('#fname').css('border-color','');   
           $('#place_of_birth').css('border-color','');  
           $('#mobile_number').css('border-color',''); 
           $('#email').css('border-color','');   
@@ -883,7 +887,7 @@ Vue.use(VueHtmlToPaper, options);
           $('#zipcode').css('border-color',''); 
           $('#last_school_attended').css('border-color','');    
  
-        if(this.selectedItem.lname && this.selectedItem.fname && this.selectedItem.mname && this.selectedItem.xname && this.selectedItem.place_of_birth && this.selectedItem.contact && this.selectedItem.email && this.selectedItem.present_address && this.selectedItem.zipcode && this.selectedItem.name_of_school_last_attended) {
+        if(this.selectedItem.lname && this.selectedItem.fname && this.selectedItem.place_of_birth && this.selectedItem.contact && this.selectedItem.email && this.selectedItem.present_address && this.selectedItem.zipcode && this.selectedItem.name_of_school_last_attended) {
 
           this.formData = new FormData();
           this.formData.append('lname', this.selectedItem.lname);
@@ -925,6 +929,16 @@ Vue.use(VueHtmlToPaper, options);
             .then(response => {
                this.fetchApplicant();
 
+               if(response.data === 0) {
+
+                  this.$swal.fire({
+                    icon: 'error',
+                    title: 'Opps...',
+                    text: 'You cannot transfer to other school. Contact CHEDRO coordinator for your concern, at Caraga Regional Office, HEDC Bldg., CSU Main, Ampayon, Butuan City 8600, Philippines',
+                  })
+                  return false;
+               }
+
                this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
@@ -950,15 +964,8 @@ Vue.use(VueHtmlToPaper, options);
             $('#fname').css('border-color','red');
             return false;
           }
-                   if(!this.selectedItem.mname) {
-            $('#mname').css('border-color','red');
-            return false;
-          }
-                   if(!this.selectedItem.xname) {
-            $('#xname').css('border-color','red');
-            return false;
-          }
-                   if(!this.selectedItem.place_of_birth) {
+
+                  if(!this.selectedItem.place_of_birth) {
             $('#place_of_birth').css('border-color','red');
             return false;
           }

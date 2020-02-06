@@ -27,7 +27,7 @@
 <div class="main">
 
     <div class="jumbotron">
-       <ched-list-of-applicant></ched-list-of-applicant>
+       <ched-list-of-unverified-applicant></ched-list-of-unverified-applicant>
     </div>
 
 </div>
@@ -329,7 +329,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ched-list-of-applicant", {
+Vue.component("ched-list-of-unverified-applicant", {
     template: `<div>
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
@@ -409,7 +409,7 @@ Vue.component("ched-list-of-applicant", {
                         <td v-if="i.gwa === null" style="color:blue">GWA NOT YET SET</td>
                         <td v-if="i.gwa != null">{{i.gwa}}</td>
                         <td v-if="i.rank_points === null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>
-                        <td v-if="i.rank_points != null" style="color:green">{{i.rank_points}}</td>
+                        <td v-if="i.rank_points != null">{{i.rank_points}}</td>
                         <td v-if="i.ranking_status === null" style="color:blue">NOT YET ASSIGN</td>
                         <td v-if="i.ranking_status === 1">Ranking System Off</td>
                         <td v-if="i.ranking_status === 2">WAITING FOR RANKING</td>
@@ -771,9 +771,9 @@ Vue.component("ched-list-of-applicant", {
       this.$htmlToPaper('list_of_applicant');
 
       },
-    fetchApplicant: function() {
+    fetchUnverifiedApplicant: function() {
             this.loading = true;
-            axios.get('ched_admin/fetch_applicant/').then(result => {
+            axios.get('ched_admin/fetch_unverified_applicant/').then(result => {
                 this.loading = false;
                 this.applicants = result.data;
                 this.applicants.splice(index, 1);
@@ -899,7 +899,7 @@ Vue.component("ched-list-of-applicant", {
                 })
                 return false;
               }
-               this.fetchApplicant();
+               this.fetchUnverifiedApplicant();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
@@ -944,7 +944,7 @@ Vue.component("ched-list-of-applicant", {
 
   },
   async mounted() {
-    this.fetchApplicant();
+    this.fetchUnverifiedApplicant();
     this.fetchBrgy();
     this.fetchCity();
     this.fetchProvince();

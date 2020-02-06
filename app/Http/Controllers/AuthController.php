@@ -10,6 +10,7 @@ use App\applicantsModel;
 use App\parentsModel;
 use Carbon\Carbon;
 use App\Mail\SendMailable;
+use App\Mail\PasswordMailable;
 use Mail;
 
 class AuthController extends Controller
@@ -18,6 +19,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $applicants = new applicantsModel;
+        $user = new User;
 
         //Check if applicant is already in the system.
         $result = $applicants::where('lname', strtoupper($request->lastname))
@@ -25,15 +27,20 @@ class AuthController extends Controller
                             ->where('mname', strtoupper($request->middlename))
                             ->first();
 
+        $email = $user::where('email', $request->email)->first();
+
         if($result) {
             return response()->json(0); // Already in the system.
+        }
+
+        if($email) {
+            return response()->json(2); // Email already in used.
         }
 
         //Confirmation Code
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
         $shuffle =  substr(str_shuffle($data),0,7);
-
-        $user = new User;
+  
        
         $user->name = $request->username;
         $user->email = $request->email;
@@ -55,7 +62,6 @@ class AuthController extends Controller
         $applicants->civil_status = $request->civilstatus;
         $applicants->citizenship = $request->citizenship;
         $applicants->contact = $request->mobilenumber;
-        $applicants->email = $request->emailaddress;
         $applicants->present_address = $request->presentaddress;
         $applicants->town_city = $request->city;
         $applicants->brgy = $request->barangay;
@@ -102,7 +108,7 @@ class AuthController extends Controller
 
 
 
-        return response()->json(['success'=>true, 'reference_no'=>$applicants->reference_no, 'username'=>$username,'code'=>$code]);
+        return response()->json(['success'=>true, 'reference_no'=>$applicants->reference_no, 'username'=>$username, 'email'=>$email, 'code'=>$code]);
     }
 
     public function login(Request $request)
@@ -135,12 +141,22 @@ class AuthController extends Controller
             $model2 = new User();
 
             $user = $model2::where('id', $user_id)->first(); 
-
             $user->password = bcrypt($shuffle);
             $user->save();
 
-            //return not
-            return response()->json($shuffle);
+            //Sent new pass word to email
+            $username = $user->name;
+            $email = $user->email;
+            $new_password = $shuffle;
+
+            $objDemo = new \stdClass();
+
+            $objDemo->new_password =  $new_password;
+            $objDemo->username = $username;
+
+            Mail::to($email)->send(new PasswordMailable($objDemo));
+
+            return response()->json(['username'=>$username, 'email'=>$email, 'new_password'=>$new_password]); // True
         }                    
 
 

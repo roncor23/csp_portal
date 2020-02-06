@@ -24,7 +24,8 @@ import StudentStatus from './pages/user/StudentStatus'
 import StudentChangePassword from './pages/user/changepassword'
 
 import ChedCoordinator from './pages/chedcoordinator/dashboard'
-import ChedCoordinatorListOfApplicants from './pages/chedcoordinator/table/ched_listofapplicant'
+import ChedCoordinatorListOfApplicants from './pages/chedcoordinator/table/ched_listofapplicant' 
+import ChedCoordinatorListOfUnverifiedApplicants from './pages/chedcoordinator/table/ched_listofunverifiedapplicant' 
 import ChedCoordinatorListOfApplicantsByHEI from './pages/chedcoordinator/table/ched_listofapplicantbyhei'
 import ChedCoordinatorListOfEnrolledApplicants from './pages/chedcoordinator/table/ched_listofenrolledapplicant'
 import ChedCoordinatorListOfNotEnrolledApplicants from './pages/chedcoordinator/table/ched_listofnotenrolledapplicant'
@@ -145,6 +146,14 @@ const routes = [
     path: '/ched-coordinator/list-of-applicants',
     name: 'ched_coordinator.list_of_applicants_dashboard',
     component: ChedCoordinatorListOfApplicants,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/list-of-unverified-applicants',
+    name: 'ched_coordinator.list_of_unverified_applicants_dashboard',
+    component: ChedCoordinatorListOfUnverifiedApplicants,
     meta: {
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

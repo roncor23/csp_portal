@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-if="loading" class="se-pre-con"></div>
         <form-wizard @on-complete="onComplete" shape="circle" color="#3498db">
             <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
                 <step1 ref="step1" @on-validate="mergePartialModels"></step1>
@@ -14,12 +15,28 @@
             <tab-content title="Preferred School" icon="ti-home" :before-change="()=>validateStep('step4')">
                 <step4 ref="step4" @on-validate="mergePartialModels"></step4>
             </tab-content>
+            <span class="container">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>
         </form-wizard>
+
     </div>
-</div>
 
 </template>
+<style scoped>
 
+
+  .se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
+}
+
+
+  
+</style>
 <script>
 import Vue from 'vue'
 import axios from 'axios'
@@ -614,13 +631,15 @@ Vue.component("step4", {
     data() {
       return {
         applicationModel: {},
-        success:false
+        success:false,
+        loading: false
       }
     },
      methods: {
     onComplete: function() {
 
             var app = this
+            app.loading = true;
             this.$auth.register({
               data: {
                 username: app.applicationModel.userName,
@@ -662,8 +681,9 @@ Vue.component("step4", {
                 degreeprogram: app.applicationModel.degreeProgram,
                 applicanttype: app.applicationModel.applicant_type
               },
+              
               success: function (response) {
-                if(response.data.success == 0) {
+                if(response.data === 0) { //Applicants already in the system.
                   this.$swal.fire({
                     icon: 'error',
                     title: 'Opps...',
@@ -672,21 +692,23 @@ Vue.component("step4", {
                   })
                   return false;
                 }
+                if(response.data === 2) { //Email already in used.
+                  this.$swal.fire({
+                    icon: 'error',
+                    title: 'Opps...',
+                    text: 'Email is already in used in this system. Please try new one.',
+                  })
+                  return false;
+                }
+                this.loading = false;
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
-                  text: 'Application successfully submitted!',
+                  text: `Application successfully submitted! A verification code sent to ${response.data.email}. Please check your email and verify your account, you must login first.`,
                   footer: `<h2>Reference #:<h2 style="color:red">&nbsp;${response.data.reference_no}</h2></h2>`
                 })
                 // this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
 
-                this.$router.push({name:'success_mail',
-                    params:{
-                      success:response.data.success,
-                      email:response.data.email,
-                      bodycontent:response.data.bodycontent
-                    }
-                 });
 
 
               },
@@ -712,16 +734,7 @@ Vue.component("step4", {
 
          }
      },
-     // fetchCity() {
-     //        axios.get('fetch/city/').then(result => {
 
-     //            this.citys = result.data;
-     //            console.log(this.citys);
-
-     //        }).catch(error => {
-     //            console.log(error);
-     //        });
-     // }
     },
     async mounted() {
         // this.fetchCity();

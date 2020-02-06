@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMailable extends Mailable
+class PasswordMailable extends Mailable
 {
     use Queueable, SerializesModels;
     public $objDemo;
@@ -29,18 +29,15 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        // return $this->from('ronanotaza@gmail.com')
-        //         ->view('welcome');
-
         return $this->from('chedcaragastufaps@ched.gov.ph')
-                    ->subject('Confirmation Code')
-                    ->view('information')
-                    // ->text('success')
-                    ->with(
-                      [
-                            'message' => 'Ban co the kiem tra email',
-                      ]);
+            ->subject('Password Changed')
+            ->view('password')
+            ->with(
+              [
+                    'message' => 'Ban co the kiem tra email',
+              ]);
 
                     
     }
+    
 }

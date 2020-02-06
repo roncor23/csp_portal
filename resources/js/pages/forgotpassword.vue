@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+  <div v-if="loading" class="se-pre-con"></div>
   <div class="container main">
     <div class="login-block">
         <div class="container1">
@@ -437,6 +438,17 @@ h6 {
 
 }
 
+  .se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
+}
+
+
 </style>
 
 <script>
@@ -452,7 +464,8 @@ import axios from 'axios';
         slide1: 'image/slide1.jpg',
         slide2: 'image/slide2.jpg',
         slide3: 'image/slide3.jpg',
-        logo: 'image/logo.png'
+        logo: 'image/logo.png',
+        loading: false
       }
     },
 
@@ -464,8 +477,8 @@ import axios from 'axios';
     reset: function() {
 
     		$('#birthdate').css('border-color','');
-          	$('#phone_number').css('border-color','');  
-
+        $('#phone_number').css('border-color','');  
+        this.loading = true;
     		this.formData = new FormData();
             this.formData.append('birthdate', this.birthdate);
             this.formData.append('phone_number', this.phone_number);
@@ -485,12 +498,11 @@ import axios from 'axios';
 		                })
 		                return false;
  					}
-
- 					this.$swal.fire({
+          this.loading = false;
+ 				         	this.$swal.fire({
 	                  icon: 'success',
 	                  title: 'Great...',
-	                  text: 'Password reset successfully!',
-	                  footer: `<h4>New password: <h4 style="color:green">&nbsp;${response.data}</h4></h4>`
+	                  text: `Password reset successfully! New password sent to ${response.data.email}.`,
 	                })
 	                this.reset_form();
 	                this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})

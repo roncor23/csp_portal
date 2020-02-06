@@ -20,7 +20,6 @@ class CreateApplicantsTable extends Migration
             $table->string('lname')->nullable();
             $table->string('xname')->nullable();
             $table->string('contact')->nullable();
-            $table->string('email')->nullable();
             $table->string('type_of_disability')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('present_address')->nullable();

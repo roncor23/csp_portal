@@ -14,6 +14,7 @@
     <ul>
       <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
@@ -354,8 +355,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>Middle Name</th>
                     <th>Ext. Name</th>
                     <th>Gender</th>
-                    <th>Contact #</th>
-                    <th>Email</th>
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
@@ -376,8 +375,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>Middle Name</th>
                     <th>Ext. Name</th>
                     <th>Gender</th>
-                    <th>Contact #</th>
-                    <th>Email</th>
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
