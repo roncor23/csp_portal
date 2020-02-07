@@ -100,7 +100,8 @@ class applicantController extends Controller
         //Check current HEI and compare to request HEI
         if($applicants['hei'] != $request->hei_id) {
 
-            $users->applicant_hei_id = $request->hei_id;   
+            $users->applicant_hei_id = $request->hei_id; 
+            $users->email = $request->email;  
             $users->save();    
 
             $applicants->fname = strtoupper($request->fname);
@@ -113,7 +114,6 @@ class applicantController extends Controller
             $applicants->civil_status = $request->civil_status;
             $applicants->citizenship = $request->citizenship;
             $applicants->contact = $request->contact;
-            $applicants->email = $request->email;
             $applicants->present_address = $request->present_address;
             $applicants->town_city = $request->town_city_id;
             $applicants->brgy = $request->brgy_id;

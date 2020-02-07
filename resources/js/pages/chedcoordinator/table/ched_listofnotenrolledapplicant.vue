@@ -407,8 +407,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                         <td>{{i.xname}}</td>
                         <td v-if="i.gender === 1">MALE</td>
                         <td v-if="i.gender === 2">FEMALE</td>
-                        <td>{{i.contact}}</td>
-                        <td>{{i.email}}</td>
                         <td v-if="i.gwa === null" style="color:blue">GWA NOT YET SET</td>
                         <td v-if="i.gwa != null">{{i.gwa}}</td>
                         <td v-if="i.rank_points === null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>

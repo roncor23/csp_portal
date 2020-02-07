@@ -275,19 +275,19 @@
                        <div class="form-row">
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Last Name</span>
-                          <input type="text" id="lname" class="form-control" v-model="selectedItem.lname">
+                          <input type="text" id="lname" class="form-control" v-model="selectedItem.lname" disabled>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">First Name</span>
-                          <input type="text" id="fname" class="form-control" v-model="selectedItem.fname">
+                          <input type="text" id="fname" class="form-control" v-model="selectedItem.fname" disabled>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Middle Name</span>
-                          <input type="text" id="mname" class="form-control" v-model="selectedItem.mname">
+                          <input type="text" id="mname" class="form-control" v-model="selectedItem.mname" disabled>
                         </div>
                          <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Extension Name</span>
-                          <input type="text" id="xname" class="form-control" v-model="selectedItem.xname">
+                          <input type="text" id="xname" class="form-control" v-model="selectedItem.xname" disabled>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Date of Birth Name</span>
@@ -806,8 +806,7 @@ Vue.use(VueHtmlToPaper, options);
       fetchApplicant: function() {
 
             axios.get('applicant/fetch_applicant/').then(result => {
-                this.applicants = result.data;
-                console.log(this.applicants);            
+                this.applicants = result.data;          
 
             }).catch(error => {
                 console.log(error);
@@ -817,7 +816,6 @@ Vue.use(VueHtmlToPaper, options);
         axios.get('applicant/fetch_city/').then(result => {
 
             this.citys = result.data;
-            console.log(this.citys);
 
         }).catch(error => {
             console.log(error);
@@ -827,7 +825,6 @@ Vue.use(VueHtmlToPaper, options);
         axios.get('applicant/fetch_brgy/').then(result => {
 
             this.brgys = result.data;
-            console.log(this.brgys);
 
         }).catch(error => {
             console.log(error);
@@ -837,7 +834,6 @@ Vue.use(VueHtmlToPaper, options);
           axios.get('applicant/fetch_province/').then(result => {
 
               this.provinces = result.data;
-              console.log(this.provinces);
 
           }).catch(error => {
               console.log(error);
@@ -847,7 +843,6 @@ Vue.use(VueHtmlToPaper, options);
           axios.get('applicant/fetch_program/').then(result => {
 
               this.programs = result.data;
-              console.log(this.programs);
 
           }).catch(error => {
               console.log(error);
@@ -857,7 +852,6 @@ Vue.use(VueHtmlToPaper, options);
           axios.get('applicant/fetch_hei/').then(result => {
 
               this.heis = result.data;
-              console.log(this.heis);
 
           }).catch(error => {
               console.log(error);
@@ -867,7 +861,6 @@ Vue.use(VueHtmlToPaper, options);
           axios.get('applicant/fetch_user_name/').then(result => {
 
               this.username = result.data;
-              console.log(this.username);
 
           }).catch(error => {
               console.log(error);

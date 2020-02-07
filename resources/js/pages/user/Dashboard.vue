@@ -435,6 +435,7 @@ import axios from 'axios';
           this.formData.append('n_email', this.n_email);
           $('#ne_email').css('border-color','');
           this.v_n_email = false;
+
           if(this.n_email) {
 
           axios.post('applicant/new_email/', this.formData).then(result => {
@@ -491,7 +492,7 @@ import axios from 'axios';
               console.log(error);
           });
         }
-          if(!this.n_email) {
+          if(!this.v_v_code) {
             $('#ve_code').css('border-color','red');
             this.v_v_code = true;
             return false;

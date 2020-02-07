@@ -356,7 +356,7 @@ Vue.component("step3", {
                          <span class="text-danger" v-if="$v.fatherFirstName.$error && !$v.fatherFirstName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherMiddleName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father First Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father Middle Name </label>
                         <input type="text" class="form-control" placeholder="Middle Name" v-model.trim="fatherMiddleName" @input="$v.fatherMiddleName.$touch()">
                          <span class="text-danger" v-if="$v.fatherMiddleName.$error && !$v.fatherMiddleName.alpha">Accepts only alphabet characters.</span>
                       </div>
@@ -476,7 +476,7 @@ Vue.component("step3", {
 
         },
           fatherExtensionName: {
-            minLength: minLength(3)
+            minLength: minLength(2)
         },
           motherLastName: {
         },
@@ -485,7 +485,7 @@ Vue.component("step3", {
           motherMiddleName: {
         },
           motherExtensionName: {
-            minLength: minLength(3)
+            minLength: minLength(2)
         },
         motherEmployer: {
         },
