@@ -1727,8 +1727,10 @@ class CHEDAdminController extends Controller
     public function update_applicant(Request $request, $id) {
 
     	$model = new applicantsModel();
+        $model1 = new User();
 
     	$applicants = $model::where('user_id', $id)->first();
+        $users = $model1::where('id', $id)->first();
 
     	$_dependent_solo_parent = $request->supported_by_solo_parent;
     	$_applicant_solo_parent = $request->applicant_solo_parent;
@@ -1748,6 +1750,9 @@ class CHEDAdminController extends Controller
 
     		return response()->json(0);
     	}
+
+        $users->email = $request->email;
+        $users->save();
 
         $applicants->fname = strtoupper($request->fname);
         $applicants->mname = strtoupper($request->mname);
