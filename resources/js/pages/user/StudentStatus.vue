@@ -5,8 +5,8 @@
 		    <i class="fa fa-bars"></i>
 		    <span>Close</span>
 		  </a>
-		  <div class="logo">
-		    CSP
+		  <div>
+		    <img class="logo" :src="logo"> CSP
 		      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
   		      <!-- Dropdown -->
   		      <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
         </div>
 		    <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
 		      <span><h4 class="mb-4">School status:&nbsp;
-            <span v-if="applicant.verified_hei === 3" style="color:blue">Not Yet Check by HEI</span>
+            <span v-if="applicant.verified_hei === 3" style="color:blue">Not yet checked by HEI</span>
             <span v-if="applicant.verified_hei === 1" style="color:green">Enrolled</span>
             <span v-if="applicant.verified_hei === 2" style="color:red">Not Enrolled</span>
           </h4></span>
@@ -43,7 +43,7 @@
             <span style="color:red">{{applicant.hei_remarks}}</span>
           </h4></span>
 		      <span><h4 class="mb-4">CHED status:&nbsp;
-            <span v-if="applicant.verified_admin === null" style="color:blue">Not Yet Check by CHED</span>
+            <span v-if="applicant.verified_admin === null" style="color:blue">Not yet checked by CHED</span>
             <span v-if="applicant.verified_admin === 1" style="color:green">Validated</span>
             <span v-if="applicant.verified_admin === 2" style="color:red">Lacking documents</span>
             <span v-if="applicant.verified_admin === 3" style="color:red">Invalid application</span>
@@ -89,16 +89,26 @@ p {
   font-size: 16px;
   line-height: 1.42857143;
 }
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
 .header {
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  background: #3498DB;
+  background: #1c3961;
   width: 100%;
   height: 50px;
   line-height: 50px;
   color: #fff;
+}
+
+.header {
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .header .logo {
   text-transform: uppercase;
@@ -153,7 +163,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #3490dc;
+  background: #1c3961;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -204,7 +214,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #2a87d4;
+  background-color: #1a3150;
 }
 .main {
   position: relative;
@@ -361,7 +371,8 @@ import axios from 'axios'
     data() {
       return {
         applicants: {},
-        username: ''
+        username: '',
+        logo: 'image/logo.png'
       }
     },
     methods: {

@@ -5,8 +5,8 @@
 		    <i class="fa fa-bars"></i>
 		    <span>Close</span>
 		  </a>
-		  <div class="logo">
-		    CSP
+		  <div>
+		    <img class="logo" :src="logo"> CSP
 
 		      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
 		      <!-- Dropdown -->
@@ -132,26 +132,6 @@
               <td>{{applicant.zipcode}}</td>
             </tr>
           </tbody>
-                  <thead>
-            <tr style="font-size:10px">
-              <th scope="col">4ps</th>
-              <th scope="col">Ips</th>
-              <th scope="col">Pwd</th>
-              <th scope="col">Applicant is a solo parent</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="font-size:10px">   
-              <td v-if="applicant.forps === 1">Yes</td>
-              <td v-if="applicant.forps === 2">No</td>
-              <td v-if="applicant.ips === 1">Yes</td>
-              <td v-if="applicant.ips === 2">No</td>
-              <td v-if="applicant.pwd === 1">Yes</td>
-              <td v-if="applicant.pwd === 2">No</td>
-              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
-              <td v-if="applicant.applicant_solo_parent === 2">No</td>
-            </tr>
-          </tbody>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>FAMILY BACKGROUND</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">
@@ -206,7 +186,6 @@
               <th scope="col">Mother Contact #</th>
               <th scope="col">Father Contact #</th>
               <th scope="col">No. of Siblings</th>
-              <th scope="col">Solo Parent</th>
             </tr>
           </thead>
           <tbody>
@@ -214,8 +193,6 @@
               <td>{{applicant.mother_contact_number}}</td>
               <td>{{applicant.father_contact_number}}</td>
               <td>{{applicant.number_of_siblings}}</td>
-              <td v-if="applicant.supported_by_solo_parent === 1">Yes</td>
-              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
             </tr>
           </tbody>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue;border-style:none"><th>PREFERRED SCHOOL</th><th></th><th></th><th></th></tr></thead>
@@ -236,6 +213,41 @@
               <td>{{applicant.name_of_school_last_attended}}</td>
               <td v-for="hei in heis" v-bind:value="hei.hei_id" v-if="applicant.hei === hei.hei_id">{{hei.hei_name}}</td>
               <td v-for="program in programs" v-bind:value="program.course_id" v-if="applicant.course === program.course_id">{{program.course_name}}</td>
+            </tr>
+          </tbody>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>Marginalized Group</th><th></th><th></th><th></th></tr></thead>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Indigenous Peoples (IP)</th>
+              <th scope="col">Persons with Disability (PWDs)</th>
+              <th scope="col">4ps</th>
+              <th scope="col">Senior Citizen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td v-if="applicant.ips === 1">Yes</td>
+              <td v-if="applicant.ips === 2">No</td>
+              <td v-if="applicant.pwd === 1">Yes</td>
+              <td v-if="applicant.pwd === 2">No</td>
+              <td v-if="applicant.forps === 1">Yes</td>
+              <td v-if="applicant.forps === 2">No</td>
+              <td v-if="applicant.senior_citizen === 1">Yes</td>
+              <td v-if="applicant.senior_citizen === 2">No</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Solo Parent</th>
+              <th scope="col">Dependent to a Solo Parent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
+              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
+              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
+              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
             </tr>
           </tbody>
         </table>
@@ -495,18 +507,23 @@ p {
   font-size: 16px;
   line-height: 1.42857143;
 }
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
 .header {
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  background: #3498DB;
+  background: #1c3961;
   width: 100%;
   height: 50px;
   line-height: 50px;
   color: #fff;
 }
-.header .logo {
+.header {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -559,7 +576,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #3490dc;
+  background: #1c3961;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -610,7 +627,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #2a87d4;
+  background-color: #1a3150;
 }
 .main {
   position: relative;

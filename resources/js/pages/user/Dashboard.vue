@@ -6,25 +6,20 @@
           <i class="fa fa-bars"></i>
           <span>Close</span>
         </a>
-        <div class="logo">
-          CSP
-
+        <div >
+          <img class="logo" :src="logo"> CSP
             <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-                {{username}} Profile
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-              </div>
-            </li>
-             <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-              <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-              <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+                  {{username}} Profile
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                  <router-link to="/student-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                </div>
+              </li>
             </ul>
-
         </div>
       </div>
       <div class="sidebar">
@@ -81,6 +76,11 @@
     background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
 }
 
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -104,13 +104,13 @@ p {
   z-index: 10;
   top: 0;
   left: 0;
-  background: #3498DB;
+  background: #1c3961;
   width: 100%;
   height: 50px;
   line-height: 50px;
   color: #fff;
 }
-.header .logo {
+.header {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -163,7 +163,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #3490dc;
+  background: #1c3961;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -214,7 +214,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #2a87d4;
+  background-color: #1a3150;
 }
 .main {
   position: relative;
@@ -381,7 +381,8 @@ import axios from 'axios';
         v_n_email: false,
         v_v_code: false,
         v_code: '',
-        loading: false
+        loading: false,
+        logo: 'image/logo.png'
       }
     },
     methods: {

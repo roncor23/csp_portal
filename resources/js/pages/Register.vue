@@ -11,9 +11,11 @@
             <tab-content title="Family Background" icon="ti-view-list" :before-change="()=>validateStep('step3')">
                 <step3 ref="step3" @on-validate="mergePartialModels"></step3>
             </tab-content>
-
             <tab-content title="Preferred School" icon="ti-home" :before-change="()=>validateStep('step4')">
                 <step4 ref="step4" @on-validate="mergePartialModels"></step4>
+            </tab-content>
+            <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
+                <step5 ref="step5" @on-validate="mergePartialModels"></step5>
             </tab-content>
             <span class="container">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>
         </form-wizard>
@@ -55,12 +57,12 @@ Vue.component("step1", {
                   <div class="form-row">
                     <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.userName.$error }">
                       <label >User name</label><span style="color:red">*</span>
-                      <input type="text" class="form-control" placeholder="Enter Username.." v-model.trim="userName" @input="$v.userName.$touch()">
+                      <input type="text" class="form-control" placeholder="Ex: John" v-model.trim="userName" @input="$v.userName.$touch()">
                       <span class="text-danger" v-if="$v.userName.$error && !$v.userName.required">User name is required</span>
                     </div>
                     <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
                       <label>Email</label> <span style="color:red">*</span>
-                      <input type="email" class="form-control" placeholder="Enter Email.." v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
+                      <input type="email" class="form-control" placeholder="Ex: john@gmail.com" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.required">Email address is required</span>
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.email">This is not a valid email!</span>
                     </div>
@@ -346,45 +348,64 @@ Vue.component("step3", {
     template: `<div>
                   <div class="form-row">
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherLastName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father Last Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Last Name </label>
                         <input type="text" class="form-control" id="flname" name="flname" placeholder="Last Name" v-model.trim="fatherLastName" @input="$v.fatherLastName.$touch()">
                         <span class="text-danger" v-if="$v.fatherLastName.$error && !$v.fatherLastName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherFirstName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father First Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's First Name </label>
                         <input type="text" class="form-control" placeholder="First Name" v-model.trim="fatherFirstName" @input="$v.fatherFirstName.$touch()">
                          <span class="text-danger" v-if="$v.fatherFirstName.$error && !$v.fatherFirstName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherMiddleName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father Middle Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Middle Name </label>
                         <input type="text" class="form-control" placeholder="Middle Name" v-model.trim="fatherMiddleName" @input="$v.fatherMiddleName.$touch()">
                          <span class="text-danger" v-if="$v.fatherMiddleName.$error && !$v.fatherMiddleName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherExtensionName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father Extension Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Extension Name </label>
                         <input type="text" class="form-control" placeholder="Extension Name" v-model.trim="fatherExtensionName" @input="$v.fatherExtensionName.$touch()">
                          <span class="text-danger" v-if="$v.fatherExtensionName.$error && !$v.fatherExtensionName.alpha">Accepts only alphabet characters.</span>
                          <span class="text-danger" v-if="!$v.fatherExtensionName.minLength">Extension name must have at least {{ $v.fatherExtensionName.$params.minLength.min }} letters.</span>
                       </div>
                     </div>
+
+                    <div class="form-row">
+
+                      <div class="form-group col-md-3">
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Occupation</label>
+                        <input type="text" class="form-control" placeholder="Ex: Farmer" v-model.trim="fatherOccupation">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Employer </label>
+                        <input type="text" class="form-control" placeholder="Employer" v-model.trim="fatherEmployer">
+                      </div>
+                      <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherContact.$error }">
+                          <label style="float:left;font-size:12px;font-weight:bold">Father's Contact #</label>
+                          <input type="text" class="form-control"  placeholder="Ex: 0900..." v-model.trim="fatherContact" @input="$v.fatherContact.$touch()">
+                           <span class="text-danger" v-if="$v.fatherContact.$error && !$v.fatherContact.numeric">Accepts only numbers.</span>
+                            <span class="text-danger" v-if="!$v.fatherContact.minLength">Mobile number must have at least {{ $v.fatherContact.$params.minLength.min }} numbers.</span>
+                            <span class="text-danger" v-if="!$v.fatherContact.maxLength">Mobile number must have maximum of{{ $v.fatherContact.$params.maxLength.max }} numbers.</span>
+                      </div>
+                    </div>
                     <div class="form-row">
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherLastName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother Last Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Last Name </label>
                         <input type="text" class="form-control" placeholder="Last Name" v-model.trim="motherLastName" @input="$v.motherLastName.$touch()">
                          <span class="text-danger" v-if="$v.motherLastName.$error && !$v.motherLastName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherFirstName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother First Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's First Name </label>
                         <input type="text" class="form-control" placeholder="First Name" v-model.trim="motherFirstName" @input="$v.motherFirstName.$touch()">
                          <span class="text-danger" v-if="$v.motherFirstName.$error && !$v.motherFirstName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherMiddleName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother Middle Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Middle Name </label>
                         <input type="text" class="form-control" placeholder="Middle Name" v-model.trim="motherMiddleName" @input="$v.motherMiddleName.$touch()">
                          <span class="text-danger" v-if="$v.motherMiddleName.$error && !$v.motherMiddleName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherExtensionName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother Extension Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Extension Name </label>
                         <input type="text" class="form-control" placeholder="Extension Name" v-model.trim="motherExtensionName" @input="$v.motherExtensionName.$touch()">
                          <span class="text-danger" v-if="$v.motherExtensionName.$error && !$v.motherExtensionName.alpha">Accepts only alphabet characters.</span>
                           <span class="text-danger" v-if="!$v.motherExtensionName.minLength">Extension name must have at least {{ $v.motherExtensionName.$params.minLength.min }} letters.</span>
@@ -392,38 +413,21 @@ Vue.component("step3", {
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-3">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother Occupation </label>
-                        <input type="text" class="form-control" placeholder="Ex: Farmer" v-model.trim="motherOccupation">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father Occupation</label>
-                        <input type="text" class="form-control" placeholder="Ex: Farmer" v-model.trim="fatherOccupation">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother Employer </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Employer </label>
                         <input type="text" class="form-control" placeholder="Employer" v-model.trim="motherEmployer">
                       </div>
                       <div class="form-group col-md-3">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father Employer </label>
-                        <input type="text" class="form-control" placeholder="Employer" v-model.trim="fatherEmployer">
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Occupation </label>
+                        <input type="text" class="form-control" placeholder="Ex: Farmer" v-model.trim="motherOccupation">
                       </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherContact.$error }">
-                          <label style="float:left;font-size:12px;font-weight:bold">Mother Contact #</label>
+                      <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherContact.$error }">
+                          <label style="float:left;font-size:12px;font-weight:bold">Mother's Contact #</label>
                           <input type="text" class="form-control" placeholder="Ex: 0900..." v-model.trim="motherContact" @input="$v.motherContact.$touch()">
                            <span class="text-danger" v-if="$v.motherContact.$error && !$v.motherContact.numeric">Accepts only numbers.</span>
                            <span class="text-danger" v-if="!$v.motherContact.minLength">Mobile number must have at least {{ $v.motherContact.$params.minLength.min }} numbers.</span>
                             <span class="text-danger" v-if="!$v.motherContact.maxLength">Mobile number must have maximum of{{ $v.motherContact.$params.maxLength.max }} numbers.</span>
-                        </div>
-                        <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherContact.$error }">
-                          <label style="float:left;font-size:12px;font-weight:bold">Father Contact #</label>
-                          <input type="text" class="form-control"  placeholder="Ex: 0900..." v-model.trim="fatherContact" @input="$v.fatherContact.$touch()">
-                           <span class="text-danger" v-if="$v.fatherContact.$error && !$v.fatherContact.numeric">Accepts only numbers.</span>
-                            <span class="text-danger" v-if="!$v.fatherContact.minLength">Mobile number must have at least {{ $v.fatherContact.$params.minLength.min }} numbers.</span>
-                            <span class="text-danger" v-if="!$v.fatherContact.maxLength">Mobile number must have maximum of{{ $v.fatherContact.$params.maxLength.max }} numbers.</span>
-                        </div>
-                        <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.sibblings.$error }" >
+                      </div>
+                      <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.sibblings.$error }" >
                           <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old and below</label>
                           <select id="no_of_siblings" name="no_of_siblings" class="form-control" v-model="sibblings" @input="$v.sibblings.$touch()">
                             <option value="0">0</option>
@@ -441,8 +445,9 @@ Vue.component("step3", {
                             <option value="12">12</option>
                           </select>
                           <span class="text-danger" v-if="$v.sibblings.$error && !$v.sibblings.required">Number of sibblings is required</span>
-                        </div>                   
+                        </div>  
                     </div>
+
                           
                 </div>
         </div>`,
@@ -522,7 +527,7 @@ Vue.component("step4", {
                           <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.applicant_type.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Applicant Type</label>
                               <select id="applicant_type" name="applicant_type" class="form-control" v-model.trim="applicant_type" @input="$v.applicant_type.$touch()">
-                                <option value="1">Incoming College Freshmen</option>
+                                <option value="1">Incoming College Freshman</option>
                                 <option value="3">College Earned Units</option>
                                 <option value="4">ALS passer</option>
                                 <option value="5">PEPT passer</option>
@@ -621,6 +626,188 @@ Vue.component("step4", {
     }
 });
 
+Vue.component("step5", {
+    template: `<div>
+                      <div class="form-row">
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.ips.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Indigenous Peoples (IP)</label>
+                              <select class="form-control" v-model.trim="ips" @input="$v.ips.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.ips.$error && !$v.ips.required">Indigenous Peoples is required</span>
+                          </div>
+
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.pwd.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Persons with Disability (PWDs)</label>
+                              <select class="form-control" v-model.trim="pwd" @input="$v.pwd.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.pwd.$error && !$v.pwd.required">Persons with Disability is required</span>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.for_4ps.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4ps</label>
+                              <select class="form-control" v-model.trim="for_4ps" @input="$v.for_4ps.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.for_4ps.$error && !$v.for_4ps.required">4ps is required</span>
+                          </div>
+
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.senior_citizen.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Senior Citizens</label>
+                              <select class="form-control" v-model.trim="senior_citizen" @input="$v.senior_citizen.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.senior_citizen.$error && !$v.senior_citizen.required">Senior Citizens is required</span>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.a_solo_parent.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Solo Parent</label>
+                              <select class="form-control" v-model.trim="a_solo_parent" @input="$v.a_solo_parent.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.a_solo_parent.$error && !$v.a_solo_parent.required">Solo Parent is required</span>
+                          </div>
+
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.solo_parent.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent to a Solo Parent</label>
+                              <select class="form-control" v-model.trim="solo_parent" @input="$v.solo_parent.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.solo_parent.$error && !$v.solo_parent.required">Dependent to a solo parent is required</span>
+                          </div>
+                        
+                       </div>
+
+
+                       <div class="form-row mt-2 mb-2">
+                            <div class="form-group col-md-12">
+                                <p style="text-align:justify;font-size:12px">Submit the following documents to validate your application <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#required_documents">click here</a>.</span></p>
+                            </div>
+                           <div class="form-group col-md-12">
+                                <p style="text-align:justify;font-size:12px">By clicking "Submit" you agree to the <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#terms_condition">terms and conditions.</a></span></p>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="required_documents" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Required Documents</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p style="text-align:justify"><span style="font-weight:bold">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>
+                                <p style="text-align:justify"><span style="font-weight:bold">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>
+                                <p style="text-align:justify"><span style="font-weight:bold">Financial: </span>The student-applicants shall submit <span style="border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none">any</span> of the following documents: <span style="color:#3490dc">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style="color:#3490dc">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style="color:#3490dc">(c)</span> Certificate of Indigence;</p>
+                                <p style="text-align:justify"><span style="font-weight:bold">Other documents: </span><span style="color:#3490dc">(a)</span> Certificate as dependent to a solo parent; <span style="color:#3490dc">(b)</span> Certificate of disability; <span style="color:#3490dc">(c)</span> Certificate of membership to indigenous community; <span style="color:#3490dc">(d)</span> Certificate of 4ps; <span style="color:#3490dc">(e)</span> Certificate of senior citizen.</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="terms_condition" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Terms & Conditions</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p style="text-align:justify">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.
+
+                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        </div>`,
+    data() {
+        return {
+            pwd: "",
+            ips: "",
+            for_4ps: "",
+            senior_citizen: "",
+            solo_parent: "",
+            a_solo_parent: ""
+        }
+    },
+    validations: {
+        pwd: {
+            required
+        },
+        ips: {
+            required
+        },
+        for_4ps: {
+            required
+
+        },
+        senior_citizen: {
+            required
+        },
+        solo_parent: {
+            required
+        },
+        a_solo_parent: {
+            required
+        },
+
+        form: ["pwd", "ips", "for_4ps", "senior_citizen","a_solo_parent", "solo_parent"]
+    },
+    methods: {
+        validate() {
+            this.$v.form.$touch();
+            var isValid = !this.$v.form.$invalid;
+            this.$emit("on-validate", this.$data, isValid);
+            return isValid;
+        },
+        fetchHei() {
+            axios.get('fetch/hei/').then(result => {
+
+                this.heis = result.data;
+
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        fetchProgram() {
+            axios.get('fetch/program/').then(result => {
+
+                this.programs = result.data;
+
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+    },
+    async mounted() {
+        this.fetchHei();
+        this.fetchProgram();
+    }
+});
+
  export default {
     data() {
       return {
@@ -669,6 +856,12 @@ Vue.component("step4", {
           this.formData.append('schoolPreferred', this.applicationModel.schoolPreferred);
           this.formData.append('degreeProgram', this.applicationModel.degreeProgram);
           this.formData.append('applicant_type', this.applicationModel.applicant_type);
+          this.formData.append('ips', this.applicationModel.ips);
+          this.formData.append('for_4ps', this.applicationModel.for_4ps);
+          this.formData.append('senior_citizen', this.applicationModel.senior_citizen);
+          this.formData.append('a_solo_parent', this.applicationModel.a_solo_parent);
+          this.formData.append('solo_parent', this.applicationModel.solo_parent);
+          this.formData.append('pwd', this.applicationModel.pwd);
           this.loading = true;
           axios.post('applicant/register/', this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {

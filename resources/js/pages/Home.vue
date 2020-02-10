@@ -1,25 +1,66 @@
 <template>
   <div>
-      <div class="w3-top">
-        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-          <a class="navbar-brand" style="font-size:14px"><img class="logo" :src="logo"> CSP</a>
-          <div class="w3-right">               
-            <router-link to="/register"><button class="btn btn-primary">Apply Now</button></router-link>
-            <router-link to="/login"><button class="btn btn-primary">Sign In</button></router-link>
+      <div class="w3-bar1 w3-white1 w3-wide1" style="margin-top:50px">
+        <div class="container-fluid">
+          <a class="navbar-brand" ><img class="logo" :src="logo"></a>
+        </div>
+     </div>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top w3-card">
+        <div class="container">
+          <a class="navbar-brand" href="#">Applicants: 1,250</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+              </li>
+              <li class="nav-item">
+                <router-link to="/register"><a class="nav-link" href="#">Apply Now</a></router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/login"><a class="nav-link" href="#">SignIn</a></router-link>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <!-- Header -->
-      <header class="w3-display-container w3-content w3-wide" id="home">
-        <img class="w3-image" :src="background" alt="Architecture">
-        <div class="w3-display-middle w3-margin-top w3-center">
-          <h1 class="applicants w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>APPLICANTS: 6,231</b></span></h1>
+      </nav>
+
+      <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+<!--             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url('image/banner2.png')">
+              <div class="carousel-caption d-none d-md-block">
+<!--                 <h2 class="display-4">First Slide</h2>
+                <p class="lead">This is a description for the first slide.</p> -->
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
         </div>
       </header>
+
     <!-- Icons Grid -->
     <div class="features-icons bg-light text-center container-fluid">
       <div>
-        <h1 style="margin-bottom:50px">Be a CHED Scholar in <span style="border: 1px solid #3490dc;border-top:none;border-right:none;border-left:none;border-width:thick">3 steps.</span></h1>
+        <h1 style="margin-bottom:50px">Be a CHED Scholar</h1>
         <div class="row">
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
@@ -159,6 +200,17 @@
 
 <style scoped>
 
+.carousel-item {
+  height: 75vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
 div {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -183,9 +235,25 @@ img {
 
 a.ic1:hover {color: #dcdcdc;}
 
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
 .ic1 {
   color:  #fff;
 }
+
+
+.w3-top {
+    top: 0;
+}
+.w3-top {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
 
 .w3-text-white, .w3-hover-text-white:hover {
     color: #fff!important;
@@ -200,8 +268,16 @@ a.ic1:hover {color: #dcdcdc;}
     background-color: #fff!important;
 }
 
+.w3-white1, .w3-hover-white:hover {
+    color: #000!important;
+    background-color: #1c3961!important;
+}
+
+
 
 .w3-right{float:right!important}
+
+.w3-left{float:left!important}
 
 .w3-content, .w3-auto {
     margin-left: auto;
@@ -242,6 +318,8 @@ a.ic1:hover {color: #dcdcdc;}
     padding: 8px 16px!important;
 }
 
+
+
 .w3-opacity-min {
     opacity: 0.75;
 }
@@ -251,7 +329,16 @@ a.ic1:hover {color: #dcdcdc;}
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
+.w3-card1 {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
 .w3-bar {
+    width: 100%;
+    overflow: hidden;
+}
+
+.w3-bar1 {
     width: 100%;
     overflow: hidden;
 }
@@ -538,7 +625,7 @@ footer.footer {
             }
           ]     
         },
-        logo: 'image/ched_logo.png',
+        logo: 'image/logologo.png',
         background: 'image/background.png',
         brisbane: 'image/brisbane.jpg'
 

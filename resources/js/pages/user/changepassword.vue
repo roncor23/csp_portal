@@ -5,8 +5,8 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <div class="logo">
-    CSP
+  <div>
+    <img class="logo" :src="logo"> CSP
 
       <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
       <!-- Dropdown -->
@@ -62,12 +62,22 @@ p {
   font-size: 16px;
   line-height: 1.42857143;
 }
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.header {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .header {
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  background: #3498DB;
+  background: #1c3961;
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -126,7 +136,7 @@ p {
   top: 50px;
   height: 100%;
   width: 60px;
-  background: #3490dc;
+  background: #1c3961;
   border-right: 1px solid #ddd;
   text-align: center;
   -webkit-transition: all 0.2s ease-in-out;
@@ -177,7 +187,7 @@ p {
   line-height: 60px;
 }
 .sidebar ul li a:hover {
-  background-color: #2a87d4;
+  background-color: #1a3150;
 }
 .main {
   position: relative;
@@ -462,7 +472,8 @@ Vue.component("applicant-change-password", {
   export default {
     data() {
       return {
-        username: ''
+        username: '',
+        logo: '../image/logo.png'
       }
     },
     methods: {

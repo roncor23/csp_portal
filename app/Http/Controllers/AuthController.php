@@ -71,6 +71,12 @@ class AuthController extends Controller
         $applicants->hei = $request->schoolPreferred;
         $applicants->course = $request->degreeProgram;
         $applicants->applicant_type = $request->applicant_type;
+        $applicants->ips = $request->ips;
+        $applicants->pwd = $request->pwd;
+        $applicants->forps = $request->for_4ps;
+        $applicants->senior_citizen = $request->senior_citizen;
+        $applicants->applicant_solo_parent = $request->a_solo_parent;
+        $applicants->supported_by_solo_parent = $request->solo_parent;
         $applicants->user_id = $user->id;
         $applicants->reference_no =  $dt->toDateString().$user->id;  
         $applicants->save();
