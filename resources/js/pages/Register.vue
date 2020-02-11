@@ -164,9 +164,8 @@ Vue.component("step2", {
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Civil Status</label>
                               <select id="civil_status" name="civil_status" class="form-control" v-model.trim="civilStatus" @input="$v.civilStatus.$touch()">
                                 <option value="1">Single</option>
-                                <option value="2">Maried</option>
+                                <option value="2">Married</option>
                                 <option value="3">Separated</option>
-                                <option value="4">Devorced</option>
                                 <option value="5">Widowed</option>
                               </select>
                               <span class="text-danger" v-if="$v.civilStatus.$error && !$v.civilStatus.required">Civil status is required</span>
@@ -649,7 +648,7 @@ Vue.component("step5", {
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.for_4ps.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4ps</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4Ps</label>
                               <select class="form-control" v-model.trim="for_4ps" @input="$v.for_4ps.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -658,12 +657,12 @@ Vue.component("step5", {
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.senior_citizen.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Senior Citizens</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Senior Citizen</label>
                               <select class="form-control" v-model.trim="senior_citizen" @input="$v.senior_citizen.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
                               </select>
-                              <span class="text-danger" v-if="$v.senior_citizen.$error && !$v.senior_citizen.required">Senior Citizens is required</span>
+                              <span class="text-danger" v-if="$v.senior_citizen.$error && !$v.senior_citizen.required">Dependent of a Senior Citizen is required</span>
                           </div>
                         </div>
                         <div class="form-row">
@@ -677,12 +676,12 @@ Vue.component("step5", {
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.solo_parent.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent to a Solo Parent</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Solo Parent</label>
                               <select class="form-control" v-model.trim="solo_parent" @input="$v.solo_parent.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
                               </select>
-                              <span class="text-danger" v-if="$v.solo_parent.$error && !$v.solo_parent.required">Dependent to a solo parent is required</span>
+                              <span class="text-danger" v-if="$v.solo_parent.$error && !$v.solo_parent.required">Dependent of a Solo Parent is required</span>
                           </div>
                         
                        </div>

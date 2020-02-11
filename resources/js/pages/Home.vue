@@ -8,22 +8,22 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top w3-card">
         <div class="container">
-          <a class="navbar-brand" href="#">Applicants: 1,250</a>
+          <a  href="#" style="color:#0000009e;text-decoration: none">APPLICANTS: 1,250</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home
+                <a class="nav-link" href="#">HOME
                       <span class="sr-only">(current)</span>
                     </a>
               </li>
               <li class="nav-item">
-                <router-link to="/register"><a class="nav-link" href="#">Apply Now</a></router-link>
+                <router-link to="/register"><a class="nav-link" href="#">APPLY NOW</a></router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login"><a class="nav-link" href="#">SignIn</a></router-link>
+                <router-link to="/login"><a class="nav-link" href="#">SIGNIN</a></router-link>
               </li>
             </ul>
           </div>
@@ -64,8 +64,8 @@
         <div class="row">
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-screen-desktop m-auto text-primary fas fa-keyboard"></i>
+              <div class="features-icons-icon d-flex" >
+                <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
               <h3>Application period</h3>
                   <p style="text-align:justify">Start from March 1 to May 31 of every academic year after the effectivity of this CMO. Policies and Guidelines for CHED Scholarship Programs (CSPs) <a href="https://ched.gov.ph/wp-content/uploads/CMO-8-s.-2019-Policies-and-Guidelines-for-CHED-Scholarship-Programs-CSPs.pdf" target="_blank" style="color:#3490dc">click here. </a>Priority Courses for CHED Scholarship Programs (CSPs) for Academic Year 2019-2020 <a href="https://ched.gov.ph/wp-content/uploads/CMO-No.-05-Series-2019-Priority-Courses-for-CHED-Scholarship-Programs-CSPs-for-Academic-Year-2019-2020.pdf" target="_blank" style="color:#3490dc">click here.</a></p>
@@ -74,7 +74,7 @@
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-layers m-auto text-primary fas fa-file-alt"></i>
+                <i class="icon-layers m-auto fas fa-file-alt" style="color:#1c3961"></i>
               </div>
               <h3>Submit required documents</h3>
 
@@ -87,7 +87,7 @@
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary fas fa-list-ul"></i>
+                <i class="icon-check m-auto fas fa-list-ul" style="color:#1c3961"></i>
               </div>
               <h3>Ranking</h3>
               <p style="text-align:justify">The ranking shall be used by the CHEDROs in selecting the most qualified applicants based on the requirements stated in Article VII hereof. The shall be made according to the following percentage distribution: (a) <span style="color:#3490dc">Academic Performance 70%</span>; (b) <span style="color:#3490dc">Annual Gross Income 30%</span> total of <span style="color:#3490dc">100%</span>; (c) Additional <span style="color:#3490dc">five (5) points</span> in the total score are given to applicants belonging to the special group of persons such as Underprivileged and Homeless Citizens, Persons with Disability (PWDs), Solo Parents, Senior Citizens, and Indigenous People (IPs). 
@@ -158,17 +158,17 @@
       </div>
     </div>
  <!-- Footer -->
-    <footer class="footer" style="background-color:#3490dc">
+    <footer class="footer" style="background-color:#1c3961">
       <div class="container">
         <div class="row">
           <div class="col-lg-6  col-xl-6 col-sm-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
-                <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">About</a>
+                <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">ABOUT</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">Contact</a>
+                <a href="https://ched-caraga.com/" target="_blank" style="color:#fff">CONTACT</a>
               </li>
             </ul>
             <small class="small mb-4 mb-lg-0" style="color:#fff">&copy; CSP 2020. All Rights Reserved.</small>
