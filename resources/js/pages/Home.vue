@@ -23,7 +23,7 @@
                 <router-link to="/register"><a class="nav-link" href="#">APPLY NOW</a></router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login"><a class="nav-link" href="#">SIGNIN</a></router-link>
+                <router-link to="/login"><a class="nav-link" href="#">SIGN IN</a></router-link>
               </li>
             </ul>
           </div>
@@ -67,8 +67,15 @@
               <div class="features-icons-icon d-flex" >
                 <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
-              <h3>Application period</h3>
-                  <p style="text-align:justify">Start from March 1 to May 31 of every academic year after the effectivity of this CMO. Policies and Guidelines for CHED Scholarship Programs (CSPs) <a href="https://ched.gov.ph/wp-content/uploads/CMO-8-s.-2019-Policies-and-Guidelines-for-CHED-Scholarship-Programs-CSPs.pdf" target="_blank" style="color:#3490dc">click here. </a>Priority Courses for CHED Scholarship Programs (CSPs) for Academic Year 2019-2020 <a href="https://ched.gov.ph/wp-content/uploads/CMO-No.-05-Series-2019-Priority-Courses-for-CHED-Scholarship-Programs-CSPs-for-Academic-Year-2019-2020.pdf" target="_blank" style="color:#3490dc">click here.</a></p>
+              <h3>Step 1: Accomplish application form via online from March 1 to May 31</h3>
+                <ul style="text-align:justify">
+                  <li>Must be Filipino citizen</li>
+                  <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent
+                  </li>
+                  <li>Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)
+                  </li>
+                  <li style="list-style-type:none">shall submit certifications and/or Identification Cards (IDs) issued by the appropriate offices or agencies.</li>
+                </ul>
             </div>
           </div>
           <div class="col-lg-4 col-xl-4">
@@ -76,12 +83,25 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto fas fa-file-alt" style="color:#1c3961"></i>
               </div>
-              <h3>Submit required documents</h3>
-
-                <p style="text-align:justify"><span style="font-weight:bold">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>
-                <p style="text-align:justify"><span style="font-weight:bold">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>
-                <p style="text-align:justify"><span style="font-weight:bold">Financial: </span>The student-applicants shall submit <span style="border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none">any</span> of the following documents: <span style="color:#3490dc">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style="color:#3490dc">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style="color:#3490dc">(c)</span> Certificate of Indigence;</p>
-                <p style="text-align:justify"><span style="font-weight:bold">Other documents: </span><span style="color:#3490dc">(a)</span> Certificate as dependent to a solo parent; <span style="color:#3490dc">(b)</span> Certificate of disability; <span style="color:#3490dc">(c)</span> Certificate of membership to indigenous community; <span style="color:#3490dc">(d)</span> Certificate of 4ps; <span style="color:#3490dc">(e)</span> Certificate of senior citizen.</p>
+              <h3>Step 2: Submit required documents to CHED Caraga</h3>
+              <ul style="text-align:justify">
+                <li>Printed accomplished application form (with signature and 1 pc 2x2 picture)</li>
+                <li>Certified true copy of Birth Certificate <span></span></li>
+                  <ul>
+                    <li>High school report card for incoming freshmen students eligible for college; and</li>
+                    <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
+                  </ul>
+                </li>
+                <li><span>Any of the following documents:</span>
+                  <ul>
+                    <li>Latest Income Tax Return (ITR) of parents or guardian;</li>
+                    <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>
+                    <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>
+                    <li>Case Study report from DSWD; and </li>
+                    <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="col-lg-4 col-xl-4">
@@ -89,9 +109,12 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto fas fa-list-ul" style="color:#1c3961"></i>
               </div>
-              <h3>Ranking</h3>
-              <p style="text-align:justify">The ranking shall be used by the CHEDROs in selecting the most qualified applicants based on the requirements stated in Article VII hereof. The shall be made according to the following percentage distribution: (a) <span style="color:#3490dc">Academic Performance 70%</span>; (b) <span style="color:#3490dc">Annual Gross Income 30%</span> total of <span style="color:#3490dc">100%</span>; (c) Additional <span style="color:#3490dc">five (5) points</span> in the total score are given to applicants belonging to the special group of persons such as Underprivileged and Homeless Citizens, Persons with Disability (PWDs), Solo Parents, Senior Citizens, and Indigenous People (IPs). 
-              </p>
+              <h3>Step 3: For application updates</h3>
+              <ul style="text-align:justify">
+                <li>Login to your account to check your application status</li>
+                <li>Email at csp@cspcaraga.com</li>
+                <li>Call or Text 09120892045</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -131,7 +154,7 @@
     <!-- Testimonials -->
     <div class="testimonials text-center bg-light container-fluid">
       <div>
-        <h3 class="label mb-5">What people are saying...</h3>
+        <h3 class="label mb-5">Success Story</h3>
         <div class="row">
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">

@@ -362,7 +362,7 @@ Vue.component("step3", {
                          <span class="text-danger" v-if="$v.fatherMiddleName.$error && !$v.fatherMiddleName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fatherExtensionName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Father's Extension Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Father's Name Extension </label>
                         <input type="text" class="form-control" placeholder="Extension Name" v-model.trim="fatherExtensionName" @input="$v.fatherExtensionName.$touch()">
                          <span class="text-danger" v-if="$v.fatherExtensionName.$error && !$v.fatherExtensionName.alpha">Accepts only alphabet characters.</span>
                          <span class="text-danger" v-if="!$v.fatherExtensionName.minLength">Extension name must have at least {{ $v.fatherExtensionName.$params.minLength.min }} letters.</span>
@@ -404,7 +404,7 @@ Vue.component("step3", {
                          <span class="text-danger" v-if="$v.motherMiddleName.$error && !$v.motherMiddleName.alpha">Accepts only alphabet characters.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherExtensionName.$error }">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Extension Name </label>
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Name Extension </label>
                         <input type="text" class="form-control" placeholder="Extension Name" v-model.trim="motherExtensionName" @input="$v.motherExtensionName.$touch()">
                          <span class="text-danger" v-if="$v.motherExtensionName.$error && !$v.motherExtensionName.alpha">Accepts only alphabet characters.</span>
                           <span class="text-danger" v-if="!$v.motherExtensionName.minLength">Extension name must have at least {{ $v.motherExtensionName.$params.minLength.min }} letters.</span>
@@ -412,12 +412,12 @@ Vue.component("step3", {
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-3">
-                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Employer </label>
-                        <input type="text" class="form-control" placeholder="Employer" v-model.trim="motherEmployer">
-                      </div>
-                      <div class="form-group col-md-3">
                         <label style="float:left;font-size:12px;font-weight:bold">Mother's Occupation </label>
                         <input type="text" class="form-control" placeholder="Ex: Farmer" v-model.trim="motherOccupation">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label style="float:left;font-size:12px;font-weight:bold">Mother's Employer </label>
+                        <input type="text" class="form-control" placeholder="Employer" v-model.trim="motherEmployer">
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.motherContact.$error }">
                           <label style="float:left;font-size:12px;font-weight:bold">Mother's Contact #</label>
@@ -427,7 +427,7 @@ Vue.component("step3", {
                             <span class="text-danger" v-if="!$v.motherContact.maxLength">Mobile number must have maximum of{{ $v.motherContact.$params.maxLength.max }} numbers.</span>
                       </div>
                       <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.sibblings.$error }" >
-                          <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old and below</label>
+                          <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">No. of Siblings in the family below 18 years old</label>
                           <select id="no_of_siblings" name="no_of_siblings" class="form-control" v-model="sibblings" @input="$v.sibblings.$touch()">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -638,7 +638,7 @@ Vue.component("step5", {
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.pwd.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Persons with Disability (PWDs)</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Person with Disability (PWD)</label>
                               <select class="form-control" v-model.trim="pwd" @input="$v.pwd.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>

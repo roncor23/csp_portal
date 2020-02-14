@@ -1,6 +1,50 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"/js/app": 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 	}
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +70,67 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				// create error before stack unwound to get useful stacktrace later
+/******/ 				var error = new Error();
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 							error.name = 'ChunkLoadError';
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				document.head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -78,6 +183,16 @@
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -3559,6 +3674,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4331,7 +4469,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step2", {
   }()
 });
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step3", {
-  template: "<div>\n                  <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherLastName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Last Name </label>\n                        <input type=\"text\" class=\"form-control\" id=\"flname\" name=\"flname\" placeholder=\"Last Name\" v-model.trim=\"fatherLastName\" @input=\"$v.fatherLastName.$touch()\">\n                        <span class=\"text-danger\" v-if=\"$v.fatherLastName.$error && !$v.fatherLastName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherFirstName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's First Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"First Name\" v-model.trim=\"fatherFirstName\" @input=\"$v.fatherFirstName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherFirstName.$error && !$v.fatherFirstName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherMiddleName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Middle Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Middle Name\" v-model.trim=\"fatherMiddleName\" @input=\"$v.fatherMiddleName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherMiddleName.$error && !$v.fatherMiddleName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherExtensionName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Extension Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Extension Name\" v-model.trim=\"fatherExtensionName\" @input=\"$v.fatherExtensionName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherExtensionName.$error && !$v.fatherExtensionName.alpha\">Accepts only alphabet characters.</span>\n                         <span class=\"text-danger\" v-if=\"!$v.fatherExtensionName.minLength\">Extension name must have at least {{ $v.fatherExtensionName.$params.minLength.min }} letters.</span>\n                      </div>\n                    </div>\n\n                    <div class=\"form-row\">\n\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Occupation</label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Ex: Farmer\" v-model.trim=\"fatherOccupation\">\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Employer </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Employer\" v-model.trim=\"fatherEmployer\">\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherContact.$error }\">\n                          <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Contact #</label>\n                          <input type=\"text\" class=\"form-control\"  placeholder=\"Ex: 0900...\" v-model.trim=\"fatherContact\" @input=\"$v.fatherContact.$touch()\">\n                           <span class=\"text-danger\" v-if=\"$v.fatherContact.$error && !$v.fatherContact.numeric\">Accepts only numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.fatherContact.minLength\">Mobile number must have at least {{ $v.fatherContact.$params.minLength.min }} numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.fatherContact.maxLength\">Mobile number must have maximum of{{ $v.fatherContact.$params.maxLength.max }} numbers.</span>\n                      </div>\n                    </div>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherLastName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Last Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Last Name\" v-model.trim=\"motherLastName\" @input=\"$v.motherLastName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherLastName.$error && !$v.motherLastName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherFirstName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's First Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"First Name\" v-model.trim=\"motherFirstName\" @input=\"$v.motherFirstName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherFirstName.$error && !$v.motherFirstName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherMiddleName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Middle Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Middle Name\" v-model.trim=\"motherMiddleName\" @input=\"$v.motherMiddleName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherMiddleName.$error && !$v.motherMiddleName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherExtensionName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Extension Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Extension Name\" v-model.trim=\"motherExtensionName\" @input=\"$v.motherExtensionName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherExtensionName.$error && !$v.motherExtensionName.alpha\">Accepts only alphabet characters.</span>\n                          <span class=\"text-danger\" v-if=\"!$v.motherExtensionName.minLength\">Extension name must have at least {{ $v.motherExtensionName.$params.minLength.min }} letters.</span>\n                      </div>\n                    </div>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Employer </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Employer\" v-model.trim=\"motherEmployer\">\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Occupation </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Ex: Farmer\" v-model.trim=\"motherOccupation\">\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherContact.$error }\">\n                          <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Contact #</label>\n                          <input type=\"text\" class=\"form-control\" placeholder=\"Ex: 0900...\" v-model.trim=\"motherContact\" @input=\"$v.motherContact.$touch()\">\n                           <span class=\"text-danger\" v-if=\"$v.motherContact.$error && !$v.motherContact.numeric\">Accepts only numbers.</span>\n                           <span class=\"text-danger\" v-if=\"!$v.motherContact.minLength\">Mobile number must have at least {{ $v.motherContact.$params.minLength.min }} numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.motherContact.maxLength\">Mobile number must have maximum of{{ $v.motherContact.$params.maxLength.max }} numbers.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.sibblings.$error }\" >\n                          <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">No. of Siblings in the family below 18 years old and below</label>\n                          <select id=\"no_of_siblings\" name=\"no_of_siblings\" class=\"form-control\" v-model=\"sibblings\" @input=\"$v.sibblings.$touch()\">\n                            <option value=\"0\">0</option>\n                            <option value=\"1\">1</option>\n                            <option value=\"2\">2</option>\n                            <option value=\"3\">3</option>\n                            <option value=\"4\">4</option>\n                            <option value=\"5\">5</option>\n                            <option value=\"6\">6</option>\n                            <option value=\"7\">7</option>\n                            <option value=\"8\">8</option>\n                            <option value=\"9\">9</option>\n                            <option value=\"10\">10</option>\n                            <option value=\"11\">11</option>\n                            <option value=\"12\">12</option>\n                          </select>\n                          <span class=\"text-danger\" v-if=\"$v.sibblings.$error && !$v.sibblings.required\">Number of sibblings is required</span>\n                        </div>  \n                    </div>\n\n                          \n                </div>\n        </div>",
+  template: "<div>\n                  <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherLastName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Last Name </label>\n                        <input type=\"text\" class=\"form-control\" id=\"flname\" name=\"flname\" placeholder=\"Last Name\" v-model.trim=\"fatherLastName\" @input=\"$v.fatherLastName.$touch()\">\n                        <span class=\"text-danger\" v-if=\"$v.fatherLastName.$error && !$v.fatherLastName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherFirstName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's First Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"First Name\" v-model.trim=\"fatherFirstName\" @input=\"$v.fatherFirstName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherFirstName.$error && !$v.fatherFirstName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherMiddleName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Middle Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Middle Name\" v-model.trim=\"fatherMiddleName\" @input=\"$v.fatherMiddleName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherMiddleName.$error && !$v.fatherMiddleName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherExtensionName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Name Extension </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Extension Name\" v-model.trim=\"fatherExtensionName\" @input=\"$v.fatherExtensionName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.fatherExtensionName.$error && !$v.fatherExtensionName.alpha\">Accepts only alphabet characters.</span>\n                         <span class=\"text-danger\" v-if=\"!$v.fatherExtensionName.minLength\">Extension name must have at least {{ $v.fatherExtensionName.$params.minLength.min }} letters.</span>\n                      </div>\n                    </div>\n\n                    <div class=\"form-row\">\n\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Occupation</label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Ex: Farmer\" v-model.trim=\"fatherOccupation\">\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Employer </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Employer\" v-model.trim=\"fatherEmployer\">\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.fatherContact.$error }\">\n                          <label style=\"float:left;font-size:12px;font-weight:bold\">Father's Contact #</label>\n                          <input type=\"text\" class=\"form-control\"  placeholder=\"Ex: 0900...\" v-model.trim=\"fatherContact\" @input=\"$v.fatherContact.$touch()\">\n                           <span class=\"text-danger\" v-if=\"$v.fatherContact.$error && !$v.fatherContact.numeric\">Accepts only numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.fatherContact.minLength\">Mobile number must have at least {{ $v.fatherContact.$params.minLength.min }} numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.fatherContact.maxLength\">Mobile number must have maximum of{{ $v.fatherContact.$params.maxLength.max }} numbers.</span>\n                      </div>\n                    </div>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherLastName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Last Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Last Name\" v-model.trim=\"motherLastName\" @input=\"$v.motherLastName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherLastName.$error && !$v.motherLastName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherFirstName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's First Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"First Name\" v-model.trim=\"motherFirstName\" @input=\"$v.motherFirstName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherFirstName.$error && !$v.motherFirstName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherMiddleName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Middle Name </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Middle Name\" v-model.trim=\"motherMiddleName\" @input=\"$v.motherMiddleName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherMiddleName.$error && !$v.motherMiddleName.alpha\">Accepts only alphabet characters.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherExtensionName.$error }\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Name Extension </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Extension Name\" v-model.trim=\"motherExtensionName\" @input=\"$v.motherExtensionName.$touch()\">\n                         <span class=\"text-danger\" v-if=\"$v.motherExtensionName.$error && !$v.motherExtensionName.alpha\">Accepts only alphabet characters.</span>\n                          <span class=\"text-danger\" v-if=\"!$v.motherExtensionName.minLength\">Extension name must have at least {{ $v.motherExtensionName.$params.minLength.min }} letters.</span>\n                      </div>\n                    </div>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Occupation </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Ex: Farmer\" v-model.trim=\"motherOccupation\">\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                        <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Employer </label>\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Employer\" v-model.trim=\"motherEmployer\">\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.motherContact.$error }\">\n                          <label style=\"float:left;font-size:12px;font-weight:bold\">Mother's Contact #</label>\n                          <input type=\"text\" class=\"form-control\" placeholder=\"Ex: 0900...\" v-model.trim=\"motherContact\" @input=\"$v.motherContact.$touch()\">\n                           <span class=\"text-danger\" v-if=\"$v.motherContact.$error && !$v.motherContact.numeric\">Accepts only numbers.</span>\n                           <span class=\"text-danger\" v-if=\"!$v.motherContact.minLength\">Mobile number must have at least {{ $v.motherContact.$params.minLength.min }} numbers.</span>\n                            <span class=\"text-danger\" v-if=\"!$v.motherContact.maxLength\">Mobile number must have maximum of{{ $v.motherContact.$params.maxLength.max }} numbers.</span>\n                      </div>\n                      <div class=\"form-group col-md-3\" v-bind:class=\"{ 'has-error': $v.sibblings.$error }\" >\n                          <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">No. of Siblings in the family below 18 years old</label>\n                          <select id=\"no_of_siblings\" name=\"no_of_siblings\" class=\"form-control\" v-model=\"sibblings\" @input=\"$v.sibblings.$touch()\">\n                            <option value=\"0\">0</option>\n                            <option value=\"1\">1</option>\n                            <option value=\"2\">2</option>\n                            <option value=\"3\">3</option>\n                            <option value=\"4\">4</option>\n                            <option value=\"5\">5</option>\n                            <option value=\"6\">6</option>\n                            <option value=\"7\">7</option>\n                            <option value=\"8\">8</option>\n                            <option value=\"9\">9</option>\n                            <option value=\"10\">10</option>\n                            <option value=\"11\">11</option>\n                            <option value=\"12\">12</option>\n                          </select>\n                          <span class=\"text-danger\" v-if=\"$v.sibblings.$error && !$v.sibblings.required\">Number of sibblings is required</span>\n                        </div>  \n                    </div>\n\n                          \n                </div>\n        </div>",
   data: function data() {
     return {
       fatherLastName: "",
@@ -4471,7 +4609,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step4", {
   }()
 });
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
-  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Persons with Disability (PWDs)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\">click here</a>.</span></p>\n                            </div>\n                           <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\">terms and conditions.</a></span></p>\n                            </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Financial: </span>The student-applicants shall submit <span style=\"border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none\">any</span> of the following documents: <span style=\"color:#3490dc\">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style=\"color:#3490dc\">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style=\"color:#3490dc\">(c)</span> Certificate of Indigence;</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Other documents: </span><span style=\"color:#3490dc\">(a)</span> Certificate as dependent to a solo parent; <span style=\"color:#3490dc\">(b)</span> Certificate of disability; <span style=\"color:#3490dc\">(c)</span> Certificate of membership to indigenous community; <span style=\"color:#3490dc\">(d)</span> Certificate of 4ps; <span style=\"color:#3490dc\">(e)</span> Certificate of senior citizen.</p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
+  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Person with Disability (PWD)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\">click here</a>.</span></p>\n                            </div>\n                           <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\">terms and conditions.</a></span></p>\n                            </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Financial: </span>The student-applicants shall submit <span style=\"border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none\">any</span> of the following documents: <span style=\"color:#3490dc\">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style=\"color:#3490dc\">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style=\"color:#3490dc\">(c)</span> Certificate of Indigence;</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Other documents: </span><span style=\"color:#3490dc\">(a)</span> Certificate as dependent to a solo parent; <span style=\"color:#3490dc\">(b)</span> Certificate of disability; <span style=\"color:#3490dc\">(c)</span> Certificate of membership to indigenous community; <span style=\"color:#3490dc\">(d)</span> Certificate of 4ps; <span style=\"color:#3490dc\">(e)</span> Certificate of senior citizen.</p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
   data: function data() {
     return {
       pwd: "",
@@ -23653,7 +23791,7 @@ var render = function() {
                       _c(
                         "a",
                         { staticClass: "nav-link", attrs: { href: "#" } },
-                        [_vm._v("SIGNIN")]
+                        [_vm._v("SIGN IN")]
                       )
                     ])
                   ],
@@ -23677,9 +23815,7 @@ var render = function() {
       { staticClass: "testimonials text-center bg-light container-fluid" },
       [
         _c("div", [
-          _c("h3", { staticClass: "label mb-5" }, [
-            _vm._v("What people are saying...")
-          ]),
+          _c("h3", { staticClass: "label mb-5" }, [_vm._v("Success Story")]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-4" }, [
@@ -23921,39 +24057,32 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("Application period")]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
+                  _c("h3", [
                     _vm._v(
-                      "Start from March 1 to May 31 of every academic year after the effectivity of this CMO. Policies and Guidelines for CHED Scholarship Programs (CSPs) "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticStyle: { color: "#3490dc" },
-                        attrs: {
-                          href:
-                            "https://ched.gov.ph/wp-content/uploads/CMO-8-s.-2019-Policies-and-Guidelines-for-CHED-Scholarship-Programs-CSPs.pdf",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("click here. ")]
-                    ),
-                    _vm._v(
-                      "Priority Courses for CHED Scholarship Programs (CSPs) for Academic Year 2019-2020 "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticStyle: { color: "#3490dc" },
-                        attrs: {
-                          href:
-                            "https://ched.gov.ph/wp-content/uploads/CMO-No.-05-Series-2019-Priority-Courses-for-CHED-Scholarship-Programs-CSPs-for-Academic-Year-2019-2020.pdf",
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("click here.")]
+                      "Step 1: Accomplish application form via online from March 1 to May 31"
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
+                    _c("li", [_vm._v("Must be Filipino citizen")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticStyle: { "list-style-type": "none" } }, [
+                      _vm._v(
+                        "shall submit certifications and/or Identification Cards (IDs) issued by the appropriate offices or agencies."
+                      )
+                    ])
                   ])
                 ]
               )
@@ -23974,86 +24103,67 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("Submit required documents")]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
-                    _c("span", { staticStyle: { "font-weight": "bold" } }, [
-                      _vm._v("Citizenship: ")
-                    ]),
-                    _vm._v("Certified true copy of Birth Certificate (NSO).")
+                  _c("h3", [
+                    _vm._v("Step 2: Submit required documents to CHED Caraga")
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
-                    _c("span", { staticStyle: { "font-weight": "bold" } }, [
-                      _vm._v("Academic: ")
+                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
+                    _c("li", [
+                      _vm._v(
+                        "Printed accomplished application form (with signature and 1 pc 2x2 picture)"
+                      )
                     ]),
-                    _vm._v(
-                      "Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students."
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
-                    _c("span", { staticStyle: { "font-weight": "bold" } }, [
-                      _vm._v("Financial: ")
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Certified true copy of Birth Certificate "),
+                      _c("span")
                     ]),
-                    _vm._v("The student-applicants shall submit "),
-                    _c(
-                      "span",
-                      {
-                        staticStyle: {
-                          border: "1px solid #3490dc",
-                          "border-top": "none",
-                          "border-right": "none",
-                          "border-left": "none"
-                        }
-                      },
-                      [_vm._v("any")]
-                    ),
-                    _vm._v(" of the following documents: "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(a)")
+                    _vm._v(" "),
+                    _c("ul", [
+                      _c("li", [
+                        _vm._v(
+                          "High school report card for incoming freshmen students eligible for college; and"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students."
+                        )
+                      ])
                     ]),
-                    _vm._v(
-                      " Latest Income Tax Return (ITR) of parents or guardian; "
-                    ),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(b)")
-                    ]),
-                    _vm._v(
-                      " Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); "
-                    ),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(c)")
-                    ]),
-                    _vm._v(" Certificate of Indigence;")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
-                    _c("span", { staticStyle: { "font-weight": "bold" } }, [
-                      _vm._v("Other documents: ")
-                    ]),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(a)")
-                    ]),
-                    _vm._v(" Certificate as dependent to a solo parent; "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(b)")
-                    ]),
-                    _vm._v(" Certificate of disability; "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(c)")
-                    ]),
-                    _vm._v(
-                      " Certificate of membership to indigenous community; "
-                    ),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(d)")
-                    ]),
-                    _vm._v(" Certificate of 4ps; "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("(e)")
-                    ]),
-                    _vm._v(" Certificate of senior citizen.")
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", [_vm._v("Any of the following documents:")]),
+                      _vm._v(" "),
+                      _c("ul", [
+                        _c("li", [
+                          _vm._v(
+                            "Latest Income Tax Return (ITR) of parents or guardian;"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _vm._v(
+                            "Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _vm._v(
+                            "Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [_vm._v("Case Study report from DSWD; and ")]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _vm._v(
+                            "Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers."
+                          )
+                        ])
+                      ])
+                    ])
                   ])
                 ]
               )
@@ -24071,30 +24181,18 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("Ranking")]),
+                  _c("h3", [_vm._v("Step 3: For application updates")]),
                   _vm._v(" "),
-                  _c("p", { staticStyle: { "text-align": "justify" } }, [
-                    _vm._v(
-                      "The ranking shall be used by the CHEDROs in selecting the most qualified applicants based on the requirements stated in Article VII hereof. The shall be made according to the following percentage distribution: (a) "
-                    ),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("Academic Performance 70%")
+                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
+                    _c("li", [
+                      _vm._v(
+                        "Login to your account to check your application status"
+                      )
                     ]),
-                    _vm._v("; (b) "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("Annual Gross Income 30%")
-                    ]),
-                    _vm._v(" total of "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("100%")
-                    ]),
-                    _vm._v("; (c) Additional "),
-                    _c("span", { staticStyle: { color: "#3490dc" } }, [
-                      _vm._v("five (5) points")
-                    ]),
-                    _vm._v(
-                      " in the total score are given to applicants belonging to the special group of persons such as Underprivileged and Homeless Citizens, Persons with Disability (PWDs), Solo Parents, Senior Citizens, and Indigenous People (IPs). \n              "
-                    )
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Email at csp@cspcaraga.com")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Call or Text 09120892045")])
                   ])
                 ]
               )
@@ -24739,39 +24837,6 @@ var render = function() {
         ],
         1
       )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3& ***!
-  \*********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "h2",
-    { staticStyle: { "text-align": "center", "margin-top": "50px" } },
-    [
-      _c("router-link", { attrs: { to: "/ched-coordinator" } }, [
-        _vm._v("BACK TO HOME")
-      ])
     ],
     1
   )
@@ -26938,39 +27003,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "h2",
-    { staticStyle: { "text-align": "center", "margin-top": "50px" } },
-    [
-      _c("router-link", { attrs: { to: "/ched-coordinator" } }, [
-        _vm._v("BACK TO HOME")
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/heicoordinator/changepassword.vue?vue&type=template&id=46baa906&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/heicoordinator/changepassword.vue?vue&type=template&id=46baa906&scoped=true& ***!
@@ -27715,39 +27747,6 @@ var staticRenderFns = [
     ])
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8& ***!
-  \**********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "h2",
-    { staticStyle: { "text-align": "center", "margin-top": "50px" } },
-    [
-      _c("router-link", { attrs: { to: "/ched-coordinator" } }, [
-        _vm._v("BACK TO HOME")
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -47772,59 +47771,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/chedcoordinator/403/403.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/pages/chedcoordinator/403/403.vue ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./403.vue?vue&type=template&id=49e966e3& */ "./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/chedcoordinator/403/403.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3& ***!
-  \***************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./403.vue?vue&type=template&id=49e966e3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/chedcoordinator/403/403.vue?vue&type=template&id=49e966e3&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_49e966e3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/pages/chedcoordinator/changepassword.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/pages/chedcoordinator/changepassword.vue ***!
@@ -48782,59 +48728,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/heicoordinator/403/403.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/pages/heicoordinator/403/403.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./403.vue?vue&type=template&id=5abc789d& */ "./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/heicoordinator/403/403.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d& ***!
-  \**************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./403.vue?vue&type=template&id=5abc789d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/heicoordinator/403/403.vue?vue&type=template&id=5abc789d&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_5abc789d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/pages/heicoordinator/changepassword.vue":
 /*!**************************************************************!*\
   !*** ./resources/js/pages/heicoordinator/changepassword.vue ***!
@@ -49339,59 +49232,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/user/403/403.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/pages/user/403/403.vue ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./403.vue?vue&type=template&id=0eceeaf8& */ "./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/user/403/403.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8& ***!
-  \****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./403.vue?vue&type=template&id=0eceeaf8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/403/403.vue?vue&type=template&id=0eceeaf8&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_403_vue_vue_type_template_id_0eceeaf8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/pages/user/Dashboard.vue":
 /*!***********************************************!*\
   !*** ./resources/js/pages/user/Dashboard.vue ***!
@@ -49756,27 +49596,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_user_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/user/Dashboard */ "./resources/js/pages/user/Dashboard.vue");
 /* harmony import */ var _pages_forgotpassword_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/forgotpassword.vue */ "./resources/js/pages/forgotpassword.vue");
 /* harmony import */ var _pages_mail_SuccessMail__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/mail/SuccessMail */ "./resources/js/pages/mail/SuccessMail.vue");
-/* harmony import */ var _pages_chedcoordinator_403_403__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/chedcoordinator/403/403 */ "./resources/js/pages/chedcoordinator/403/403.vue");
-/* harmony import */ var _pages_heicoordinator_403_403__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/heicoordinator/403/403 */ "./resources/js/pages/heicoordinator/403/403.vue");
-/* harmony import */ var _pages_user_403_403__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/user/403/403 */ "./resources/js/pages/user/403/403.vue");
-/* harmony import */ var _pages_user_StudentInformation__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/user/StudentInformation */ "./resources/js/pages/user/StudentInformation.vue");
-/* harmony import */ var _pages_user_StudentStatus__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/user/StudentStatus */ "./resources/js/pages/user/StudentStatus.vue");
-/* harmony import */ var _pages_user_changepassword__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/user/changepassword */ "./resources/js/pages/user/changepassword.vue");
-/* harmony import */ var _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/chedcoordinator/dashboard */ "./resources/js/pages/chedcoordinator/dashboard.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofunverifiedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofunverifiedapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbyhei */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbyhei.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofenrolledapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofnotenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofnotenrolledapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofheis */ "./resources/js/pages/chedcoordinator/table/ched_listofheis.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbycsprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbycsprank.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbytdprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbytdprank.vue");
-/* harmony import */ var _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/chedcoordinator/changepassword */ "./resources/js/pages/chedcoordinator/changepassword.vue");
-/* harmony import */ var _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/heicoordinator/dashboard */ "./resources/js/pages/heicoordinator/dashboard.vue");
-/* harmony import */ var _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/heicoordinator/hei_listofapplicant */ "./resources/js/pages/heicoordinator/hei_listofapplicant.vue");
-/* harmony import */ var _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/heicoordinator/changepassword */ "./resources/js/pages/heicoordinator/changepassword.vue");
-/* harmony import */ var _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/superadmin/dashboard */ "./resources/js/pages/superadmin/dashboard.vue");
-/* harmony import */ var _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/superadmin/AddAccount */ "./resources/js/pages/superadmin/AddAccount.vue");
+/* harmony import */ var _pages_user_StudentInformation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/user/StudentInformation */ "./resources/js/pages/user/StudentInformation.vue");
+/* harmony import */ var _pages_user_StudentStatus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/user/StudentStatus */ "./resources/js/pages/user/StudentStatus.vue");
+/* harmony import */ var _pages_user_changepassword__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/user/changepassword */ "./resources/js/pages/user/changepassword.vue");
+/* harmony import */ var _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/chedcoordinator/dashboard */ "./resources/js/pages/chedcoordinator/dashboard.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofunverifiedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofunverifiedapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbyhei */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbyhei.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofenrolledapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofnotenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofnotenrolledapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofheis */ "./resources/js/pages/chedcoordinator/table/ched_listofheis.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbycsprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbycsprank.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbytdprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbytdprank.vue");
+/* harmony import */ var _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/chedcoordinator/changepassword */ "./resources/js/pages/chedcoordinator/changepassword.vue");
+/* harmony import */ var _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/heicoordinator/dashboard */ "./resources/js/pages/heicoordinator/dashboard.vue");
+/* harmony import */ var _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/heicoordinator/hei_listofapplicant */ "./resources/js/pages/heicoordinator/hei_listofapplicant.vue");
+/* harmony import */ var _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/heicoordinator/changepassword */ "./resources/js/pages/heicoordinator/changepassword.vue");
+/* harmony import */ var _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/superadmin/dashboard */ "./resources/js/pages/superadmin/dashboard.vue");
+/* harmony import */ var _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/superadmin/AddAccount */ "./resources/js/pages/superadmin/AddAccount.vue");
  // Pages
 
 
@@ -49784,12 +49621,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
- // import CHED404NotFound from './pages/chedcoordinator/404/404'
-// import HEI404NotFound from './pages/heicoordinator/404/404'
-// import User404NotFound from './pages/user/404/404'
 
 
 
@@ -49862,7 +49693,7 @@ var routes = [{
 }, {
   path: '/student-information',
   name: 'student_information',
-  component: _pages_user_StudentInformation__WEBPACK_IMPORTED_MODULE_10__["default"],
+  component: _pages_user_StudentInformation__WEBPACK_IMPORTED_MODULE_7__["default"],
   meta: {
     auth: {
       roles: 1,
@@ -49875,7 +49706,7 @@ var routes = [{
 }, {
   path: '/student-status',
   name: 'student_status',
-  component: _pages_user_StudentStatus__WEBPACK_IMPORTED_MODULE_11__["default"],
+  component: _pages_user_StudentStatus__WEBPACK_IMPORTED_MODULE_8__["default"],
   meta: {
     auth: {
       roles: 1,
@@ -49888,7 +49719,7 @@ var routes = [{
 }, {
   path: '/student-dashboard/change-password',
   name: 'student_dashboard_change_password',
-  component: _pages_user_changepassword__WEBPACK_IMPORTED_MODULE_12__["default"],
+  component: _pages_user_changepassword__WEBPACK_IMPORTED_MODULE_9__["default"],
   meta: {
     auth: {
       roles: 1,
@@ -49898,32 +49729,11 @@ var routes = [{
       forbiddenRedirect: '/403'
     }
   }
-}, {
-  path: '/403',
-  name: 'USER_403',
-  component: _pages_user_403_403__WEBPACK_IMPORTED_MODULE_9__["default"],
-  meta: {
-    auth: {
-      roles: 1,
-      redirect: {
-        name: 'login'
-      },
-      forbiddenRedirect: '/403'
-    }
-  }
-}, // {
-//   path: '/404',
-//   name: 'USER_404',
-//   component: User404NotFound,
-//   meta: {
-//     auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-//   }
-// },
-// CHED COORDINATOR ROUTES
+}, // CHED COORDINATOR ROUTES
 {
   path: '/ched-coordinator',
   name: 'ched_coordinator.dashboard',
-  component: _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_13__["default"],
+  component: _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_10__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -49936,7 +49746,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants',
   name: 'ched_coordinator.list_of_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_14__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_11__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -49949,7 +49759,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-unverified-applicants',
   name: 'ched_coordinator.list_of_unverified_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_15__["default"],
+  component: _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_12__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -49962,7 +49772,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-hei/:hei_id',
   name: 'ched_coordinator.list_of_applicants_by_hei_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_16__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_13__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -49975,7 +49785,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-csp-rank',
   name: 'ched_coordinator.list_of_applicants_by_csp_rank',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_20__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_17__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -49988,7 +49798,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-tdp-rank',
   name: 'ched_coordinator.list_of_applicants_by_tdp_rank',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_21__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_18__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -50001,7 +49811,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-enrolled-applicants',
   name: 'ched_coordinator.list_of_enrolled_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_17__["default"],
+  component: _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -50014,7 +49824,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-not-enrolled-applicants',
   name: 'ched_coordinator.list_of_not_enrolled_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_18__["default"],
+  component: _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_15__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -50027,7 +49837,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-heis',
   name: 'ched_coordinator.list_of_heis',
-  component: _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_19__["default"],
+  component: _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_16__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -50040,7 +49850,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/change-password',
   name: 'ched_coordinator_change_password',
-  component: _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_22__["default"],
+  component: _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_19__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -50050,32 +49860,11 @@ var routes = [{
       forbiddenRedirect: '/403'
     }
   }
-}, {
-  path: '/403',
-  name: 'CHED_403',
-  component: _pages_chedcoordinator_403_403__WEBPACK_IMPORTED_MODULE_7__["default"],
-  meta: {
-    auth: {
-      roles: 2,
-      redirect: {
-        name: 'login'
-      },
-      forbiddenRedirect: '/403'
-    }
-  }
-}, // {
-//   path: '/404',
-//   name: 'CHED_404',
-//   component: CHED404NotFound,
-//   meta: {
-//     auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-//   }
-// },
-// HEI ROUTES
+}, // HEI ROUTES
 {
   path: '/hei-coordinator',
   name: 'hei_coordinator.dashboard',
-  component: _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_23__["default"],
+  component: _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_20__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -50088,7 +49877,7 @@ var routes = [{
 }, {
   path: '/hei-coordinator/list-of-applicants',
   name: 'hei_coordinator.list_of_applicants_dashboard',
-  component: _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_24__["default"],
+  component: _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_21__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -50101,7 +49890,7 @@ var routes = [{
 }, {
   path: '/hei-coordinator/change-password',
   name: 'hei_coordinator_change_password',
-  component: _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_25__["default"],
+  component: _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_22__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -50111,32 +49900,11 @@ var routes = [{
       forbiddenRedirect: '/403'
     }
   }
-}, {
-  path: '/403',
-  name: 'HEI_403',
-  component: _pages_heicoordinator_403_403__WEBPACK_IMPORTED_MODULE_8__["default"],
-  meta: {
-    auth: {
-      roles: 3,
-      redirect: {
-        name: 'login'
-      },
-      forbiddenRedirect: '/403'
-    }
-  }
-}, // {
-//   path: '/404',
-//   name: 'HEI_404',
-//   component: HEI404NotFound,
-//   meta: {
-//     auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-//   }
-// },
-// SUPER_ADMIN ROUTES
+}, // SUPER_ADMIN ROUTES
 {
   path: '/super-admin',
   name: 'super_admin.dashboard',
-  component: _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_26__["default"],
+  component: _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_23__["default"],
   meta: {
     auth: {
       roles: 4,
@@ -50149,7 +49917,7 @@ var routes = [{
 }, {
   path: '/add-account',
   name: 'super_admin.add_account',
-  component: _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_27__["default"],
+  component: _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_24__["default"],
   meta: {
     auth: {
       roles: 4,
@@ -50158,6 +49926,16 @@ var routes = [{
       },
       forbiddenRedirect: '/403'
     }
+  }
+}, // catch all 404 - define at the very end
+// {
+// path: "*",
+// component: () => import("./pages/NotFound_hei.vue")
+// },
+{
+  path: "*",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue"));
   }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({

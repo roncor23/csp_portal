@@ -8,17 +8,6 @@ import Dashboard from './pages/user/Dashboard'
 import ForgotPassword from './pages/forgotpassword.vue'
 import SuccessMail from './pages/mail/SuccessMail'
 
-
-import CHED403NotFound from './pages/chedcoordinator/403/403'
-import HEI403NotFound from './pages/heicoordinator/403/403'
-import User403NotFound from './pages/user/403/403'
-
-
-// import CHED404NotFound from './pages/chedcoordinator/404/404'
-// import HEI404NotFound from './pages/heicoordinator/404/404'
-// import User404NotFound from './pages/user/404/404'
-
-
 import StudentInformation from './pages/user/StudentInformation'
 import StudentStatus from './pages/user/StudentStatus'
 import StudentChangePassword from './pages/user/changepassword'
@@ -117,22 +106,7 @@ const routes = [
       auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
-  {
-    path: '/403',
-    name: 'USER_403',
-    component: User403NotFound,
-    meta: {
-      auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-    }
-  },
-  // {
-  //   path: '/404',
-  //   name: 'USER_404',
-  //   component: User404NotFound,
-  //   meta: {
-  //     auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-  //   }
-  // },
+
   // CHED COORDINATOR ROUTES
   {
     path: '/ched-coordinator',
@@ -214,22 +188,6 @@ const routes = [
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
-  {
-    path: '/403',
-    name: 'CHED_403',
-    component: CHED403NotFound,
-    meta: {
-      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-    }
-  },
-  // {
-  //   path: '/404',
-  //   name: 'CHED_404',
-  //   component: CHED404NotFound,
-  //   meta: {
-  //     auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-  //   }
-  // },
   // HEI ROUTES
   {
     path: '/hei-coordinator',
@@ -255,22 +213,6 @@ const routes = [
       auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
-  {
-    path: '/403',
-    name: 'HEI_403',
-    component: HEI403NotFound,
-    meta: {
-      auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-    }
-  },
-  // {
-  //   path: '/404',
-  //   name: 'HEI_404',
-  //   component: HEI404NotFound,
-  //   meta: {
-  //     auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-  //   }
-  // },
   // SUPER_ADMIN ROUTES
   {
     path: '/super-admin',
@@ -288,6 +230,16 @@ const routes = [
       auth: {roles: 4, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+   // catch all 404 - define at the very end
+  // {
+  // path: "*",
+  // component: () => import("./pages/NotFound_hei.vue")
+  // },
+  {
+  path: "*",
+  component: () => import("./pages/NotFound.vue")
+  }
+
 ]
 
 const router = new VueRouter({
