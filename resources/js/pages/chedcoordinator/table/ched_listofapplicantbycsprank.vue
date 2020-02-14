@@ -346,9 +346,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>No.</th>
                     <th>Reference #</th>
                     <th>Academic Year</th>
-                    <th>Year Level</th>
-                    <th>HEI Status</th>
-                    <th>CHED Status</th>                  
+                    <th>Year Level</th>                
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -357,6 +355,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
+                    <th>HEI Status</th>
+                    <th>CHED Status</th>  
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
@@ -368,8 +368,6 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>Reference #</th>
                     <th>Academic Year</th>
                     <th>Year Level</th>
-                    <th>HEI Status</th>
-                    <th>CHED Status</th>
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -378,6 +376,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
+                    <th>HEI Status</th>
+                    <th>CHED Status</th>
                     <th>ValidatedByCHED</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
@@ -395,13 +395,6 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
-                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
-                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
-                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECK BY CHED</td>
-                        <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
-                        <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
-                        <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td>{{i.lname}}</td>
                         <td>{{i.fname}}</td>
                         <td>{{i.mname}}</td>
@@ -422,6 +415,13 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.ranking_status === 7">QUALIFIED AS FULL SSP</td>
                         <td v-if="i.ranking_status === 8">QUALIFIED AS FULL PESFA</td>
                         <td v-if="i.ranking_status === 9">QUALIFIED AS FULL SSP</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECKED BY HEI</td>
+                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
+                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
+                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECKED BY CHED</td>
+                        <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
+                        <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
+                        <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED === null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>

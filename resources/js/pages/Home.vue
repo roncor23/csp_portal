@@ -154,7 +154,7 @@
     <!-- Testimonials -->
     <div class="testimonials text-center bg-light container-fluid">
       <div>
-        <h3 class="label mb-5">Success Story</h3>
+        <h3 class="label mb-5">What people are saying...</h3>
         <div class="row">
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">

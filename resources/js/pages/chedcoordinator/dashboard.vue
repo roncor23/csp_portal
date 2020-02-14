@@ -38,9 +38,8 @@
   <!-- Content -->
   <div class="main">
       <div class="jumbotron">
-        <h1>Hello, User!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-        <p>Thank you for applying scholarship. You're all ready to go!</p><br>
-        <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
+        <h1>Hello, {{username}}!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
+        <p>Welcome to our CSP portal admin dashboard.</p>
       </div>
   </div>
 </div>

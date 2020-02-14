@@ -393,10 +393,10 @@ Vue.component("ched-list-of-unverified-applicant", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECKED BY HEI</td>
                         <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
                         <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
-                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECK BY CHED</td>
+                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECKED BY CHED</td>
                         <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
                         <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
                         <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
