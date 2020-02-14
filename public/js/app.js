@@ -4194,9 +4194,10 @@ __webpack_require__.r(__webpack_exports__);
         },
         success: function success() {
           // handle redirection
-          // const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' :  this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard'
-          // this.$router.push({name: redirectTo})
-          alert("asd");
+          var redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' : this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard';
+          this.$router.push({
+            name: redirectTo
+          });
         },
         error: function error() {
           app.has_error = true;

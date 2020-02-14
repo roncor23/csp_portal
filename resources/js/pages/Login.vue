@@ -469,10 +469,9 @@ h6 {
           },
           success: function() {
             // handle redirection
-            // const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' :  this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard'
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' :  this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard'
 
-            // this.$router.push({name: redirectTo})
-            alert("asd");
+            this.$router.push({name: redirectTo})
           },
           error: function() {
             app.has_error = true
