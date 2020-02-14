@@ -16,9 +16,9 @@ class CreateMunCitysTable extends Migration
         Schema::create('mun_citys', function (Blueprint $table) {
             $table->increments('city_id');
             $table->string('mun_city_name')->nullable();
-            $table->integer('province')->nullable();
+            $table->integer('province_i')->nullable();
             $table->integer('district')->nullable();
-            $table->foreign('province')->references('province_id')->on('provinces')->onDelete('cascade');
+            $table->foreign('province_i')->references('province_id')->on('provinces')->onDelete('cascade');
             $table->foreign('district')->references('district_id')->on('districts')->onDelete('cascade');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();         
