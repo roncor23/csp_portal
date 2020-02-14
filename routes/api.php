@@ -133,3 +133,5 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     // Applicant register
     Route::post('applicant/register/','AuthController@register');
+    //User login
+    Route::post('user/login/','AuthController@login');

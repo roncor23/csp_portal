@@ -440,6 +440,8 @@ h6 {
 </style>
 
 <script>
+import axios from "axios"
+
   export default {
     data() {
       return {
