@@ -29,13 +29,9 @@ class PasswordMailable extends Mailable
      */
     public function build()
     {
-        return $this->from('chedcaragastufaps@ched.gov.ph')
+        return $this->from('csp@cspcaraga.com')
             ->subject('Password Changed')
-            ->view('password')
-            ->with(
-              [
-                    'message' => 'Ban co the kiem tra email',
-              ]);
+            ->view('password');
 
                     
     }
