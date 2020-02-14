@@ -4194,10 +4194,9 @@ __webpack_require__.r(__webpack_exports__);
         },
         success: function success() {
           // handle redirection
-          var redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' : this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard';
-          this.$router.push({
-            name: redirectTo
-          });
+          // const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' :  this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard'
+          // this.$router.push({name: redirectTo})
+          alert("asd");
         },
         error: function error() {
           app.has_error = true;
@@ -49927,12 +49926,7 @@ var routes = [{
       forbiddenRedirect: '/403'
     }
   }
-}, // catch all 404 - define at the very end
-// {
-// path: "*",
-// component: () => import("./pages/NotFound_hei.vue")
-// },
-{
+}, {
   path: "*",
   component: function component() {
     return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue"));

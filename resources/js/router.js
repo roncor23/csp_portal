@@ -230,11 +230,6 @@ const routes = [
       auth: {roles: 4, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
-   // catch all 404 - define at the very end
-  // {
-  // path: "*",
-  // component: () => import("./pages/NotFound_hei.vue")
-  // },
   {
   path: "*",
   component: () => import("./pages/NotFound.vue")
