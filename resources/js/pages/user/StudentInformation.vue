@@ -45,22 +45,24 @@
         <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>
       </div>
       <div id="applicant_information">     
-          <div class="d-flex justify-content-end" style="margin-bottom:30px">
-            <div class="d-flex justify-content-center" style="border:1px solid;height:150px;width:150px;position:absolute">
-              <p style="font-size:12px;line-height: 0.7;margin-top:70px">2x2&nbsp;ID PICTURE</p>
+          <div class="d-flex justify-content-end" style="margin-bottom:70px">
+            <div class="d-flex justify-content-center" style="border:1px solid;height:200px;width:200px;position:absolute">
+              <p style="font-size:12px;line-height: 0.7;margin-top:100px">2x2&nbsp;ID PICTURE</p>
             </div>
           </div>
+          <div style="margin-bottom:120px">
+            <img class="_logo" :src="form_logo" style="position:absolute;margin-left:300px">
+            <p class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">Office of the President of the Philippines</p>
 
-          <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">Office of the President of the Philippines</p>
-          <img class="_logo" :src="logo" style="position:absolute;margin-left:300px">
-          <p class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">COMMISION ON HIGHER EDUCATION</p>
-          <P class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">REGIONAL OFFICE XIII</P>
-          <h4 class="d-flex justify-content-around" style="font-size:12px">CHED SCHOLARSHIP PROGRAM (CSP)</h4>
-          <h4 class="d-flex justify-content-center" style="font-size:12px;line-height: 0.7;">APPLICATION FORM</h4>
-
+            <p class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">COMMISION ON HIGHER EDUCATION</p>
+            <P class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">REGIONAL OFFICE XIII</P>
+            <h4 class="d-flex justify-content-around" style="font-size:14px">CHED SCHOLARSHIP PROGRAM (CSP)</h4>
+            <h4 class="d-flex justify-content-center" style="font-size:14px;line-height: 0.1;font-weight:bold">APPLICATION FORM</h4>
+         </div>
 
   			<!-- Applicant Information -->
         <table class="table table-sm mt-4">
+          <thead><tr style="font-size:12px;font-weight:bold;color:red"><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th><th></th><th></th><th></th></tr></thead>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th></tr></thead>
           <thead>
             <tr style="font-size:10px">
@@ -256,13 +258,30 @@
         </div>
         <div class="d-flex flex-row mt-4">
           <div class="col-md-4">
+            <p style="text-align:center;font-size:10px;margin:0;visibility:hidden">invisible</p>
             <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">CSP Coordianator</p>
           </div>
           <div class="col-md-4" >
+            <p style="text-align:center;font-size:10px;margin:0">{{applicant.created_at}}</p>
             <p  style="font-size:10px;border:1px solid; text-align:center;border-left:none;border-right:none;border-bottom:none">Applied Date</p>
           </div>
           <div class="col-md-4" >
+            <p style="text-align:center;font-size:10px;margin:0;visibility:hidden">invisible</p>
             <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">Student Signature(Over Printed Name)</p>
+          </div>
+        </div>  
+        <div class="d-flex flex-row mt-4">
+          <div class="col-md-4" >
+            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">Date of submission of required doccuments</p>
+          </div>
+        </div>  
+        <div class="d-flex flex-row mt-4">
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center">
+             <img :src="e_sign">
+            </div>
+            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-top:none;margin:0">Criseldo C. Calinawan, Ph.D, PECE</p>
+            <p style="text-align:center;font-size:10px">CHED Regional Scholarship Coordinator</p>
           </div>
         </div>  
       </div>
@@ -773,8 +792,8 @@ p {
   color: #5bc0de;
 }
 ._logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 </style>
 
@@ -811,7 +830,9 @@ Vue.use(VueHtmlToPaper, options);
         username: '',
         output: null,
         selectedItem: {},
-        logo: 'image/logo.png'
+        logo: 'image/logo.png',
+        form_logo: 'image/form_logo.png',
+        e_sign: 'image/calinawan.png'
       }
     },
     methods: {
