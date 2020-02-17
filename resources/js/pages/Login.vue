@@ -106,15 +106,10 @@ h6 {
   width: 40px;
 }
 
-
-.banner-sec {
-
-  background: url('/image/slide1.png') no-repeat left bottom;
-  background-size: cover;
-  min-height: 500px;
-  border-radius: 0 10px 10px 0;
-  padding: 0;
+.img-fluid {
+  width: 100%;
 }
+
 
 .container1 {
   background: #fff;
@@ -227,14 +222,6 @@ h6 {
  
   }
 
-  .banner-sec {
-
-    background: url('/image/slide1.png') no-repeat left bottom;
-    background-size: cover;
-    min-height: 500px;
-    border-radius: 0 10px 10px 0;
-    padding: 0;
-  }
 
   .container1 {
     background: #fff;

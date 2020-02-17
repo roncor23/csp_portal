@@ -559,11 +559,6 @@ Vue.component("step4", {
                           <span class="text-danger" v-if="$v.degreeProgram.$error && !$v.degreeProgram.required">Degree Program is required</span>
                         </div>
                        </div>
-                       <div class="form-row mt-2 mb-2">
-                           <div class="form-group col-md-12">
-                                <p style="text-align:justify;font-size:12px">By clicking "Submit" you agree to the <span style="text-decoration: underline"><a href="/">terms and conditions.</a></span></p>
-                            </div>
-                        </div>
         </div>`,
     data() {
         return {
