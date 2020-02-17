@@ -24084,7 +24084,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("h3", [
                     _vm._v(
-                      "Step 1: Accomplish application form via online from March 1 to May 312"
+                      "Step 1: Accomplish application form via online from March 1 to May 31"
                     )
                   ]),
                   _vm._v(" "),
