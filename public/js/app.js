@@ -3709,7 +3709,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       logo: 'image/logologo.png',
       background: 'image/background.png',
-      brisbane: 'image/brisbane.jpg'
+      brisbane: 'image/brisbane.png'
     };
   },
   methods: {},

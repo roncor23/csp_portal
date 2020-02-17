@@ -8,8 +8,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
-
+  <title>CSP</title>
+  <link rel="shortcut icon" href="image/logo.png" />
 
 
   <!-- Scripts -->

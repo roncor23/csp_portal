@@ -650,7 +650,7 @@ footer.footer {
         },
         logo: 'image/logologo.png',
         background: 'image/background.png',
-        brisbane: 'image/brisbane.jpg'
+        brisbane: 'image/brisbane.png'
 
       }
       
