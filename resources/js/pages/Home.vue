@@ -67,7 +67,7 @@
               <div class="features-icons-icon d-flex" >
                 <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
-              <h3>Step 1: Accomplish application form via online from March 1 to May 31</h3>
+              <h3>Step 1: Accomplish application form via online from March 1 to May 312</h3>
                 <ul style="text-align:justify">
                   <li>Must be Filipino citizen</li>
                   <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent
