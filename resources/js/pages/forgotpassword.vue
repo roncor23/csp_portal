@@ -89,6 +89,9 @@ h6 {
   font-weight: 700;
 }
 
+.img-fluid {
+  width: 100%;
+}
 
 .logo {
   height: 40px;
@@ -96,14 +99,6 @@ h6 {
 }
 
 
-.banner-sec {
-
-  background: url('/image/slide1.jpg') no-repeat left bottom;
-  background-size: cover;
-  min-height: 500px;
-  border-radius: 0 10px 10px 0;
-  padding: 0;
-}
 
 .container1 {
   background: #fff;
@@ -216,14 +211,6 @@ h6 {
  
   }
 
-  .banner-sec {
-
-    background: url('/image/slide1.jpg') no-repeat left bottom;
-    background-size: cover;
-    min-height: 500px;
-    border-radius: 0 10px 10px 0;
-    padding: 0;
-  }
 
   .container1 {
     background: #fff;
@@ -340,15 +327,6 @@ h6 {
  
   }
 
-  .banner-sec {
-
-    background: url('/image/slide1.jpg') no-repeat left bottom;
-    background-size: cover;
-    min-height: 500px;
-    border-radius: 0 10px 10px 0;
-    padding: 0;
-  }
-
   .container1 {
     background: #fff;
     border-radius: 10px;
@@ -461,9 +439,9 @@ import axios from 'axios';
         phone_number: '',
         formData: {},
         has_error: false,
-        slide1: 'image/slide1.jpg',
-        slide2: 'image/slide2.jpg',
-        slide3: 'image/slide3.jpg',
+        slide1: 'image/slide1.png',
+        slide2: 'image/slide2.png',
+        slide3: 'image/slide3.png',
         logo: 'image/logo.png',
         loading: false
       }
