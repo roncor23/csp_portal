@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+  <div v-if="loading" class="se-pre-con"></div>
   <div class="container main">
     <div class="login-block">
         <div class="container1">
@@ -74,6 +75,17 @@
 </template>
 <style scoped>
 
+  .se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
+}
+
+
 div {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -97,7 +109,7 @@ h6 {
 
 .banner-sec {
 
-  background: url('/image/slide1.jpg') no-repeat left bottom;
+  background: url('/image/slide1.png') no-repeat left bottom;
   background-size: cover;
   min-height: 500px;
   border-radius: 0 10px 10px 0;
@@ -217,7 +229,7 @@ h6 {
 
   .banner-sec {
 
-    background: url('/image/slide1.jpg') no-repeat left bottom;
+    background: url('/image/slide1.png') no-repeat left bottom;
     background-size: cover;
     min-height: 500px;
     border-radius: 0 10px 10px 0;
@@ -341,7 +353,7 @@ h6 {
 
   .banner-sec {
 
-    background: url('/image/slide1.jpg') no-repeat left bottom;
+    background: url('/image/slide1.png') no-repeat left bottom;
     background-size: cover;
     min-height: 500px;
     border-radius: 0 10px 10px 0;
@@ -448,10 +460,11 @@ import axios from "axios"
         email: null,
         password: null,
         has_error: false,
-        slide1: 'image/slide1.jpg',
-        slide2: 'image/slide2.jpg',
-        slide3: 'image/slide3.jpg',
-        logo: 'image/logo.png'
+        slide1: 'image/slide1.png',
+        slide2: 'image/slide2.png',
+        slide3: 'image/slide3.png',
+        logo: 'image/logo.png',
+        loading: false
       }
     },
 
@@ -464,12 +477,14 @@ import axios from "axios"
         // get the redirect object
         var redirect = this.$auth.redirect()
         var app = this
+        app.loading = true;
         this.$auth.login({
           params: {
             email: app.email,
             password: app.password
           },
           success: function() {
+            this.loading = false;
             // handle redirection
             const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'ched_coordinator.dashboard' : this.$auth.user().role === 3 ? 'hei_coordinator.dashboard' :  this.$auth.user().role === 4 ? 'super_admin.dashboard' : 'dashboard'
 
