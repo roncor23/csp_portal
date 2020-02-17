@@ -23998,9 +23998,7 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass: "carousel-item active",
-                  staticStyle: {
-                    "background-image": "url('image/banner2.png')"
-                  }
+                  staticStyle: { "background-image": "url('image/banner.png')" }
                 },
                 [
                   _c("div", {

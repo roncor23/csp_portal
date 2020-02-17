@@ -39,7 +39,7 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('image/banner2.png')">
+            <div class="carousel-item active" style="background-image: url('image/banner.png')">
               <div class="carousel-caption d-none d-md-block">
 <!--                 <h2 class="display-4">First Slide</h2>
                 <p class="lead">This is a description for the first slide.</p> -->
