@@ -176,7 +176,6 @@ Vue.component("step2", {
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Citizenship</label>
                               <select id="citizenship" name="citizenship" class="form-control" v-model.trim="citizenship" @input="$v.citizenship.$touch()">
                                 <option value="1">Filipino</option>
-                                <option value="2">American</option>
                               </select>
                               <span class="text-danger" v-if="$v.citizenship.$error && !$v.citizenship.required">Citizenship is required</span>
                             </div>
@@ -218,11 +217,11 @@ Vue.component("step2", {
                               </select>
                               <span class="text-danger" v-if="$v.province.$error && !$v.province.required">Province is required</span>
                             </div>
-                            <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.zipCode.$error }">
+                            <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.zipcode.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Zip Code</label>
-                              <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Ex: 8600" v-model.trim="zipCode" @input="$v.zipCode.$touch()">
-                              <span class="text-danger" v-if="$v.zipCode.$error && !$v.zipCode.required">Zipcode is required</span>
-                              <span class="text-danger" v-if="$v.zipCode.$error && !$v.zipCode.numeric">Accepts only numerics.</span>
+                              <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Ex: 8600" v-model.trim="zipcode" @input="$v.zipcode.$touch()">
+                              <span class="text-danger" v-if="$v.zipcode.$error && !$v.zipcode.required">zipcode is required</span>
+                              <span class="text-danger" v-if="$v.zipcode.$error && !$v.zipcode.numeric">Accepts only numerics.</span>
                             </div>                        
                           </div>
         </div>`,
@@ -242,7 +241,7 @@ Vue.component("step2", {
             city: "",
             barangay: "",
             province: "",
-            zipCode: "",
+            zipcode: "",
             provinces: {},
             citys: {},
             brgys: {}
@@ -294,11 +293,11 @@ Vue.component("step2", {
           province: {
             required
         },
-          zipCode: {
+          zipcode: {
             required,
             numeric
         },
-        form: ["lastName","firstName","dateOfBirth","placeOfBirth","sex","civilStatus","citizenship","mobileNumber","presentAddress","city","barangay","province","zipCode"]
+        form: ["lastName","firstName","dateOfBirth","placeOfBirth","sex","civilStatus","citizenship","mobileNumber","presentAddress","city","barangay","province","zipcode"]
     },
     methods: {
         validate() {

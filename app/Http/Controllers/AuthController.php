@@ -66,7 +66,7 @@ class AuthController extends Controller
         $applicants->town_city = $request->city;
         $applicants->brgy = $request->barangay;
         $applicants->province = $request->province;
-        $applicants->zipcode = $request->zipCode;
+        $applicants->zipcode = $request->zipcode;
         $applicants->name_of_school_last_attended = $request->schoolLastAttended;
         $applicants->hei = $request->schoolPreferred;
         $applicants->course = $request->degreeProgram;
