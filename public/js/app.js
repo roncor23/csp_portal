@@ -3692,11 +3692,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3708,6 +3703,7 @@ __webpack_require__.r(__webpack_exports__);
         }]
       },
       logo: 'image/logologo.png',
+      logologo: 'image/logologologo.png',
       background: 'image/background.png',
       brisbane: 'image/brisbane.png'
     };
@@ -3729,364 +3725,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4206,6 +3844,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         error: function error() {
           app.has_error = true;
+          this.loading = false;
         },
         rememberMe: true,
         fetchUser: true
@@ -4614,7 +4253,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step4", {
   }()
 });
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
-  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Person with Disability (PWD)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\">click here</a>.</span></p>\n                            </div>\n                           <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\">terms and conditions.</a></span></p>\n                            </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Financial: </span>The student-applicants shall submit <span style=\"border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none\">any</span> of the following documents: <span style=\"color:#3490dc\">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style=\"color:#3490dc\">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style=\"color:#3490dc\">(c)</span> Certificate of Indigence;</p>\n                                <p style=\"text-align:justify\"><span style=\"font-weight:bold\">Other documents: </span><span style=\"color:#3490dc\">(a)</span> Certificate as dependent to a solo parent; <span style=\"color:#3490dc\">(b)</span> Certificate of disability; <span style=\"color:#3490dc\">(c)</span> Certificate of membership to indigenous community; <span style=\"color:#3490dc\">(d)</span> Certificate of 4ps; <span style=\"color:#3490dc\">(e)</span> Certificate of senior citizen.</p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
+  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Person with Disability (PWD)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\">click here</a>.</span></p>\n                            </div>\n                           <div class=\"form-group col-md-12\">\n                                <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\">terms and conditions.</a></span></p>\n                            </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <ul style=\"text-align:justify;margin-top:10px\">\n                                  <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal.</li>\n                                  <li>Certified true copy of Birth Certificate <span></span></li>\n                                    <ul>\n                                      <li>High school report card for incoming freshmen students eligible for college; and</li>\n                                      <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>\n                                    </ul>\n                                  </li>\n                                  <li><span>Any of the following documents:</span>\n                                    <ul>\n                                      <li>Latest Income Tax Return (ITR) of parents or guardian;</li>\n                                      <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>\n                                      <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>\n                                      <li>Case Study report from DSWD; and </li>\n                                      <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>\n                                    </ul>\n                                  </li>\n                                </ul>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
   data: function data() {
     return {
       pwd: "",
@@ -6109,7 +5748,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                  </div>\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                            <p v-if=\"v_parentsincome\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                            <p v-if=\"v_verified_admin\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                            <p v-if=\"v_ay\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                            <p v-if=\"v_gwa\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                  </div>\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                            <p v-if=\"v_parentsincome\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                            <p v-if=\"v_verified_admin\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                            <p v-if=\"v_ay\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                            <p v-if=\"v_gwa\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -6783,7 +6422,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-csp-rank", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>                \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>  \n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total CSP: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>\n\n                <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                 <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total CSP: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>\n\n                <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -7445,7 +7084,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-hei", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>\n               \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n\n                </div>\n\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                 <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n\n                </div>\n\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -8101,7 +7740,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-tdp-rank", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECK BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECK BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total TDP: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>\n\n                <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                   <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total TDP: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>\n\n                <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -8762,7 +8401,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-enrolled-applicant", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.id\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>\n               \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n\n                </div>\n\n\n<!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                   <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n\n                </div>\n\n\n<!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -9931,7 +9570,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-not-enrolled-applicant", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                  <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                  </tr>\n                    </thead>\n                    <tfoot >\n                  <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                  </tr>\n                    </tfoot>  \n                   <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.id\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECK BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECK BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>          \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Not Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>         \n                  </div>\n                </div>\n              </div>\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Not Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>         \n                  </div>\n                </div>\n              </div>\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -10424,7 +10063,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-applicant", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>                  \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Academic Year</th>\n                    <th>Year Level</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Unverified applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                  </div>\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                            <p v-if=\"v_parentsincome\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                            <p v-if=\"v_verified_admin\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Academic Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                            <p v-if=\"v_ay\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                            <p v-if=\"v_gwa\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\" id=\"list_of_applicant\">\n                 <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                    <th>Action</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td>{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                        <td>\n                          <button type=\"button\" class=\"btn btn-primary btn-sm\" @click=\"editItem(i)\" data-toggle=\"modal\" data-target=\"#applicantModal\"><i class=\"fas fa-pen-square\"></i></button>\n                        </td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Unverified applicants: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                  </div>\n\n              <!-- EDIT MODAL -->\n              <div class=\"modal fade bd-example-modal-xl\" id=\"applicantModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n                <div class=\"modal-dialog modal-lg\" role=\"document\">\n                  <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                      <h5 class=\"modal-title\" id=\"exampleModalLabel\" style=\"font-weight:bold\">Applicant</h5>\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                      </button>\n                    </div>\n                    <div class=\"modal-body\">\n                     <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"updateData(selectedItem.id)\"\n                  >\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.lname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">First Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.fname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Middle Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.mname\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Extension Name</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.xname\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Date of Birth Name</span>\n                          <input type=\"date\" class=\"form-control\" v-model=\"selectedItem.birthdate\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Place of Birth</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.place_of_birth\">\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Gender</span>\n                           <select name=\"gender\" class=\"form-control\" v-model=\"selectedItem.gender\">\n                            <option value=\"1\">Male</option>\n                            <option value=\"2\">Female</option>\n                          </select>\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Civil Status</span>\n                           <select name=\"civil_status\" class=\"form-control\" v-model=\"selectedItem.civil_status\">\n                            <option value=\"1\">Single</option>\n                            <option value=\"2\">Maried</option>\n                            <option value=\"3\">Separated</option>\n                            <option value=\"4\">Devorced</option>\n                            <option value=\"5\">Widowed</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Citizenship</span>\n                          <select name=\"citizenship\" class=\"form-control\" v-model=\"selectedItem.citizenship\">\n                            <option value=\"1\">Filipino</option>\n                            <option value=\"2\">American</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Mobile Number</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.contact\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">E-mail Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.email\">\n                        </div>\n                         <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Present Address</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.present_address\">\n                        </div>\n                      </div>\n\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">City</span>\n                          <select name=\"town_city\" class=\"form-control\" v-model=\"selectedItem.town_city\">\n                            <option v-for=\"city in citys\" v-bind:value=\"city.city_id\">{{ city.mun_city_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">   \n                          <span style=\"font-size:10px;font-weight:bold\">Barangay</span>    \n                          <select  name=\"barangay\" class=\"form-control\" v-model=\"selectedItem.brgy\">\n                            <option v-for=\"brgy in brgys\" v-bind:value=\"brgy.brgy_id\">{{ brgy.name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Province</span>\n                           <select  name=\"province\" class=\"form-control\" v-model=\"selectedItem.province\">\n                            <option v-for=\"province in provinces\" v-bind:value=\"province.province_id\">{{ province.prov_name }}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Zipcode</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.zipcode\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Last School Attended</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.name_of_school_last_attended\">\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">School Intended</span>\n                          <select name=\"hei\" class=\"form-control\" v-model=\"selectedItem.hei\">\n                            <option v-for=\"hei in heis\" v-bind:value=\"hei.hei_id\">{{ hei.hei_name}}</option>\n                          </select>\n                        </div>\n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Degree Program</span>\n                          <select name=\"course\" class=\"form-control\" v-model=\"selectedItem.course\">\n                            <option v-for=\"program in programs\" v-bind:value=\"program.course_id\">{{ program.course_name}}</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Type</span>\n                          <select name=\"applicant_type\" class=\"form-control\" v-model=\"selectedItem.applicant_type\">\n                            <option value=\"1\">Incoming College Freshmen</option>\n                            <option value=\"3\">College Earned Units</option>\n                            <option value=\"4\">ALS passer</option>\n                            <option value=\"5\">PEPT passer</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">PWD</span>\n                          <select name=\"pwd\" class=\"form-control\" v-model=\"selectedItem.pwd\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Type of Disability</span>\n                          <input v-if=\"selectedItem.pwd != 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\">\n                          <input v-if=\"selectedItem.pwd == 2\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.type_of_disability\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">IPs</span>\n                          <select name=\"ips\" class=\"form-control\" v-model=\"selectedItem.ips\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">4Ps</span>\n                          <select name=\"4ps\" class=\"form-control\" v-model=\"selectedItem.forps\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>                   \n                      </div>\n\n                       <div class=\"form-row\">                  \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Parents Income</span> \n                          <input type=\"text\" id=\"parent_income\" class=\"form-control\" v-model=\"selectedItem.parent_income\">\n                            <p v-if=\"v_parentsincome\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                            \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Solo Parent</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.supported_by_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Solo Parent</span>\n                          <select name=\"applicant_solo_parent\" class=\"form-control\" v-model=\"selectedItem.applicant_solo_parent\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applicant Status</span>\n                          <select name=\"solo_parent\" class=\"form-control\" v-model=\"selectedItem.status\">\n                            <option value=\"1\">Waiting List</option>\n                            <option value=\"2\">Active</option>\n                            <option value=\"3\">Deferred</option>\n                            <option value=\"4\">Terminated</option>\n                            <option value=\"5\">Dropped</option>\n                            <option value=\"6\">Waived</option>\n                            <option value=\"7\">Graduated</option>\n                            <option value=\"8\">Name not found</option>\n                            <option value=\"9\">Not enrolled</option>\n                            <option value=\"11\">For validation</option>\n                            <option value=\"12\">Duplicate</option>\n                            <option value=\"13\">Underload</option>\n                            <option value=\"14\">Failed</option>\n                            <option value=\"15\">Non-Priority Course</option>\n                          </select>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Senior Citizen</span>\n                          <select name=\"seniorcitizen\" class=\"form-control\" v-model=\"selectedItem.senior_citizen\">\n                            <option value=\"1\">Yes</option>\n                            <option value=\"2\">No</option>\n                          </select>\n                        </div>     \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status</span>\n                          <select name=\"ched_status\" id=\"verified_admin_id\" class=\"form-control\" v-model=\"selectedItem.verified_admin\">\n                            <option value=\"1\">Validated</option>\n                            <option value=\"2\">Lacking documents</option>\n                            <option value=\"3\">Invalid application</option>\n                          </select>\n                            <p v-if=\"v_verified_admin\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                      </div>\n                      <div class=\"form-row\">\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">CHED Status Remarks</span>\n                          <input v-if=\"selectedItem.verified_admin == 2 || selectedItem.verified_admin == 3\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\">\n                          <input v-if=\"selectedItem.verified_admin == null\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                          <input v-if=\"selectedItem.verified_admin == 1\" type=\"text\" class=\"form-control\" v-model=\"selectedItem.admin_remarks\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">HEI Status</span>\n                          <input v-if=\"selectedItem.verified_hei === 3\" placeholder=\"Not Yet Check\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 2\" placeholder=\"Not Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                          <input v-if=\"selectedItem.verified_hei === 1\" placeholder=\"Enrolled\" type=\"text\" class=\"form-control\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Year</span>\n                          <select name=\"ay\" id=\"ay\" class=\"form-control\" v-model=\"selectedItem.ay\">\n                            <option value=\"8\">2020</option>\n                          </select>\n                            <p v-if=\"v_ay\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div> \n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">GWA</span>\n                          <input type=\"text\" id=\"gwa\" class=\"form-control\" v-model=\"selectedItem.gwa\">\n                            <p v-if=\"v_gwa\" style=\"font-size:12px\">\n                              <span  style=\"color:red\">Required.</span>\n                            </p>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Ranking Points</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.rank_points\" disabled>\n                        </div>\n                        <div class=\"form-group col-md-2\">\n                          <span style=\"font-size:10px;font-weight:bold\">Applied Date</span>\n                          <input type=\"text\" class=\"form-control\" v-model=\"selectedItem.created_at\" disabled>\n                        </div>\n                      </div>\n                      <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                        <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>\n                      </div>\n                      </form>\n                    </div>\n               \n                  </div>\n                </div>\n              </div>\n\n\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -10750,354 +10389,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-one-user-name", {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -11184,13 +10479,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(window.vuelidate["default"]);
+var _window$validators = window.validators,
+    required = _window$validators.required,
+    minLength = _window$validators.minLength,
+    email = _window$validators.email,
+    sameAs = _window$validators.sameAs,
+    numeric = _window$validators.numeric,
+    alphaNum = _window$validators.alphaNum,
+    alpha = _window$validators.alpha;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       birthdate: '',
       phone_number: '',
       formData: {},
-      has_error: false,
       slide1: 'image/slide1.png',
       slide2: 'image/slide2.png',
       slide3: 'image/slide3.png',
@@ -11198,24 +10502,33 @@ __webpack_require__.r(__webpack_exports__);
       loading: false
     };
   },
+  validations: {
+    birthdate: {},
+    phone_number: {
+      minLength: validators.minLength(11),
+      maxLength: validators.maxLength(11)
+    }
+  },
   mounted: function mounted() {//
   },
   methods: {
     reset: function reset() {
       var _this = this;
 
+      if (this.$v.$invalid) return;
       $('#birthdate').css('border-color', '');
       $('#phone_number').css('border-color', '');
       this.loading = true;
       this.formData = new FormData();
       this.formData.append('birthdate', this.birthdate);
       this.formData.append('phone_number', this.phone_number);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('reset/password', this.formData, {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('reset/password', this.formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (response) {
         if (response.data === 0) {
+          _this.loading = false;
           $('#birthdate').css('border-color', 'red');
           $('#phone_number').css('border-color', 'red');
 
@@ -15051,6 +14364,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -16369,7 +15702,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.se-pre-con[data-v-3b6adb30] {\n    position: fixed;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n    z-index: 9999;\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\ndiv[data-v-3b6adb30] {\n  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\nh1[data-v-3b6adb30],\nh2[data-v-3b6adb30],\nh3[data-v-3b6adb30],\nh4[data-v-3b6adb30],\nh5[data-v-3b6adb30],\nh6[data-v-3b6adb30] {\n  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n}\n.logo[data-v-3b6adb30] {\n  height: 40px;\n  width: 40px;\n}\n.img-fluid[data-v-3b6adb30] {\n  width: 100%;\n}\n.container1[data-v-3b6adb30] {\n  background: #fff;\n  border-radius: 10px;\n  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-3b6adb30] {\n  border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-3b6adb30] {\n  text-align: left;\n  left: 5%;\n}\n.login-sec[data-v-3b6adb30] {\n  padding: 50px 30px;\n  position: relative;\n}\n.login-sec .copy-text[data-v-3b6adb30] {\n  position: absolute;\n  width: 80%;\n  bottom: 20px;\n  font-size: 13px;\n  text-align: center;\n}\n.login-sec .copy-text i[data-v-3b6adb30] {\n  color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-3b6adb30] {\n  color: #E36262;\n}\n.login-sec h2[data-v-3b6adb30] {\n  margin-bottom: 30px;\n  font-weight: 800;\n  font-size: 30px;\n  color: #3490dc;\n}\n.login-sec h2[data-v-3b6adb30]:after {\n  content: \" \";\n  width: 100px;\n  height: 5px;\n  background: #3490dc;\n  display: block;\n  margin-top: 20px;\n  border-radius: 3px;\n  margin-left: auto;\n  margin-right: auto\n}\n.btn-login[data-v-3b6adb30] {\n  background: #3490dc;\n  color: #fff;\n  font-weight: 600;\n}\n.banner-text[data-v-3b6adb30] {\n  width: 70%;\n  position: absolute;\n  bottom: 40px;\n  padding-left: 20px;\n}\n.banner-text h2[data-v-3b6adb30] {\n  color: #fff;\n  font-weight: 600;\n}\n.banner-text h2[data-v-3b6adb30]:after {\n  content: \" \";\n  width: 100px;\n  height: 5px;\n  background: #FFF;\n  display: block;\n  margin-top: 20px;\n  border-radius: 3px;\n}\n.banner-text p[data-v-3b6adb30] {\n  color: #fff;\n}\n\n/* Extra large devices (large laptops and desktops, 1366px and up) */\n@media only screen and (max-width: 1366px) {\n.background[data-v-3b6adb30] {\n    /* fallback for old browsers */\n    /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to bottom, #5bc0de, #3498db);\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    width: 100%;\n    height: 667px;\n    position: absolute;\n}\n.main[data-v-3b6adb30] {\n   \n   margin-top: 72px;\n}\n.login-block[data-v-3b6adb30] {\n\n    width: 100%;\n}\n.container1[data-v-3b6adb30] {\n    background: #fff;\n    border-radius: 10px;\n    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-3b6adb30] {\n    border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-3b6adb30] {\n    text-align: left;\n    left: 5%;\n}\n.login-sec[data-v-3b6adb30] {\n    padding: 50px 30px;\n    position: relative;\n}\n.login-sec .copy-text[data-v-3b6adb30] {\n    position: absolute;\n    width: 80%;\n    bottom: 20px;\n    font-size: 13px;\n    text-align: center;\n}\n.login-sec .copy-text i[data-v-3b6adb30] {\n    color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-3b6adb30] {\n    color: #E36262;\n}\n.login-sec h2[data-v-3b6adb30] {\n    margin-bottom: 30px;\n    font-weight: 800;\n    font-size: 30px;\n    color: #3490dc;\n}\n.login-sec h2[data-v-3b6adb30]:after {\n    content: \" \";\n    width: 100px;\n    height: 5px;\n    background: #3490dc;\n    display: block;\n    margin-top: 20px;\n    border-radius: 3px;\n    margin-left: auto;\n    margin-right: auto\n}\n.btn-login[data-v-3b6adb30] {\n    background: #3490dc;\n    color: #fff;\n    font-weight: 600;\n}\n.banner-text[data-v-3b6adb30] {\n    width: 70%;\n    position: absolute;\n    bottom: 40px;\n    padding-left: 20px;\n}\n.banner-text h2[data-v-3b6adb30] {\n    color: #fff;\n    font-weight: 600;\n}\n.banner-text h2[data-v-3b6adb30]:after {\n    content: \" \";\n    width: 100px;\n    height: 5px;\n    background: #FFF;\n    display: block;\n    margin-top: 20px;\n    border-radius: 3px;\n}\n.banner-text p[data-v-3b6adb30] {\n    color: #fff;\n}\n}\n\n\n\n/* Extra large devices (large laptops and desktops, 1367px and up) */\n@media only screen and (min-width: 1367px) {\n.background[data-v-3b6adb30] {\n    /* fallback for old browsers */\n    /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to bottom, #5bc0de, #3498db);\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    width: 1900px;\n    height: 979px;\n    position: absolute;\n}\n.main[data-v-3b6adb30] {\n   \n   margin-top: 220px;\n}\n.login-block[data-v-3b6adb30] {\n\n    width: 100%;\n}\n.banner-sec[data-v-3b6adb30] {\n\n    background: url('/image/slide1.png') no-repeat left bottom;\n    background-size: cover;\n    min-height: 500px;\n    border-radius: 0 10px 10px 0;\n    padding: 0;\n}\n.container1[data-v-3b6adb30] {\n    background: #fff;\n    border-radius: 10px;\n    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-3b6adb30] {\n    border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-3b6adb30] {\n    text-align: left;\n    left: 5%;\n}\n.login-sec[data-v-3b6adb30] {\n    padding: 50px 30px;\n    position: relative;\n}\n.login-sec .copy-text[data-v-3b6adb30] {\n    position: absolute;\n    width: 80%;\n    bottom: 20px;\n    font-size: 13px;\n    text-align: center;\n}\n.login-sec .copy-text i[data-v-3b6adb30] {\n    color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-3b6adb30] {\n    color: #E36262;\n}\n.login-sec h2[data-v-3b6adb30] {\n    margin-bottom: 30px;\n    font-weight: 800;\n    font-size: 30px;\n    color: #3490dc;\n}\n.login-sec h2[data-v-3b6adb30]:after {\n    content: \" \";\n    width: 100px;\n    height: 5px;\n    background: #3490dc;\n    display: block;\n    margin-top: 20px;\n    border-radius: 3px;\n    margin-left: auto;\n    margin-right: auto\n}\n.btn-login[data-v-3b6adb30] {\n    background: #3490dc;\n    color: #fff;\n    font-weight: 600;\n}\n.banner-text[data-v-3b6adb30] {\n    width: 70%;\n    position: absolute;\n    bottom: 40px;\n    padding-left: 20px;\n}\n.banner-text h2[data-v-3b6adb30] {\n    color: #fff;\n    font-weight: 600;\n}\n.banner-text h2[data-v-3b6adb30]:after {\n    content: \" \";\n    width: 100px;\n    height: 5px;\n    background: #FFF;\n    display: block;\n    margin-top: 20px;\n    border-radius: 3px;\n}\n.banner-text p[data-v-3b6adb30] {\n    color: #fff;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.se-pre-con[data-v-3b6adb30] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\n.logo[data-v-3b6adb30] {\r\n    width: 30px;\r\n    height: 30px;\n}\n.wrapper[data-v-3b6adb30] {\r\n  margin-top: 80px;\r\n  margin-bottom: 80px;\n}\n.form-signin[data-v-3b6adb30] {\r\n  max-width: 380px;\r\n  padding: 15px 35px 45px;\r\n  margin: 0 auto;\r\n  background-color: #fff;\r\n  border: 1px solid rgba(0, 0, 0, 0.1);\n}\n.form-signin .form-signin-heading[data-v-3b6adb30],\r\n.form-signin .checkbox[data-v-3b6adb30] {\r\n  margin-bottom: 30px;\n}\n.form-signin .checkbox[data-v-3b6adb30] {\r\n  font-weight: normal;\n}\n.form-signin .form-control[data-v-3b6adb30] {\r\n  position: relative;\r\n  font-size: 16px;\r\n  height: auto;\r\n  padding: 10px;\r\n  box-sizing: border-box;\n}\n.form-signin .form-control[data-v-3b6adb30]:focus {\r\n  z-index: 2;\n}\n.form-signin input[type=\"text\"][data-v-3b6adb30] {\r\n  margin-bottom: -1px;\r\n  border-bottom-left-radius: 0;\r\n  border-bottom-right-radius: 0;\n}\n.form-signin input[type=\"password\"][data-v-3b6adb30] {\r\n  margin-bottom: 20px;\r\n  border-top-left-radius: 0;\r\n  border-top-right-radius: 0;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -16597,7 +15930,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-5869dd32] {\r\n  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\nh1[data-v-5869dd32],\r\nh2[data-v-5869dd32],\r\nh3[data-v-5869dd32],\r\nh4[data-v-5869dd32],\r\nh5[data-v-5869dd32],\r\nh6[data-v-5869dd32] {\r\n  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-weight: 700;\n}\n.img-fluid[data-v-5869dd32] {\r\n  width: 100%;\n}\n.logo[data-v-5869dd32] {\r\n  height: 40px;\r\n  width: 40px;\n}\n.container1[data-v-5869dd32] {\r\n  background: #fff;\r\n  border-radius: 10px;\r\n  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-5869dd32] {\r\n  border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-5869dd32] {\r\n  text-align: left;\r\n  left: 5%;\n}\n.login-sec[data-v-5869dd32] {\r\n  padding: 50px 30px;\r\n  position: relative;\n}\n.login-sec .copy-text[data-v-5869dd32] {\r\n  position: absolute;\r\n  width: 80%;\r\n  bottom: 20px;\r\n  font-size: 13px;\r\n  text-align: center;\n}\n.login-sec .copy-text i[data-v-5869dd32] {\r\n  color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-5869dd32] {\r\n  color: #E36262;\n}\n.login-sec h2[data-v-5869dd32] {\r\n  margin-bottom: 30px;\r\n  font-weight: 800;\r\n  font-size: 30px;\r\n  color: #3490dc;\n}\n.login-sec h2[data-v-5869dd32]:after {\r\n  content: \" \";\r\n  width: 100px;\r\n  height: 5px;\r\n  background: #3490dc;\r\n  display: block;\r\n  margin-top: 20px;\r\n  border-radius: 3px;\r\n  margin-left: auto;\r\n  margin-right: auto\n}\n.btn-login[data-v-5869dd32] {\r\n  background: #3490dc;\r\n  color: #fff;\r\n  font-weight: 600;\n}\n.banner-text[data-v-5869dd32] {\r\n  width: 70%;\r\n  position: absolute;\r\n  bottom: 40px;\r\n  padding-left: 20px;\n}\n.banner-text h2[data-v-5869dd32] {\r\n  color: #fff;\r\n  font-weight: 600;\n}\n.banner-text h2[data-v-5869dd32]:after {\r\n  content: \" \";\r\n  width: 100px;\r\n  height: 5px;\r\n  background: #FFF;\r\n  display: block;\r\n  margin-top: 20px;\r\n  border-radius: 3px;\n}\n.banner-text p[data-v-5869dd32] {\r\n  color: #fff;\n}\r\n\r\n/* Extra large devices (large laptops and desktops, 1366px and up) */\n@media only screen and (max-width: 1366px) {\n.background[data-v-5869dd32] {\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to bottom, #5bc0de, #3498db);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    width: 100%;\r\n    height: 667px;\r\n    position: absolute;\n}\n.main[data-v-5869dd32] {\r\n   \r\n   margin-top: 72px;\n}\n.login-block[data-v-5869dd32] {\r\n\r\n    width: 100%;\n}\n.container1[data-v-5869dd32] {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-5869dd32] {\r\n    border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-5869dd32] {\r\n    text-align: left;\r\n    left: 5%;\n}\n.login-sec[data-v-5869dd32] {\r\n    padding: 50px 30px;\r\n    position: relative;\n}\n.login-sec .copy-text[data-v-5869dd32] {\r\n    position: absolute;\r\n    width: 80%;\r\n    bottom: 20px;\r\n    font-size: 13px;\r\n    text-align: center;\n}\n.login-sec .copy-text i[data-v-5869dd32] {\r\n    color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-5869dd32] {\r\n    color: #E36262;\n}\n.login-sec h2[data-v-5869dd32] {\r\n    margin-bottom: 30px;\r\n    font-weight: 800;\r\n    font-size: 30px;\r\n    color: #3490dc;\n}\n.login-sec h2[data-v-5869dd32]:after {\r\n    content: \" \";\r\n    width: 100px;\r\n    height: 5px;\r\n    background: #3490dc;\r\n    display: block;\r\n    margin-top: 20px;\r\n    border-radius: 3px;\r\n    margin-left: auto;\r\n    margin-right: auto\n}\n.btn-login[data-v-5869dd32] {\r\n    background: #3490dc;\r\n    color: #fff;\r\n    font-weight: 600;\n}\n.banner-text[data-v-5869dd32] {\r\n    width: 70%;\r\n    position: absolute;\r\n    bottom: 40px;\r\n    padding-left: 20px;\n}\n.banner-text h2[data-v-5869dd32] {\r\n    color: #fff;\r\n    font-weight: 600;\n}\n.banner-text h2[data-v-5869dd32]:after {\r\n    content: \" \";\r\n    width: 100px;\r\n    height: 5px;\r\n    background: #FFF;\r\n    display: block;\r\n    margin-top: 20px;\r\n    border-radius: 3px;\n}\n.banner-text p[data-v-5869dd32] {\r\n    color: #fff;\n}\n}\r\n\r\n\r\n\r\n/* Extra large devices (large laptops and desktops, 1367px and up) */\n@media only screen and (min-width: 1367px) {\n.background[data-v-5869dd32] {\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to bottom, #5bc0de, #3498db);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    width: 1900px;\r\n    height: 979px;\r\n    position: absolute;\n}\n.main[data-v-5869dd32] {\r\n   \r\n   margin-top: 220px;\n}\n.login-block[data-v-5869dd32] {\r\n\r\n    width: 100%;\n}\n.container1[data-v-5869dd32] {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);\n}\n.carousel-inner[data-v-5869dd32] {\r\n    border-radius: 0 10px 10px 0;\n}\n.carousel-caption[data-v-5869dd32] {\r\n    text-align: left;\r\n    left: 5%;\n}\n.login-sec[data-v-5869dd32] {\r\n    padding: 50px 30px;\r\n    position: relative;\n}\n.login-sec .copy-text[data-v-5869dd32] {\r\n    position: absolute;\r\n    width: 80%;\r\n    bottom: 20px;\r\n    font-size: 13px;\r\n    text-align: center;\n}\n.login-sec .copy-text i[data-v-5869dd32] {\r\n    color: #FEB58A;\n}\n.login-sec .copy-text a[data-v-5869dd32] {\r\n    color: #E36262;\n}\n.login-sec h2[data-v-5869dd32] {\r\n    margin-bottom: 30px;\r\n    font-weight: 800;\r\n    font-size: 30px;\r\n    color: #3490dc;\n}\n.login-sec h2[data-v-5869dd32]:after {\r\n    content: \" \";\r\n    width: 100px;\r\n    height: 5px;\r\n    background: #3490dc;\r\n    display: block;\r\n    margin-top: 20px;\r\n    border-radius: 3px;\r\n    margin-left: auto;\r\n    margin-right: auto\n}\n.btn-login[data-v-5869dd32] {\r\n    background: #3490dc;\r\n    color: #fff;\r\n    font-weight: 600;\n}\n.banner-text[data-v-5869dd32] {\r\n    width: 70%;\r\n    position: absolute;\r\n    bottom: 40px;\r\n    padding-left: 20px;\n}\n.banner-text h2[data-v-5869dd32] {\r\n    color: #fff;\r\n    font-weight: 600;\n}\n.banner-text h2[data-v-5869dd32]:after {\r\n    content: \" \";\r\n    width: 100px;\r\n    height: 5px;\r\n    background: #FFF;\r\n    display: block;\r\n    margin-top: 20px;\r\n    border-radius: 3px;\n}\n.banner-text p[data-v-5869dd32] {\r\n    color: #fff;\n}\n}\n.se-pre-con[data-v-5869dd32] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.se-pre-con[data-v-5869dd32] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\n.logo[data-v-5869dd32] {\r\n    width: 30px;\r\n    height: 30px;\n}\n.wrapper[data-v-5869dd32] {\r\n  margin-top: 80px;\r\n  margin-bottom: 80px;\n}\n.form-signin[data-v-5869dd32] {\r\n  max-width: 380px;\r\n  padding: 15px 35px 45px;\r\n  margin: 0 auto;\r\n  background-color: #fff;\r\n  border: 1px solid rgba(0, 0, 0, 0.1);\n}\n.form-signin .form-signin-heading[data-v-5869dd32],\r\n.form-signin .checkbox[data-v-5869dd32] {\r\n  margin-bottom: 30px;\n}\n.form-signin .checkbox[data-v-5869dd32] {\r\n  font-weight: normal;\n}\n.form-signin .form-control[data-v-5869dd32] {\r\n  position: relative;\r\n  font-size: 16px;\r\n  height: auto;\r\n  padding: 10px;\r\n  box-sizing: border-box;\n}\n.form-signin .form-control[data-v-5869dd32]:focus {\r\n  z-index: 2;\n}\n.form-signin input[type=\"text\"][data-v-5869dd32] {\r\n  margin-bottom: -1px;\r\n  border-bottom-left-radius: 0;\r\n  border-bottom-right-radius: 0;\n}\n.form-signin input[type=\"password\"][data-v-5869dd32] {\r\n  margin-bottom: 20px;\r\n  border-top-left-radius: 0;\r\n  border-top-right-radius: 0;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -23737,7 +23070,13 @@ var render = function() {
         _c("div", { staticClass: "container-fluid" }, [
           _c("a", { staticClass: "navbar-brand" }, [
             _c("img", { staticClass: "logo", attrs: { src: _vm.logo } })
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "navbar-brand", staticStyle: { float: "right" } },
+            [_c("img", { staticClass: "logo", attrs: { src: _vm.logologo } })]
+          )
         ])
       ]
     ),
@@ -24062,31 +23401,34 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("h3", [
                     _vm._v(
-                      "Step 1: Accomplish application form via online from March 1 to May 31"
+                      "Accomplish application form via online from March 1 to May 31"
                     )
                   ]),
                   _vm._v(" "),
-                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
-                    _c("li", [_vm._v("Must be Filipino citizen")]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _vm._v(
-                        "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent\n                  "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _vm._v(
-                        "Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)\n                  "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { "list-style-type": "none" } }, [
-                      _vm._v(
-                        "shall submit certifications and/or Identification Cards (IDs) issued by the appropriate offices or agencies."
-                      )
-                    ])
-                  ])
+                  _c(
+                    "ul",
+                    {
+                      staticStyle: {
+                        "text-align": "justify",
+                        "margin-top": "10px"
+                      }
+                    },
+                    [
+                      _c("li", [_vm._v("Must be a Filipino citizen")]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent\n                  "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)\n                  "
+                        )
+                      ])
+                    ]
+                  )
                 ]
               )
             ]),
@@ -24107,67 +23449,67 @@ var staticRenderFns = [
                   ]),
                   _vm._v(" "),
                   _c("h3", [
-                    _vm._v("Step 2: Submit required documents to CHED Caraga")
+                    _vm._v("Submit required documents to CHED Caraga")
                   ]),
+                  _c("br"),
                   _vm._v(" "),
-                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
-                    _c("li", [
-                      _vm._v(
-                        "Printed accomplished application form (with signature and 1 pc 2x2 picture)"
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _vm._v("Certified true copy of Birth Certificate "),
-                      _c("span")
-                    ]),
-                    _vm._v(" "),
-                    _c("ul", [
+                  _c(
+                    "ul",
+                    {
+                      staticStyle: {
+                        "text-align": "justify",
+                        "margin-top": "10px"
+                      }
+                    },
+                    [
                       _c("li", [
                         _vm._v(
-                          "High school report card for incoming freshmen students eligible for college; and"
+                          "Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v("Certified true copy of birth certificate "),
+                        _c("span")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "High school report card for incoming freshmen students eligible for college"
                         )
                       ]),
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students."
+                          "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
                         )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("span", [_vm._v("Any of the following documents:")]),
+                      ]),
                       _vm._v(" "),
-                      _c("ul", [
-                        _c("li", [
-                          _vm._v(
-                            "Latest Income Tax Return (ITR) of parents or guardian;"
-                          )
-                        ]),
+                      _c("li", [
+                        _c("span", [_vm._v("Any of the following documents:")]),
                         _vm._v(" "),
-                        _c("li", [
-                          _vm._v(
-                            "Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _vm._v(
-                            "Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [_vm._v("Case Study report from DSWD; and ")]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _vm._v(
-                            "Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers."
-                          )
+                        _c("ul", [
+                          _c("li", [
+                            _vm._v(
+                              "Latest Income Tax Return (ITR) of parents or guardian;"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v(
+                              "Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v(
+                              "Certificate of Indigency either from their Barangay or Department of Social Welfare and Development (DSWD)"
+                            )
+                          ])
                         ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ]
               )
             ]),
@@ -24184,19 +23526,30 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("Step 3: For application updates")]),
+                  _c("h3", [_vm._v("For application updates")]),
+                  _c("br"),
+                  _c("br"),
                   _vm._v(" "),
-                  _c("ul", { staticStyle: { "text-align": "justify" } }, [
-                    _c("li", [
-                      _vm._v(
-                        "Login to your account to check your application status"
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [_vm._v("Email at csp@cspcaraga.com")]),
-                    _vm._v(" "),
-                    _c("li", [_vm._v("Call or Text 09120892045")])
-                  ])
+                  _c(
+                    "ul",
+                    {
+                      staticStyle: {
+                        "text-align": "justify",
+                        "margin-top": "10px"
+                      }
+                    },
+                    [
+                      _c("li", [
+                        _vm._v(
+                          "Login to your account to check your application status"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [_vm._v("Email at csp@cspcaraga.com")]),
+                      _vm._v(" "),
+                      _c("li", [_vm._v("Call or Text 09120892045")])
+                    ]
+                  )
                 ]
               )
             ])
@@ -24424,282 +23777,140 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "background" }, [
+  return _c("div", { staticClass: "wrapper" }, [
     _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "container main" }, [
-      _c("div", { staticClass: "login-block" }, [
-        _c("div", { staticClass: "container1" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4 col-xl-4 login-sec" }, [
-              _c("h2", { staticClass: "text-center" }, [
-                _c("img", { staticClass: "logo", attrs: { src: _vm.logo } }),
-                _vm._v(" CSP")
-              ]),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "login-form",
-                  attrs: { autocomplete: "off", method: "post" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.login($event)
-                    }
-                  }
-                },
-                [
-                  _vm.has_error
-                    ? _c("div", { staticClass: "alert alert-danger" }, [
-                        _c("p", { staticClass: "text-center" }, [
-                          _vm._v("Incorrect email or password.")
-                        ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "text-uppercase",
-                        attrs: { for: "exampleInputEmail1" }
-                      },
-                      [_vm._v("Email")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.email,
-                          expression: "email"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "email", required: "" },
-                      domProps: { value: _vm.email },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.email = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "text-uppercase",
-                        attrs: { for: "exampleInputPassword1" }
-                      },
-                      [_vm._v("Password")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.password,
-                          expression: "password"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "password", required: "" },
-                      domProps: { value: _vm.password },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.password = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "small",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: "/forgot-password" } },
-                          [_vm._v("Forgot password?")]
-                        )
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(1)
-            ]),
+    _c(
+      "form",
+      {
+        staticClass: "form-signin",
+        attrs: { autocomplete: "off", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.login($event)
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "form-group d-flex justify-content-center",
+            staticStyle: { padding: "10px" }
+          },
+          [
+            _c("img", { staticClass: "logo mr-2", attrs: { src: _vm.logo } }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-8 col-xl-8 banner-sec" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "carousel slide",
-                  attrs: {
-                    id: "carouselExampleIndicators",
-                    "data-ride": "carousel"
-                  }
-                },
-                [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "carousel-inner",
-                      attrs: { role: "listbox" }
-                    },
-                    [
-                      _c("div", { staticClass: "carousel-item active" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide1, alt: "First slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(3)
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "carousel-item" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide2, alt: "Second slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(4)
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "carousel-item" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide3, alt: "Third slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(5)
-                      ])
-                    ]
-                  )
-                ]
-              )
+            _c("label", { staticStyle: { "font-size": "15px" } }, [
+              _vm._v("CHED SCHOLARSHIP PROGRAM")
             ])
-          ])
-        ])
-      ])
-    ])
+          ]
+        ),
+        _vm._v(" "),
+        _vm.has_error
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _c("p", { staticClass: "text-center" }, [
+                _vm._v("Incorrect email or password.")
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "username",
+            placeholder: "Email Address",
+            required: "",
+            autofocus: ""
+          },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password,
+              expression: "password"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            name: "password",
+            placeholder: "Password",
+            required: ""
+          },
+          domProps: { value: _vm.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "small",
+            [
+              _vm._v("If you forgot your password you can "),
+              _c("router-link", { attrs: { to: "/forgot-password" } }, [
+                _vm._v("reset it")
+              ]),
+              _vm._v(". For new applicant you can "),
+              _c("router-link", { attrs: { to: "/register" } }, [
+                _vm._v("signup")
+              ]),
+              _vm._v(".")
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-lg btn-primary btn-block",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Login")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "mt-4",
+            staticStyle: { "text-align": "center", "font-size": "12px" }
+          },
+          [_vm._v("© CSP 2020. All Rights Reserved.")]
+        )
+      ]
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-login float-right", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copy-text" }, [
-      _c("p", { staticClass: "small mb-4 mb-lg-0" }, [
-        _vm._v("© CSP 2020. All Rights Reserved.")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "carousel-indicators" }, [
-      _c("li", {
-        staticClass: "active",
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "0"
-        }
-      }),
-      _vm._v(" "),
-      _c("li", {
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "1"
-        }
-      }),
-      _vm._v(" "),
-      _c("li", {
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "2"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is First Slide")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is Second Slide")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is Heaven")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -26685,311 +25896,152 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "background" }, [
+  return _c("div", { staticClass: "wrapper" }, [
     _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "container main" }, [
-      _c("div", { staticClass: "login-block" }, [
-        _c("div", { staticClass: "container1" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4 login-sec" }, [
-              _c("h4", { staticClass: "text-center" }, [
-                _vm._v("Forgot your password?")
-              ]),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "login-form",
-                  attrs: { autocomplete: "off", method: "post" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.reset($event)
-                    }
+    _c(
+      "form",
+      {
+        staticClass: "form-signin",
+        attrs: { autocomplete: "off", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.reset($event)
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "form-group d-flex justify-content-center",
+            staticStyle: { padding: "10px" }
+          },
+          [
+            _c("img", { staticClass: "logo mr-2", attrs: { src: _vm.logo } }),
+            _vm._v(" "),
+            _c("label", { staticStyle: { "font-size": "15px" } }, [
+              _vm._v("CHED SCHOLARSHIP PROGRAM")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Birthdate")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.birthdate,
+                expression: "birthdate"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "date",
+              id: "birthdate",
+              required: "",
+              autofocus: ""
+            },
+            domProps: { value: _vm.birthdate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.birthdate = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Phone number")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phone_number,
+                expression: "phone_number"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "number",
+              id: "phone_number",
+              required: "",
+              placeholder: "Phone number"
+            },
+            domProps: { value: _vm.phone_number },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
+                  _vm.phone_number = $event.target.value
                 },
+                _vm.$v.phone_number.$touch
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.phone_number.$dirty
+            ? _c(
+                "p",
+                { staticClass: "mt-2", staticStyle: { "font-size": "12px" } },
                 [
-                  _vm.has_error
-                    ? _c("div", { staticClass: "alert alert-danger" }, [
-                        _c("p", { staticClass: "text-center" }, [
-                          _vm._v("Incorrect email or password.")
-                        ])
+                  !_vm.$v.phone_number.minLength
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(
+                          "Mobile number must have at least " +
+                            _vm._s(_vm.$v.phone_number.$params.minLength.min) +
+                            " numbers."
+                        )
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "text-uppercase",
-                        attrs: { for: "exampleInputEmail1" }
-                      },
-                      [_vm._v("Birthdate")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.birthdate,
-                          expression: "birthdate"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "date", id: "birthdate", required: "" },
-                      domProps: { value: _vm.birthdate },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.birthdate = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "text-uppercase",
-                        attrs: { for: "exampleInputPassword1" }
-                      },
-                      [_vm._v("Phone number")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.phone_number,
-                          expression: "phone_number"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        id: "phone_number",
-                        required: ""
-                      },
-                      domProps: { value: _vm.phone_number },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.phone_number = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(2)
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-8 col-xl-8 banner-sec" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "carousel slide",
-                  attrs: {
-                    id: "carouselExampleIndicators",
-                    "data-ride": "carousel"
-                  }
-                },
-                [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "carousel-inner",
-                      attrs: { role: "listbox" }
-                    },
-                    [
-                      _c("div", { staticClass: "carousel-item active" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide1, alt: "First slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(4)
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "carousel-item" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide2, alt: "Second slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(5)
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "carousel-item" }, [
-                        _c("img", {
-                          staticClass: "d-block img-fluid",
-                          attrs: { src: _vm.slide3, alt: "Third slide" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(6)
+                  !_vm.$v.phone_number.maxLength
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(
+                          "Mobile number must have maximum of" +
+                            _vm._s(_vm.$v.phone_number.$params.maxLength.max) +
+                            " numbers."
+                        )
                       ])
-                    ]
-                  )
+                    : _vm._e()
                 ]
               )
-            ])
-          ])
-        ])
-      ])
-    ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-lg btn-primary btn-block",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Reset")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "mt-4",
+            staticStyle: { "text-align": "center", "font-size": "12px" }
+          },
+          [_vm._v("© CSP 2020. All Rights Reserved.")]
+        )
+      ]
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-center" }, [
-      _c("small", [
-        _vm._v("Please enter "),
-        _c(
-          "span",
-          {
-            staticStyle: {
-              border: "1px solid #3490dc",
-              "border-top": "none",
-              "border-left": "none",
-              "border-right": "none"
-            }
-          },
-          [_vm._v("birthdate")]
-        ),
-        _vm._v(" and "),
-        _c(
-          "span",
-          {
-            staticStyle: {
-              border: "1px solid #3490dc",
-              "border-top": "none",
-              "border-left": "none",
-              "border-right": "none"
-            }
-          },
-          [_vm._v("phone number")]
-        ),
-        _vm._v(" registered.")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-login float-right", attrs: { type: "submit" } },
-        [_vm._v("RESET PASSWORD")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copy-text" }, [
-      _c("p", { staticClass: "small mb-4 mb-lg-0" }, [
-        _vm._v("© CSP 2020. All Rights Reserved.")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "carousel-indicators" }, [
-      _c("li", {
-        staticClass: "active",
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "0"
-        }
-      }),
-      _vm._v(" "),
-      _c("li", {
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "1"
-        }
-      }),
-      _vm._v(" "),
-      _c("li", {
-        attrs: {
-          "data-target": "#carouselExampleIndicators",
-          "data-slide-to": "2"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is First Slide")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is Second Slide")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-caption d-none d-md-block" }, [
-      _c("div", { staticClass: "banner-text" }, [
-        _c("h2", [_vm._v("This is Heaven")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28396,7 +27448,7 @@ var render = function() {
                         "tr",
                         {
                           staticStyle: {
-                            "font-size": "12px",
+                            "font-size": "14px",
                             "font-weight": "bold",
                             color: "red"
                           }
@@ -28414,30 +27466,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("thead", [
-                      _c(
-                        "tr",
-                        {
-                          staticStyle: {
-                            "font-size": "10px",
-                            "font-weight": "bold",
-                            color: "blue"
-                          }
-                        },
-                        [
-                          _c("th", [_vm._v("PERSONAL INFORMATION")]),
-                          _c("th"),
-                          _c("th"),
-                          _c("th", [
-                            _vm._v(
-                              "REFERENCE #:  " + _vm._s(applicant.reference_no)
-                            )
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
                     _vm._m(2, true),
+                    _vm._v(" "),
+                    _vm._m(3, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28451,7 +27482,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(3, true),
+                    _vm._m(4, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28489,7 +27520,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4, true),
+                    _vm._m(5, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28509,7 +27540,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(5, true),
+                    _vm._m(6, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c(
@@ -28548,9 +27579,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(6, true),
-                    _vm._v(" "),
                     _vm._m(7, true),
+                    _vm._v(" "),
+                    _vm._m(8, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28564,7 +27595,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(8, true),
+                    _vm._m(9, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28578,7 +27609,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(9, true),
+                    _vm._m(10, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28592,7 +27623,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(10, true),
+                    _vm._m(11, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28608,9 +27639,9 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(11, true),
-                    _vm._v(" "),
                     _vm._m(12, true),
+                    _vm._v(" "),
+                    _vm._m(13, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c(
@@ -28661,9 +27692,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(13, true),
-                    _vm._v(" "),
                     _vm._m(14, true),
+                    _vm._v(" "),
+                    _vm._m(15, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28701,7 +27732,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(15, true),
+                    _vm._m(16, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -28724,10 +27755,10 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(16, true),
+                  _vm._m(17, true),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-row mt-4" }, [
-                    _vm._m(17, true),
+                    _vm._m(18, true),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-4" }, [
                       _c(
@@ -28739,7 +27770,7 @@ var render = function() {
                             margin: "0"
                           }
                         },
-                        [_vm._v(_vm._s(applicant.created_at))]
+                        [_vm._v(_vm._s(applicant.app_created_at))]
                       ),
                       _vm._v(" "),
                       _c(
@@ -28758,46 +27789,29 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(18, true)
+                    _vm._m(19, true)
                   ]),
                   _vm._v(" "),
-                  _vm._m(19, true),
+                  _vm._m(20, true),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-row mt-4" }, [
                     _c("div", { staticClass: "col-md-4" }, [
                       _c(
                         "div",
-                        { staticClass: "d-flex justify-content-center" },
+                        {
+                          staticClass: "d-flex justify-content-center",
+                          staticStyle: {
+                            position: "absolute",
+                            "margin-left": "70px"
+                          }
+                        },
                         [_c("img", { attrs: { src: _vm.e_sign } })]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticStyle: {
-                            "font-size": "10px",
-                            border: "1px solid",
-                            "text-align": "center",
-                            "border-left": "none",
-                            "border-right": "none",
-                            "border-top": "none",
-                            margin: "0"
-                          }
-                        },
-                        [_vm._v("Criseldo C. Calinawan, Ph.D, PECE")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticStyle: {
-                            "text-align": "center",
-                            "font-size": "10px"
-                          }
-                        },
-                        [_vm._v("CHED Regional Scholarship Coordinator")]
-                      )
-                    ])
+                      _vm._m(21, true)
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(22, true)
                   ])
                 ])
               ])
@@ -28825,7 +27839,7 @@ var render = function() {
           { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(20),
+              _vm._m(23),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -30456,7 +29470,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(21)
+                    _vm._m(24)
                   ]
                 )
               ])
@@ -30516,6 +29530,29 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c(
+        "tr",
+        {
+          staticStyle: {
+            "font-size": "10px",
+            "font-weight": "bold",
+            color: "blue"
+          }
+        },
+        [
+          _c("th", [_vm._v("PERSONAL INFORMATION")]),
+          _c("th"),
+          _c("th"),
+          _c("th")
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -30859,6 +29896,100 @@ var staticRenderFns = [
           [_vm._v("Date of submission of required doccuments")]
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group", staticStyle: { "margin-top": "40px" } },
+      [
+        _c(
+          "p",
+          {
+            staticStyle: {
+              "font-size": "10px",
+              border: "1px solid",
+              "text-align": "center",
+              "border-left": "none",
+              "border-right": "none",
+              "border-top": "none",
+              margin: "0"
+            }
+          },
+          [_vm._v("Criseldo C. Calinawan, Ph.D, PECE")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticStyle: { "text-align": "center", "font-size": "10px" } },
+          [_vm._v("CHED Regional Scholarship Coordinator")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c(
+        "div",
+        {
+          staticClass: "form-group",
+          staticStyle: { border: "1px solid", padding: "10px" }
+        },
+        [
+          _c("h4", { staticStyle: { "font-size": "18px" } }, [
+            _vm._v("SUBMIT APPLICATION TO CHED SCHOLARSHIP UNIT")
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticStyle: { "text-align": "justify", "margin-top": "10px" } },
+            [
+              _c("li", [
+                _vm._v("Application Form with signature and 1 pc 2x2 picture")
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v("Certified true copy of birth certificate "),
+                _c("span")
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "High school report card for incoming freshmen students eligible for college; and"
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(
+                  "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students."
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", [_vm._v("Any of the following documents:")]),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [
+                    _vm._v(
+                      "Latest Income Tax Return (ITR) of parents or guardian"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Certificate of Tax Exemption")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Certificate of Indigency")])
+                ])
+              ])
+            ]
+          )
+        ]
+      )
     ])
   },
   function() {

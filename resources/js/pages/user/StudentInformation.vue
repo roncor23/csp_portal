@@ -62,8 +62,8 @@
 
   			<!-- Applicant Information -->
         <table class="table table-sm mt-4">
-          <thead><tr style="font-size:12px;font-weight:bold;color:red"><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th><th></th><th></th><th></th></tr></thead>
-          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th></tr></thead>
+          <thead><tr style="font-size:14px;font-weight:bold;color:red"><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th><th></th><th></th><th></th></tr></thead>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">
               <th scope="col" style="width:25%">Last Name</th>
@@ -262,7 +262,7 @@
             <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">CSP Coordianator</p>
           </div>
           <div class="col-md-4" >
-            <p style="text-align:center;font-size:10px;margin:0">{{applicant.created_at}}</p>
+            <p style="text-align:center;font-size:10px;margin:0">{{applicant.app_created_at}}</p>
             <p  style="font-size:10px;border:1px solid; text-align:center;border-left:none;border-right:none;border-bottom:none">Applied Date</p>
           </div>
           <div class="col-md-4" >
@@ -277,11 +277,31 @@
         </div>  
         <div class="d-flex flex-row mt-4">
           <div class="col-md-4">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" style="position:absolute;margin-left:70px">
              <img :src="e_sign">
             </div>
+            <div class="form-group" style="margin-top:40px">
             <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-top:none;margin:0">Criseldo C. Calinawan, Ph.D, PECE</p>
             <p style="text-align:center;font-size:10px">CHED Regional Scholarship Coordinator</p>
+           </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group" style="border: 1px solid; padding:10px">
+              <h4 style="font-size:18px">SUBMIT APPLICATION TO CHED SCHOLARSHIP UNIT</h4>
+              <ul style="text-align:justify;margin-top:10px">
+                <li>Application Form with signature and 1 pc 2x2 picture</li>
+                <li>Certified true copy of birth certificate <span></span></li>
+                <li>High school report card for incoming freshmen students eligible for college; and</li>
+                <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
+                <li><span>Any of the following documents:</span>
+                  <ul>
+                    <li>Latest Income Tax Return (ITR) of parents or guardian</li>
+                    <li>Certificate of Tax Exemption</li>
+                    <li>Certificate of Indigency</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>  
       </div>

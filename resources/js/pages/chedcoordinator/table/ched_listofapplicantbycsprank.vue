@@ -340,13 +340,13 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                   Loading...
                 </div>
                 <div class="table-responsive" id="list_of_applicant">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
+                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
                     <th>No.</th>
                     <th>Reference #</th>
-                    <th>Academic Year</th>
-                    <th>Year Level</th>                
+                    <th>Year</th>
+                    <th>Year Level</th>             
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -356,8 +356,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
                     <th>HEI Status</th>
-                    <th>CHED Status</th>  
+                    <th>CHED Status</th>     
                     <th>ValidatedByCHED</th>
+                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
@@ -366,7 +367,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                       <tr>
                     <th>No.</th>
                     <th>Reference #</th>
-                    <th>Academic Year</th>
+                    <th>Year</th>
                     <th>Year Level</th>
                     <th>Last Name</th>
                     <th>First Name</th>
@@ -379,6 +380,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>HEI Status</th>
                     <th>CHED Status</th>
                     <th>ValidatedByCHED</th>
+                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
@@ -424,6 +426,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED === null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
+                        <td>{{i.update_date}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
@@ -678,7 +681,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                           <input v-if="selectedItem.verified_hei === 1" placeholder="Enrolled" type="text" class="form-control" disabled>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Academic Year</span>
+                          <span style="font-size:10px;font-weight:bold">Year</span>
                           <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
                             <option value="8">2020</option>
                           </select>

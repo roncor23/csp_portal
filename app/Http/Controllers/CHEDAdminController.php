@@ -1728,7 +1728,6 @@ class CHEDAdminController extends Controller
 
     	$model = new applicantsModel();
         $model1 = new User();
-
     	$applicants = $model::where('user_id', $id)->first();
         $users = $model1::where('id', $id)->first();
 
@@ -1789,6 +1788,7 @@ class CHEDAdminController extends Controller
         $applicants->ay = $request->ay;
         $applicants->senior_citizen = $request->senior_citizen;
         $applicants->rank_points = $total_rank_points;
+        $applicants->update_date = date("F d, Y h:i:s A", time());
         $applicants->validatedByCHED =  Auth::user()->name;
         $applicants->save();
 

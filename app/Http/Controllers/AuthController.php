@@ -78,6 +78,7 @@ class AuthController extends Controller
         $applicants->applicant_solo_parent = $request->a_solo_parent;
         $applicants->supported_by_solo_parent = $request->solo_parent;
         $applicants->user_id = $user->id;
+        $applicants->app_created_at = date("F d, Y h:i:s A", time());
         $applicants->reference_no =  $dt->toDateString().$user->id;  
         $applicants->save();
 

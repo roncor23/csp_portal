@@ -702,10 +702,24 @@ Vue.component("step5", {
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <p style="text-align:justify"><span style="font-weight:bold">Citizenship: </span>Certified true copy of Birth Certificate (NSO).</p>
-                                <p style="text-align:justify"><span style="font-weight:bold">Academic: </span>Senior high school report card for incoming freshmen students eligible for college; and duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating senior high school students.</p>
-                                <p style="text-align:justify"><span style="font-weight:bold">Financial: </span>The student-applicants shall submit <span style="border: 1px solid #3490dc; border-top:none;border-right:none;border-left:none">any</span> of the following documents: <span style="color:#3490dc">(a)</span> Latest Income Tax Return (ITR) of parents or guardian; <span style="color:#3490dc">(b)</span> Certifiacate of Tax Exemtion from the Bureau of Internal Revenue (BIR); <span style="color:#3490dc">(c)</span> Certificate of Indigence;</p>
-                                <p style="text-align:justify"><span style="font-weight:bold">Other documents: </span><span style="color:#3490dc">(a)</span> Certificate as dependent to a solo parent; <span style="color:#3490dc">(b)</span> Certificate of disability; <span style="color:#3490dc">(c)</span> Certificate of membership to indigenous community; <span style="color:#3490dc">(d)</span> Certificate of 4ps; <span style="color:#3490dc">(e)</span> Certificate of senior citizen.</p>
+                                <ul style="text-align:justify;margin-top:10px">
+                                  <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal.</li>
+                                  <li>Certified true copy of Birth Certificate <span></span></li>
+                                    <ul>
+                                      <li>High school report card for incoming freshmen students eligible for college; and</li>
+                                      <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
+                                    </ul>
+                                  </li>
+                                  <li><span>Any of the following documents:</span>
+                                    <ul>
+                                      <li>Latest Income Tax Return (ITR) of parents or guardian;</li>
+                                      <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>
+                                      <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>
+                                      <li>Case Study report from DSWD; and </li>
+                                      <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>
+                                    </ul>
+                                  </li>
+                                </ul>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

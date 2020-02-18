@@ -3,6 +3,7 @@
       <div class="w3-bar1 w3-white1 w3-wide1" style="margin-top:50px">
         <div class="container-fluid">
           <a class="navbar-brand" ><img class="logo" :src="logo"></a>
+          <a class="navbar-brand" style="float:right"><img class="logo" :src="logologo"></a>
         </div>
      </div>
       <!-- Navigation -->
@@ -67,14 +68,13 @@
               <div class="features-icons-icon d-flex" >
                 <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
-              <h3>Step 1: Accomplish application form via online from March 1 to May 31</h3>
-                <ul style="text-align:justify">
-                  <li>Must be Filipino citizen</li>
+              <h3>Accomplish application form via online from March 1 to May 31</h3>
+                <ul style="text-align:justify;margin-top:10px">
+                  <li>Must be a Filipino citizen</li>
                   <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent
                   </li>
                   <li>Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)
                   </li>
-                  <li style="list-style-type:none">shall submit certifications and/or Identification Cards (IDs) issued by the appropriate offices or agencies.</li>
                 </ul>
             </div>
           </div>
@@ -83,22 +83,17 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto fas fa-file-alt" style="color:#1c3961"></i>
               </div>
-              <h3>Step 2: Submit required documents to CHED Caraga</h3>
-              <ul style="text-align:justify">
-                <li>Printed accomplished application form (with signature and 1 pc 2x2 picture)</li>
-                <li>Certified true copy of Birth Certificate <span></span></li>
-                  <ul>
-                    <li>High school report card for incoming freshmen students eligible for college; and</li>
-                    <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
-                  </ul>
-                </li>
+              <h3>Submit required documents to CHED Caraga</h3><br>
+              <ul style="text-align:justify;margin-top:10px">
+                <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal</li>
+                <li>Certified true copy of birth certificate <span></span></li>
+                <li>High school report card for incoming freshmen students eligible for college</li>
+                <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
                 <li><span>Any of the following documents:</span>
                   <ul>
                     <li>Latest Income Tax Return (ITR) of parents or guardian;</li>
                     <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>
-                    <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>
-                    <li>Case Study report from DSWD; and </li>
-                    <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>
+                    <li>Certificate of Indigency either from their Barangay or Department of Social Welfare and Development (DSWD)</li>
                   </ul>
                 </li>
               </ul>
@@ -109,8 +104,8 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto fas fa-list-ul" style="color:#1c3961"></i>
               </div>
-              <h3>Step 3: For application updates</h3>
-              <ul style="text-align:justify">
+              <h3>For application updates</h3><br><br>
+              <ul style="text-align:justify;margin-top:10px">
                 <li>Login to your account to check your application status</li>
                 <li>Email at csp@cspcaraga.com</li>
                 <li>Call or Text 09120892045</li>
@@ -649,6 +644,7 @@ footer.footer {
           ]     
         },
         logo: 'image/logologo.png',
+        logologo: 'image/logologologo.png',
         background: 'image/background.png',
         brisbane: 'image/brisbane.png'
 

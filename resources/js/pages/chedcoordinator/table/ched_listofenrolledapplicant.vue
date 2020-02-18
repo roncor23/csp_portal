@@ -340,15 +340,13 @@ Vue.component("ched-list-of-enrolled-applicant", {
                   Loading...
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
+                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
                     <th>No.</th>
                     <th>Reference #</th>
-                    <th>Academic Year</th>
-                    <th>Year Level</th>
-                    <th>HEI Status</th>
-                    <th>CHED Status</th>                  
+                    <th>Year</th>
+                    <th>Year Level</th>             
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -357,7 +355,10 @@ Vue.component("ched-list-of-enrolled-applicant", {
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
+                    <th>HEI Status</th>
+                    <th>CHED Status</th>     
                     <th>ValidatedByCHED</th>
+                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
@@ -366,10 +367,8 @@ Vue.component("ched-list-of-enrolled-applicant", {
                       <tr>
                     <th>No.</th>
                     <th>Reference #</th>
-                    <th>Academic Year</th>
+                    <th>Year</th>
                     <th>Year Level</th>
-                    <th>HEI Status</th>
-                    <th>CHED Status</th>
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -378,13 +377,16 @@ Vue.component("ched-list-of-enrolled-applicant", {
                     <th>GWA</th>
                     <th>Rank Points</th>
                     <th>Ranking Status</th>
+                    <th>HEI Status</th>
+                    <th>CHED Status</th>
                     <th>ValidatedByCHED</th>
+                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
                     </tfoot>  
             <tbody v-if="filteredBlogs.length > 0">
-                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
+                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.index">
                         <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
                         <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
@@ -395,13 +397,6 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         <td v-if="i.yr_lvl === 3">3rd Year</td>
                         <td v-if="i.yr_lvl === 4">4th Year</td>
                         <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECKED BY HEI</td>
-                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
-                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
-                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECKED BY CHED</td>
-                        <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
-                        <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
-                        <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td>{{i.lname}}</td>
                         <td>{{i.fname}}</td>
                         <td>{{i.mname}}</td>
@@ -422,8 +417,16 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         <td v-if="i.ranking_status === 7">QUALIFIED AS FULL SSP</td>
                         <td v-if="i.ranking_status === 8">QUALIFIED AS FULL PESFA</td>
                         <td v-if="i.ranking_status === 9">QUALIFIED AS FULL SSP</td>
+                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECKED BY HEI</td>
+                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
+                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
+                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECKED BY CHED</td>
+                        <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
+                        <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
+                        <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED === null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
+                        <td>{{i.update_date}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
@@ -435,9 +438,9 @@ Vue.component("ched-list-of-enrolled-applicant", {
                        <tr>
                         <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
                        </tr>
-                    </tbody>
-               
+                    </tbody>              
                     </table>
+
                     <div class="form-row">
                       <div class="form-group col-md-3">
                         <span style="font-weight:bold">Total Enrolled: </span>{{filteredBlogs.length}}
@@ -681,7 +684,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                           <input v-if="selectedItem.verified_hei === 1" placeholder="Enrolled" type="text" class="form-control" disabled>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Academic Year</span>
+                          <span style="font-size:10px;font-weight:bold">Year</span>
                           <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
                             <option value="8">2020</option>
                           </select>
