@@ -3682,16 +3682,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -23151,104 +23141,6 @@ var render = function() {
     _vm._m(3),
     _vm._v(" "),
     _vm._m(4),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "testimonials text-center bg-light container-fluid" },
-      [
-        _c("div", [
-          _c("h3", { staticClass: "label mb-5" }, [
-            _vm._v("What people are saying...")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c(
-                "div",
-                { staticClass: "testimonial-item mx-auto mb-5 mb-lg-0" },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid rounded-circle mb-3",
-                    attrs: { src: _vm.brisbane, alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Brisbane Q. Titular")]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: "font-weight-light mb-0",
-                      staticStyle: { "text-align": "justify" }
-                    },
-                    [
-                      _vm._v(
-                        '"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."'
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c(
-                "div",
-                { staticClass: "testimonial-item mx-auto mb-5 mb-lg-0" },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid rounded-circle mb-3",
-                    attrs: { src: _vm.brisbane, alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Brisbane Q. Titular")]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: "font-weight-light mb-0",
-                      staticStyle: { "text-align": "justify" }
-                    },
-                    [
-                      _vm._v(
-                        '"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."'
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c(
-                "div",
-                { staticClass: "testimonial-item mx-auto mb-5 mb-lg-0" },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid rounded-circle mb-3",
-                    attrs: { src: _vm.brisbane, alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Brisbane Q. Titular")]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: "font-weight-light mb-0",
-                      staticStyle: { "text-align": "justify" }
-                    },
-                    [
-                      _vm._v(
-                        '"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."'
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      ]
-    ),
     _vm._v(" "),
     _vm._m(5)
   ])

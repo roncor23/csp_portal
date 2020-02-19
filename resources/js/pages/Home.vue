@@ -116,7 +116,7 @@
       </div>
     </div>
     <!-- Image Showcases -->
-    <div class="showcase">
+    <div class="showcase" style="">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
 
@@ -147,34 +147,24 @@
       </div>
     </div>
     <!-- Testimonials -->
-    <div class="testimonials text-center bg-light container-fluid">
+<!--     <div class="testimonials text-center bg-light container-fluid">
       <div>
-        <h3 class="label mb-5">What people are saying...</h3>
+        <h3 class="label mb-5">Success story</h3>
         <div class="row">
           <div class="col-lg-4">
             <div class="testimonial-item mx-auto mb-5 mb-lg-0">
               <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
-              <h4>Brisbane Q. Titular</h4>
-              <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
+          <div class="col-lg-8">
               <h4>Brisbane Q. Titular</h4>
               <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
-            </div>
           </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" :src="brisbane" alt="">
-              <h4>Brisbane Q. Titular</h4>
-              <p class="font-weight-light mb-0" style="text-align:justify">"The financial aid I got from CHED has helped me to survive my college education. I was able to pay my tuition. I was even able to keep the excess amount of the aid from my tuition to be used for my other school fees. I was even able to save money to be used for my internship at SunStar Davao wherein I have experienced how to be a real journalist in the real world where I have learned things which I cannot learn in the four corners of the classroom. That was just a dream come true."</p>
-            </div>
-          </div>
+
+
         </div>
       </div>
-    </div>
+    </div> -->
  <!-- Footer -->
     <footer class="footer" style="background-color:#1c3961">
       <div class="container">
