@@ -701,6 +701,12 @@ Vue.component("ched-list-of-applicant-by-hei", {
                           <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
                         </div>
                       </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <span style="font-size:10px;font-weight:bold">Facebook profile</span>
+                        <input type="text" class="form-control" v-model="selectedItem.fb_url">
+                        </div>
+                      </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -866,6 +872,7 @@ Vue.component("ched-list-of-applicant-by-hei", {
           this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
           this.formData.append('gwa', this.selectedItem.gwa);
           this.formData.append('ay', this.selectedItem.ay);
+           this.formData.append('fb_url', this.selectedItem.fb_url);
           this.formData.append('senior_citizen', this.selectedItem.senior_citizen);
           this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
           axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})

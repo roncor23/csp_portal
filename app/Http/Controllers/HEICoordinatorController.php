@@ -104,6 +104,7 @@ class HEICoordinatorController extends Controller
         $applicants->yr_lvl = $request->yr_lvl;
         $applicants->verified_hei = $request->verified_hei_id;
         $applicants->hei_remarks = $request->hei_remarks;
+        $applicants->course = $request->course;
         $applicants->validatedByHEI =  Auth::user()->name;
         $applicants->save();
 

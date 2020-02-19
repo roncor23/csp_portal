@@ -1,4 +1,5 @@
 <template>
+  <div class="body">
   <div class="wrapper">
     <div v-if="loading" class="se-pre-con"></div>
     <form class="form-signin" autocomplete="off" @submit.prevent="reset" method="post">
@@ -22,6 +23,7 @@
       <p class="mt-4" style="text-align:center;font-size:12px">&copy; CSP 2020. All Rights Reserved.</p>
     </form>
   </div>
+ </div>
 </template>
 <style scoped>
 .se-pre-con {
@@ -50,6 +52,7 @@
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -79,6 +82,75 @@
   margin-bottom: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
+
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1366px and up) */
+@media only screen and (max-width: 1366px) {
+
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
+
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1367px and up) */
+@media only screen and (min-width: 1367px) {
+
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 }
 
 </style>

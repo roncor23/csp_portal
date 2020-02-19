@@ -727,6 +727,7 @@ Vue.component("hei-list-of-applicant", {
           this.formData.append('yr_lvl', this.selectedItem.yr_lvl);
           this.formData.append('verified_hei_id', this.selectedItem.verified_hei);
           this.formData.append('hei_remarks', this.selectedItem.hei_remarks);
+          this.formData.append('course', this.selectedItem.course);
 
           axios.post('hei_coordinator/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {

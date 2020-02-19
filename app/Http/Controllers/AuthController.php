@@ -67,6 +67,7 @@ class AuthController extends Controller
         $applicants->brgy = $request->barangay;
         $applicants->province = $request->province;
         $applicants->zipcode = $request->zipcode;
+        $applicants->fb_url = $request->fb_url;
         $applicants->name_of_school_last_attended = $request->schoolLastAttended;
         $applicants->hei = $request->schoolPreferred;
         $applicants->course = $request->degreeProgram;

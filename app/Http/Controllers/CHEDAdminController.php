@@ -1788,6 +1788,7 @@ class CHEDAdminController extends Controller
         $applicants->ay = $request->ay;
         $applicants->senior_citizen = $request->senior_citizen;
         $applicants->rank_points = $total_rank_points;
+        $applicants->fb_url = $request->fb_url;
         $applicants->update_date = date("F d, Y h:i:s A", time());
         $applicants->validatedByCHED =  Auth::user()->name;
         $applicants->save();

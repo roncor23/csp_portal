@@ -6,7 +6,6 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/user/Dashboard'
 import ForgotPassword from './pages/forgotpassword.vue'
-import SuccessMail from './pages/mail/SuccessMail'
 
 import StudentInformation from './pages/user/StudentInformation'
 import StudentStatus from './pages/user/StudentStatus'
@@ -61,14 +60,6 @@ const routes = [
     path: '/forgot-password',
     name: 'forgot_password',
     component: ForgotPassword,
-    meta: {
-      auth: false
-    }
-  },
-  {
-    path: '/email/success',
-    name: 'success_mail',
-    component: SuccessMail,
     meta: {
       auth: false
     }

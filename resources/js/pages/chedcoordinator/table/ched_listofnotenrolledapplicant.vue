@@ -361,7 +361,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>ValidatedByCHED</th>
                     <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
-                    <th>Action</th>
                       </tr>
                     </thead>
                     <tfoot >
@@ -383,7 +382,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                     <th>ValidatedByCHED</th>
                     <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
-                    <th>Action</th>
                       </tr>
                     </tfoot>  
             <tbody v-if="filteredBlogs.length > 0">
@@ -430,9 +428,6 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
                         <td>{{i.update_date}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
-                        <td>
-                          <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
-                        </td>
                     </tr> 
                     </tbody>
                     <tbody  v-else>

@@ -1,7 +1,12 @@
 <template>
-    <div class="">
+    <div class="body" style="padding:10px">
         <div v-if="loading" class="se-pre-con"></div>
-        <form-wizard @on-complete="onComplete" shape="circle" color="#3498db">
+        <div class="form-group d-flex justify-content-center">
+
+              <h4 style="font-size:20px;color:#fff;text-align:center">Online Application <br><small>Nothing worth having comes easy!</small></h4>
+
+        </div>    
+        <form-wizard @on-complete="onComplete" shape="circle" color="#2F4F4F">
             <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
                 <step1 ref="step1" @on-validate="mergePartialModels"></step1>
             </tab-content>
@@ -24,7 +29,78 @@
 
 </template>
 <style scoped>
+  
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
 
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1366px and up) */
+@media only screen and (max-width: 1366px) {
+
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
+
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1367px and up) */
+@media only screen and (min-width: 1367px) {
+
+.body {
+  height: 100vh;
+  border:  1px solid #fff;
+  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+  background-size: 400% 400%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+}
 
   .se-pre-con {
     position: fixed;
@@ -36,6 +112,29 @@
     background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .body {
+    height: 125vh;
+    border:  1px solid #fff;
+    background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
+    background-size: 400% 400%;
+
+  }
+
+  @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+}
 
   
 </style>
@@ -222,7 +321,12 @@ Vue.component("step2", {
                               <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Ex: 8600" v-model.trim="zipcode" @input="$v.zipcode.$touch()">
                               <span class="text-danger" v-if="$v.zipcode.$error && !$v.zipcode.required">zipcode is required</span>
                               <span class="text-danger" v-if="$v.zipcode.$error && !$v.zipcode.numeric">Accepts only numerics.</span>
-                            </div>                        
+                            </div>
+                            <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fb_url.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Facebook profile</label>
+                              <input type="text" class="form-control" id="fb_url" name="zip_code" placeholder="Ex: www.facebook.com/john_doe" v-model.trim="fb_url" @input="$v.fb_url.$touch()">
+                              <span class="text-danger" v-if="$v.fb_url.$error && !$v.fb_url.required">Facebook profile is required</span>
+                            </div>                         
                           </div>
         </div>`,
     data() {
@@ -242,6 +346,7 @@ Vue.component("step2", {
             barangay: "",
             province: "",
             zipcode: "",
+            fb_url: "",
             provinces: {},
             citys: {},
             brgys: {}
@@ -297,7 +402,10 @@ Vue.component("step2", {
             required,
             numeric
         },
-        form: ["lastName","firstName","dateOfBirth","placeOfBirth","sex","civilStatus","citizenship","mobileNumber","presentAddress","city","barangay","province","zipcode"]
+          fb_url: {
+            required,
+        },
+        form: ["lastName","firstName","dateOfBirth","placeOfBirth","sex","civilStatus","citizenship","mobileNumber","presentAddress","city","barangay","province","zipcode", "fb_url"]
     },
     methods: {
         validate() {
@@ -848,6 +956,7 @@ Vue.component("step5", {
           this.formData.append('barangay', this.applicationModel.barangay);
           this.formData.append('province', this.applicationModel.province);
           this.formData.append('zipcode', this.applicationModel.zipcode);
+          this.formData.append('fb_url', this.applicationModel.fb_url);
           this.formData.append('fatherLastName', this.applicationModel.fatherLastName);
           this.formData.append('fatherFirstName', this.applicationModel.fatherFirstName);
           this.formData.append('fatherMiddleName', this.applicationModel.fatherMiddleName);

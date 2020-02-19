@@ -538,35 +538,15 @@ footer.footer {
     font-size: 25px;
   }
 
-  .w3-xxlarge {
-      font-size: 50px!important;
-  }
-  .label {
-    font-size: 30px;
-  }
-
-  .w3-image {
-      width: 100%;
-      height: auto;
-  }
-
-  .w3-bar {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .w3-bar .w3-button {
-      white-space: normal;
-  }
-
-  .w3-bar .w3-bar-item {
-      padding: 8px 16px;
-      float: left;
-      width: auto;
-      border: none;
-      display: block;
-      outline: 0;
-  }
+.carousel-item {
+  height: 83vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
   .showcase .showcase-text {
