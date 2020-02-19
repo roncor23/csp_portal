@@ -135,4 +135,4 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('applicant/register/','AuthController@register');
 
     //Public fetch applicants
-    // Route::get('fetch/program','applicantController@fetch_program');
+    Route::get('applicant/number_of_applicants','applicantController@number_of_applicants');

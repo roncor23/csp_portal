@@ -3061,6 +3061,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3682,6 +3684,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3695,11 +3698,24 @@ __webpack_require__.r(__webpack_exports__);
       logo: 'image/logologo.png',
       logologo: 'image/logologologo.png',
       background: 'image/background.png',
-      brisbane: 'image/brisbane.png'
+      brisbane: 'image/brisbane.png',
+      applicant_numbers: ''
     };
   },
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    fetchNumberOfApplicants: function fetchNumberOfApplicants() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('applicant/number_of_applicants/').then(function (result) {
+        _this.applicant_numbers = result.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchNumberOfApplicants();
+  }
 });
 
 /***/ }),
@@ -23085,7 +23101,7 @@ var render = function() {
               staticStyle: { color: "#0000009e", "text-decoration": "none" },
               attrs: { href: "#" }
             },
-            [_vm._v("APPLICANTS: 1,250")]
+            [_vm._v("APPLICANTS: " + _vm._s(_vm.applicant_numbers))]
           ),
           _vm._v(" "),
           _vm._m(0),

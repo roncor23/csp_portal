@@ -9,7 +9,7 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top w3-card">
         <div class="container">
-          <a  href="#" style="color:#0000009e;text-decoration: none">APPLICANTS: 1,250</a>
+          <a  href="#" style="color:#0000009e;text-decoration: none">APPLICANTS: {{ applicant_numbers }}</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -620,6 +620,8 @@ footer.footer {
 
 </style>
 <script>
+import axios from 'axios';
+
   export default {
   data() {
     return {
@@ -636,17 +638,27 @@ footer.footer {
         logo: 'image/logologo.png',
         logologo: 'image/logologologo.png',
         background: 'image/background.png',
-        brisbane: 'image/brisbane.png'
+        brisbane: 'image/brisbane.png',
+        applicant_numbers: ''
 
       }
       
     },
     methods: {
+            fetchNumberOfApplicants: function() {
+          axios.get('applicant/number_of_applicants/').then(result => {
 
+              this.applicant_numbers = result.data;
+
+          }).catch(error => {
+              console.log(error);
+          });
+      }
     },
     
     mounted() {
-        
+
+        this.fetchNumberOfApplicants();
        
     },
    

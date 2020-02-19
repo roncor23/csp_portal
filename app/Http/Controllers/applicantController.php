@@ -31,6 +31,18 @@ class applicantController extends Controller
         return response()->json($users);
     }
     
+    //Fetch number of applicants
+    public function number_of_applicants() {
+
+        $users = DB::table('users')
+                    ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+                    ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('role',1)
+                    ->where('confirm', 1)
+                    ->count();
+
+        return response()->json($users);
+    }
 
 	//Fetch all province
     public function fetch_province() {
