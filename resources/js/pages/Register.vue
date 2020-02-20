@@ -1,11 +1,11 @@
 <template>
-    <div class="body" style="padding:10px">
-        <div v-if="loading" class="se-pre-con"></div>
+  <div class="body">
+  
+    <div >
         <div class="form-group d-flex justify-content-center">
-
-              <h4 style="font-size:20px;color:#fff;text-align:center">Online Application <br><small>Nothing worth having comes easy!</small></h4>
-
-        </div>    
+              <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
+        </div>  
+        <div v-if="loading" class="se-pre-con"></div>
         <form-wizard @on-complete="onComplete" shape="circle" color="#2F4F4F">
             <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
                 <step1 ref="step1" @on-validate="mergePartialModels"></step1>
@@ -22,11 +22,10 @@
             <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
                 <step5 ref="step5" @on-validate="mergePartialModels"></step5>
             </tab-content>
-            <span class="container">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>
+           
         </form-wizard>
-
     </div>
-
+  </div>
 </template>
 <style scoped>
   
@@ -154,30 +153,33 @@ const { required, minLength, maxLength, email, sameAs, numeric, alphaNum, alpha 
 Vue.component("step1", {
     template: `<div>
                   <div class="form-row">
-                    <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.userName.$error }">
+                    <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.userName.$error }">
                       <label >User name</label><span style="color:red">*</span>
                       <input type="text" class="form-control" placeholder="Ex: John" v-model.trim="userName" @input="$v.userName.$touch()">
                       <span class="text-danger" v-if="$v.userName.$error && !$v.userName.required">User name is required</span>
                     </div>
-                    <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
+                    <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
                       <label>Email</label> <span style="color:red">*</span>
                       <input type="email" class="form-control" placeholder="Ex: john@gmail.com" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.required">Email address is required</span>
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.email">This is not a valid email!</span>
                     </div>
-                    <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.password.$error }">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.password.$error }">
                       <label>Password</label> <span style="color:red">*</span>
                       <input type="password" class="form-control" placeholder="Password" v-model.trim="password" @input="$v.password.$touch()">
                       <span class="text-danger" v-if="$v.password.$error && !$v.password.required">Password is required</span>
                       <span class="text-danger" v-if="!$v.password.minLength">Password must have at least {{ $v.password.$params.minLength.min }} letters.</span>
                       <span class="text-danger" v-if="!$v.password.alphaNum">Password accept only alpha and numeric.</span> 
                     </div>
-                    <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.confirmPassword.$error }">
+                    <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.confirmPassword.$error }">
                       <label>Confirm password</label><span style="color:red">*</span>
                       <input type="password" class="form-control" placeholder="Confirm Password" v-model.trim="confirmPassword" @input="$v.confirmPassword.$touch()">
                       <span class="text-danger" v-if="!$v.confirmPassword.sameAsPassword">Passwords must be identical.</span>
                     </div>
-            </div>
+                  </div>
+                   <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
         </div>`,
     data() {
         return {
@@ -326,8 +328,9 @@ Vue.component("step2", {
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Facebook profile</label>
                               <input type="text" class="form-control" id="fb_url" name="zip_code" placeholder="Ex: www.facebook.com/john_doe" v-model.trim="fb_url" @input="$v.fb_url.$touch()">
                               <span class="text-danger" v-if="$v.fb_url.$error && !$v.fb_url.required">Facebook profile is required</span>
-                            </div>                         
+                            </div>   
                           </div>
+                           <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
         </div>`,
     data() {
         return {
@@ -552,10 +555,10 @@ Vue.component("step3", {
                           </select>
                           <span class="text-danger" v-if="$v.sibblings.$error && !$v.sibblings.required">Number of sibblings is required</span>
                         </div>  
-                    </div>
-
-                          
+                    </div>                             
+                  <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>          
                 </div>
+
         </div>`,
     data() {
         return {
@@ -630,7 +633,7 @@ Vue.component("step3", {
 Vue.component("step4", {
     template: `<div>
                       <div class="form-row">
-                          <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.applicant_type.$error }">
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.applicant_type.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Applicant Type</label>
                               <select id="applicant_type" name="applicant_type" class="form-control" v-model.trim="applicant_type" @input="$v.applicant_type.$touch()">
                                 <option value="1">Incoming College Freshman</option>
@@ -640,7 +643,7 @@ Vue.component("step4", {
                               </select>
                               <span class="text-danger" v-if="$v.applicant_type.$error && !$v.applicant_type.required">Applicant type is required</span>
                           </div>
-                         <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.schoolLastAttended.$error }">
+                         <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.schoolLastAttended.$error }">
                           <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Name of School Last Attended</label>
                           <input type="text" class="form-control" id="nsla" name="nsla" placeholder="Ex: Caraga State University" v-model.trim="schoolLastAttended" @input="$v.schoolLastAttended.$touch()">
                           <span class="text-danger" v-if="$v.schoolLastAttended.$error && !$v.schoolLastAttended.required">Name of School Last Attended is required</span>
@@ -648,7 +651,7 @@ Vue.component("step4", {
                         </div>   
                        </div>
                        <div class="form-row mt-2">
-                        <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.schoolPreferred.$error }">
+                        <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.schoolPreferred.$error }">
                           <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">School Intended to enroll or enrolled in</label>
                           <select id="siteoei" name="siteoei" class="form-control" v-model.trim="schoolPreferred" @input="$v.schoolPreferred.$touch()">
                             <option v-for="hei in heis" v-bind:value="hei.hei_id">{{ hei.hei_name }}</option>
@@ -656,9 +659,7 @@ Vue.component("step4", {
                           <span class="text-danger" v-if="$v.schoolPreferred.$error && !$v.schoolPreferred.alpha">Accepts only alphabet characters.</span>
                           <span class="text-danger" v-if="$v.schoolPreferred.$error && !$v.schoolPreferred.required">Name of School Preferred is required</span>
                         </div>
-                       </div>
-                       <div class="form-row mt-2">
-                        <div class="form-group col-md-12" v-bind:class="{ 'has-error': $v.degreeProgram.$error }">
+                        <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.degreeProgram.$error }">
                           <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Degree Program</label>
                           <select id="degree_program" name="degree_program" class="form-control" v-model.trim="degreeProgram" @input="$v.degreeProgram.$touch()">
                             <option v-for="program in programs" v-bind:value="program.course_id">{{ program.course_name }}</option>
@@ -666,6 +667,13 @@ Vue.component("step4", {
                           <span class="text-danger" v-if="$v.degreeProgram.$error && !$v.degreeProgram.required">Degree Program is required</span>
                         </div>
                        </div>
+
+                        <div class="form-row mt-2 mb-2">
+                            <div class="form-group col-md-4">
+                              <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>
+                            </div>
+                        </div>
+
         </div>`,
     data() {
         return {
@@ -790,12 +798,14 @@ Vue.component("step5", {
 
 
                        <div class="form-row mt-2 mb-2">
-                            <div class="form-group col-md-12">
-                                <p style="text-align:justify;font-size:12px">Submit the following documents to validate your application <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#required_documents">click here</a>.</span></p>
+                            <div class="form-group col-md-6">
+                                <p style="text-align:justify;font-size:12px">Submit the following documents to validate your application. <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#required_documents" style="color:#fff">click here</a></span></p>
+                                 <p style="text-align:justify;font-size:12px">By clicking "Submit" you agree to the <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#terms_condition" style="color:#fff">terms and conditions.</a></span></p>       
                             </div>
-                           <div class="form-group col-md-12">
-                                <p style="text-align:justify;font-size:12px">By clicking "Submit" you agree to the <span style="text-decoration: underline"><a href="#" data-toggle="modal" data-target="#terms_condition">terms and conditions.</a></span></p>
+                            <div class="form-group col-md-6">
+                              <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>
                             </div>
+
                         </div>
 
                         <!-- Modal -->
