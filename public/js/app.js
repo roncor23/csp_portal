@@ -3664,6 +3664,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -12646,6 +12663,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("add-account", {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23311,11 +23333,8 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [
-                    _vm._v(
-                      "Accomplish application form via online from March 1 to May 31"
-                    )
-                  ]),
+                  _c("h3", [_vm._v("WHO CAN APPLY?")]),
+                  _c("br"),
                   _vm._v(" "),
                   _c(
                     "ul",
@@ -23326,17 +23345,17 @@ var staticRenderFns = [
                       }
                     },
                     [
-                      _c("li", [_vm._v("Must be a Filipino citizen")]),
+                      _c("li", [_vm._v("Filipino citizen;")]),
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent\n                  "
+                          "Graduating high school student/High school graduate with general weighted average (GWA) of at least 90%; and\n                  "
                         )
                       ]),
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)\n                  "
+                          "Parents/Guardians Annual Gross Income of Four Hundred Thousand Pesos (Php 400,000.00) and below.\n                  "
                         )
                       ])
                     ]
@@ -23360,9 +23379,7 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [
-                    _vm._v("Submit required documents to CHED Caraga")
-                  ]),
+                  _c("h3", [_vm._v("HOW TO APPLY?")]),
                   _c("br"),
                   _vm._v(" "),
                   _c(
@@ -23374,49 +23391,64 @@ var staticRenderFns = [
                       }
                     },
                     [
-                      _c("li", [
-                        _vm._v(
-                          "Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _vm._v("Certified true copy of birth certificate "),
-                        _c("span")
-                      ]),
+                      _c("li", [_vm._v("STEP1 REGISTER ONLINE")]),
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "High school report card for incoming freshmen students eligible for college"
+                          "STEP2 PRINT THE ACCOMPLISHED ONLINE APPLICATION FORM"
                         )
                       ]),
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("span", [_vm._v("Any of the following documents:")]),
-                        _vm._v(" "),
+                          "STEP3 SUBMIT THE FOLLOWING APPLICATION DOCUMENTS TO CHED SCHOLARSHIP UNIT:\n                  "
+                        ),
                         _c("ul", [
                           _c("li", [
                             _vm._v(
-                              "Latest Income Tax Return (ITR) of parents or guardian;"
+                              "Application Form with signature and 1 pc 2x2 picture"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v("Certified true copy of birth certificate")
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v(
+                              "High school report card for incoming freshmen students eligible for college"
                             )
                           ]),
                           _vm._v(" "),
                           _c("li", [
                             _vm._v(
-                              "Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);"
+                              "Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
                             )
                           ]),
                           _vm._v(" "),
                           _c("li", [
                             _vm._v(
-                              "Certificate of Indigency either from their Barangay or Department of Social Welfare and Development (DSWD)"
-                            )
+                              "ANY of the following documents:\n                      "
+                            ),
+                            _c("ul", [
+                              _c("li", [
+                                _vm._v(
+                                  "Latest Income Tax Return of parents/guardian"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v(
+                                  "Certificate of Tax Exemption from the BIR"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v(
+                                  "Certificate of Indigency from their Barangay"
+                                )
+                              ])
+                            ])
                           ])
                         ])
                       ])
@@ -23438,9 +23470,7 @@ var staticRenderFns = [
                     })
                   ]),
                   _vm._v(" "),
-                  _c("h3", [_vm._v("For application updates")]),
-                  _c("br"),
-                  _c("br"),
+                  _c("h3", [_vm._v("FOR QUESTIONS AND INQUIRIES?")]),
                   _vm._v(" "),
                   _c(
                     "ul",
@@ -23452,14 +23482,19 @@ var staticRenderFns = [
                     },
                     [
                       _c("li", [
-                        _vm._v(
-                          "Login to your account to check your application status"
-                        )
+                        _vm._v("Email:\n                  "),
+                        _c("ul", [
+                          _c("li", [_vm._v("csp@cspcaraga.com")]),
+                          _vm._v(" "),
+                          _c("li", [_vm._v("chedcaragastufaps@ched.gov.ph")])
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("li", [_vm._v("Email at csp@cspcaraga.com")]),
+                      _c("li", [_vm._v("Mobile: 0912-089-2045")]),
                       _vm._v(" "),
-                      _c("li", [_vm._v("Call or Text 09120892045")])
+                      _c("li", [_vm._v("hotline: (085)815-3698")]),
+                      _vm._v(" "),
+                      _c("li", [_vm._v("Fax No.: (085)816-24-06")])
                     ]
                   )
                 ]
@@ -23658,7 +23693,9 @@ var staticRenderFns = [
                     _c("a", { staticClass: "ic1", attrs: { href: "#" } }, [
                       _c("i", { staticClass: "fab fa-chrome fa-2x fa-fw" })
                     ])
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li")
                 ])
               ]
             )
@@ -26614,6 +26651,16 @@ var render = function() {
           _vm._v(" "),
           _vm._m(3),
           _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _vm._m(7),
+          _vm._v(" "),
+          _vm._m(8),
+          _vm._v(" "),
           _c("router-link", { attrs: { to: "/add-account" } }, [
             _c("li", [
               _c("a", { attrs: { href: "#" } }, [
@@ -26627,7 +26674,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(9)
   ])
 }
 var staticRenderFns = [
@@ -26660,6 +26707,61 @@ var staticRenderFns = [
       _c("a", { attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-list-ul" }),
         _c("span", [_vm._v("List of HEI")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Enrolled Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Not Enrolled Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("CSP Rank")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("TDP Rank")])
       ])
     ])
   },

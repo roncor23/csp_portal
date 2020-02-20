@@ -27,6 +27,7 @@
   <link href="//rawgit.com/lykmapipo/themify-icons/master/css/themify-icons.css" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+  <script id="godaddy-security-s" src="https://cdn.sucuri.net/badge/badge.js" data-s="2017" data-i="2069146a9be81ea31c26b7c8a8667db521603b600e" data-p="r" data-c="d" data-t="g"></script>
 
 </head>
 <body>

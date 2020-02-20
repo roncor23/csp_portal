@@ -68,12 +68,12 @@
               <div class="features-icons-icon d-flex" >
                 <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
-              <h3>Accomplish application form via online from March 1 to May 31</h3>
+              <h3>WHO CAN APPLY?</h3><br>
                 <ul style="text-align:justify;margin-top:10px">
-                  <li>Must be a Filipino citizen</li>
-                  <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90% or its equivalent
+                  <li>Filipino citizen;</li>
+                  <li>Graduating high school student/High school graduate with general weighted average (GWA) of at least 90%; and
                   </li>
-                  <li>Combine annual gross income of parents/guardian which does not exceed Four Hundred Thousand Pesos (PhP400,000.00)
+                  <li>Parents/Guardians Annual Gross Income of Four Hundred Thousand Pesos (Php 400,000.00) and below.
                   </li>
                 </ul>
             </div>
@@ -83,19 +83,26 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto fas fa-file-alt" style="color:#1c3961"></i>
               </div>
-              <h3>Submit required documents to CHED Caraga</h3><br>
+              <h3>HOW TO APPLY?</h3><br>
               <ul style="text-align:justify;margin-top:10px">
-                <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal</li>
-                <li>Certified true copy of birth certificate <span></span></li>
-                <li>High school report card for incoming freshmen students eligible for college</li>
-                <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
-                <li><span>Any of the following documents:</span>
+                <li>STEP1 REGISTER ONLINE</li>
+                <li>STEP2 PRINT THE ACCOMPLISHED ONLINE APPLICATION FORM</li>
+                <li>STEP3 SUBMIT THE FOLLOWING APPLICATION DOCUMENTS TO CHED SCHOLARSHIP UNIT:
                   <ul>
-                    <li>Latest Income Tax Return (ITR) of parents or guardian;</li>
-                    <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>
-                    <li>Certificate of Indigency either from their Barangay or Department of Social Welfare and Development (DSWD)</li>
+                    <li>Application Form with signature and 1 pc 2x2 picture</li>
+                    <li>Certified true copy of birth certificate</li>
+                    <li>High school report card for incoming freshmen students eligible for college</li>
+                    <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
+                    <li>ANY of the following documents:
+                      <ul>
+                        <li>Latest Income Tax Return of parents/guardian</li>
+                        <li>Certificate of Tax Exemption from the BIR</li>
+                        <li>Certificate of Indigency from their Barangay</li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
+        
               </ul>
             </div>
           </div>
@@ -104,11 +111,17 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto fas fa-list-ul" style="color:#1c3961"></i>
               </div>
-              <h3>For application updates</h3><br><br>
+              <h3>FOR QUESTIONS AND INQUIRIES?</h3>
               <ul style="text-align:justify;margin-top:10px">
-                <li>Login to your account to check your application status</li>
-                <li>Email at csp@cspcaraga.com</li>
-                <li>Call or Text 09120892045</li>
+                <li>Email:
+                  <ul>
+                    <li>csp@cspcaraga.com</li>
+                    <li>chedcaragastufaps@ched.gov.ph</li>
+                  </ul>
+                </li>
+                <li>Mobile: 0912-089-2045</li>
+                <li>hotline: (085)815-3698</li>
+                <li>Fax No.: (085)816-24-06</li>
               </ul>
             </div>
           </div>
@@ -180,6 +193,7 @@
               </li>
             </ul>
             <small class="small mb-4 mb-lg-0" style="color:#fff">&copy; CSP 2020. All Rights Reserved.</small>
+
           </div>
           <div class="col-lg-6 col-xl-6 col-sm-6 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0 mt-2">
@@ -197,6 +211,9 @@
                 <a class="ic1" href="#">
                   <i class="fab fa-chrome fa-2x fa-fw"></i>
                 </a>
+              </li>
+              <li>
+                
               </li>
             </ul>
           </div>

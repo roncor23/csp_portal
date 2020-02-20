@@ -29,6 +29,11 @@
   <ul>
     <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
     <li><a href="#"><i class="fas fa-list-ul"></i><span>List of HEI</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Applicants</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Enrolled Applicants</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Not Enrolled Applicants</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>CSP Rank</span></a></li>
+    <li><a href="#"><i class="fas fa-unlock-alt"></i><span>TDP Rank</span></a></li>
     <li><a href="#"><i class="fas fa-unlock-alt"></i><span>Reset Pasword</span></a></li>
     <router-link to="/add-account"><li><a href="#"><i class="fas fa-address-card"></i><span>Add HEI Account</span></a></li></router-link>
     </ul>
