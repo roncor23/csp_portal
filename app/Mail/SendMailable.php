@@ -30,7 +30,7 @@ class SendMailable extends Mailable
     public function build()
     {
 
-        return $this->from('csp@cspcaraga.com')
+        return $this->from('admin@cspcaraga.com')
                     ->subject('Confirmation Code')
                     ->view('information');
 

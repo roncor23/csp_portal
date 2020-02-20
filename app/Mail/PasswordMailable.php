@@ -29,7 +29,7 @@ class PasswordMailable extends Mailable
      */
     public function build()
     {
-        return $this->from('csp@cspcaraga.com')
+        return $this->from('admin@cspcaraga.com')
             ->subject('Password Changed')
             ->view('password');
 
