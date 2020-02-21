@@ -556,7 +556,7 @@ footer.footer {
   }
 
 .carousel-item {
-  height: 83vh;
+
   min-height: 350px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
