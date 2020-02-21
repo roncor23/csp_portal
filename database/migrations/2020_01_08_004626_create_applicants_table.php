@@ -42,6 +42,9 @@ class CreateApplicantsTable extends Migration
             $table->text('admin_remarks')->nullable();
             $table->text('ranking_remarks')->nullable();
             $table->string('name_of_school_last_attended')->nullable();
+            $table->string('fb_url')->nullable();
+            $table->string('update_date')->nullable();
+            $table->string('app_created_at')->nullable();
             $table->integer('ranking_status')->default(1);
             $table->integer('citizenship')->nullable();
             $table->integer('province')->nullable();
