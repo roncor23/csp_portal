@@ -114,7 +114,7 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .body {
-    height: 125vh;
+    height: 290vh;
     border:  1px solid #fff;
     background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);
     background-size: 400% 400%;
