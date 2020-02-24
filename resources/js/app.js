@@ -52,6 +52,11 @@ const app = new Vue({
   router,
 });
 
+  $(document).ready(function() {
+    // document is loaded and DOM is ready
+    $(".se-pre-con").fadeOut("slow");
+});
+
 
 $('#menu-action').click(function() {
   $('.sidebar').toggleClass('active');

@@ -46526,6 +46526,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"]
 });
+$(document).ready(function () {
+  // document is loaded and DOM is ready
+  $(".se-pre-con").fadeOut("slow");
+});
 $('#menu-action').click(function () {
   $('.sidebar').toggleClass('active');
   $('.main').toggleClass('active');
