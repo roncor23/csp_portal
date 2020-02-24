@@ -272,6 +272,12 @@ class applicantController extends Controller
 
         $model = new User();
 
+        $email = $model::where('email', $request->n_email)->first();
+
+        if($email) {
+            return response()->json(2); // Email already in used.
+        }
+
         $user = $model::where('id', Auth::id())->first();
         $user->email = $request->n_email;
         $user->save();

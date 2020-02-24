@@ -13529,6 +13529,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             _this4.fetchApplicant();
 
             _this4.reset();
+
+            return false;
+          }
+
+          if (result.data === 2) {
+            _this4.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: "Email address is already in used in this system. Please try new one."
+            });
+
+            _this4.fetchApplicant();
+
+            _this4.reset();
+
+            return false;
           }
         })["catch"](function (error) {
           console.log(error);

@@ -449,6 +449,18 @@ import axios from 'axios';
                 })
                 this.fetchApplicant();
                 this.reset();
+                return false;
+            }
+
+            if(result.data === 2) {
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Email address is already in used in this system. Please try new one.`,
+                })
+                this.fetchApplicant();
+                this.reset();
+                return false;
             }
 
           }).catch(error => {
