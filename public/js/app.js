@@ -4106,6 +4106,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  //local registration
 
@@ -15766,7 +15801,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\r\n\r\n\r\n/* Extra large devices (large laptops and desktops, 1366px and up) */\n@media only screen and (max-width: 1366px) {\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\r\n\r\n/* Extra large devices (large laptops and desktops, 1367px and up) */\n@media only screen and (min-width: 1367px) {\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\n.se-pre-con[data-v-364a2fac] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\r\n\r\n/* Extra small devices (phones, 600px and down) */\n@media only screen and (max-width: 600px) {\n.body[data-v-364a2fac] {\r\n    height: 290vh;\r\n    border:  1px solid #fff;\r\n    background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n    background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\r\n\r\n  \r\n", ""]);
+exports.push([module.i, "\n.main[data-v-364a2fac] {\r\n  position: relative;\r\n  display: block;\r\n  top: 50px;\r\n  left: 0;\r\n  padding: 15px;\r\n  padding-left: 75px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main.active[data-v-364a2fac] {\r\n  padding-left: 275px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main .jumbotron[data-v-364a2fac] {\r\n  background-color: #fff;\r\n  padding: 30px !important;\r\n  border: 1px solid #dfe8f1;\r\n  border-radius: 3px;\n}\n.main .jumbotron h1[data-v-364a2fac] {\r\n  font-size: 24px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 12px;\n}\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\r\n\r\n\r\n/* Extra large devices (large laptops and desktops, 1366px and up) */\n@media only screen and (max-width: 1366px) {\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\r\n\r\n/* Extra large devices (large laptops and desktops, 1367px and up) */\n@media only screen and (min-width: 1367px) {\n.body[data-v-364a2fac] {\r\n  height: 100vh;\r\n  border:  1px solid #fff;\r\n  background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n  background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\n.se-pre-con[data-v-364a2fac] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\r\n\r\n/* Extra small devices (phones, 600px and down) */\n@media only screen and (max-width: 600px) {\n.body[data-v-364a2fac] {\r\n    height: 290vh;\r\n    border:  1px solid #fff;\r\n    background: linear-gradient(-45deg, #ff4da6, #4dd2ff, #1c3961, #23d5ab);\r\n    background-size: 400% 400%;\n}\n@-webkit-keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n@keyframes gradient-data-v-364a2fac {\n0% {\r\n    background-position: 0% 50%;\n}\n50% {\r\n    background-position: 100% 50%;\n}\n100% {\r\n    background-position: 0% 50%;\n}\n}\n}\r\n\r\n  \r\n", ""]);
 
 // exports
 
@@ -23195,9 +23230,7 @@ var render = function() {
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _vm._m(5)
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
@@ -23497,7 +23530,7 @@ var staticRenderFns = [
                       _c("li", [
                         _vm._v("Email:\n                  "),
                         _c("ul", [
-                          _c("li", [_vm._v("csp@cspcaraga.com")]),
+                          _c("li", [_vm._v("admin@cspcaraga.com")]),
                           _vm._v(" "),
                           _c("li", [_vm._v("chedcaragastufaps@ched.gov.ph")])
                         ])
@@ -23517,100 +23550,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showcase" }, [
-      _c("div", { staticClass: "container-fluid p-0" }, [
-        _c("div", { staticClass: "row no-gutters" }, [
-          _c("div", {
-            staticClass: "col-lg-6 order-lg-2 text-white showcase-img",
-            staticStyle: { "background-image": "url('image/orientation.png')" }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-lg-6 order-lg-1 my-auto showcase-text" },
-            [
-              _c("h2", { staticClass: "label" }, [
-                _vm._v("Scholars Orientation AY 2019-2020")
-              ]),
-              _vm._v(" "),
-              _c(
-                "p",
-                {
-                  staticClass: "lead mb-0",
-                  staticStyle: { "text-align": "justify" }
-                },
-                [
-                  _vm._v(
-                    "Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!"
-                  )
-                ]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row no-gutters" }, [
-          _c("div", {
-            staticClass: "col-lg-6 text-white showcase-img",
-            staticStyle: { "background-image": "url('image/ay2020.png')" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6 my-auto showcase-text" }, [
-            _c("h2", { staticClass: "label" }, [
-              _vm._v("Academic Year 2019-2020")
-            ]),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "lead mb-0",
-                staticStyle: { "text-align": "justify" }
-              },
-              [
-                _vm._v(
-                  "When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!"
-                )
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row no-gutters" }, [
-          _c("div", {
-            staticClass: "col-lg-6 order-lg-2 text-white showcase-img",
-            staticStyle: { "background-image": "url('image/ongoing.png')" }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-lg-6 order-lg-1 my-auto showcase-text" },
-            [
-              _c("h2", { staticClass: "label" }, [
-                _vm._v("Ongoing Scholars AY 2019-2020")
-              ]),
-              _vm._v(" "),
-              _c(
-                "p",
-                {
-                  staticClass: "lead mb-0",
-                  staticStyle: { "text-align": "justify" }
-                },
-                [
-                  _vm._v(
-                    "Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!"
-                  )
-                ]
-              )
-            ]
-          )
-        ])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -23896,155 +23835,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "body" }, [
-    _c(
-      "div",
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "form-wizard",
-          {
-            attrs: { shape: "circle", color: "#2F4F4F" },
-            on: { "on-complete": _vm.onComplete }
-          },
-          [
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Account Setup",
-                  icon: "ti-user",
-                  "before-change": function() {
-                    return _vm.validateStep("step1")
-                  }
-                }
-              },
-              [
-                _c("step1", {
-                  ref: "step1",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Personal Information",
-                  icon: "ti-id-badge",
-                  "before-change": function() {
-                    return _vm.validateStep("step2")
-                  }
-                }
-              },
-              [
-                _c("step2", {
-                  ref: "step2",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Family Background",
-                  icon: "ti-view-list",
-                  "before-change": function() {
-                    return _vm.validateStep("step3")
-                  }
-                }
-              },
-              [
-                _c("step3", {
-                  ref: "step3",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Preferred School",
-                  icon: "ti-home",
-                  "before-change": function() {
-                    return _vm.validateStep("step4")
-                  }
-                }
-              },
-              [
-                _c("step4", {
-                  ref: "step4",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Marginalized Group",
-                  icon: "ti-layers-alt",
-                  "before-change": function() {
-                    return _vm.validateStep("step5")
-                  }
-                }
-              },
-              [
-                _c("step5", {
-                  ref: "step5",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ],
-      1
-    )
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group d-flex justify-content-center" },
-      [
-        _c(
-          "h4",
-          {
-            staticStyle: {
-              "font-size": "20px",
-              color: "#fff",
-              "text-align": "center",
-              padding: "14px"
-            }
-          },
-          [
-            _vm._v("Online Application "),
-            _c("br"),
-            _c("small", [_vm._v("Nothing worth having comes easy!")])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "main" }, [
+      _c("div", { staticClass: "jumbotron" }, [
+        _c("h1", { staticStyle: { color: "red" } }, [
+          _vm._v("Registration will start on March 1 to May 31, 2020.")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

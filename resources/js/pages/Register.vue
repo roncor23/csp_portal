@@ -1,7 +1,6 @@
 <template>
-  <div class="body">
-  
-    <div >
+<!--<div class="body">
+      <div >
         <div class="form-group d-flex justify-content-center">
               <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
         </div>  
@@ -24,10 +23,46 @@
             </tab-content>
            
         </form-wizard>
-    </div>
+      </div>
+    </div> -->
+  <!-- Content -->
+  <div class="main">
+      <div class="jumbotron">
+        <h1 style="color:red">Registration will start on March 1 to May 31, 2020.</h1>
+      </div>
   </div>
 </template>
 <style scoped>
+
+.main {
+  position: relative;
+  display: block;
+  top: 50px;
+  left: 0;
+  padding: 15px;
+  padding-left: 75px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.main.active {
+  padding-left: 275px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.main .jumbotron {
+  background-color: #fff;
+  padding: 30px !important;
+  border: 1px solid #dfe8f1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.main .jumbotron h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 12px;
+}
   
 .body {
   height: 100vh;

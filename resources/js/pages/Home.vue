@@ -115,7 +115,7 @@
               <ul style="text-align:justify;margin-top:10px">
                 <li>Email:
                   <ul>
-                    <li>csp@cspcaraga.com</li>
+                    <li>admin@cspcaraga.com</li>
                     <li>chedcaragastufaps@ched.gov.ph</li>
                   </ul>
                 </li>
@@ -129,7 +129,7 @@
       </div>
     </div>
     <!-- Image Showcases -->
-    <div class="showcase" style="">
+<!--     <div class="showcase" style="">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
 
@@ -158,7 +158,7 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
     <!-- Testimonials -->
 <!--     <div class="testimonials text-center bg-light container-fluid">
       <div>
