@@ -28,7 +28,7 @@
   <!-- Content -->
   <div class="main">
       <div class="jumbotron">
-        <h1 style="color:red">Registration will start on March 1 to May 31, 2020.</h1>
+        <h1 style="color:red">Start of application March 1, Deadline of Application May 31,2020.</h1>
       </div>
   </div>
 </template>

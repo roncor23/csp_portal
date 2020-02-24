@@ -23860,7 +23860,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "main" }, [
       _c("div", { staticClass: "jumbotron" }, [
         _c("h1", { staticStyle: { color: "red" } }, [
-          _vm._v("Registration will start on March 1 to May 31, 2020.")
+          _vm._v(
+            "Start of application March 1, Deadline of Application May 31,2020."
+          )
         ])
       ])
     ])
