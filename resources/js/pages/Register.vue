@@ -1,36 +1,36 @@
 <template>
-<div class="body">
-      <div >
-        <div class="form-group d-flex justify-content-center">
-              <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
-        </div>  
-        <div v-if="loading" class="se-pre-con"></div>
-        <form-wizard @on-complete="onComplete" shape="circle" color="#2F4F4F">
-            <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
-                <step1 ref="step1" @on-validate="mergePartialModels"></step1>
-            </tab-content>
-            <tab-content title="Personal Information" icon="ti-id-badge" :before-change="()=>validateStep('step2')">
-                <step2 ref="step2" @on-validate="mergePartialModels"></step2>
-            </tab-content>
-            <tab-content title="Family Background" icon="ti-view-list" :before-change="()=>validateStep('step3')">
-                <step3 ref="step3" @on-validate="mergePartialModels"></step3>
-            </tab-content>
-            <tab-content title="Preferred School" icon="ti-home" :before-change="()=>validateStep('step4')">
-                <step4 ref="step4" @on-validate="mergePartialModels"></step4>
-            </tab-content>
-            <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
-                <step5 ref="step5" @on-validate="mergePartialModels"></step5>
-            </tab-content>
-           
-        </form-wizard>
-      </div>
-    </div> 
+<!-- <div class="body">
+  <div >
+    <div class="form-group d-flex justify-content-center">
+          <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
+    </div>  
+    <div v-if="loading" class="se-pre-con"></div>
+    <form-wizard @on-complete="onComplete" shape="circle" color="#2F4F4F">
+        <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
+            <step1 ref="step1" @on-validate="mergePartialModels"></step1>
+        </tab-content>
+        <tab-content title="Personal Information" icon="ti-id-badge" :before-change="()=>validateStep('step2')">
+            <step2 ref="step2" @on-validate="mergePartialModels"></step2>
+        </tab-content>
+        <tab-content title="Family Background" icon="ti-view-list" :before-change="()=>validateStep('step3')">
+            <step3 ref="step3" @on-validate="mergePartialModels"></step3>
+        </tab-content>
+        <tab-content title="Preferred School" icon="ti-home" :before-change="()=>validateStep('step4')">
+            <step4 ref="step4" @on-validate="mergePartialModels"></step4>
+        </tab-content>
+        <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
+            <step5 ref="step5" @on-validate="mergePartialModels"></step5>
+        </tab-content>
+       
+    </form-wizard>
+  </div>
+</div>  -->
   <!-- Content -->
-<!--   <div class="main">
+  <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">Registration will start on March 1 to May 31, 2020.</h1>
       </div>
-  </div> -->
+  </div>
 </template>
 <style scoped>
 
