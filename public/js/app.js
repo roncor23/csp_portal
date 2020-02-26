@@ -3694,6 +3694,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -23410,7 +23416,7 @@ var staticRenderFns = [
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Graduating high school student/High school graduate with general weighted average (GWA) of at least 90%; and\n                  "
+                          "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 85%; and\n                  "
                         )
                       ]),
                       _vm._v(" "),
@@ -23477,19 +23483,26 @@ var staticRenderFns = [
                           _vm._v(" "),
                           _c("li", [
                             _vm._v(
-                              "High school report card for incoming freshmen students eligible for college"
-                            )
+                              "Academic requirements (any of the following)\n                      "
+                            ),
+                            _c("ul", [
+                              _c("li", [
+                                _vm._v(
+                                  "High school report card for incoming freshmen students eligible for college"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v(
+                                  "Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
+                                )
+                              ])
+                            ])
                           ]),
                           _vm._v(" "),
                           _c("li", [
                             _vm._v(
-                              "Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _vm._v(
-                              "ANY of the following documents:\n                      "
+                              "Income requirements (any of the following)\n                      "
                             ),
                             _c("ul", [
                               _c("li", [
@@ -23507,6 +23520,16 @@ var staticRenderFns = [
                               _c("li", [
                                 _vm._v(
                                   "Certificate of Indigency from their Barangay"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v("Certificate / Case Study from DSWD")
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v(
+                                  "Latest copy of contract or proof of income for children of OFW and seafarers"
                                 )
                               ])
                             ])

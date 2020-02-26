@@ -71,7 +71,7 @@
               <h3>WHO CAN APPLY?</h3><br>
                 <ul style="text-align:justify;margin-top:10px">
                   <li>Filipino citizen;</li>
-                  <li>Graduating high school student/High school graduate with general weighted average (GWA) of at least 90%; and
+                  <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 85%; and
                   </li>
                   <li>Parents/Guardians Annual Gross Income of Four Hundred Thousand Pesos (Php 400,000.00) and below.
                   </li>
@@ -91,13 +91,19 @@
                   <ul>
                     <li>Application Form with signature and 1 pc 2x2 picture</li>
                     <li>Certified true copy of birth certificate</li>
-                    <li>High school report card for incoming freshmen students eligible for college</li>
-                    <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
-                    <li>ANY of the following documents:
+                    <li>Academic requirements (any of the following)
+                      <ul>
+                          <li>High school report card for incoming freshmen students eligible for college</li>
+                          <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
+                      </ul>
+                    </li>
+                    <li>Income requirements (any of the following)
                       <ul>
                         <li>Latest Income Tax Return of parents/guardian</li>
                         <li>Certificate of Tax Exemption from the BIR</li>
                         <li>Certificate of Indigency from their Barangay</li>
+                        <li>Certificate / Case Study from DSWD</li>
+                        <li>Latest copy of contract or proof of income for children of OFW and seafarers</li>
                       </ul>
                     </li>
                   </ul>
