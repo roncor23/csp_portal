@@ -117,7 +117,7 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto fas fa-list-ul" style="color:#1c3961"></i>
               </div>
-              <h3>FOR QUESTIONS AND INQUIRIES?</h3>
+              <h3>FOR QUESTIONS <br>AND INQUIRIES?</h3>
               <ul style="text-align:justify;margin-top:10px">
                 <li>Email:
                   <ul>
@@ -517,7 +517,7 @@ footer.footer {
   }
 
   .showcase .showcase-img {
-    min-height: 30rem;
+    min-height: 25rem;
     background-size: cover;
   }
 
@@ -529,7 +529,7 @@ footer.footer {
   }
 
   .features-icons .features-icons-item {
-    max-width: 22rem;
+    max-width: 30rem;
   }
 
   .features-icons .features-icons-item .features-icons-icon {
@@ -544,19 +544,6 @@ footer.footer {
     font-size: 5rem;
   }
 
-  .testimonials {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .testimonials .testimonial-item {
-    max-width: 20rem;
-  }
-
-  .testimonials .testimonial-item img {
-    max-width: 16rem;
-    box-shadow: 0px 5px 5px 0px #adb5bd;
-  }
 
 
 }
