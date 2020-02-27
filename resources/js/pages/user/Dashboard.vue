@@ -8,7 +8,7 @@
         </a>
         <div >
           <img class="logo" :src="logo"> CSP
-            <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+            <ul style="float:right;margin-right:30px;list-style-type:none;">           
               <!-- Dropdown -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
@@ -32,7 +32,6 @@
 
         <!-- Content -->
         <div class="main">
-
             <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
               <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length.</p><a href="#" @click="reSendCode"><i class="fas fa-recycle" style="padding:5px"></i>Resend code</a><a href="#"  @click="c_email"><i class="far fa-envelope" style="padding:5px"></i>Change email</a>
               <div class="form-row" >
@@ -87,11 +86,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
-  background: #f5f5f5;
-  padding: 0;
-  margin: 0;
-}
+
 i.fa {
   font-size: 16px;
 }
@@ -309,9 +304,7 @@ p {
   border-radius: 3px;
   background: white;
 }
-table {
-  background: white;
-}
+
 .bs-callout h4 {
   margin-top: 0;
   margin-bottom: 5px;

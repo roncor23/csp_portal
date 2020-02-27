@@ -1,36 +1,36 @@
 <template>
     <div class="">
-<div class="header">
-  <a href="#" id="menu-action">
-    <i class="fa fa-bars"></i>
-    <span>Close</span>
-  </a>
-  <ched-one-user-name></ched-one-user-name>
-  <div class="logo">
-  CHED COORDINATOR DASHBOARD
-  </div>
-</div>
-<div class="sidebar">
-    <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
-    </ul>
-</div>
+      <div class="header">
+        <a href="#" id="menu-action">
+          <i class="fa fa-bars"></i>
+          <span>Close</span>
+        </a>
+        <ched-one-user-name></ched-one-user-name>
+        <div class="logo">
+        CHED COORDINATOR DASHBOARD
+        </div>
+      </div>
+      <div class="sidebar">
+          <ul>
+            <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+          </ul>
+      </div>
 
-<!-- Content -->
-<div class="main">
+      <!-- Content -->
+      <div class="main">
 
-    <div class="jumbotron">
-       <ched-list-of-applicant></ched-list-of-applicant>
-    </div>
+          <div class="jumbotron">
+             <ched-list-of-applicant></ched-list-of-applicant>
+          </div>
 
-</div>
+      </div>
     </div>
 </template>
 
@@ -706,7 +706,7 @@ Vue.component("ched-list-of-applicant", {
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applied Date</span>
-                          <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
+                          <input type="text" class="form-control" v-model="selectedItem.app_created_at" disabled>
                         </div>
                       </div>
                       <div class="form-row">
@@ -716,8 +716,8 @@ Vue.component("ched-list-of-applicant", {
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Validate</button>
                       </div>
                       </form>
                     </div>
@@ -735,7 +735,7 @@ Vue.component("ched-list-of-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 10,
+          countPage: 50,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},
@@ -914,9 +914,9 @@ Vue.component("ched-list-of-applicant", {
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
-                  text: 'Updated Successfully!',
+                  text: 'Validated Successfully!',
                 })
-               $("#applicantModal").modal("hide");
+                $('#applicantModal').click();
               
             })
             .catch(error => {

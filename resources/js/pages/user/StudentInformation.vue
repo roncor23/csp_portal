@@ -54,7 +54,7 @@
             <img class="_logo" :src="form_logo" style="position:absolute;margin-left:300px">
             <p class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">Office of the President of the Philippines</p>
 
-            <p class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">COMMISION ON HIGHER EDUCATION</p>
+            <p class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">COMMISSION ON HIGHER EDUCATION</p>
             <P class="d-flex justify-content-center" style="font-size:14px;line-height: 0.01;">REGIONAL OFFICE XIII</P>
             <h4 class="d-flex justify-content-around" style="font-size:14px">CHED SCHOLARSHIP PROGRAM (CSP)</h4>
             <h4 class="d-flex justify-content-center" style="font-size:14px;line-height: 0.1;font-weight:bold">APPLICATION FORM</h4>
@@ -147,10 +147,10 @@
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>FAMILY BACKGROUND</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">
-              <th scope="col">Father Last Name</th>
-              <th scope="col">Father First Name</th>
-              <th scope="col">Father Middle Name</th>
-              <th scope="col">Father Ext. Name</th>
+              <th scope="col">Father's Last Name</th>
+              <th scope="col">Father's First Name</th>
+              <th scope="col">Father's Middle Name</th>
+              <th scope="col">Father's Name Ext.</th>
             </tr>
           </thead>
           <tbody>
@@ -163,10 +163,10 @@
           </tbody>
           <thead>
             <tr style="font-size:10px">
-              <th scope="col">Mother Last Name</th>
-              <th scope="col">Mother First Name</th>
-              <th scope="col">Mother Middle Name</th>
-              <th scope="col">Mother Ext. Name</th>
+              <th scope="col">Mother's Last Name</th>
+              <th scope="col">Mother's First Name</th>
+              <th scope="col">Mother's Middle Name</th>
+              <th scope="col">Mother's Name Ext.</th>
             </tr>
           </thead>
           <tbody>
@@ -179,10 +179,10 @@
           </tbody>
           <thead>
             <tr style="font-size:10px">
-              <th scope="col">Mother Occupation</th>
-              <th scope="col">Father Occupation</th>
-              <th scope="col">Mother Employer</th>
-              <th scope="col">Father Employer</th>
+              <th scope="col">Mother's Occupation</th>
+              <th scope="col">Father's Occupation</th>
+              <th scope="col">Mother's Employer</th>
+              <th scope="col">Father's Employer</th>
             </tr>
           </thead>
           <tbody>
@@ -195,8 +195,8 @@
           </tbody>
           <thead>
             <tr style="font-size:10px">
-              <th scope="col">Mother Contact #</th>
-              <th scope="col">Father Contact #</th>
+              <th scope="col">Mother's Contact #</th>
+              <th scope="col">Father's Contact #</th>
               <th scope="col">No. of Siblings</th>
             </tr>
           </thead>
@@ -357,7 +357,7 @@
                           <input type="text" id="xname" class="form-control" v-model="selectedItem.xname" disabled>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Date of Birth Name</span>
+                          <span style="font-size:10px;font-weight:bold">Date of Birth</span>
                           <input type="date" class="form-control" v-model="selectedItem.birthdate">
                         </div>
                         <div class="form-group col-md-2">
@@ -454,63 +454,63 @@
                           </select>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Last Name</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Last Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_lname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father First Name</span>
+                          <span style="font-size:10px;font-weight:bold">Father's First Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_fname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Middle Name</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Middle Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_mname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Extension Name</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Name Extension</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_ename">
                         </div>           
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Last Name</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Last Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_lname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother First Name</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's First Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_fname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Middle Name</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Middle Name</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_mname">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Extension Name</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Name Extension</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_ename">
                         </div> 
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Occupation</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Occupation</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_occupation">
                         </div>  
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Occupation</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Occupation</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_occupation">
                         </div>          
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Employer</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Employer</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_employer">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Employer</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Employer</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_employer">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Mother Contact #</span>
+                          <span style="font-size:10px;font-weight:bold">Mother's Contact #</span>
                           <input type="text" class="form-control" v-model="selectedItem.mother_contact_number">
                         </div> 
                          <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Father Contact #</span>
+                          <span style="font-size:10px;font-weight:bold">Father's Contact #</span>
                           <input type="text" class="form-control" v-model="selectedItem.father_contact_number">
                         </div> 
                         <div class="form-group col-md-4">
@@ -1019,7 +1019,7 @@ Vue.use(VueHtmlToPaper, options);
                   text: 'Updated Successfully!',
                 })
 
-               $("#applicantModal").modal("hide");
+              $('#applicantModal').click();
               
                console.log(response.data);
             })

@@ -699,7 +699,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applied Date</span>
-                          <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
+                          <input type="text" class="form-control" v-model="selectedItem.app_created_at" disabled>
                         </div>
                       </div>
                       <div class="form-row">
@@ -709,8 +709,8 @@ Vue.component("ched-list-of-enrolled-applicant", {
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Validate</button>
                       </div>
                       </form>
                     </div>
@@ -727,7 +727,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 10,
+          countPage: 50,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},
@@ -891,7 +891,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                   title: 'Great...',
                   text: 'Updated Successfully!',
                 })
-               $("#applicantModal").modal("hide");
+                $('#applicantModal').click();
               
             })
             .catch(error => {

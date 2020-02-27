@@ -87,7 +87,7 @@
               <ul style="text-align:justify;margin-top:10px">
                 <li>STEP1 REGISTER ONLINE</li>
                 <li>STEP2 PRINT THE ACCOMPLISHED ONLINE APPLICATION FORM</li>
-                <li>STEP3 SUBMIT THE FOLLOWING APPLICATION DOCUMENTS TO CHED SCHOLARSHIP UNIT:
+                <li>STEP3 SUBMIT THE FOLLOWING APPLICATION DOCUMENTS TO CHED SCHOLARSHIP SECTION:
                   <ul>
                     <li>Application Form with signature and 1 pc 2x2 picture</li>
                     <li>Certified true copy of birth certificate</li>

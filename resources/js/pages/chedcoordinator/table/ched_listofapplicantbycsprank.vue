@@ -696,7 +696,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Applied Date</span>
-                          <input type="text" class="form-control" v-model="selectedItem.created_at" disabled>
+                          <input type="text" class="form-control" v-model="selectedItem.app_created_at" disabled>
                         </div>
                       </div>
                       <div class="form-row">
@@ -706,8 +706,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Validate</button>
                       </div>
                       </form>
                     </div>
@@ -724,7 +724,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
           formData: {},
           selectedItem: {},
           search: '',
-          countPage: 10,
+          countPage: 50,
           pageOfItems: [],
           parent_income: '',
           gwa: '',
@@ -893,9 +893,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
-                  text: 'Updated Successfully!',
+                  text: 'Validated Successfully!',
                 })
-               $("#applicantModal").modal("hide");
+                $('#applicantModal').click();
               
             })
             .catch(error => {
