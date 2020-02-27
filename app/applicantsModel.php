@@ -14,7 +14,8 @@ class applicantsModel extends Model
 
     protected $primaryKey = 'applicant_id';
    
- 	public function user(){
+ 	public function user()
+ 	{
         return $this->belongsTo('App\User'); 
     }
 }

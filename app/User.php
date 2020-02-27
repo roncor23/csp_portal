@@ -39,11 +39,11 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function applicants(){
+    public function applicant(){
         return $this->hasOne('App\applicantsModel'); 
     }
 
-    public function parents(){
+    public function parent(){
         return $this->hasOne('App\parentsModel'); 
     }
 }

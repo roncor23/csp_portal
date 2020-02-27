@@ -134,6 +134,16 @@
               <td>{{applicant.zipcode}}</td>
             </tr>
           </tbody>
+          <thead>
+            <tr style="font-size:10px">
+              <th scope="col">Facebook profile</th><th></th><th></th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-size:10px">   
+              <td>{{applicant.fb_url}}</td>
+            </tr>
+          </tbody>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>FAMILY BACKGROUND</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">
@@ -217,7 +227,7 @@
               <td v-for="program in programs" v-bind:value="program.course_id" v-if="applicant.course === program.course_id">{{program.course_name}}</td>
             </tr>
           </tbody>
-          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>Marginalized Group</th><th></th><th></th><th></th></tr></thead>
+          <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>MARGINALIZED GROUP</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">
               <th scope="col">Indigenous Peoples (IP)</th>
@@ -272,7 +282,7 @@
         </div>  
         <div class="d-flex flex-row mt-4">
           <div class="col-md-4" >
-            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">Date of submission of required doccuments</p>
+            <p style="font-size:10px;border:1px solid;text-align:center;border-left:none;border-right:none;border-bottom:none">Date of submission of required documents</p>
           </div>
         </div>  
         <div class="d-flex flex-row mt-4">
@@ -287,20 +297,26 @@
           </div>
           <div class="col-md-8">
             <div class="form-group" style="border: 1px solid; padding:10px">
-              <h4 style="font-size:18px">SUBMIT APPLICATION TO CHED SCHOLARSHIP UNIT</h4>
-              <ul style="text-align:justify;margin-top:10px">
-                <li>Application Form with signature and 1 pc 2x2 picture</li>
-                <li>Certified true copy of birth certificate <span></span></li>
-                <li>High school report card for incoming freshmen students eligible for college; and</li>
-                <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
-                <li><span>Any of the following documents:</span>
-                  <ul>
-                    <li>Latest Income Tax Return (ITR) of parents or guardian</li>
-                    <li>Certificate of Tax Exemption</li>
-                    <li>Certificate of Indigency</li>
-                  </ul>
-                </li>
-              </ul>
+              <h4 style="font-size:14px">SUBMIT APPLICATION TO CHED SCHOLARSHIP UNIT</h4>
+                <ul style="font-size:10px">
+                  <li>Application Form with signature and 1 pc 2x2 picture</li>
+                  <li>Certified true copy of birth certificate</li>
+                  <li>Academic requirements (any of the following)
+                    <ul>
+                        <li>High school report card for incoming freshmen students eligible for college</li>
+                        <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
+                    </ul>
+                  </li>
+                  <li>Income requirements (any of the following)
+                    <ul>
+                      <li>Latest Income Tax Return of parents/guardian</li>
+                      <li>Certificate of Tax Exemption from the BIR</li>
+                      <li>Certificate of Indigency from their Barangay</li>
+                      <li>Certificate / Case Study from DSWD</li>
+                      <li>Latest copy of contract or proof of income for children of OFW and seafarers</li>
+                    </ul>
+                  </li>
+                </ul>
             </div>
           </div>
         </div>  
@@ -512,6 +528,12 @@
                             <option value="10">10</option>
                           </select>
                         </div>           
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <span style="font-size:10px;font-weight:bold">Facebook profile</span>
+                          <input type="text" class="form-control" v-model="selectedItem.fb_url">
+                        </div> 
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -976,6 +998,7 @@ Vue.use(VueHtmlToPaper, options);
           this.formData.append('father_contact_number', this.selectedItem.father_contact_number);
           this.formData.append('mother_contact_number', this.selectedItem.mother_contact_number);
           this.formData.append('number_of_siblings', this.selectedItem.number_of_siblings);
+          this.formData.append('fb_url', this.selectedItem.fb_url);
           axios.post('applicant/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
                this.fetchApplicant();

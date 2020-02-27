@@ -6013,6 +6013,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_applicant/').then(function (result) {
         _this.loading = false;
         _this.applicants = result.data;
+        console.log(_this.applicants);
 
         _this.applicants.splice(index, 1);
       })["catch"](function (error) {
@@ -14472,6 +14473,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14618,6 +14641,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_html_to_paper__WEBPACK_IMPORT
         this.formData.append('father_contact_number', this.selectedItem.father_contact_number);
         this.formData.append('mother_contact_number', this.selectedItem.mother_contact_number);
         this.formData.append('number_of_siblings', this.selectedItem.number_of_siblings);
+        this.formData.append('fb_url', this.selectedItem.fb_url);
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('applicant/update_applicant/' + $id, this.formData, {
           headers: {
             'content-Type': 'multipart/form-data'
@@ -27442,7 +27466,15 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(7, true),
                     _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", { staticStyle: { "font-size": "10px" } }, [
+                        _c("td", [_vm._v(_vm._s(applicant.fb_url))])
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _vm._m(8, true),
+                    _vm._v(" "),
+                    _vm._m(9, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27456,7 +27488,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(9, true),
+                    _vm._m(10, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27470,7 +27502,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(10, true),
+                    _vm._m(11, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27484,7 +27516,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(11, true),
+                    _vm._m(12, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27500,9 +27532,9 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(12, true),
-                    _vm._v(" "),
                     _vm._m(13, true),
+                    _vm._v(" "),
+                    _vm._m(14, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c(
@@ -27553,9 +27585,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(14, true),
-                    _vm._v(" "),
                     _vm._m(15, true),
+                    _vm._v(" "),
+                    _vm._m(16, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27593,7 +27625,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(16, true),
+                    _vm._m(17, true),
                     _vm._v(" "),
                     _c("tbody", [
                       _c("tr", { staticStyle: { "font-size": "10px" } }, [
@@ -27616,10 +27648,10 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(17, true),
+                  _vm._m(18, true),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-row mt-4" }, [
-                    _vm._m(18, true),
+                    _vm._m(19, true),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-4" }, [
                       _c(
@@ -27650,10 +27682,10 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(19, true)
+                    _vm._m(20, true)
                   ]),
                   _vm._v(" "),
-                  _vm._m(20, true),
+                  _vm._m(21, true),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-row mt-4" }, [
                     _c("div", { staticClass: "col-md-4" }, [
@@ -27669,10 +27701,10 @@ var render = function() {
                         [_c("img", { attrs: { src: _vm.e_sign } })]
                       ),
                       _vm._v(" "),
-                      _vm._m(21, true)
+                      _vm._m(22, true)
                     ]),
                     _vm._v(" "),
-                    _vm._m(22, true)
+                    _vm._m(23, true)
                   ])
                 ])
               ])
@@ -27700,7 +27732,7 @@ var render = function() {
           { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(23),
+              _vm._m(24),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -29331,7 +29363,48 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(24)
+                    _c("div", { staticClass: "form-row" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              "font-size": "10px",
+                              "font-weight": "bold"
+                            }
+                          },
+                          [_vm._v("Facebook profile")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selectedItem.fb_url,
+                              expression: "selectedItem.fb_url"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.selectedItem.fb_url },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.selectedItem,
+                                "fb_url",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(25)
                   ]
                 )
               ])
@@ -29492,6 +29565,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
+      _c("tr", { staticStyle: { "font-size": "10px" } }, [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Facebook profile")]),
+        _c("th"),
+        _c("th"),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
       _c(
         "tr",
         {
@@ -29620,7 +29706,7 @@ var staticRenderFns = [
             color: "blue"
           }
         },
-        [_c("th", [_vm._v("Marginalized Group")]), _c("th"), _c("th"), _c("th")]
+        [_c("th", [_vm._v("MARGINALIZED GROUP")]), _c("th"), _c("th"), _c("th")]
       )
     ])
   },
@@ -29754,7 +29840,7 @@ var staticRenderFns = [
               "border-bottom": "none"
             }
           },
-          [_vm._v("Date of submission of required doccuments")]
+          [_vm._v("Date of submission of required documents")]
         )
       ])
     ])
@@ -29803,52 +29889,61 @@ var staticRenderFns = [
           staticStyle: { border: "1px solid", padding: "10px" }
         },
         [
-          _c("h4", { staticStyle: { "font-size": "18px" } }, [
+          _c("h4", { staticStyle: { "font-size": "14px" } }, [
             _vm._v("SUBMIT APPLICATION TO CHED SCHOLARSHIP UNIT")
           ]),
           _vm._v(" "),
-          _c(
-            "ul",
-            { staticStyle: { "text-align": "justify", "margin-top": "10px" } },
-            [
-              _c("li", [
-                _vm._v("Application Form with signature and 1 pc 2x2 picture")
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _vm._v("Certified true copy of birth certificate "),
-                _c("span")
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _vm._v(
-                  "High school report card for incoming freshmen students eligible for college; and"
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _vm._v(
-                  "Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students."
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("Any of the following documents:")]),
+          _c("ul", { staticStyle: { "font-size": "10px" } }, [
+            _c("li", [
+              _vm._v("Application Form with signature and 1 pc 2x2 picture")
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Certified true copy of birth certificate")]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "Academic requirements (any of the following)\n                    "
+              ),
+              _c("ul", [
+                _c("li", [
+                  _vm._v(
+                    "High school report card for incoming freshmen students eligible for college"
+                  )
+                ]),
                 _vm._v(" "),
-                _c("ul", [
-                  _c("li", [
-                    _vm._v(
-                      "Latest Income Tax Return (ITR) of parents or guardian"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Certificate of Tax Exemption")]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Certificate of Indigency")])
+                _c("li", [
+                  _vm._v(
+                    "Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students"
+                  )
                 ])
               ])
-            ]
-          )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "Income requirements (any of the following)\n                    "
+              ),
+              _c("ul", [
+                _c("li", [
+                  _vm._v("Latest Income Tax Return of parents/guardian")
+                ]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Certificate of Tax Exemption from the BIR")]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Certificate of Indigency from their Barangay")
+                ]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Certificate / Case Study from DSWD")]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Latest copy of contract or proof of income for children of OFW and seafarers"
+                  )
+                ])
+              ])
+            ])
+          ])
         ]
       )
     ])

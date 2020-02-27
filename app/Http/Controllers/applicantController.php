@@ -135,6 +135,7 @@ class applicantController extends Controller
             $applicants->hei = $request->hei_id;
             $applicants->course = $request->course_id;
             $applicants->applicant_type = $request->applicant_type;
+            $applicants->fb_url = $request->fb_url;
             $applicants->verified_hei = 3;
             $applicants->validatedByHEI = "";
             $applicants->hei_remarks = "";
@@ -178,6 +179,7 @@ class applicantController extends Controller
         $applicants->brgy = $request->brgy_id;
         $applicants->province = $request->province;
         $applicants->zipcode = $request->zipcode;
+        $applicants->fb_url = $request->fb_url;
         $applicants->name_of_school_last_attended = $request->name_of_school_last_attended;
         $applicants->hei = $request->hei_id;
         $applicants->course = $request->course_id;

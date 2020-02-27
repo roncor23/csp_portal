@@ -28,6 +28,12 @@ class CHEDAdminController extends Controller
 		            ->get();
 
         return response()->json($users);
+
+
+        // $model = new User();
+        // $applicants = $model::find(46)->applicant;
+
+        // return response()->json($applicants);
     }
     //Fetch all list of unverified Applicant
     public function fetch_unverified_applicant() {

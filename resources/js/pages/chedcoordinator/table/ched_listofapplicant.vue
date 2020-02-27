@@ -785,6 +785,7 @@ Vue.component("ched-list-of-applicant", {
             axios.get('ched_admin/fetch_applicant/').then(result => {
                 this.loading = false;
                 this.applicants = result.data;
+                console.log(this.applicants);
                 this.applicants.splice(index, 1);
             }).catch(error => {
                 console.log(error);
