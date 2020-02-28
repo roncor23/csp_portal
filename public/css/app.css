@@ -170,14 +170,14 @@ sup {
 }
 
 a {
-  color: #3490dc;
+/*   color: #3490dc; */
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
   color: #1d68a7;
-  text-decoration: underline;
+/*   text-decoration: underline; */
 }
 
 a:not([href]) {
@@ -3624,7 +3624,7 @@ input[type=button].btn-block {
 .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #3490dc;
+  background-color: #dfe8f1;
 }
 
 .dropdown-item.disabled,
