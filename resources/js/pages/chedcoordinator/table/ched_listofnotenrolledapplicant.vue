@@ -460,7 +460,7 @@ Vue.component("ched-list-of-not-enrolled-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           loading: false      
         }

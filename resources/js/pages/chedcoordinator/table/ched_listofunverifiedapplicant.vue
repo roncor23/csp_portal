@@ -387,7 +387,7 @@ Vue.component("ched-list-of-unverified-applicant", {
         return {
           applicants: [],
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           loading: false
           

@@ -5980,7 +5980,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
       applicants: [],
       formData: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       selectedItem: {},
       brgys: {},
@@ -6657,7 +6657,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
       formData: {},
       selectedItem: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       parent_income: '',
       gwa: '',
@@ -7319,7 +7319,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
       applicants: [],
       formData: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       selectedItem: {},
       brgys: {},
@@ -7977,7 +7977,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
       formData: {},
       selectedItem: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       parent_income: '',
       gwa: '',
@@ -8638,7 +8638,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-enrolled-appl
       applicants: [],
       formData: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       selectedItem: {},
       brgys: {},
@@ -9298,7 +9298,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-heis", {
       complete_heis: [],
       formData: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       loading: false
     };
@@ -9808,7 +9808,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-not-enrolled-
       applicants: [],
       formData: {},
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       loading: false
     };
@@ -10288,7 +10288,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     return {
       applicants: [],
       search: '',
-      countPage: 50,
+      countPage: 15,
       pageOfItems: [],
       loading: false
     };

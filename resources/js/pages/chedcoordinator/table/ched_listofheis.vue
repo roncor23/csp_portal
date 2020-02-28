@@ -398,7 +398,7 @@ Vue.component("ched-list-of-heis", {
           complete_heis: [],
           formData: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           loading: false     
         }

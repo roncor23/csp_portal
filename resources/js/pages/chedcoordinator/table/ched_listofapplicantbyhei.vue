@@ -727,7 +727,7 @@ Vue.component("ched-list-of-applicant-by-hei", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},

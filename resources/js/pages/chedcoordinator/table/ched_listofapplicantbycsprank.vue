@@ -724,7 +724,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
           formData: {},
           selectedItem: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           parent_income: '',
           gwa: '',
