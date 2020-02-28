@@ -16,7 +16,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#" style="text-decoration:none">Change Password</a></router-link>
+             <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
           </div>
         </li>
       </ul>

@@ -65,6 +65,19 @@
 
 <style scoped>
 
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dfe8f1;
+}
+
+a:hover {
+  color: #1d68a7;
+  text-decoration: none;
+}
+
+
 .se-pre-con {
     position: fixed;
     left: 0px;
