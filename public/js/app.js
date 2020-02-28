@@ -14972,6 +14972,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -27942,7 +27944,7 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.applicants, function(applicant) {
           return applicant.confirm === 1
-            ? _c("div", { staticClass: "container" }, [
+            ? _c("div", { staticClass: "jumbotron" }, [
                 _c("div", { staticClass: "d-flex justify-content-start" }, [
                   _c(
                     "i",
@@ -28374,12 +28376,12 @@ var render = function() {
                           ? _c("td", [_vm._v("Yes")])
                           : _vm._e(),
                         _vm._v(" "),
-                        applicant.supported_by_solo_parent === 2
-                          ? _c("td", [_vm._v("No")])
+                        applicant.supported_by_solo_parent === 1
+                          ? _c("td", [_vm._v("Yes")])
                           : _vm._e(),
                         _vm._v(" "),
-                        applicant.applicant_solo_parent === 1
-                          ? _c("td", [_vm._v("Yes")])
+                        applicant.applicant_solo_parent === 2
+                          ? _c("td", [_vm._v("No")])
                           : _vm._e(),
                         _vm._v(" "),
                         applicant.supported_by_solo_parent === 2
@@ -30481,7 +30483,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Dependent to a Solo Parent")
-        ])
+        ]),
+        _vm._v(" "),
+        _c("th"),
+        _vm._v(" "),
+        _c("th")
       ])
     ])
   },
@@ -31202,7 +31208,14 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "main" }, [_c("applicant-change-password")], 1)
+    _c("div", { staticClass: "main" }, [
+      _c(
+        "div",
+        { staticClass: "jumbotron" },
+        [_c("applicant-change-password")],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [

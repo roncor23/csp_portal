@@ -36,9 +36,9 @@
 
   <!-- Content -->
   <div class="main">
-
-    <applicant-change-password></applicant-change-password>
-
+    <div class="jumbotron">
+      <applicant-change-password></applicant-change-password>
+    </div>
   </div>
 </div>
 </template>

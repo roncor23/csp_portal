@@ -39,7 +39,7 @@
       <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
          <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length. Verify first before you use this portal. Thanks!</p>
       </div>
-     <div class="container" v-for="applicant in applicants" v-if="applicant.confirm === 1">
+     <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
       <div class="d-flex justify-content-start">
         <i class="fas fa-print" @click="print" style="cursor:pointer;padding:3px"><a href="#" style="padding:3px;color:#6495ED">Print</a></i>
         <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>
@@ -252,13 +252,15 @@
             <tr style="font-size:10px">
               <th scope="col">Solo Parent</th>
               <th scope="col">Dependent to a Solo Parent</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr style="font-size:10px">   
               <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
-              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
-              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
+              <td v-if="applicant.supported_by_solo_parent === 1">Yes</td>
+              <td v-if="applicant.applicant_solo_parent === 2">No</td>
               <td v-if="applicant.supported_by_solo_parent === 2">No</td>
             </tr>
           </tbody>
