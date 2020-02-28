@@ -3686,7 +3686,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3887,6 +3886,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3929,6 +3929,15 @@ __webpack_require__.r(__webpack_exports__);
         rememberMe: true,
         fetchUser: true
       });
+    },
+    showPassword: function showPassword() {
+      var x = document.getElementById("myInput");
+
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
     }
   }
 });
@@ -4469,7 +4478,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step4", {
   }()
 });
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
-  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Person with Disability (PWD)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-6\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application. <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\" style=\"color:#fff\">click here</a></span></p>\n                                 <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\" style=\"color:#fff\">terms and conditions.</a></span></p>       \n                            </div>\n                            <div class=\"form-group col-md-6\">\n                              <span class=\"container\" style=\"font-size:12px\">Note: Fields marked with an asterisk (<span style=\"color:red\">*</span>) are required.</span>\n                            </div>\n\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <ul style=\"text-align:justify;margin-top:10px\">\n                                  <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal.</li>\n                                  <li>Certified true copy of Birth Certificate <span></span></li>\n                                    <ul>\n                                      <li>High school report card for incoming freshmen students eligible for college; and</li>\n                                      <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>\n                                    </ul>\n                                  </li>\n                                  <li><span>Any of the following documents:</span>\n                                    <ul>\n                                      <li>Latest Income Tax Return (ITR) of parents or guardian;</li>\n                                      <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>\n                                      <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>\n                                      <li>Case Study report from DSWD; and </li>\n                                      <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>\n                                    </ul>\n                                  </li>\n                                </ul>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
+  template: "<div>\n                      <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.ips.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Indigenous Peoples (IP)</label>\n                              <select class=\"form-control\" v-model.trim=\"ips\" @input=\"$v.ips.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.ips.$error && !$v.ips.required\">Indigenous Peoples is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.pwd.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Person with Disability (PWD)</label>\n                              <select class=\"form-control\" v-model.trim=\"pwd\" @input=\"$v.pwd.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.pwd.$error && !$v.pwd.required\">Persons with Disability is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.for_4ps.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">4Ps</label>\n                              <select class=\"form-control\" v-model.trim=\"for_4ps\" @input=\"$v.for_4ps.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.for_4ps.$error && !$v.for_4ps.required\">4ps is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.senior_citizen.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Senior Citizen</label>\n                              <select class=\"form-control\" v-model.trim=\"senior_citizen\" @input=\"$v.senior_citizen.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.senior_citizen.$error && !$v.senior_citizen.required\">Dependent of a Senior Citizen is required</span>\n                          </div>\n                        </div>\n                        <div class=\"form-row\">\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.a_solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"a_solo_parent\" @input=\"$v.a_solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.a_solo_parent.$error && !$v.a_solo_parent.required\">Solo Parent is required</span>\n                          </div>\n\n                          <div class=\"form-group col-md-6\" v-bind:class=\"{ 'has-error': $v.solo_parent.$error }\">\n                              <span style=\"color:red\">*</span><label style=\"float:left;font-size:12px;font-weight:bold\">Dependent of a Solo Parent</label>\n                              <select class=\"form-control\" v-model.trim=\"solo_parent\" @input=\"$v.solo_parent.$touch()\">\n                                <option value=\"1\">Yes</option>\n                                <option value=\"2\">No</option>\n                              </select>\n                              <span class=\"text-danger\" v-if=\"$v.solo_parent.$error && !$v.solo_parent.required\">Dependent of a Solo Parent is required</span>\n                          </div>\n                        \n                       </div>\n\n\n                       <div class=\"form-row mt-2 mb-2\">\n                            <div class=\"form-group col-md-6\">\n                                <p style=\"text-align:justify;font-size:12px\">Submit the following documents to validate your application. <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#required_documents\" style=\"color:#fff\">click here</a></span></p>\n                                 <p style=\"text-align:justify;font-size:12px\">By clicking \"Submit\" you agree to the <span style=\"text-decoration: underline\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_condition\" style=\"color:#fff\">terms and conditions.</a></span></p>       \n                            </div>\n                            <div class=\"form-group col-md-6\">\n                              <span class=\"container\" style=\"font-size:12px\">Note: Fields marked with an asterisk (<span style=\"color:red\">*</span>) are required.</span>\n                            </div>\n\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"required_documents\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Required Documents</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <ul>\n                                  <li>Application Form with signature and 1 pc 2x2 picture</li>\n                                  <li>Certified true copy of birth certificate</li>\n                                  <li>Academic requirements (any of the following)\n                                    <ul>\n                                        <li>High school report card for incoming freshmen students eligible for college</li>\n                                        <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>\n                                    </ul>\n                                  </li>\n                                  <li>Income requirements (any of the following)\n                                    <ul>\n                                      <li>Latest Income Tax Return of parents/guardian</li>\n                                      <li>Certificate of Tax Exemption from the BIR</li>\n                                      <li>Certificate of Indigency from their Barangay</li>\n                                      <li>Certificate / Case Study from DSWD</li>\n                                      <li>Latest copy of contract or proof of income for children of OFW and seafarers</li>\n                                    </ul>\n                                  </li>\n                                </ul>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n\n                        <!-- Modal -->\n                        <div class=\"modal fade\" id=\"terms_condition\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLongTitle\" aria-hidden=\"true\">\n                          <div class=\"modal-dialog\" role=\"document\">\n                            <div class=\"modal-content\">\n                              <div class=\"modal-header\">\n                                <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Terms & Conditions</h5>\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                                  <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                              </div>\n                              <div class=\"modal-body\">\n                                <p style=\"text-align:justify\">I hereby certify that foregoing statements are true and correct. Any misinformation or witholding of information will automatically disqualify me from the CHED Scholarship Program. I am willing to refund the financial benefits receive if such information is discovered after acceptance of the award.\n\n                                I hereby express my consent for the Commission on Higher Education to collect, record, organize, update or modify, retrieve, consult, use, consolidate, block, erase or destruct my personal data as part of my information. I hereby affirm my right to be informed, object to processing, access, and  rectify, suspend or withdraw my personal data and be indemnified in case of damages pursuant to the provisions of the Republic Act No.10173 of the Philippines, Data Privacy Act of 2012 and its corresponding Implementing Rules and Regulations.   \n                                </p>\n                              </div>\n                              <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n        </div>",
   data: function data() {
     return {
       pwd: "",
@@ -13052,6 +13061,481 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
+var _window$validators = window.validators,
+    required = _window$validators.required,
+    minLength = _window$validators.minLength,
+    email = _window$validators.email,
+    sameAs = _window$validators.sameAs,
+    numeric = _window$validators.numeric,
+    alphaNum = _window$validators.alphaNum,
+    alpha = _window$validators.alpha;
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("users-reset-password", {
+  template: "<div>\n                  <form\n                    class=\"form\" id=\"\" method=\"post\" action=\"foobar\"\n                    @submit.prevent=\"submit\"\n                  >\n\n                            <div class=\"form-group \">\n                              <label >Email</label><span style=\"color:red\">*</span>\n                              <input class=\"form-control\" id=\"email\" type=\"text\" v-model=\"email\" @input=\"$v.email.$touch\">\n                              <p class=\"mt-2\" v-if=\"$v.email.$dirty\" style=\"font-size:12px\">\n                                <span v-if=\"!$v.email.required\" style=\"color:red\">Email is required.</span>\n                                <span class=\"text-danger\" v-if=\"$v.email.$error && !$v.email.email\">This is not a valid email!</span>\n                              </p>\n                            </div>\n          \n                    <!-- Submit -->\n                    <div class=\"form__group form__group--no-label form__group--button\">\n                      <button\n                        type=\"submit\" class=\"btn btn-primary\" name=\"form-submit\"\n                        :disabled=\"$v.$invalid\"\n                      >Reset password</button>\n                    </div>\n                  </form>\n\n        </div>",
+  data: function data() {
+    return {
+      email: '',
+      formData: {}
+    };
+  },
+  validations: {
+    email: {
+      required: validators.required,
+      email: email
+    }
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      if (this.$v.$invalid) return;
+      this.formData = new FormData();
+      this.formData.append('email', this.email);
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('super_admin/reset_password/', this.formData).then(function (result) {
+        if (result.data === 1) {
+          $('#email').css('border-color', '');
+
+          _this.$swal.fire({
+            icon: 'success',
+            title: 'Nice...',
+            text: 'Password reset successfully!'
+          });
+
+          _this.resetForm();
+        }
+
+        if (result.data === 0) {
+          _this.$swal.fire({
+            icon: 'error',
+            title: 'Opps...',
+            text: 'Email does not exist!'
+          });
+
+          $('#email').css('border-color', 'red');
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    resetForm: function resetForm() {
+      this.formData = {};
+      this.email = null;
+    }
+  },
+  mounted: function () {
+    var _mounted = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    function mounted() {
+      return _mounted.apply(this, arguments);
+    }
+
+    return mounted;
+  }()
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      username: ''
+    };
+  },
+  methods: {},
+  mounted: function () {
+    var _mounted2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    function mounted() {
+      return _mounted2.apply(this, arguments);
+    }
+
+    return mounted;
+  }(),
+  components: {//
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/Dashboard.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/Dashboard.vue?vue&type=script&lang=js& ***!
@@ -16131,6 +16615,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n*[data-v-9cb6713c]:before,\r\n*[data-v-9cb6713c]:after {\r\n  box-sizing: border-box;\n}\nbody[data-v-9cb6713c] {\r\n  background: #f5f5f5;\r\n  padding: 0;\r\n  margin: 0;\n}\ni.fa[data-v-9cb6713c] {\r\n  font-size: 16px;\n}\np[data-v-9cb6713c] {\r\n  font-size: 16px;\r\n  line-height: 1.42857143;\n}\n.header[data-v-9cb6713c] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  top: 0;\r\n  left: 0;\r\n  background: #3498DB;\r\n  width: 100%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  color: #fff;\n}\n.header .logo[data-v-9cb6713c] {\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\n}\n.header #menu-action[data-v-9cb6713c] {\r\n  display: block;\r\n  float: left;\r\n  width: 60px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  margin-right: 15px;\r\n  color: #fff;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  background: rgba(0, 0, 0, 0.15);\r\n  font-size: 13px;\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action i[data-v-9cb6713c] {\r\n  display: inline-block;\r\n  margin: 0 5px;\n}\n.header #menu-action span[data-v-9cb6713c] {\r\n  width: 0px;\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action[data-v-9cb6713c]:hover {\r\n  background: rgba(0, 0, 0, 0.25);\n}\n.header #menu-action.active[data-v-9cb6713c] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action.active span[data-v-9cb6713c] {\r\n  display: inline;\r\n  width: auto;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-9cb6713c] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  left: 0;\r\n  top: 50px;\r\n  height: 100%;\r\n  width: 60px;\r\n  background: #3490dc;\r\n  border-right: 1px solid #ddd;\r\n  text-align: center;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-9cb6713c]:hover,\r\n.sidebar.active[data-v-9cb6713c],\r\n.sidebar.hovered[data-v-9cb6713c] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar ul[data-v-9cb6713c] {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\n}\n.sidebar ul li[data-v-9cb6713c] {\r\n  display: block;\n}\n.sidebar ul li a[data-v-9cb6713c] {\r\n  display: block;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  border-bottom: 1px solid #ddd;\r\n  color: #fff;\r\n  text-align: left;\n}\n.sidebar ul li a i[data-v-9cb6713c] {\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 60px;\r\n  text-align: center;\r\n  -webkit-animation-duration: 0.7s;\r\n  animation-duration: 0.7s;\r\n  -webkit-animation-fill-mode: both;\r\n  animation-fill-mode: both;\n}\n.sidebar ul li a span[data-v-9cb6713c] {\r\n  display: inline-block;\r\n  height: 60px;\r\n  line-height: 60px;\n}\n.sidebar ul li a[data-v-9cb6713c]:hover {\r\n  background-color: #2a87d4;\n}\n.main[data-v-9cb6713c] {\r\n  position: relative;\r\n  display: block;\r\n  top: 50px;\r\n  left: 0;\r\n  padding: 15px;\r\n  padding-left: 75px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main.active[data-v-9cb6713c] {\r\n  padding-left: 275px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main .jumbotron[data-v-9cb6713c] {\r\n  background-color: #fff;\r\n  padding: 30px !important;\r\n  border: 1px solid #dfe8f1;\r\n  border-radius: 3px;\n}\n.main .jumbotron h1[data-v-9cb6713c] {\r\n  font-size: 24px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 12px;\n}\n@-webkit-keyframes swing-data-v-9cb6713c {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n@keyframes swing-data-v-9cb6713c {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n.swing[data-v-9cb6713c] {\r\n  transform-origin: top center;\r\n  -webkit-animation-name: swing-data-v-9cb6713c;\r\n  animation-name: swing-data-v-9cb6713c;\n}\n.bs-callout[data-v-9cb6713c] {\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border: 1px solid #eee;\r\n  border-left-width: 5px;\r\n  border-radius: 3px;\r\n  background: white;\n}\ntable[data-v-9cb6713c] {\r\n  background: white;\n}\n.bs-callout h4[data-v-9cb6713c] {\r\n  margin-top: 0;\r\n  margin-bottom: 5px;\n}\n.bs-callout p[data-v-9cb6713c]:last-child {\r\n  margin-bottom: 0;\n}\n.bs-callout code[data-v-9cb6713c] {\r\n  border-radius: 3px;\n}\n.bs-callout + .bs-callout[data-v-9cb6713c] {\r\n  margin-top: -5px;\n}\n.bs-callout-default[data-v-9cb6713c] {\r\n  border-left-color: #777;\n}\n.bs-callout-default h4[data-v-9cb6713c] {\r\n  color: #777;\n}\n.bs-callout-primary[data-v-9cb6713c] {\r\n  border-left-color: #428bca;\n}\n.bs-callout-primary h4[data-v-9cb6713c] {\r\n  color: #428bca;\n}\n.bs-callout-success[data-v-9cb6713c] {\r\n  border-left-color: #5cb85c;\n}\n.bs-callout-success h4[data-v-9cb6713c] {\r\n  color: #5cb85c;\n}\n.bs-callout-danger[data-v-9cb6713c] {\r\n  border-left-color: #d9534f;\n}\n.bs-callout-danger h4[data-v-9cb6713c] {\r\n  color: #d9534f;\n}\n.bs-callout-warning[data-v-9cb6713c] {\r\n  border-left-color: #f0ad4e;\n}\n.bs-callout-warning h4[data-v-9cb6713c] {\r\n  color: #f0ad4e;\n}\n.bs-callout-info[data-v-9cb6713c] {\r\n  border-left-color: #5bc0de;\n}\n.bs-callout-info h4[data-v-9cb6713c] {\r\n  color: #5bc0de;\n}\r\n\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-1c4ecfb8]:before,\r\n*[data-v-1c4ecfb8]:after {\r\n  box-sizing: border-box;\n}\nbody[data-v-1c4ecfb8] {\r\n  background: #f5f5f5;\r\n  padding: 0;\r\n  margin: 0;\n}\ni.fa[data-v-1c4ecfb8] {\r\n  font-size: 16px;\n}\np[data-v-1c4ecfb8] {\r\n  font-size: 16px;\r\n  line-height: 1.42857143;\n}\n.header[data-v-1c4ecfb8] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  top: 0;\r\n  left: 0;\r\n  background: #3498DB;\r\n  width: 100%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  color: #fff;\n}\n.header .logo[data-v-1c4ecfb8] {\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\n}\n.header #menu-action[data-v-1c4ecfb8] {\r\n  display: block;\r\n  float: left;\r\n  width: 60px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  margin-right: 15px;\r\n  color: #fff;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  background: rgba(0, 0, 0, 0.15);\r\n  font-size: 13px;\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action i[data-v-1c4ecfb8] {\r\n  display: inline-block;\r\n  margin: 0 5px;\n}\n.header #menu-action span[data-v-1c4ecfb8] {\r\n  width: 0px;\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action[data-v-1c4ecfb8]:hover {\r\n  background: rgba(0, 0, 0, 0.25);\n}\n.header #menu-action.active[data-v-1c4ecfb8] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action.active span[data-v-1c4ecfb8] {\r\n  display: inline;\r\n  width: auto;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-1c4ecfb8] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  left: 0;\r\n  top: 50px;\r\n  height: 100%;\r\n  width: 60px;\r\n  background: #3490dc;\r\n  border-right: 1px solid #ddd;\r\n  text-align: center;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-1c4ecfb8]:hover,\r\n.sidebar.active[data-v-1c4ecfb8],\r\n.sidebar.hovered[data-v-1c4ecfb8] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar ul[data-v-1c4ecfb8] {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\n}\n.sidebar ul li[data-v-1c4ecfb8] {\r\n  display: block;\n}\n.sidebar ul li a[data-v-1c4ecfb8] {\r\n  display: block;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  border-bottom: 1px solid #ddd;\r\n  color: #fff;\r\n  text-align: left;\n}\n.sidebar ul li a i[data-v-1c4ecfb8] {\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 60px;\r\n  text-align: center;\r\n  -webkit-animation-duration: 0.7s;\r\n  animation-duration: 0.7s;\r\n  -webkit-animation-fill-mode: both;\r\n  animation-fill-mode: both;\n}\n.sidebar ul li a span[data-v-1c4ecfb8] {\r\n  display: inline-block;\r\n  height: 60px;\r\n  line-height: 60px;\n}\n.sidebar ul li a[data-v-1c4ecfb8]:hover {\r\n  background-color: #2a87d4;\n}\n.main[data-v-1c4ecfb8] {\r\n  position: relative;\r\n  display: block;\r\n  top: 50px;\r\n  left: 0;\r\n  padding: 15px;\r\n  padding-left: 75px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main.active[data-v-1c4ecfb8] {\r\n  padding-left: 275px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main .jumbotron[data-v-1c4ecfb8] {\r\n  background-color: #fff;\r\n  padding: 30px !important;\r\n  border: 1px solid #dfe8f1;\r\n  border-radius: 3px;\n}\n.main .jumbotron h1[data-v-1c4ecfb8] {\r\n  font-size: 24px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 12px;\n}\n@-webkit-keyframes swing-data-v-1c4ecfb8 {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n@keyframes swing-data-v-1c4ecfb8 {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n.swing[data-v-1c4ecfb8] {\r\n  transform-origin: top center;\r\n  -webkit-animation-name: swing-data-v-1c4ecfb8;\r\n  animation-name: swing-data-v-1c4ecfb8;\n}\n.bs-callout[data-v-1c4ecfb8] {\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border: 1px solid #eee;\r\n  border-left-width: 5px;\r\n  border-radius: 3px;\r\n  background: white;\n}\ntable[data-v-1c4ecfb8] {\r\n  background: white;\n}\n.bs-callout h4[data-v-1c4ecfb8] {\r\n  margin-top: 0;\r\n  margin-bottom: 5px;\n}\n.bs-callout p[data-v-1c4ecfb8]:last-child {\r\n  margin-bottom: 0;\n}\n.bs-callout code[data-v-1c4ecfb8] {\r\n  border-radius: 3px;\n}\n.bs-callout + .bs-callout[data-v-1c4ecfb8] {\r\n  margin-top: -5px;\n}\n.bs-callout-default[data-v-1c4ecfb8] {\r\n  border-left-color: #777;\n}\n.bs-callout-default h4[data-v-1c4ecfb8] {\r\n  color: #777;\n}\n.bs-callout-primary[data-v-1c4ecfb8] {\r\n  border-left-color: #428bca;\n}\n.bs-callout-primary h4[data-v-1c4ecfb8] {\r\n  color: #428bca;\n}\n.bs-callout-success[data-v-1c4ecfb8] {\r\n  border-left-color: #5cb85c;\n}\n.bs-callout-success h4[data-v-1c4ecfb8] {\r\n  color: #5cb85c;\n}\n.bs-callout-danger[data-v-1c4ecfb8] {\r\n  border-left-color: #d9534f;\n}\n.bs-callout-danger h4[data-v-1c4ecfb8] {\r\n  color: #d9534f;\n}\n.bs-callout-warning[data-v-1c4ecfb8] {\r\n  border-left-color: #f0ad4e;\n}\n.bs-callout-warning h4[data-v-1c4ecfb8] {\r\n  color: #f0ad4e;\n}\n.bs-callout-info[data-v-1c4ecfb8] {\r\n  border-left-color: #5bc0de;\n}\n.bs-callout-info h4[data-v-1c4ecfb8] {\r\n  color: #5bc0de;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -19230,6 +19733,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./dashboard.vue?vue&type=style&index=0&id=9cb6713c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/dashboard.vue?vue&type=style&index=0&id=9cb6713c&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -23802,11 +24335,13 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            staticStyle: { margin: "0px" },
             attrs: {
               type: "password",
               name: "password",
               placeholder: "Password",
-              required: ""
+              required: "",
+              id: "myInput"
             },
             domProps: { value: _vm.password },
             on: {
@@ -23818,6 +24353,15 @@ var render = function() {
               }
             }
           }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "mr-1 mt-3",
+            attrs: { type: "checkbox" },
+            on: { click: _vm.showPassword }
+          }),
+          _c("span", { staticStyle: { "font-size": "12px" } }, [
+            _vm._v("Show Password")
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c(
@@ -26524,7 +27068,14 @@ var render = function() {
           _vm._v(" "),
           _vm._m(7),
           _vm._v(" "),
-          _vm._m(8),
+          _c("router-link", { attrs: { to: "/reset-password" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-unlock-alt" }),
+                _c("span", [_vm._v("Reset Pasword")])
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("router-link", { attrs: { to: "/add-account" } }, [
             _c("li", [
@@ -26539,7 +27090,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(9)
+    _vm._m(8)
   ])
 }
 var staticRenderFns = [
@@ -26634,17 +27185,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-unlock-alt" }),
-        _c("span", [_vm._v("Reset Pasword")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "main" }, [
       _c("div", { staticClass: "jumbotron" }, [
         _c("h1", [
@@ -26666,6 +27206,214 @@ var staticRenderFns = [
             "Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application."
           )
         ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", { staticClass: "header" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "logo" }, [
+        _vm._v("\n    SUPER ADMIN DASHBOARD\n\n      "),
+        _c(
+          "ul",
+          {
+            staticStyle: {
+              float: "right",
+              "margin-right": "30px",
+              "list-style-type": "none"
+            }
+          },
+          [
+            _c("li", { staticClass: "nav-item dropdown" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link dropdown-toggle",
+                  staticStyle: { color: "#fff" },
+                  attrs: {
+                    href: "#",
+                    id: "navbardrop",
+                    "data-toggle": "dropdown"
+                  }
+                },
+                [_vm._v("\n          My Profile\n        ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "dropdown-menu" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.$auth.logout()
+                      }
+                    }
+                  },
+                  [_vm._v("Logout")]
+                )
+              ])
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "sidebar" }, [
+      _c(
+        "ul",
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _vm._m(7),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "/reset-password" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-unlock-alt" }),
+                _c("span", [_vm._v("Reset Pasword")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "/add-account" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-address-card" }),
+                _c("span", [_vm._v("Add HEI Account")])
+              ])
+            ])
+          ])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "main" }, [
+      _c("div", { staticClass: "jumbotron" }, [_c("users-reset-password")], 1)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", id: "menu-action" } }, [
+      _c("i", { staticClass: "fa fa-bars" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Close")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-home" }),
+        _c("span", [_vm._v("Home")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-list-ul" }),
+        _c("span", [_vm._v("List of HEI")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Enrolled Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("Not Enrolled Applicants")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("CSP Rank")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-unlock-alt" }),
+        _c("span", [_vm._v("TDP Rank")])
       ])
     ])
   }
@@ -48365,6 +49113,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/superadmin/resetpassword.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/pages/superadmin/resetpassword.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true& */ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true&");
+/* harmony import */ var _resetpassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resetpassword.vue?vue&type=script&lang=js& */ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& */ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _resetpassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1c4ecfb8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/superadmin/resetpassword.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./resetpassword.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=style&index=0&id=1c4ecfb8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_style_index_0_id_1c4ecfb8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/superadmin/resetpassword.vue?vue&type=template&id=1c4ecfb8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_resetpassword_vue_vue_type_template_id_1c4ecfb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/user/Dashboard.vue":
 /*!***********************************************!*\
   !*** ./resources/js/pages/user/Dashboard.vue ***!
@@ -48746,7 +49581,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/heicoordinator/changepassword */ "./resources/js/pages/heicoordinator/changepassword.vue");
 /* harmony import */ var _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/superadmin/dashboard */ "./resources/js/pages/superadmin/dashboard.vue");
 /* harmony import */ var _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/superadmin/AddAccount */ "./resources/js/pages/superadmin/AddAccount.vue");
+/* harmony import */ var _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/superadmin/resetpassword */ "./resources/js/pages/superadmin/resetpassword.vue");
  // Pages
+
 
 
 
@@ -49042,6 +49879,19 @@ var routes = [{
   path: '/add-account',
   name: 'super_admin.add_account',
   component: _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_23__["default"],
+  meta: {
+    auth: {
+      roles: 4,
+      redirect: {
+        name: 'login'
+      },
+      forbiddenRedirect: '/403'
+    }
+  }
+}, {
+  path: '/reset-password',
+  name: 'super_admin.reset_password',
+  component: _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_24__["default"],
   meta: {
     auth: {
       roles: 4,

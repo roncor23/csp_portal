@@ -29,6 +29,7 @@ import HEIChangePassword from './pages/heicoordinator/changepassword'
 
 import SuperAdmin from './pages/superadmin/dashboard'
 import SuperAdminAddAccount from './pages/superadmin/AddAccount'
+import SuperAdminResetPassword from './pages/superadmin/resetpassword'
 
 // Routes
 const routes = [
@@ -217,6 +218,14 @@ const routes = [
     path: '/add-account',
     name: 'super_admin.add_account',
     component: SuperAdminAddAccount,
+    meta: {
+      auth: {roles: 4, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/reset-password',
+    name: 'super_admin.reset_password',
+    component: SuperAdminResetPassword,
     meta: {
       auth: {roles: 4, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

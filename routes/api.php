@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('super_admin/add_account','SuperAdminController@add_account')->middleware('isCHED_super_admin');
     // Super Admin fetch all HEI
     Route::get('super_admin/fetch_hei','SuperAdminController@fetch_hei')->middleware('isCHED_super_admin');
+    // Super Admin reset users password
+    Route::post('super_admin/reset_password','SuperAdminController@reset_password')->middleware('isCHED_super_admin');
 
 
 

@@ -11,7 +11,8 @@
              <p class="text-center">Incorrect email or password.</p>
           </div>
         <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" v-model="email" />
-        <input type="password" class="form-control" name="password" placeholder="Password" required="" v-model="password"/>  
+        <input type="password" class="form-control" name="password" placeholder="Password" required="" v-model="password" style="margin:0px" id="myInput"/> 
+        <input class="mr-1 mt-3" type="checkbox" @click="showPassword"><span style="font-size:12px">Show Password</span>
         <div class="form-group">
             <small>If you forgot your password you can <router-link to="/forgot-password">reset it</router-link>. For new applicant you can <router-link to="/register">signup</router-link>.</small>   
         </div> 
@@ -197,7 +198,16 @@ import axios from "axios"
           rememberMe: true,
           fetchUser: true
         })
+      },
+      showPassword() {
+      var x = document.getElementById("myInput");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
       }
-    }
+    },
+
   }
 </script>

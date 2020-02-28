@@ -853,21 +853,22 @@ Vue.component("step5", {
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <ul style="text-align:justify;margin-top:10px">
-                                  <li>Printed accomplished application form (with signature and 1 pc 2x2 picture) generated from CSP portal.</li>
-                                  <li>Certified true copy of Birth Certificate <span></span></li>
+                                <ul>
+                                  <li>Application Form with signature and 1 pc 2x2 picture</li>
+                                  <li>Certified true copy of birth certificate</li>
+                                  <li>Academic requirements (any of the following)
                                     <ul>
-                                      <li>High school report card for incoming freshmen students eligible for college; and</li>
-                                      <li>Duly certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students.</li>
+                                        <li>High school report card for incoming freshmen students eligible for college</li>
+                                        <li>Certified true copy of grades for Grade 11 and 1st semester of Grade 12 for graduating high school students</li>
                                     </ul>
                                   </li>
-                                  <li><span>Any of the following documents:</span>
+                                  <li>Income requirements (any of the following)
                                     <ul>
-                                      <li>Latest Income Tax Return (ITR) of parents or guardian;</li>
-                                      <li>Certificate of Tax Exemption from the Bureau of Internal Revenue (BIR);</li>
-                                      <li>Certificate of Indigence either from their Barangay or Department of Social Welfare and Development (DSWD);</li>
-                                      <li>Case Study report from DSWD; and </li>
-                                      <li>Latest copy of contract or proof of income may be considered for children of Overseas Filipino Workers (OFW) and seafarers.</li>
+                                      <li>Latest Income Tax Return of parents/guardian</li>
+                                      <li>Certificate of Tax Exemption from the BIR</li>
+                                      <li>Certificate of Indigency from their Barangay</li>
+                                      <li>Certificate / Case Study from DSWD</li>
+                                      <li>Latest copy of contract or proof of income for children of OFW and seafarers</li>
                                     </ul>
                                   </li>
                                 </ul>

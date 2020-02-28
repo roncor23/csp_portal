@@ -41,11 +41,9 @@
 
 <!-- Content -->
 <div class="main">
-    <div class="jumbotron">
-      <h1>Hello, User!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-      <p>Thank you for applying scholarship. You're all ready to go!</p><br>
-      <p>Welcome to our CSP portal dashboard, CSP portal makes it easier for students to track the real-time status for their application.</p>
-    </div>
+  <div class="jumbotron">
+     <users-reset-password></users-reset-password>
+  </div> 
 </div>
     </div>
 </template>
@@ -337,11 +335,119 @@ table {
 
 <script>
 
+import Vue from 'vue'
+import axios from 'axios'
+
+Vue.use(window.vuelidate.default);
+const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
+
+
+Vue.component("users-reset-password", {
+    template: `<div>
+                  <form
+                    class="form" id="" method="post" action="foobar"
+                    @submit.prevent="submit"
+                  >
+
+                            <div class="form-group ">
+                              <label >Email</label><span style="color:red">*</span>
+                              <input class="form-control" id="email" type="text" v-model="email" @input="$v.email.$touch">
+                              <p class="mt-2" v-if="$v.email.$dirty" style="font-size:12px">
+                                <span v-if="!$v.email.required" style="color:red">Email is required.</span>
+                                <span class="text-danger" v-if="$v.email.$error && !$v.email.email">This is not a valid email!</span>
+                              </p>
+                            </div>
+          
+                    <!-- Submit -->
+                    <div class="form__group form__group--no-label form__group--button">
+                      <button
+                        type="submit" class="btn btn-primary" name="form-submit"
+                        :disabled="$v.$invalid"
+                      >Reset password</button>
+                    </div>
+                  </form>
+
+        </div>`,
+    data() {
+        return {
+
+          email: '',
+          formData: {}
+        }
+    },
+  validations: {
+
+    email: {
+      required: validators.required,
+      email
+    },
+
+  },
+  methods: {
+    submit: function() {
+
+      if (this.$v.$invalid) return;
+
+        this.formData = new FormData();
+        this.formData.append('email', this.email);
+
+      axios.post('super_admin/reset_password/', this.formData).then(result => {
+
+        if(result.data === 1) {
+          $('#email').css('border-color','');
+            this.$swal.fire({
+              icon: 'success',
+              title: 'Nice...',
+              text: 'Password reset successfully!',
+            })
+          this.resetForm();
+        }
+
+        if(result.data === 0) {
+            this.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: 'Email does not exist!',
+            })
+          $('#email').css('border-color','red');
+        }
+
+         
+         
+
+      }).catch(error => {
+          console.log(error);
+      });
+
+
+     
+    },
+
+      resetForm() {
+            this.formData = {};
+            this.email = null;
+
+      },
+  },
+  async mounted() {
+
+  }
+
+});
+
   export default {
     data() {
       return {
-        //
+        username: '',
       }
+    },
+    methods: {
+
+
+    },
+    async mounted() {
+
+
     },
     components: {
       //
