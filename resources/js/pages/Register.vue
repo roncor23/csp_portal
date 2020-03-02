@@ -1,5 +1,5 @@
 <template>
-<!-- <div class="body">
+<div class="body">
   <div >
     <div class="form-group d-flex justify-content-center">
           <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
@@ -24,13 +24,13 @@
        
     </form-wizard>
   </div>
-</div>  -->
+</div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">Start of application March 1, Deadline of Application May 31,2020.</h1>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 
