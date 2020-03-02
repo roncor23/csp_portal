@@ -5049,6 +5049,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -6456,6 +6457,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -6596,6 +6598,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -7596,6 +7599,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -8260,6 +8264,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -8595,6 +8600,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -9581,6 +9587,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -9916,6 +9923,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -10753,6 +10761,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -10924,6 +10933,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -14710,6 +14720,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -25919,6 +25930,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -26653,6 +26677,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -26852,6 +26889,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -27032,6 +27082,19 @@ var render = function() {
                 _c("a", { attrs: { href: "#" } }, [
                   _c("i", { staticClass: "fas fa-list-ul" }),
                   _c("span", [_vm._v("Reset Password")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
                 ])
               ])
             ]
@@ -27223,6 +27286,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -27408,6 +27484,19 @@ var render = function() {
                 _c("a", { attrs: { href: "#" } }, [
                   _c("i", { staticClass: "fas fa-list-ul" }),
                   _c("span", [_vm._v("Reset Password")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
                 ])
               ])
             ]
@@ -27599,6 +27688,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -27787,6 +27889,19 @@ var render = function() {
                 ])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
+                ])
+              ])
+            ]
           )
         ],
         1
@@ -27967,6 +28082,19 @@ var render = function() {
                 _c("a", { attrs: { href: "#" } }, [
                   _c("i", { staticClass: "fas fa-list-ul" }),
                   _c("span", [_vm._v("Reset Password")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
                 ])
               ])
             ]
@@ -28155,6 +28283,19 @@ var render = function() {
                 _c("a", { attrs: { href: "#" } }, [
                   _c("i", { staticClass: "fas fa-list-ul" }),
                   _c("span", [_vm._v("Reset Password")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/force-verified" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Force verified")])
                 ])
               ])
             ]
@@ -29574,69 +29715,83 @@ var render = function() {
                         ])
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.change_email
-                      ? _c("div", { staticClass: "form-group col-md-12" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.n_email,
-                                expression: "n_email"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              id: "ne_email",
-                              placeholder: "Enter new email.."
-                            },
-                            domProps: { value: _vm.n_email },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                    _c(
+                      "form",
+                      {
+                        staticClass: "col-md-12",
+                        attrs: { method: "post", action: "foobar" },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.new_email($event)
+                          }
+                        }
+                      },
+                      [
+                        _vm.change_email
+                          ? _c("div", { staticClass: "form-group" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.n_email,
+                                    expression: "n_email"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "email",
+                                  id: "ne_email",
+                                  placeholder: "Enter new email.."
+                                },
+                                domProps: { value: _vm.n_email },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.n_email = $event.target.value
+                                  }
                                 }
-                                _vm.n_email = $event.target.value
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.v_n_email
-                            ? _c(
-                                "p",
-                                { staticStyle: { "font-size": "12px" } },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticStyle: { color: "red" } },
-                                    [_vm._v("Required.")]
+                              }),
+                              _vm._v(" "),
+                              _vm.v_n_email
+                                ? _c(
+                                    "p",
+                                    { staticStyle: { "font-size": "12px" } },
+                                    [
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "red" } },
+                                        [_vm._v("Required.")]
+                                      )
+                                    ]
                                   )
-                                ]
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary mt-2",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.back }
+                                },
+                                [_vm._v("Back")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary mt-2",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Update Email")]
                               )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary mt-2",
-                              attrs: { type: "button" },
-                              on: { click: _vm.back }
-                            },
-                            [_vm._v("Back")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary mt-2",
-                              attrs: { type: "button" },
-                              on: { click: _vm.new_email }
-                            },
-                            [_vm._v("Change Email")]
-                          )
-                        ])
-                      : _vm._e()
+                            ])
+                          : _vm._e()
+                      ]
+                    )
                   ])
                 ]
               )

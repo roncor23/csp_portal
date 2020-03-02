@@ -42,17 +42,18 @@
                   </p>
                   <button class="btn btn-primary mt-2" type="button" @click="verify">Verify</button>
                 </div>
-                <div v-if="change_email" class="form-group col-md-12">
-                  <input class="form-control" type="text" id="ne_email" placeholder="Enter new email.." v-model="n_email">
+                <form class="col-md-12" method="post" action="foobar" @submit.prevent="new_email">
+                <div v-if="change_email" class="form-group">
+                  <input class="form-control" type="email" id="ne_email" placeholder="Enter new email.." v-model="n_email">
                   <p v-if="v_n_email" style="font-size:12px">
                     <span  style="color:red">Required.</span>
                   </p>
                   <button class="btn btn-primary mt-2" type="button" @click="back">Back</button>
-                  <button class="btn btn-primary mt-2" type="button" @click="new_email">Change Email</button>
+                  <button class="btn btn-primary mt-2" type="submit">Update Email</button>
                 </div>
+                </form>
               </div>
             </div>
-
             <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
               <h1>Hello, {{username}}!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
               <p>Thank you for applying scholarship. You're all ready to go!</p><br>

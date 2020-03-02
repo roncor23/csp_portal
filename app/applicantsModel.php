@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class applicantsModel extends Model
 {
     protected $fillable = [
-        'fname', 'mname', 'lname', 'xname', 'contact', 'email', 'birthdate', 'civil_status', 'brgy', 'town_city', 'cong_dist','course','yr_lvl','rank_points','status','gender','parent_income','applicant_type','supported_by_solo_parent','hei','hei_remarks','admin_remarks','billing_remarks','ranking_remarks','ranking_status','citizenship','province','ay','ips','pwd','seniorcitizen','verified_hei','verified_admin','reference_no','created_at','updated_at', 'gwa', 'user_id','validatedByHEI','validatedByCHED'
+        'fname', 'mname', 'lname', 'xname', 'contact', 'email', 'birthdate', 'civil_status', 'brgy', 'town_city', 'cong_dist','course','yr_lvl','rank_points','status','gender','parent_income','applicant_type','supported_by_solo_parent','hei','hei_remarks','admin_remarks','billing_remarks','ranking_remarks','ranking_status','citizenship','province','ay','ips','pwd','seniorcitizen','verified_hei','verified_admin','reference_no','created_at','updated_at', 'app_created_at', 'update_date', 'fb_url', 'gwa', 'user_id','validatedByHEI','validatedByCHED'
     ];
 
     protected $table = 'applicants';
