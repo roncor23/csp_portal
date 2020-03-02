@@ -189,6 +189,14 @@ const routes = [
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+  {
+    path: '/ched-coordinator/force-verified',
+    name: 'ched_coordinator_force_verified',
+    component: AdminForceVerified,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
   // HEI ROUTES
   {
     path: '/hei-coordinator',
@@ -214,6 +222,7 @@ const routes = [
       auth: {roles: 3, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
+
   // SUPER_ADMIN ROUTES
   {
     path: '/super-admin',

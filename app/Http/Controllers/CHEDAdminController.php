@@ -1856,4 +1856,22 @@ class CHEDAdminController extends Controller
             return response()->json(0); // False
 
     }
+    //FORCE VERIFIED
+    public function force_verified(Request $request) {
+
+        $model = new User();
+        //Check if email exist!.
+        $result = $model::where('email', $request->email)
+                            ->first();
+        //return correct                    
+        if($result) {
+
+            $result->confirm = 1;
+            $result->save();
+
+            return response()->json(1); // True
+        }
+            return response()->json(0); // False
+
+    }
 }
