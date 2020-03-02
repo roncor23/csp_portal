@@ -1836,4 +1836,24 @@ class CHEDAdminController extends Controller
 
     	return response()->json($all_HEI_coordinator);
     }
+    //RESET PASSWORD
+    public function reset_password(Request $request) {
+
+        $model = new User();
+        //Check if email exist!.
+        $result = $model::where('email', $request->email)
+                            ->first();
+        //return correct                    
+        if($result) {
+
+
+            $default = 123456;
+            $result->password = bcrypt($default);
+            $result->save();
+
+            return response()->json(1); // True
+        }
+            return response()->json(0); // False
+
+    }
 }

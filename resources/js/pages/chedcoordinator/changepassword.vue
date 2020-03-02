@@ -20,6 +20,7 @@
       <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+      <router-link to="/ched-coordinator/reset-password"><li><a href="#"><i class="fas fa-list-ul"></i><span>Reset Password</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->

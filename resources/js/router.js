@@ -21,7 +21,8 @@ import ChedCoordinatorListOfHEI from './pages/chedcoordinator/table/ched_listofh
 import ChedCoordinatorListOfApplicantsByCSPRank from './pages/chedcoordinator/table/ched_listofapplicantbycsprank'
 import ChedCoordinatorListOfApplicantsByTDPRank from './pages/chedcoordinator/table/ched_listofapplicantbytdprank'
 import AdminChangePassword from './pages/chedcoordinator/changepassword'
-
+import AdminResetPassword from './pages/chedcoordinator/reset_password'
+import AdminForceVerified from './pages/chedcoordinator/force_verified'
 
 import HeiCoordinator from './pages/heicoordinator/dashboard'
 import HeiCoordinatorListOfApplicants from './pages/heicoordinator/hei_listofapplicant'
@@ -176,6 +177,14 @@ const routes = [
     path: '/ched-coordinator/change-password',
     name: 'ched_coordinator_change_password',
     component: AdminChangePassword,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/reset-password',
+    name: 'ched_coordinator_reset_password',
+    component: AdminResetPassword,
     meta: {
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

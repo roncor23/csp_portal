@@ -20,6 +20,7 @@
       <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+      <router-link to="/ched-coordinator/reset-password"><li><a href="#"><i class="fas fa-list-ul"></i><span>Reset Password</span></a></li></router-link>
     </ul>
 </div>
 
@@ -424,7 +425,8 @@ Vue.component("ched-list-of-applicant-by-tdp-rank", {
                         <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED === null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
-                        <td>{{i.update_date}}</td>
+                        <td v-if="i.update_date === null" style="color:blue">NOT YET UPDATED BY CHED</td>
+                        <td v-if="i.update_date != null">{{i.update_date}}</td>
                         <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>

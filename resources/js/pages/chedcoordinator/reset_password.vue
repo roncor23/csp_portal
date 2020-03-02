@@ -5,14 +5,29 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-six-user-name></ched-six-user-name>
   <div class="logo">
-  CHED COORDINATOR DASHBOARD
+    CHED COORDINATOR DASHBOARD
+
+      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+          My Profile
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+        </div>
+      </li>
+       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
+        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
+        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
+      </ul>
+
   </div>
 </div>
 <div class="sidebar">
-    <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+  <ul>
+    <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
       <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
       <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
@@ -26,13 +41,9 @@
 
 <!-- Content -->
 <div class="main">
-
-    <div class="jumbotron">
-       <ched-list-of-heis></ched-list-of-heis>
-
-
-    </div>
-
+  <div class="jumbotron">
+     <ched-users-reset-password></ched-users-reset-password>
+  </div> 
 </div>
     </div>
 </template>
@@ -320,7 +331,6 @@ table {
 }
 
 
-
 </style>
 
 <script>
@@ -332,183 +342,112 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-
-Vue.component("ched-list-of-heis", {
+Vue.component("ched-users-reset-password", {
     template: `<div>
-                <div style="float:right;margin-bottom:10px">
-                  <span>Search:</span>&nbsp;<input type="text" v-model="search">
-                </div>
-                <div v-if="loading" class="loading">
-                  Loading...
-                </div>
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
-                    <thead >
-                  <tr>
-                    <th>No.</th>
-                    <th>HEI</th>
-                    <th>Coordinator</th>
-                    <th>Email</th>
+                  <form
+                    class="form" id="" method="post" action="foobar"
+                    @submit.prevent="submit"
+                  >
 
-                  </tr>
-                    </thead>
-                    <tfoot >
-                  <tr>
-                    <th>No.</th>  
-                    <th>HEI</th>
-                    <th>Coordinator</th>
-                    <th>Email</th>
-                  </tr>
-                    </tfoot>  
-                   <tbody v-if="filteredBlogs.length > 0">
-                    <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
-                        <td>{{index+1}}</td>
-                        <td v-for="complete_hei in complete_heis" v-bind:value="complete_hei.hei_id" v-if="i.hei_hei_id === complete_hei.hei_id"><router-link :to="{ name: 'ched_coordinator.list_of_applicants_by_hei_dashboard', params: { hei_id: complete_hei.hei_id} }"><a href="#">{{complete_hei.hei_name}}</a></router-link></td>
-                        <td>{{i.name}}</td>
-                        <td>{{i.email}}</td>             
-                    </tr> 
-                    </tbody>
-                    <tbody  v-else>
-                       <tr>
-                        <td colspan="16"><p style="color:red; text-align:center; font-size:12px">NO DATA FOUND!</p></td>
-                       </tr>
-                    </tbody>          
-                    </table>
-                    <div class="form-row">
-                      <div class="form-group col-md-3">
-                        <span style="font-weight:bold">Total HEIs: </span>{{filteredBlogs.length}}
-                      </div>
-                      <div class="form-group col-md-3">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <nav aria-label="Page navigation" style="float:right">
-                            <jw-pagination v-if="filteredBlogs.length" :items="filteredBlogs"  :pageSize="countPage" :maxPages="5" @changePage="onChangePage"></jw-pagination> 
-                        </nav>
-                      </div>
-                     </div>
-                </div>         
-                  </div>
-                </div>
-              </div>
+                            <div class="form-group ">
+                              <label >Email</label><span style="color:red">*</span>
+                              <input class="form-control" id="email" type="text" v-model="email" @input="$v.email.$touch">
+                              <p class="mt-2" v-if="$v.email.$dirty" style="font-size:12px">
+                                <span v-if="!$v.email.required" style="color:red">Email is required.</span>
+                                <span class="text-danger" v-if="$v.email.$error && !$v.email.email">This is not a valid email!</span>
+                              </p>
+                            </div>
+          
+                    <!-- Submit -->
+                    <div class="form__group form__group--no-label form__group--button">
+                      <button
+                        type="submit" class="btn btn-primary" name="form-submit"
+                        :disabled="$v.$invalid"
+                      >Reset password</button>
+                    </div>
+                  </form>
+
         </div>`,
-
     data() {
         return {
 
-          heis: [],
-          complete_heis: [],
-          formData: {},
-          search: '',
-          countPage: 15,
-          pageOfItems: [],
-          loading: false     
+          email: '',
+          formData: {}
         }
     },
-    computed: {
-        filteredBlogs: function() {
+  validations: {
 
-        var filter_search = this.search;
-
-        return this.heis.filter((heis) => {
-
-           return heis.name.match(filter_search) || heis.email.match(filter_search);
-        });
-      }
+    email: {
+      required: validators.required,
+      email
     },
-
-  methods: {
-
-    fetchHEIs: function() {
-            this.loading = true;
-            axios.get('ched_admin/fetch_HEI_coordinator/').then(result => {
-                this.loading = false;
-                this.heis = result.data;
-                console.log(this.heis);
-                this.heis.splice(index, 1);
-                
-
-            }).catch(error => {
-                console.log(error);
-            });
-    },
-    test(id) {
-      alert(id);
-    },
-    //complete HEI
-    fetchHEI: function() {
-        axios.get('ched_admin/fetch_hei/').then(result => {
-
-            this.complete_heis = result.data;
-
-        }).catch(error => {
-            console.log(error);
-        });
-    },
-    onChangePage: function(pageOfItems) {
-        // update page of items
-        this.pageOfItems = pageOfItems;
-    },
-
-
 
   },
+  methods: {
+    submit: function() {
+
+      if (this.$v.$invalid) return;
+
+        this.formData = new FormData();
+        this.formData.append('email', this.email);
+
+      axios.post('ched_admin/reset_password/', this.formData).then(result => {
+
+        if(result.data === 1) {
+          $('#email').css('border-color','');
+            this.$swal.fire({
+              icon: 'success',
+              title: 'Nice...',
+              text: 'Password reset successfully!',
+            })
+          this.resetForm();
+        }
+
+        if(result.data === 0) {
+            this.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: 'Email does not exist!',
+            })
+          $('#email').css('border-color','red');
+        }
+
+         
+         
+
+      }).catch(error => {
+          console.log(error);
+      });
+
+
+     
+    },
+
+      resetForm() {
+            this.formData = {};
+            this.email = null;
+
+      },
+  },
   async mounted() {
-    this.fetchHEIs();
-    this.fetchHEI();
 
   }
 
 });
 
-Vue.component("ched-six-user-name", {
-    template: `<div>
-            <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-                  {{ username }} Profile
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-                </div>
-              </li>
-            </ul>
-        </div>`,
-    data() {
-        return {
-            username: ''
-        }
-    },
-
-    methods: {
-      fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
-
-              this.username = result.data;
-
-          }).catch(error => {
-              console.log(error);
-          });
-      }
-    },
-    async mounted() {
-      this.fetchUsername();
-    }
-});
-
-
   export default {
     data() {
       return {
-       
+        username: '',
       }
     },
     methods: {
 
+
     },
     async mounted() {
-      
+
+
     },
     components: {
       //

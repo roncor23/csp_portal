@@ -620,7 +620,7 @@ Vue.component("hei-list-of-applicant", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},

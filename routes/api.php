@@ -95,6 +95,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('ched_admin/fetch_applicant_by_csp_rank','CHEDAdminController@fetch_applicant_by_csp_rank')->middleware('isCHED_admin');
     // CHED Admin list of applicant by tdp rank
     Route::get('ched_admin/fetch_applicant_by_tdp_rank','CHEDAdminController@fetch_applicant_by_tdp_rank')->middleware('isCHED_admin');
+    // CHED Admin reset users password
+    Route::post('ched_admin/reset_password','CHEDAdminController@reset_password')->middleware('isCHED_admin');
 
 
     // HEI COORDINATOR list of applicant
