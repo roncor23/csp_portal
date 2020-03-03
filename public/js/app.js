@@ -12161,7 +12161,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-validated-app
             return false;
           }
 
-          _this7.fetchApplicant();
+          _this7.fetchOfValidatedApplicant();
 
           _this7.$swal.fire({
             icon: 'success',
@@ -28879,8 +28879,182 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c(
+      "div",
+      { staticClass: "header" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("ched-eight-user-name"),
+        _vm._v(" "),
+        _c("div", { staticClass: "logo" }, [
+          _vm._v("\n  CHED COORDINATOR DASHBOARD\n  ")
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "sidebar" }, [
+      _c(
+        "ul",
+        [
+          _c("router-link", { attrs: { to: "/ched-coordinator" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
+                _c("span", [_vm._v("Home")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/list-of-applicants" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Applicants")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: { to: "/ched-coordinator/list-of-unverified-applicants" }
+            },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Unverified applicants")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/list-of-enrolled-applicants" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Enrolled Applicants")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: {
+                to: "/ched-coordinator/list-of-ched-validated-applicants"
+              }
+            },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Validated Applicants")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: { to: "/ched-coordinator/list-of-not-enrolled-applicants" }
+            },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("Not Enrolled Applicants")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: { to: "/ched-coordinator/list-of-applicants-by-csp-rank" }
+            },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("CSP Rank")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: { to: "/ched-coordinator/list-of-applicants-by-tdp-rank" }
+            },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("TDP Rank")])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/ched-coordinator/list-of-heis" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _c("span", [_vm._v("HEIs")])
+                ])
+              ])
+            ]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "main" }, [
+      _c(
+        "div",
+        { staticClass: "jumbotron" },
+        [_c("ched-list-of-unverified-applicant")],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", id: "menu-action" } }, [
+      _c("i", { staticClass: "fa fa-bars" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Close")])
+    ])
+  }
+]
+render._withStripped = true
 
 
 
@@ -52718,7 +52892,7 @@ var routes = [{
   name: 'home',
   component: _pages_Home__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {
-    auth: false
+    auth: undefined
   }
 }, {
   path: '/register',

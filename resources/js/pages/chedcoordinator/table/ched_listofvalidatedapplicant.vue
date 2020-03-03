@@ -912,7 +912,7 @@ Vue.component("ched-list-of-validated-applicant", {
                 })
                 return false;
               }
-               this.fetchApplicant();
+               this.fetchOfValidatedApplicant();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',

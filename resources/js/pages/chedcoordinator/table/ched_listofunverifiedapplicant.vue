@@ -5,7 +5,7 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-one-eight-name></ched-eight-user-name>
+  <ched-eight-user-name></ched-eight-user-name>
   <div class="logo">
   CHED COORDINATOR DASHBOARD
   </div>

@@ -42,7 +42,7 @@ const routes = [
     name: 'home',
     component: Home,
     meta: {
-      auth: false
+      auth: undefined
     }
   },
   {
