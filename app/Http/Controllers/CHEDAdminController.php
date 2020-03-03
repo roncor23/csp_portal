@@ -29,6 +29,20 @@ class CHEDAdminController extends Controller
 
         return response()->json($users);
     }
+    //Fetch all list of validated Applicant
+    public function fetch_of_validated_applicant() {
+
+        $users = DB::table('users')
+                    ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+                    ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('role',1)
+                    ->where('confirm', 1)
+                    ->where('verified_admin', 1)
+                    ->orderBy('lname', 'asc')
+                    ->get();
+
+        return response()->json($users);
+    }
     //Fetch all list of unverified Applicant
     public function fetch_unverified_applicant() {
 

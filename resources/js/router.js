@@ -20,6 +20,9 @@ import ChedCoordinatorListOfNotEnrolledApplicants from './pages/chedcoordinator/
 import ChedCoordinatorListOfHEI from './pages/chedcoordinator/table/ched_listofheis'
 import ChedCoordinatorListOfApplicantsByCSPRank from './pages/chedcoordinator/table/ched_listofapplicantbycsprank'
 import ChedCoordinatorListOfApplicantsByTDPRank from './pages/chedcoordinator/table/ched_listofapplicantbytdprank'
+import ChedCoordinatorListOfValidatedApplicants from './pages/chedcoordinator/table/ched_listofvalidatedapplicant'
+
+
 import AdminChangePassword from './pages/chedcoordinator/changepassword'
 import AdminResetPassword from './pages/chedcoordinator/reset_password'
 import AdminForceVerified from './pages/chedcoordinator/force_verified'
@@ -121,6 +124,14 @@ const routes = [
     path: '/ched-coordinator/list-of-unverified-applicants',
     name: 'ched_coordinator.list_of_unverified_applicants_dashboard',
     component: ChedCoordinatorListOfUnverifiedApplicants,
+    meta: {
+      auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/ched-coordinator/list-of-ched-validated-applicants',
+    name: 'ched_coordinator.list_of_validated_applicants_dashboard',
+    component: ChedCoordinatorListOfValidatedApplicants,
     meta: {
       auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

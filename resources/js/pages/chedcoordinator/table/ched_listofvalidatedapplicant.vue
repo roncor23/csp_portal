@@ -1,39 +1,37 @@
 <template>
     <div class="">
-<div class="header">
-  <a href="#" id="menu-action">
-    <i class="fa fa-bars"></i>
-    <span>Close</span>
-  </a>
-  <ched-two-user-name></ched-two-user-name>
-  <div class="logo">
-  CHED COORDINATOR DASHBOARD
-  </div>
-</div>
-<div class="sidebar">
-    <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-ched-validated-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Validated Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
-    </ul>
-</div>
+      <div class="header">
+        <a href="#" id="menu-action">
+          <i class="fa fa-bars"></i>
+          <span>Close</span>
+        </a>
+        <ched-eleven-user-name></ched-eleven-user-name>
+        <div class="logo">
+        CHED COORDINATOR DASHBOARD
+        </div>
+      </div>
+      <div class="sidebar">
+          <ul>
+            <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-ched-validated-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Validated Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
+            <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+          </ul>
+      </div>
 
-<!-- Content -->
-<div class="main">
+      <!-- Content -->
+      <div class="main">
 
-    <div class="jumbotron">
-       <ched-list-of-applicant-by-csp-rank></ched-list-of-applicant-by-csp-rank>
+          <div class="jumbotron">
+             <ched-list-of-validated-applicant></ched-list-of-validated-applicant>
+          </div>
 
-
-    </div>
-
-</div>
+      </div>
     </div>
 </template>
 
@@ -332,7 +330,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ched-list-of-applicant-by-csp-rank", {
+Vue.component("ched-list-of-validated-applicant", {
     template: `<div>
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
@@ -341,7 +339,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                   Loading...
                 </div>
                 <div class="table-responsive" id="list_of_applicant">
-                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:9px">
                     <thead >
                       <tr>
                     <th>No.</th>
@@ -444,7 +442,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     </table>
                     <div class="form-row">
                       <div class="form-group col-md-3">
-                        <span style="font-weight:bold">Total CSP: </span>{{filteredBlogs.length}}
+                        <span style="font-weight:bold">Total Applicants: </span>{{filteredBlogs.length}}
                       </div>
                       <div class="form-group col-md-3">
                       </div>
@@ -454,9 +452,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         </nav>
                       </div>
                      </div>
-                </div>
+                  </div>
 
-                <!-- EDIT MODAL -->
+              <!-- EDIT MODAL -->
               <div class="modal fade bd-example-modal-xl" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
@@ -618,6 +616,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Parents Income</span> 
                           <input type="text" id="parent_income" class="form-control" v-model="selectedItem.parent_income">
+                            <p v-if="v_parentsincome" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div>
                             
                         <div class="form-group col-md-2">
@@ -667,6 +668,9 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                             <option value="2">Lacking documents</option>
                             <option value="3">Invalid application</option>
                           </select>
+                            <p v-if="v_verified_admin" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                       </div>
                       <div class="form-row">
@@ -687,10 +691,16 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                           <select name="ay" id="ay" class="form-control" v-model="selectedItem.ay">
                             <option value="8">2020</option>
                           </select>
+                            <p v-if="v_ay" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div> 
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">GWA</span>
                           <input type="text" id="gwa" class="form-control" v-model="selectedItem.gwa">
+                            <p v-if="v_gwa" style="font-size:12px">
+                              <span  style="color:red">Required.</span>
+                            </p>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Ranking Points</span>
@@ -717,6 +727,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                   </div>
                 </div>
               </div>
+
+
         </div>`,
 
     data() {
@@ -724,10 +736,15 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
           applicants: [],
           formData: {},
-          selectedItem: {},
           search: '',
           countPage: 15,
           pageOfItems: [],
+          selectedItem: {},
+          brgys: {},
+          citys: {},
+          provinces: {},
+          heis: {},
+          programs: {},
           parent_income: '',
           gwa: '',
           verified_admin: '',
@@ -735,11 +752,10 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
           supported_by_solo_parent: '',
           ranking_remarks: '',
           admin_remarks: '',
-          citys: {},
-          brgys: {},
-          provinces: {},
-          heis: {},
-          programs: {},
+          v_parentsincome: false,
+          v_gwa: false,
+          v_ay: false,
+          v_verified_admin: false,
           loading: false
           
         }
@@ -751,13 +767,12 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.validatedByCHED.match(filter_search);
 
 
 
         });
-      },
-
+      }
     },
 
   methods: {
@@ -767,26 +782,26 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
       this.$htmlToPaper('list_of_applicant');
 
       },
-    fetchApplicantByCSPRank: function() {
-                this.loading = true;
-            axios.get('ched_admin/fetch_applicant_by_csp_rank/').then(result => {
+    fetchOfValidatedApplicant: function() {
+            this.loading = true;
+            axios.get('ched_admin/fetch_of_validated_applicant/').then(result => {
                 this.loading = false;
                 this.applicants = result.data;
+                console.log(this.applicants);
                 this.applicants.splice(index, 1);
-                
-
             }).catch(error => {
                 console.log(error);
             });
     },
+
     fetchBrgy: function() {
-      axios.get('ched_admin/fetch_brgy/').then(result => {
+        axios.get('ched_admin/fetch_brgy/').then(result => {
 
-          this.brgys = result.data;
+            this.brgys = result.data;
 
-      }).catch(error => {
-          console.log(error);
-      });
+        }).catch(error => {
+            console.log(error);
+        });
     },
     fetchCity: function() {
         axios.get('ched_admin/fetch_city/').then(result => {
@@ -824,6 +839,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
             console.log(error);
         });
     },
+
     onChangePage: function(pageOfItems) {
         // update page of items
         this.pageOfItems = pageOfItems;
@@ -831,12 +847,17 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
     editItem: function(i) {
       this.selectedItem = i;
     },
-        updateData: function($id) {
+    updateData: function($id) {
 
           $('#parent_income').css('border-color','');
           $('#gwa').css('border-color','');  
           $('#verified_admin_id').css('border-color',''); 
           $('#ay').css('border-color','');  
+
+          this.v_parentsincome = false;
+          this.v_gwa = false;
+          this.v_verified_admin = false;
+          this.v_ay = false; 
 
 
           if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
@@ -875,8 +896,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
           this.formData.append('ranking_remarks', this.selectedItem.ranking_remarks);
           this.formData.append('gwa', this.selectedItem.gwa);
           this.formData.append('ay', this.selectedItem.ay);
-          this.formData.append('fb_url', this.selectedItem.fb_url);
           this.formData.append('senior_citizen', this.selectedItem.senior_citizen);
+          this.formData.append('fb_url', this.selectedItem.fb_url);
           this.formData.append('applicant_solo_parent', this.selectedItem.applicant_solo_parent);
           axios.post('ched_admin/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
@@ -891,7 +912,7 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                 })
                 return false;
               }
-               this.fetchApplicantByCSPRank();
+               this.fetchApplicant();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
@@ -909,20 +930,24 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
           if(!this.selectedItem.parent_income) {
             $('#parent_income').css('border-color','red');
+            this.v_parentsincome = true;
             return false;
           }
 
           if(!this.selectedItem.gwa) {
             $('#gwa').css('border-color','red');
+            this.v_gwa = true;
             return false;
           }
 
           if(!this.selectedItem.verified_admin) {
             $('#verified_admin_id').css('border-color','red');
+            this.v_verified_admin = true;
             return false;
           }
 
           if(!this.selectedItem.ay) {
+            this.v_ay = true;
             $('#ay').css('border-color','red');
             return false;
           }
@@ -932,19 +957,20 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
 
   },
   async mounted() {
-    this.fetchApplicantByCSPRank();
+    this.fetchOfValidatedApplicant();
     this.fetchBrgy();
     this.fetchCity();
     this.fetchProvince();
     this.fetchProgram();
     this.fetchHEI();
 
-
   }
 
 });
 
-Vue.component("ched-two-user-name", {
+
+
+Vue.component("ched-eleven-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->
@@ -987,18 +1013,17 @@ Vue.component("ched-two-user-name", {
   export default {
     data() {
       return {
-  
+       
       }
     },
     methods: {
 
     },
     async mounted() {
-  
+      
     },
     components: {
       //
     }
   }
-
 </script>
