@@ -5,27 +5,9 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
+  <ched-twelved-user-name></ched-twelved-user-name>
   <div class="logo">
     CHED COORDINATOR DASHBOARD
-
-      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-          My Profile
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-          <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-          <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
-          <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
-        </div>
-      </li>
-       <!--  <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-        <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
-        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li> -->
-      </ul>
-
   </div>
 </div>
 <div class="sidebar">
@@ -436,6 +418,45 @@ Vue.component("ched-users-reset-password", {
 
   }
 
+});
+
+Vue.component("ched-twelved-user-name", {
+    template: `<div>
+            <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
+                  {{ username }} Profile
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                  <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
+                  <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
+                </div>
+              </li>
+            </ul>
+        </div>`,
+    data() {
+        return {
+            username: ''
+        }
+    },
+
+    methods: {
+      fetchUsername: function() {
+          axios.get('ched_admin/fetch_user_name/').then(result => {
+
+              this.username = result.data;
+
+          }).catch(error => {
+              console.log(error);
+          });
+      }
+    },
+    async mounted() {
+      this.fetchUsername();
+    }
 });
 
   export default {

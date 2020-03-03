@@ -5,7 +5,7 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-one-user-name></ched-one-user-name>
+  <ched-one-eight-name></ched-eight-user-name>
   <div class="logo">
   CHED COORDINATOR DASHBOARD
   </div>
@@ -966,7 +966,7 @@ Vue.component("ched-list-of-unverified-applicant", {
 
 
 
-Vue.component("ched-one-user-name", {
+Vue.component("ched-eight-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->

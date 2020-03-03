@@ -5,7 +5,7 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-eight-user-name></ched-eight-user-name>
+  <ched-ten-user-name></ched-ten-user-name>
   <div class="logo">
     CHED COORDINATOR DASHBOARD
   </div>
@@ -448,7 +448,7 @@ Vue.component("admin-change-password", {
 
 });
 
-Vue.component("ched-eight-user-name", {
+Vue.component("ched-ten-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->

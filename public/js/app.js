@@ -5148,7 +5148,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("admin-change-password", {
     return mounted;
   }()
 });
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-eight-user-name", {
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-ten-user-name", {
   template: "<div>\n            <ul class=\"\" style=\"float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;\">           \n              <!-- Dropdown -->\n              <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\" style=\"color:#fff\">\n                  {{ username }} Profile\n                </a>\n                <div class=\"dropdown-menu\">\n                  <a class=\"dropdown-item\" href=\"#\" @click.prevent=\"$auth.logout()\">Logout</a>\n                  <router-link to=\"/ched-coordinator/change-password\"><a class=\"dropdown-item\" href=\"#\">Change Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/reset-password\"><a class=\"dropdown-item\" href=\"#\">Reset Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/force-verified\"><a class=\"dropdown-item\" href=\"#\">Force Verified</a></router-link>\n                </div>\n              </li>\n            </ul>\n        </div>",
   data: function data() {
     return {
@@ -5966,24 +5966,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(window.vuelidate["default"]);
@@ -6069,13 +6051,24 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-users-force-verified"
     return mounted;
   }()
 });
-/* harmony default export */ __webpack_exports__["default"] = ({
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-eleven-user-name", {
+  template: "<div>\n            <ul class=\"\" style=\"float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;\">           \n              <!-- Dropdown -->\n              <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\" style=\"color:#fff\">\n                  {{ username }} Profile\n                </a>\n                <div class=\"dropdown-menu\">\n                  <a class=\"dropdown-item\" href=\"#\" @click.prevent=\"$auth.logout()\">Logout</a>\n                  <router-link to=\"/ched-coordinator/change-password\"><a class=\"dropdown-item\" href=\"#\">Change Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/reset-password\"><a class=\"dropdown-item\" href=\"#\">Reset Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/force-verified\"><a class=\"dropdown-item\" href=\"#\">Force Verified</a></router-link>\n                </div>\n              </li>\n            </ul>\n        </div>",
   data: function data() {
     return {
       username: ''
     };
   },
-  methods: {},
+  methods: {
+    fetchUsername: function fetchUsername() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_user_name/').then(function (result) {
+        _this2.username = result.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   mounted: function () {
     var _mounted2 = _asyncToGenerator(
     /*#__PURE__*/
@@ -6084,15 +6077,47 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-users-force-verified"
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              this.fetchUsername();
+
+            case 1:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, this);
     }));
 
     function mounted() {
       return _mounted2.apply(this, arguments);
+    }
+
+    return mounted;
+  }()
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      username: ''
+    };
+  },
+  methods: {},
+  mounted: function () {
+    var _mounted3 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    function mounted() {
+      return _mounted3.apply(this, arguments);
     }
 
     return mounted;
@@ -6124,24 +6149,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6547,13 +6554,24 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-users-reset-password"
     return mounted;
   }()
 });
-/* harmony default export */ __webpack_exports__["default"] = ({
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-twelved-user-name", {
+  template: "<div>\n            <ul class=\"\" style=\"float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;\">           \n              <!-- Dropdown -->\n              <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\" style=\"color:#fff\">\n                  {{ username }} Profile\n                </a>\n                <div class=\"dropdown-menu\">\n                  <a class=\"dropdown-item\" href=\"#\" @click.prevent=\"$auth.logout()\">Logout</a>\n                  <router-link to=\"/ched-coordinator/change-password\"><a class=\"dropdown-item\" href=\"#\">Change Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/reset-password\"><a class=\"dropdown-item\" href=\"#\">Reset Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/force-verified\"><a class=\"dropdown-item\" href=\"#\">Force Verified</a></router-link>\n                </div>\n              </li>\n            </ul>\n        </div>",
   data: function data() {
     return {
       username: ''
     };
   },
-  methods: {},
+  methods: {
+    fetchUsername: function fetchUsername() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_user_name/').then(function (result) {
+        _this2.username = result.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   mounted: function () {
     var _mounted2 = _asyncToGenerator(
     /*#__PURE__*/
@@ -6562,15 +6580,47 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-users-reset-password"
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              this.fetchUsername();
+
+            case 1:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, this);
     }));
 
     function mounted() {
       return _mounted2.apply(this, arguments);
+    }
+
+    return mounted;
+  }()
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      username: ''
+    };
+  },
+  methods: {},
+  mounted: function () {
+    var _mounted3 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    function mounted() {
+      return _mounted3.apply(this, arguments);
     }
 
     return mounted;
@@ -11506,7 +11556,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     return mounted;
   }()
 });
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-one-user-name", {
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-eight-user-name", {
   template: "<div>\n            <ul class=\"\" style=\"float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;\">           \n              <!-- Dropdown -->\n              <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\" style=\"color:#fff\">\n                  {{ username }} Profile\n                </a>\n                <div class=\"dropdown-menu\">\n                  <a class=\"dropdown-item\" href=\"#\" @click.prevent=\"$auth.logout()\">Logout</a>\n                  <router-link to=\"/ched-coordinator/change-password\"><a class=\"dropdown-item\" href=\"#\">Change Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/reset-password\"><a class=\"dropdown-item\" href=\"#\">Reset Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/force-verified\"><a class=\"dropdown-item\" href=\"#\">Force Verified</a></router-link>\n                </div>\n              </li>\n            </ul>\n        </div>",
   data: function data() {
     return {
@@ -12181,7 +12231,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-validated-app
     return mounted;
   }()
 });
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-eleven-user-name", {
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-nine-user-name", {
   template: "<div>\n            <ul class=\"\" style=\"float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;\">           \n              <!-- Dropdown -->\n              <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\" style=\"color:#fff\">\n                  {{ username }} Profile\n                </a>\n                <div class=\"dropdown-menu\">\n                  <a class=\"dropdown-item\" href=\"#\" @click.prevent=\"$auth.logout()\">Logout</a>\n                  <router-link to=\"/ched-coordinator/change-password\"><a class=\"dropdown-item\" href=\"#\">Change Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/reset-password\"><a class=\"dropdown-item\" href=\"#\">Reset Password</a></router-link>\n                  <router-link to=\"/ched-coordinator/force-verified\"><a class=\"dropdown-item\" href=\"#\">Force Verified</a></router-link>\n                </div>\n              </li>\n            </ul>\n        </div>",
   data: function data() {
     return {
@@ -26645,7 +26695,7 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c("ched-eight-user-name"),
+        _c("ched-ten-user-name"),
         _vm._v(" "),
         _c("div", { staticClass: "logo" }, [
           _vm._v("\r\n    CHED COORDINATOR DASHBOARD\r\n  ")
@@ -27116,98 +27166,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "header" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "logo" }, [
-        _vm._v("\n    CHED COORDINATOR DASHBOARD\n\n      "),
-        _c(
-          "ul",
-          {
-            staticStyle: {
-              float: "right",
-              "margin-right": "30px",
-              "list-style-type": "none"
-            }
-          },
-          [
-            _c("li", { staticClass: "nav-item dropdown" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link dropdown-toggle",
-                  staticStyle: { color: "#fff" },
-                  attrs: {
-                    href: "#",
-                    id: "navbardrop",
-                    "data-toggle": "dropdown"
-                  }
-                },
-                [_vm._v("\n          My Profile\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "dropdown-menu" },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "dropdown-item",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.$auth.logout()
-                        }
-                      }
-                    },
-                    [_vm._v("Logout")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/change-password" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Change Password")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/reset-password" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Reset Password")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/force-verified" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Force Verified")]
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ])
-    ]),
+    _c(
+      "div",
+      { staticClass: "header" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("ched-eleven-user-name"),
+        _vm._v(" "),
+        _c("div", { staticClass: "logo" }, [
+          _vm._v("\n    CHED COORDINATOR DASHBOARD\n  ")
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "sidebar" }, [
       _c(
@@ -27386,98 +27358,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "header" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "logo" }, [
-        _vm._v("\n    CHED COORDINATOR DASHBOARD\n\n      "),
-        _c(
-          "ul",
-          {
-            staticStyle: {
-              float: "right",
-              "margin-right": "30px",
-              "list-style-type": "none"
-            }
-          },
-          [
-            _c("li", { staticClass: "nav-item dropdown" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link dropdown-toggle",
-                  staticStyle: { color: "#fff" },
-                  attrs: {
-                    href: "#",
-                    id: "navbardrop",
-                    "data-toggle": "dropdown"
-                  }
-                },
-                [_vm._v("\n          My Profile\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "dropdown-menu" },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "dropdown-item",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.$auth.logout()
-                        }
-                      }
-                    },
-                    [_vm._v("Logout")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/change-password" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Change Password")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/reset-password" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Reset Password")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/ched-coordinator/force-verified" } },
-                    [
-                      _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
-                        [_vm._v("Force Verified")]
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ])
-    ]),
+    _c(
+      "div",
+      { staticClass: "header" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("ched-twelved-user-name"),
+        _vm._v(" "),
+        _c("div", { staticClass: "logo" }, [
+          _vm._v("\n    CHED COORDINATOR DASHBOARD\n  ")
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "sidebar" }, [
       _c(
@@ -28233,7 +28127,7 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c("ched-two-user-name"),
+        _c("ched-four-user-name"),
         _vm._v(" "),
         _c("div", { staticClass: "logo" }, [
           _vm._v("\n  CHED COORDINATOR DASHBOARD\n  ")
@@ -28985,182 +28879,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c(
-      "div",
-      { staticClass: "header" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("ched-one-user-name"),
-        _vm._v(" "),
-        _c("div", { staticClass: "logo" }, [
-          _vm._v("\n  CHED COORDINATOR DASHBOARD\n  ")
-        ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "sidebar" }, [
-      _c(
-        "ul",
-        [
-          _c("router-link", { attrs: { to: "/ched-coordinator" } }, [
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fas fa-home" }),
-                _c("span", [_vm._v("Home")])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            { attrs: { to: "/ched-coordinator/list-of-applicants" } },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("Applicants")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: { to: "/ched-coordinator/list-of-unverified-applicants" }
-            },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("Unverified applicants")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            { attrs: { to: "/ched-coordinator/list-of-enrolled-applicants" } },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("Enrolled Applicants")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: "/ched-coordinator/list-of-ched-validated-applicants"
-              }
-            },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("Validated Applicants")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: { to: "/ched-coordinator/list-of-not-enrolled-applicants" }
-            },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("Not Enrolled Applicants")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: { to: "/ched-coordinator/list-of-applicants-by-csp-rank" }
-            },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("CSP Rank")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              attrs: { to: "/ched-coordinator/list-of-applicants-by-tdp-rank" }
-            },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("TDP Rank")])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            { attrs: { to: "/ched-coordinator/list-of-heis" } },
-            [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _c("span", [_vm._v("HEIs")])
-                ])
-              ])
-            ]
-          )
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "main" }, [
-      _c(
-        "div",
-        { staticClass: "jumbotron" },
-        [_c("ched-list-of-unverified-applicant")],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", id: "menu-action" } }, [
-      _c("i", { staticClass: "fa fa-bars" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("Close")])
-    ])
-  }
-]
-render._withStripped = true
+var render = function () {}
+var staticRenderFns = []
 
 
 
@@ -29188,7 +28908,7 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c("ched-eleven-user-name"),
+        _c("ched-nine-user-name"),
         _vm._v(" "),
         _c("div", { staticClass: "logo" }, [
           _vm._v("\n    CHED COORDINATOR DASHBOARD\n    ")
