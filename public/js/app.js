@@ -26044,7 +26044,7 @@ var staticRenderFns = [
                       _vm._v(" "),
                       _c("li", [
                         _vm._v(
-                          "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 85%; and\n                  "
+                          "Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90%; and\n                  "
                         )
                       ]),
                       _vm._v(" "),

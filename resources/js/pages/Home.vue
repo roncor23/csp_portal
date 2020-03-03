@@ -71,7 +71,7 @@
               <h3>WHO CAN APPLY?</h3><br>
                 <ul style="text-align:justify;margin-top:10px">
                   <li>Filipino citizen;</li>
-                  <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 85%; and
+                  <li>Graduating senior high school student/High school graduate with general weighted average (GWA) of at least 90%; and
                   </li>
                   <li>Parents/Guardians Annual Gross Income of Four Hundred Thousand Pesos (Php 400,000.00) and below.
                   </li>
