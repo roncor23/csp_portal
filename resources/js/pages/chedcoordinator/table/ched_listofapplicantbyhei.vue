@@ -711,7 +711,11 @@ Vue.component("ched-list-of-applicant-by-hei", {
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Validate</button>
+                        <button v-if="loader1" type="submit" class="btn btn-success">Validate</button>
+                        <button v-if="loader" class="btn btn-success" type="button" disabled>
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          Loading...
+                        </button>
                       </div>
                       </form>
                     </div>
@@ -729,7 +733,7 @@ Vue.component("ched-list-of-applicant-by-hei", {
           applicants: [],
           formData: {},
           search: '',
-          countPage: 50,
+          countPage: 15,
           pageOfItems: [],
           selectedItem: {},
           brgys: {},
@@ -744,7 +748,13 @@ Vue.component("ched-list-of-applicant-by-hei", {
           supported_by_solo_parent: '',
           ranking_remarks: '',
           admin_remarks: '',
-          loading: false
+          v_parentsincome: false,
+          v_gwa: false,
+          v_ay: false,
+          v_verified_admin: false,
+          loading: false,
+          loader1: true,
+          loader: false
           
         }
     },
@@ -755,7 +765,7 @@ Vue.component("ched-list-of-applicant-by-hei", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.validatedByCHED.match(filter_search);
 
 
 
@@ -836,7 +846,14 @@ Vue.component("ched-list-of-applicant-by-hei", {
           $('#parent_income').css('border-color','');
           $('#gwa').css('border-color','');  
           $('#verified_admin_id').css('border-color',''); 
-          $('#ay').css('border-color','');   
+          $('#ay').css('border-color','');  
+
+          this.v_parentsincome = false;
+          this.v_gwa = false;
+          this.v_verified_admin = false;
+          this.v_ay = false; 
+          this.loader1 = false;
+          this.loader = true; 
 
           if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
 
@@ -890,13 +907,13 @@ Vue.component("ched-list-of-applicant-by-hei", {
                 })
                 return false;
               }
+               $('#applicantModal').click();
                this.fetchApplicant_by_hei();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Validated Successfully!',
                 })
-                $('#applicantModal').click();
               
             })
             .catch(error => {

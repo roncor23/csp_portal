@@ -1,5 +1,5 @@
 <template>
-<!--   <div class="body">
+  <div class="body">
     <div >
       <div class="form-group d-flex justify-content-center">
             <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
@@ -24,15 +24,15 @@
          
       </form-wizard>
     </div>
-  </div>  -->
+  </div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
         <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 4, 2020 / 9:00AM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 
@@ -193,6 +193,7 @@ Vue.component("step1", {
                       <label >User name</label><span style="color:red">*</span>
                       <input type="text" class="form-control" placeholder="Ex: John" v-model.trim="userName" @input="$v.userName.$touch()">
                       <span class="text-danger" v-if="$v.userName.$error && !$v.userName.required">User name is required</span>
+                      <span class="text-danger" v-if="$v.userName.$error && !$v.userName.alpha">Accepts only alphabet characters.</span>
                     </div>
                     <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
                       <label>Email</label> <span style="color:red">*</span>
@@ -228,7 +229,8 @@ Vue.component("step1", {
     },
     validations: {
         userName: {
-            required
+            required,
+            alpha
         },
         password: {
             required,
@@ -1063,10 +1065,6 @@ Vue.component("step5", {
                 this.errors = error.response.data.errors;
                 console.log(this.errors);
             });
-
-   
-
-
    
       },
      validateStep(name) {
@@ -1080,9 +1078,21 @@ Vue.component("step5", {
 
          }
      },
-
+     note() {
+       this.$swal.fire({
+          title: '<h2 style="color:red">Attention!</h2>',
+          text: 'Please provide a valid email or create a new one to ensure that you will receive a confirmation code. Thanks!',
+          showClass: {
+            popup: 'animated fadeInDown faster'
+          },
+          hideClass: {
+            popup: 'animated fadeOutUp faster'
+          }
+        })
+     }
     },
     async mounted() {
+      this.note();
     },
     components: {
       FormWizard,

@@ -719,7 +719,11 @@ Vue.component("ched-list-of-validated-applicant", {
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Validate</button>
+                        <button v-if="loader1" type="submit" class="btn btn-success">Validate</button>
+                        <button v-if="loader" class="btn btn-success" type="button" disabled>
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          Loading...
+                        </button>
                       </div>
                       </form>
                     </div>
@@ -756,7 +760,9 @@ Vue.component("ched-list-of-validated-applicant", {
           v_gwa: false,
           v_ay: false,
           v_verified_admin: false,
-          loading: false
+          loading: false,
+          loader1: true,
+          loader: false
           
         }
     },
@@ -858,7 +864,8 @@ Vue.component("ched-list-of-validated-applicant", {
           this.v_gwa = false;
           this.v_verified_admin = false;
           this.v_ay = false; 
-
+          this.loader1 = false;
+          this.loader = true;
 
           if(this.selectedItem.parent_income && this.selectedItem.gwa && this.selectedItem.verified_admin && this.selectedItem.ay) {
 
@@ -912,13 +919,14 @@ Vue.component("ched-list-of-validated-applicant", {
                 })
                 return false;
               }
+               $('#applicantModal').click();
                this.fetchOfValidatedApplicant();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Validated Successfully!',
                 })
-                $('#applicantModal').click();
+               
               
             })
             .catch(error => {

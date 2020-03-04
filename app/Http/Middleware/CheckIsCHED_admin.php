@@ -11,7 +11,7 @@ class CheckIsCHED_admin
             return $next($request);
         }
         else {
-            return response()->json(['error' => 'Unauthorizedaaa'], 403);
+            return response()->json(['error' => 'Unauthorized'], 403);
         }
     }
 }

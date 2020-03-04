@@ -749,7 +749,7 @@ Vue.component("ched-list-of-applicant-by-tdp-rank", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.validatedByCHED.match(filter_search);
 
 
 
