@@ -20,8 +20,7 @@
           </tab-content>
           <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
               <step5 ref="step5" @on-validate="mergePartialModels"></step5>
-          </tab-content>
-         
+          </tab-content>    
       </form-wizard>
     </div>
   </div> 
