@@ -439,7 +439,7 @@ Vue.component("ched-list-of-unverified-applicant", {
                     </table>
                     <div class="form-row">
                       <div class="form-group col-md-3">
-                        <span style="font-weight:bold">Total Applicants: </span>{{filteredBlogs.length}}
+                        <span style="font-weight:bold">Total Unverified Applicants: </span>{{filteredBlogs.length}}
                       </div>
                       <div class="form-group col-md-3">
                       </div>

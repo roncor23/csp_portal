@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col-lg-4 col-xl-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex" >
+              <div class="features-icons-icon d-flex">
                 <i class="icon-screen-desktop m-auto  fas fa-keyboard" style="color:#1c3961"></i>
               </div>
               <h3>WHO CAN APPLY?</h3><br>
