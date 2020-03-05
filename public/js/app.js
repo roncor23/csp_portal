@@ -12573,55 +12573,39 @@ var _window$validators = window.validators,
   mounted: function mounted() {//
   },
   methods: {
-    reset: function reset() {
-      var _this = this;
-
-      if (this.$v.$invalid) return;
-      $('#birthdate').css('border-color', '');
-      $('#phone_number').css('border-color', '');
-      this.loading = true;
-      this.formData = new FormData();
-      this.formData.append('birthdate', this.birthdate);
-      this.formData.append('phone_number', this.phone_number);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('reset/password', this.formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(function (response) {
-        if (response.data === 0) {
-          _this.loading = false;
-          $('#birthdate').css('border-color', 'red');
-          $('#phone_number').css('border-color', 'red');
-
-          _this.$swal.fire({
-            icon: 'error',
-            title: 'Opps...',
-            text: 'Incorrect birthdate or phone number.'
-          });
-
-          return false;
-        }
-
-        _this.loading = false;
-
-        _this.$swal.fire({
-          icon: 'success',
-          title: 'Great...',
-          text: "Password reset successfully! New password sent to ".concat(response.data.email, ".")
-        });
-
-        _this.reset_form();
-
-        _this.$router.push({
-          name: 'login',
-          params: {
-            successRegistrationRedirect: true
-          }
-        });
-      })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-        console.log(_this.errors);
-      });
+    reset: function reset() {//   if (this.$v.$invalid) return;
+      // $('#birthdate').css('border-color','');
+      //   $('#phone_number').css('border-color','');  
+      //   this.loading = true;
+      // this.formData = new FormData();
+      //       this.formData.append('birthdate', this.birthdate);
+      //       this.formData.append('phone_number', this.phone_number);
+      //       axios.post('reset/password', this.formData, {headers: {'Content-Type': 'multipart/form-data'}})
+      //           .then(response => {
+      // if(response.data === 0) {
+      //         this.loading = false;
+      // 	$('#birthdate').css('border-color','red');
+      //     	$('#phone_number').css('border-color','red');  
+      // 	this.$swal.fire({
+      //               icon: 'error',
+      //               title: 'Opps...',
+      //               text: 'Incorrect birthdate or phone number.'
+      //             })
+      //             return false;
+      // }
+      //     this.loading = false;
+      //         	this.$swal.fire({
+      //              icon: 'success',
+      //              title: 'Great...',
+      //              text: `Password reset successfully! New password sent to ${response.data.email}.`,
+      //            })
+      //            this.reset_form();
+      //            this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+      //           })
+      //           .catch(error => {
+      //               this.errors = error.response.data.errors;
+      //               console.log(this.errors);
+      //           });
     },
     reset_form: function reset_form() {
       this.birthdate = '';
@@ -15927,24 +15911,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log(error);
       });
     },
-    reSendCode: function reSendCode() {
-      var _this3 = this;
-
-      this.loading = true;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('applicant/resendcode/').then(function (result) {
-        _this3.loading = false;
-
-        _this3.$swal.fire({
-          icon: 'success',
-          title: 'Great...',
-          text: "A verification code has been sent to ".concat(result.data, ".")
-        });
-      })["catch"](function (error) {
-        console.log(error);
-      });
+    reSendCode: function reSendCode() {// this.loading = true;
+      // axios.post('applicant/resendcode/').then(result => {
+      //       this.loading = false;
+      //       this.$swal.fire({
+      //         icon: 'success',
+      //         title: 'Great...',
+      //         text: `A verification code has been sent to ${result.data}.`,
+      //       })
+      // }).catch(error => {
+      //     console.log(error);
+      // });
     },
     new_email: function new_email() {
-      var _this4 = this;
+      var _this3 = this;
 
       this.formData = new FormData();
       this.formData.append('n_email', this.n_email);
@@ -15954,29 +15934,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.n_email) {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('applicant/new_email/', this.formData).then(function (result) {
           if (result.data === 1) {
-            _this4.$swal.fire({
+            _this3.$swal.fire({
               icon: 'success',
               title: 'Great...',
               text: "New email successfully changed."
             });
 
-            _this4.fetchApplicant();
+            _this3.fetchApplicant();
 
-            _this4.reset();
+            _this3.reset();
 
             return false;
           }
 
           if (result.data === 2) {
-            _this4.$swal.fire({
+            _this3.$swal.fire({
               icon: 'error',
               title: 'Opps...',
               text: "Email address is already in used in this system. Please try new one."
             });
 
-            _this4.fetchApplicant();
+            _this3.fetchApplicant();
 
-            _this4.reset();
+            _this3.reset();
 
             return false;
           }
@@ -15992,7 +15972,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     verify: function verify() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.formData = new FormData();
       this.formData.append('v_code', this.v_code);
@@ -16002,28 +15982,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.v_code) {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('applicant/verify_code/', this.formData).then(function (result) {
           if (result.data === 0) {
-            _this5.$swal.fire({
+            _this4.$swal.fire({
               icon: 'error',
               title: 'Opps...',
               text: 'Incorrect code!'
             });
 
             $('#ve_code').css('border-color', 'red');
-            _this5.v_v_code = true;
+            _this4.v_v_code = true;
             return false;
           }
 
-          _this5.v_v_code = false;
+          _this4.v_v_code = false;
 
-          _this5.$swal.fire({
+          _this4.$swal.fire({
             icon: 'success',
             title: 'Great...',
             text: "You are successfully verified."
           });
 
-          _this5.fetchApplicant();
+          _this4.fetchApplicant();
 
-          _this5.reset();
+          _this4.reset();
         })["catch"](function (error) {
           console.log(error);
         });

@@ -424,18 +424,18 @@ import axios from 'axios';
           });
       },
       reSendCode: function() {
-          this.loading = true;
-          axios.post('applicant/resendcode/').then(result => {
-                this.loading = false;
-                this.$swal.fire({
-                  icon: 'success',
-                  title: 'Great...',
-                  text: `A verification code has been sent to ${result.data}.`,
-                })
+          // this.loading = true;
+          // axios.post('applicant/resendcode/').then(result => {
+          //       this.loading = false;
+          //       this.$swal.fire({
+          //         icon: 'success',
+          //         title: 'Great...',
+          //         text: `A verification code has been sent to ${result.data}.`,
+          //       })
 
-          }).catch(error => {
-              console.log(error);
-          });
+          // }).catch(error => {
+          //     console.log(error);
+          // });
       },
       new_email: function() {
 

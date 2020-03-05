@@ -193,43 +193,43 @@ const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.
 
     methods: {
     reset: function() {
-        if (this.$v.$invalid) return;
-    		$('#birthdate').css('border-color','');
-        $('#phone_number').css('border-color','');  
-        this.loading = true;
-    		this.formData = new FormData();
-            this.formData.append('birthdate', this.birthdate);
-            this.formData.append('phone_number', this.phone_number);
+      //   if (this.$v.$invalid) return;
+    		// $('#birthdate').css('border-color','');
+      //   $('#phone_number').css('border-color','');  
+      //   this.loading = true;
+    		// this.formData = new FormData();
+      //       this.formData.append('birthdate', this.birthdate);
+      //       this.formData.append('phone_number', this.phone_number);
 
-            axios.post('reset/password', this.formData, {headers: {'Content-Type': 'multipart/form-data'}})
-                .then(response => {
+      //       axios.post('reset/password', this.formData, {headers: {'Content-Type': 'multipart/form-data'}})
+      //           .then(response => {
 
- 					if(response.data === 0) {
-              this.loading = false;
- 						$('#birthdate').css('border-color','red');
-          	$('#phone_number').css('border-color','red');  
+ 					// if(response.data === 0) {
+      //         this.loading = false;
+ 					// 	$('#birthdate').css('border-color','red');
+      //     	$('#phone_number').css('border-color','red');  
 
- 						this.$swal.fire({
-		                  icon: 'error',
-		                  title: 'Opps...',
-		                  text: 'Incorrect birthdate or phone number.'
-		                })
-		                return false;
- 					}
-          this.loading = false;
- 				         	this.$swal.fire({
-	                  icon: 'success',
-	                  title: 'Great...',
-	                  text: `Password reset successfully! New password sent to ${response.data.email}.`,
-	                })
-	                this.reset_form();
-	                this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+ 					// 	this.$swal.fire({
+		    //               icon: 'error',
+		    //               title: 'Opps...',
+		    //               text: 'Incorrect birthdate or phone number.'
+		    //             })
+		    //             return false;
+ 					// }
+      //     this.loading = false;
+ 				 //         	this.$swal.fire({
+	     //              icon: 'success',
+	     //              title: 'Great...',
+	     //              text: `Password reset successfully! New password sent to ${response.data.email}.`,
+	     //            })
+	     //            this.reset_form();
+	     //            this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
 
-                })
-                .catch(error => {
-                    this.errors = error.response.data.errors;
-                    console.log(this.errors);
-                });
+      //           })
+      //           .catch(error => {
+      //               this.errors = error.response.data.errors;
+      //               console.log(this.errors);
+      //           });
 
           
 
