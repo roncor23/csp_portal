@@ -852,8 +852,8 @@ Vue.component("ched-list-of-applicant", {
     },
     editItem: function(i) {
       this.selectedItem = i;
-      loader1: true;
-      loader: false;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function($id) {
 

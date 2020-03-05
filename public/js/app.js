@@ -7110,10 +7110,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
-
-      loader1: true;
-
-      loader: false;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
