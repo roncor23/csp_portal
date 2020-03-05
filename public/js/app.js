@@ -26569,155 +26569,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "body" }, [
-    _c(
-      "div",
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "form-wizard",
-          {
-            attrs: { shape: "circle", color: "#2F4F4F" },
-            on: { "on-complete": _vm.onComplete }
-          },
-          [
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Account Setup",
-                  icon: "ti-user",
-                  "before-change": function() {
-                    return _vm.validateStep("step1")
-                  }
-                }
-              },
-              [
-                _c("step1", {
-                  ref: "step1",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Personal Information",
-                  icon: "ti-id-badge",
-                  "before-change": function() {
-                    return _vm.validateStep("step2")
-                  }
-                }
-              },
-              [
-                _c("step2", {
-                  ref: "step2",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Family Background",
-                  icon: "ti-view-list",
-                  "before-change": function() {
-                    return _vm.validateStep("step3")
-                  }
-                }
-              },
-              [
-                _c("step3", {
-                  ref: "step3",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Preferred School",
-                  icon: "ti-home",
-                  "before-change": function() {
-                    return _vm.validateStep("step4")
-                  }
-                }
-              },
-              [
-                _c("step4", {
-                  ref: "step4",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "tab-content",
-              {
-                attrs: {
-                  title: "Marginalized Group",
-                  icon: "ti-layers-alt",
-                  "before-change": function() {
-                    return _vm.validateStep("step5")
-                  }
-                }
-              },
-              [
-                _c("step5", {
-                  ref: "step5",
-                  on: { "on-validate": _vm.mergePartialModels }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ],
-      1
-    )
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group d-flex justify-content-center" },
-      [
-        _c(
-          "h4",
-          {
-            staticStyle: {
-              "font-size": "20px",
-              color: "#fff",
-              "text-align": "center",
-              padding: "14px"
-            }
-          },
-          [
-            _vm._v("Online Application "),
-            _c("br"),
-            _c("small", [_vm._v("Nothing worth having comes easy!")])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "main" }, [
+      _c("div", { staticClass: "jumbotron" }, [
+        _c("h1", { staticStyle: { color: "red" } }, [
+          _vm._v("System Maintenance Notice")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 6, 2020 / 9:00AM."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("We regret for the inconvenience.")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -50427,8 +50300,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_9__["default"]); // Set Vue authentication
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_4___default.a, axios__WEBPACK_IMPORTED_MODULE_1___default.a);
-axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "/api"; // axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
-
+axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "/api";
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_3___default.a, _auth__WEBPACK_IMPORTED_MODULE_7__["default"]); // Load Index
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('index', _Index__WEBPACK_IMPORTED_MODULE_6__["default"]);
