@@ -7786,6 +7786,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
@@ -8452,6 +8454,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
@@ -11465,6 +11469,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
@@ -12146,6 +12152,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-validated-app
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
+      this.loader1 = true;
+      this.loader = false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
