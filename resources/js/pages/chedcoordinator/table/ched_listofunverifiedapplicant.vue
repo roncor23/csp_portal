@@ -787,7 +787,7 @@ Vue.component("ched-list-of-unverified-applicant", {
       },
     fetchApplicant: function() {
             this.loading = true;
-            axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_unverified_applicant/').then(result => {
+            axios.get('ched_admin/fetch_unverified_applicant/').then(result => {
                 this.loading = false;
                 this.applicants = result.data;
                 console.log(this.applicants);
@@ -797,7 +797,7 @@ Vue.component("ched-list-of-unverified-applicant", {
             });
     },
     fetchBrgy: function() {
-        axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_brgy/').then(result => {
+        axios.get('ched_admin/fetch_brgy/').then(result => {
 
             this.brgys = result.data;
 
@@ -806,7 +806,7 @@ Vue.component("ched-list-of-unverified-applicant", {
         });
     },
     fetchCity: function() {
-        axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_city/').then(result => {
+        axios.get('ched_admin/fetch_city/').then(result => {
 
             this.citys = result.data;
 
@@ -815,7 +815,7 @@ Vue.component("ched-list-of-unverified-applicant", {
         });
     },
     fetchProvince: function() {
-        axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_province/').then(result => {
+        axios.get('ched_admin/fetch_province/').then(result => {
 
             this.provinces = result.data;
 
@@ -824,7 +824,7 @@ Vue.component("ched-list-of-unverified-applicant", {
         });
     },
     fetchProgram: function() {
-        axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_program/').then(result => {
+        axios.get('ched_admin/fetch_program/').then(result => {
 
             this.programs = result.data;
 
