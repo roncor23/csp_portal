@@ -12573,7 +12573,8 @@ var _window$validators = window.validators,
   mounted: function mounted() {//
   },
   methods: {
-    reset: function reset() {//   if (this.$v.$invalid) return;
+    reset: function reset() {
+      //   if (this.$v.$invalid) return;
       // $('#birthdate').css('border-color','');
       //   $('#phone_number').css('border-color','');  
       //   this.loading = true;
@@ -12606,6 +12607,11 @@ var _window$validators = window.validators,
       //               this.errors = error.response.data.errors;
       //               console.log(this.errors);
       //           });
+      this.$swal.fire({
+        icon: 'error',
+        title: 'Opps...',
+        text: 'This feature is not available right now! Forgot your password? Visit CHED CARAGA Regional Office, Ampayon Butuan City.'
+      });
     },
     reset_form: function reset_form() {
       this.birthdate = '';
@@ -15911,7 +15917,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log(error);
       });
     },
-    reSendCode: function reSendCode() {// this.loading = true;
+    reSendCode: function reSendCode() {
+      // this.loading = true;
       // axios.post('applicant/resendcode/').then(result => {
       //       this.loading = false;
       //       this.$swal.fire({
@@ -15922,6 +15929,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // }).catch(error => {
       //     console.log(error);
       // });
+      this.$swal.fire({
+        icon: 'error',
+        title: 'Opps...',
+        text: 'This feature is not available right now! Verification code problem? Visit CHED CARAGA Regional Office, Ampayon Butuan City.'
+      });
     },
     new_email: function new_email() {
       var _this3 = this;

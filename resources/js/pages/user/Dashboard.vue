@@ -432,10 +432,14 @@ import axios from 'axios';
           //         title: 'Great...',
           //         text: `A verification code has been sent to ${result.data}.`,
           //       })
-
           // }).catch(error => {
           //     console.log(error);
           // });
+          this.$swal.fire({
+            icon: 'error',
+            title: 'Opps...',
+            text: 'This feature is not available right now! Verification code problem? Visit CHED CARAGA Regional Office, Ampayon Butuan City.'
+          })
       },
       new_email: function() {
 

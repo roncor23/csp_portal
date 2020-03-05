@@ -232,7 +232,11 @@ const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.
       //           });
 
           
-
+                 this.$swal.fire({
+                    icon: 'error',
+                    title: 'Opps...',
+                    text: 'This feature is not available right now! Forgot your password? Visit CHED CARAGA Regional Office, Ampayon Butuan City.'
+                  })
 
    
       },
