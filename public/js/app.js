@@ -6580,7 +6580,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-twelved-user-name", {
     fetchUsername: function fetchUsername() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_user_name/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_user_name/').then(function (result) {
         _this2.username = result.data;
       })["catch"](function (error) {
         console.log(error);
@@ -7110,6 +7110,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
     },
     editItem: function editItem(i) {
       this.selectedItem = i;
+
+      loader1: true;
+
+      loader: false;
     },
     updateData: function updateData($id) {
       var _this7 = this;
@@ -11402,7 +11406,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
       var _this = this;
 
       this.loading = true;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_unverified_applicant/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_unverified_applicant/').then(function (result) {
         _this.loading = false;
         _this.applicants = result.data;
         console.log(_this.applicants);
@@ -11415,7 +11419,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     fetchBrgy: function fetchBrgy() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_brgy/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_brgy/').then(function (result) {
         _this2.brgys = result.data;
       })["catch"](function (error) {
         console.log(error);
@@ -11424,7 +11428,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     fetchCity: function fetchCity() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_city/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_city/').then(function (result) {
         _this3.citys = result.data;
       })["catch"](function (error) {
         console.log(error);
@@ -11433,7 +11437,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     fetchProvince: function fetchProvince() {
       var _this4 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_province/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_province/').then(function (result) {
         _this4.provinces = result.data;
       })["catch"](function (error) {
         console.log(error);
@@ -11442,7 +11446,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     fetchProgram: function fetchProgram() {
       var _this5 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('ched_admin/fetch_program/').then(function (result) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/ched_admin/fetch_program/').then(function (result) {
         _this5.programs = result.data;
       })["catch"](function (error) {
         console.log(error);

@@ -445,7 +445,7 @@ Vue.component("ched-twelved-user-name", {
 
     methods: {
       fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
+          axios.get('http://127.0.0.1:8000/api/ched_admin/fetch_user_name/').then(result => {
 
               this.username = result.data;
 
