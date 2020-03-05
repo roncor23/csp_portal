@@ -1,36 +1,28 @@
 <template>
-    <div class="">
+<div>
 <div class="header">
   <a href="#" id="menu-action">
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-twelved-user-name></ched-twelved-user-name>
+  <OJT-four-user-name></OJT-four-user-name>
   <div class="logo">
-    CHED COORDINATOR DASHBOARD
+    OJT DASHBOARD
   </div>
 </div>
-<div class="sidebar">
-  <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-ched-validated-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Validated Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+  <div class="sidebar">
+    <ul>
+      <router-link to="/OJT-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+      <router-link to="/OJT-dashboard/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
     </ul>
+  </div>
+  <!-- Content -->
+  <div class="main">
+      <div class="jumbotron">
+        <OJT-change-password></OJT-change-password>
+      </div>
+  </div>
 </div>
-
-<!-- Content -->
-<div class="main">
-  <div class="jumbotron">
-     <ched-users-reset-password></ched-users-reset-password>
-  </div> 
-</div>
-    </div>
 </template>
 
 <style scoped>
@@ -327,7 +319,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ched-users-reset-password", {
+Vue.component("OJT-change-password", {
     template: `<div>
                   <form
                     class="form" id="" method="post" action="foobar"
@@ -335,11 +327,28 @@ Vue.component("ched-users-reset-password", {
                   >
 
                             <div class="form-group ">
-                              <label >Email</label><span style="color:red">*</span>
-                              <input class="form-control" id="email" type="text" v-model="email" @input="$v.email.$touch">
-                              <p class="mt-2" v-if="$v.email.$dirty" style="font-size:12px">
-                                <span v-if="!$v.email.required" style="color:red">Email is required.</span>
-                                <span class="text-danger" v-if="$v.email.$error && !$v.email.email">This is not a valid email!</span>
+                              <label >Current</label><span style="color:red">*</span>
+                              <input class="form-control" id="current" type="password" v-model="current" @input="$v.current.$touch">
+                              <p v-if="$v.current.$dirty" style="font-size:12px">
+                                <span v-if="!$v.current.required" style="color:red">Current password is required.</span>
+                                <span v-if="!$v.current.minLength" style="color:red">Password must have at least {{ $v.current.$params.minLength.min }} letters.</span>
+                              </p>
+                            </div>
+                            <div class="form-group ">
+                              <label >New password</label><span style="color:red">*</span>
+                              <input type="password" class="form-control" v-model="new_password" @input="$v.new_password.$touch">
+                              <p v-if="$v.new_password.$dirty" style="font-size:12px">
+                                <span v-if="!$v.new_password.required" style="color:red">New password is required.</span>
+                                <span v-if="!$v.new_password.minLength" style="color:red">Password must have at least {{ $v.new_password.$params.minLength.min }} letters.</span>
+                                <span v-if="!$v.new_password.alphaNum" style="color:red">Password accept only alpha and numeric.</span>   
+                              </p>
+                            </div>
+                            <div class="form-group ">
+                              <label >Confirm password</label><span style="color:red">*</span>
+                              <input type="password" class="form-control" v-model="confirmPassword" @input="$v.confirmPassword.$touch">
+                              <p v-if="$v.confirmPassword.$dirty" style="font-size:12px">
+                                <span v-if="$v.confirmPassword.$error && !$v.confirmPassword.required" style="color:red">Confirm password is required</span>
+                                <span v-if="!$v.confirmPassword.sameAsPassword" style="color:red">Passwords must be identical.</span>
                               </p>
                             </div>
           
@@ -348,7 +357,7 @@ Vue.component("ched-users-reset-password", {
                       <button
                         type="submit" class="btn btn-primary" name="form-submit"
                         :disabled="$v.$invalid"
-                      >Reset password</button>
+                      >Submit</button>
                     </div>
                   </form>
 
@@ -356,17 +365,27 @@ Vue.component("ched-users-reset-password", {
     data() {
         return {
 
-          email: '',
+          current: '',
+          new_password: '',
+          confirmPassword: '',
           formData: {}
         }
     },
   validations: {
 
-    email: {
+    current: {
       required: validators.required,
-      email
+      minLength: validators.minLength(6)
     },
-
+    new_password: {
+      required: validators.required,
+      minLength: validators.minLength(6),
+      alphaNum
+    },
+    confirmPassword: {
+        required,
+        sameAsPassword: sameAs('new_password')
+    }
   },
   methods: {
     submit: function() {
@@ -374,16 +393,17 @@ Vue.component("ched-users-reset-password", {
       if (this.$v.$invalid) return;
 
         this.formData = new FormData();
-        this.formData.append('email', this.email);
+        this.formData.append('current', this.current);
+        this.formData.append('new_password', this.new_password);
 
-      axios.post('ched_admin/reset_password/', this.formData).then(result => {
+      axios.post('OJT/change_password/', this.formData).then(result => {
 
         if(result.data === 1) {
-          $('#email').css('border-color','');
+          $('#current').css('border-color','');
             this.$swal.fire({
               icon: 'success',
               title: 'Nice...',
-              text: 'Password reset successfully!',
+              text: 'Password Successfully Changed!',
             })
           this.resetForm();
         }
@@ -392,9 +412,9 @@ Vue.component("ched-users-reset-password", {
             this.$swal.fire({
               icon: 'error',
               title: 'Opps...',
-              text: 'Email does not exist!',
+              text: 'Incorrect Password!',
             })
-          $('#email').css('border-color','red');
+          $('#current').css('border-color','red');
         }
 
          
@@ -410,8 +430,9 @@ Vue.component("ched-users-reset-password", {
 
       resetForm() {
             this.formData = {};
-            this.email = null;
-
+            this.current = '';
+            this.new_password = '';
+            this.confirmPassword = '';
       },
   },
   async mounted() {
@@ -420,7 +441,7 @@ Vue.component("ched-users-reset-password", {
 
 });
 
-Vue.component("ched-twelved-user-name", {
+Vue.component("OJT-four-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->
@@ -430,9 +451,9 @@ Vue.component("ched-twelved-user-name", {
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-                  <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
-                  <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
+                   <router-link to="/OJT-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                   <router-link to="/OJT-dashboard/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
+                   <router-link to="/OJT-dashboard/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
                 </div>
               </li>
             </ul>
@@ -445,7 +466,7 @@ Vue.component("ched-twelved-user-name", {
 
     methods: {
       fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
+          axios.get('OJT/fetch_user_name/').then(result => {
 
               this.username = result.data;
 
@@ -462,15 +483,14 @@ Vue.component("ched-twelved-user-name", {
   export default {
     data() {
       return {
-        username: '',
+        
       }
     },
     methods: {
 
-
     },
     async mounted() {
-
+     
 
     },
     components: {

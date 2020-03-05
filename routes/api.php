@@ -123,6 +123,18 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('hei_coordinator/update_applicant/{id}','HEICoordinatorController@update_applicant')->middleware('isHei');
     // HEI change password
     Route::post('hei_coordinator/change_password/','HEICoordinatorController@change_password')->middleware('isHei');
+
+
+    // OJT return USER name
+    Route::get('OJT/fetch_user_name','ojtController@fetch_user_name')->middleware('isCHED_ojt');
+    // OJT list of unverified applicant
+    Route::get('OJT/fetch_unverified_applicant','ojtController@fetch_unverified_applicant')->middleware('isCHED_ojt');
+    // OJT Admin reset users password
+    Route::post('OJT/reset_password','ojtController@reset_password')->middleware('isCHED_ojt');
+    // OJT Admin force verified
+    Route::post('OJT/force_verified','ojtController@force_verified')->middleware('isCHED_ojt');
+    // OJT Admin change password
+    Route::post('OJT/change_password/','ojtController@change_password')->middleware('isCHED_ojt');
 });
 
     //Public fetch all province

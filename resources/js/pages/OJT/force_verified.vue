@@ -5,29 +5,22 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-twelved-user-name></ched-twelved-user-name>
+  <OJT-three-user-name></OJT-three-user-name>
   <div class="logo">
-    CHED COORDINATOR DASHBOARD
+    OJT DASHBOARD
   </div>
 </div>
 <div class="sidebar">
   <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-ched-validated-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Validated Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+      <router-link to="/OJT-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+      <router-link to="/OJT-dashboard/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
     </ul>
 </div>
 
 <!-- Content -->
 <div class="main">
   <div class="jumbotron">
-     <ched-users-reset-password></ched-users-reset-password>
+     <OJT-users-force-verified></OJT-users-force-verified>
   </div> 
 </div>
     </div>
@@ -327,7 +320,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ched-users-reset-password", {
+Vue.component("OJT-users-force-verified", {
     template: `<div>
                   <form
                     class="form" id="" method="post" action="foobar"
@@ -348,7 +341,7 @@ Vue.component("ched-users-reset-password", {
                       <button
                         type="submit" class="btn btn-primary" name="form-submit"
                         :disabled="$v.$invalid"
-                      >Reset password</button>
+                      >Force verified</button>
                     </div>
                   </form>
 
@@ -376,14 +369,14 @@ Vue.component("ched-users-reset-password", {
         this.formData = new FormData();
         this.formData.append('email', this.email);
 
-      axios.post('ched_admin/reset_password/', this.formData).then(result => {
+      axios.post('OJT/force_verified/', this.formData).then(result => {
 
         if(result.data === 1) {
           $('#email').css('border-color','');
             this.$swal.fire({
               icon: 'success',
               title: 'Nice...',
-              text: 'Password reset successfully!',
+              text: 'Verified successfully!',
             })
           this.resetForm();
         }
@@ -420,7 +413,7 @@ Vue.component("ched-users-reset-password", {
 
 });
 
-Vue.component("ched-twelved-user-name", {
+Vue.component("OJT-three-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->
@@ -430,9 +423,9 @@ Vue.component("ched-twelved-user-name", {
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-                  <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
-                  <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
+                  <router-link to="/OJT-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                  <router-link to="/OJT-dashboard/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
+                  <router-link to="/OJT-dashboard/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
                 </div>
               </li>
             </ul>
@@ -445,7 +438,7 @@ Vue.component("ched-twelved-user-name", {
 
     methods: {
       fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
+          axios.get('OJT/fetch_user_name/').then(result => {
 
               this.username = result.data;
 

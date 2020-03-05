@@ -1,36 +1,44 @@
 <template>
-    <div class="">
+<div>
 <div class="header">
   <a href="#" id="menu-action">
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <ched-twelved-user-name></ched-twelved-user-name>
   <div class="logo">
-    CHED COORDINATOR DASHBOARD
+    OJT DASHBOARD
+
+      <ul class="" style="float:right;margin-right:30px;list-style-type:none;">           
+        <!-- Dropdown -->
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff">
+            {{username}} Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
+             <router-link to="/OJT-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+             <router-link to="/OJT-dashboard/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
+             <router-link to="/OJT-dashboard/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
+          </div>
+        </li>
+      </ul>
+
   </div>
 </div>
-<div class="sidebar">
-  <ul>
-      <router-link to="/ched-coordinator"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-ched-validated-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Validated Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-not-enrolled-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Not Enrolled Applicants</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-csp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>CSP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-applicants-by-tdp-rank"><li><a href="#"><i class="fas fa-list-ul"></i><span>TDP Rank</span></a></li></router-link>
-      <router-link to="/ched-coordinator/list-of-heis"><li><a href="#"><i class="fas fa-list-ul"></i><span>HEIs</span></a></li></router-link>
+  <div class="sidebar">
+    <ul>
+      <router-link to="/OJT-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
+      <router-link to="/OJT-dashboard/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
     </ul>
+  </div>
+  <!-- Content -->
+  <div class="main">
+      <div class="jumbotron">
+        <h1>Hello, {{username}}!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
+        <p>Welcome to our CSP portal admin dashboard.</p>
+      </div>
+  </div>
 </div>
-
-<!-- Content -->
-<div class="main">
-  <div class="jumbotron">
-     <ched-users-reset-password></ched-users-reset-password>
-  </div> 
-</div>
-    </div>
 </template>
 
 <style scoped>
@@ -319,159 +327,27 @@ table {
 </style>
 
 <script>
+import axios from 'axios';
 
-import Vue from 'vue'
-import axios from 'axios'
-
-Vue.use(window.vuelidate.default);
-const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
-
-
-Vue.component("ched-users-reset-password", {
-    template: `<div>
-                  <form
-                    class="form" id="" method="post" action="foobar"
-                    @submit.prevent="submit"
-                  >
-
-                            <div class="form-group ">
-                              <label >Email</label><span style="color:red">*</span>
-                              <input class="form-control" id="email" type="text" v-model="email" @input="$v.email.$touch">
-                              <p class="mt-2" v-if="$v.email.$dirty" style="font-size:12px">
-                                <span v-if="!$v.email.required" style="color:red">Email is required.</span>
-                                <span class="text-danger" v-if="$v.email.$error && !$v.email.email">This is not a valid email!</span>
-                              </p>
-                            </div>
-          
-                    <!-- Submit -->
-                    <div class="form__group form__group--no-label form__group--button">
-                      <button
-                        type="submit" class="btn btn-primary" name="form-submit"
-                        :disabled="$v.$invalid"
-                      >Reset password</button>
-                    </div>
-                  </form>
-
-        </div>`,
+  export default {
     data() {
-        return {
-
-          email: '',
-          formData: {}
-        }
+      return {
+        username: ''
+      }
     },
-  validations: {
-
-    email: {
-      required: validators.required,
-      email
-    },
-
-  },
-  methods: {
-    submit: function() {
-
-      if (this.$v.$invalid) return;
-
-        this.formData = new FormData();
-        this.formData.append('email', this.email);
-
-      axios.post('ched_admin/reset_password/', this.formData).then(result => {
-
-        if(result.data === 1) {
-          $('#email').css('border-color','');
-            this.$swal.fire({
-              icon: 'success',
-              title: 'Nice...',
-              text: 'Password reset successfully!',
-            })
-          this.resetForm();
-        }
-
-        if(result.data === 0) {
-            this.$swal.fire({
-              icon: 'error',
-              title: 'Opps...',
-              text: 'Email does not exist!',
-            })
-          $('#email').css('border-color','red');
-        }
-
-         
-         
-
-      }).catch(error => {
-          console.log(error);
-      });
-
-
-     
-    },
-
-      resetForm() {
-            this.formData = {};
-            this.email = null;
-
-      },
-  },
-  async mounted() {
-
-  }
-
-});
-
-Vue.component("ched-twelved-user-name", {
-    template: `<div>
-            <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:#fff">
-                  {{ username }} Profile
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-                  <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
-                  <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
-                </div>
-              </li>
-            </ul>
-        </div>`,
-    data() {
-        return {
-            username: ''
-        }
-    },
-
     methods: {
       fetchUsername: function() {
-          axios.get('ched_admin/fetch_user_name/').then(result => {
+          axios.get('OJT/fetch_user_name/').then(result => {
 
               this.username = result.data;
 
           }).catch(error => {
               console.log(error);
           });
-      }
+      },
     },
     async mounted() {
       this.fetchUsername();
-    }
-});
-
-  export default {
-    data() {
-      return {
-        username: '',
-      }
-    },
-    methods: {
-
-
-    },
-    async mounted() {
-
-
     },
     components: {
       //

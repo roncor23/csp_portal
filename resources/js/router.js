@@ -21,11 +21,18 @@ import ChedCoordinatorListOfHEI from './pages/chedcoordinator/table/ched_listofh
 import ChedCoordinatorListOfApplicantsByCSPRank from './pages/chedcoordinator/table/ched_listofapplicantbycsprank'
 import ChedCoordinatorListOfApplicantsByTDPRank from './pages/chedcoordinator/table/ched_listofapplicantbytdprank'
 import ChedCoordinatorListOfValidatedApplicants from './pages/chedcoordinator/table/ched_listofvalidatedapplicant'
-
-
 import AdminChangePassword from './pages/chedcoordinator/changepassword'
 import AdminResetPassword from './pages/chedcoordinator/reset_password'
 import AdminForceVerified from './pages/chedcoordinator/force_verified'
+
+
+import OJT from './pages/OJT/dashboard'
+import OJTListOfUnverifiedApplicants from './pages/OJT/ojt_listofunverifiedapplicant'
+import OJTResetPassword from './pages/OJT/reset_password'
+import OJTForceVerified from './pages/OJT/force_verified'
+import OJTChangePassword from './pages/OJT/change_password'
+
+
 
 import HeiCoordinator from './pages/heicoordinator/dashboard'
 import HeiCoordinatorListOfApplicants from './pages/heicoordinator/hei_listofapplicant'
@@ -67,6 +74,47 @@ const routes = [
     component: ForgotPassword,
     meta: {
       auth: false
+    }
+  },
+    // OJT ROUTES
+  {
+    path: '/OJT-dashboard',
+    name: 'OJT.dashboard',
+    component: OJT,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/OJT-dashboard/list-of-unverified-applicants',
+    name: 'OJT.list_of_unverified_applicants_dashboard',
+    component: OJTListOfUnverifiedApplicants,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/OJT-dashboard/reset-password',
+    name: 'ojt_dashboard_reset_password',
+    component: OJTResetPassword,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/OJT-dashboard/force-verified',
+    name: 'ojt_dashboard_force_verified',
+    component: OJTForceVerified,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/OJT-dashboard/change-password',
+    name: 'ojt_dashboard_change_password',
+    component: OJTChangePassword,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
   },
   // STUDENT ROUTES
