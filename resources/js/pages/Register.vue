@@ -1,15 +1,15 @@
 <template>
-<!--   <div class="body">
+  <div class="body">
     <div >
       <div class="form-group d-flex justify-content-center">
             <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
       </div>  
       <div v-if="loading" class="se-pre-con"></div>
       <form-wizard @on-complete="onComplete" shape="circle" color="#2F4F4F">
-          <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
+<!--           <tab-content title="Account Setup" icon="ti-user" :before-change="()=>validateStep('step1')">
               <step1 ref="step1" @on-validate="mergePartialModels"></step1>
-          </tab-content>
-          <tab-content title="Personal Information" icon="ti-id-badge" :before-change="()=>validateStep('step2')">
+          </tab-content> -->
+<!--           <tab-content title="Personal Information" icon="ti-id-badge" :before-change="()=>validateStep('step2')">
               <step2 ref="step2" @on-validate="mergePartialModels"></step2>
           </tab-content>
           <tab-content title="Family Background" icon="ti-view-list" :before-change="()=>validateStep('step3')">
@@ -20,18 +20,18 @@
           </tab-content>
           <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
               <step5 ref="step5" @on-validate="mergePartialModels"></step5>
-          </tab-content>    
+          </tab-content>   -->  
       </form-wizard>
     </div>
-  </div>  -->
+  </div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
         <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 7, 2020 / 1:30PM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 
@@ -367,7 +367,7 @@ Vue.component("step2", {
                             </div>
                             <div class="form-group col-md-3" v-bind:class="{ 'has-error': $v.fb_url.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Facebook profile</label>
-                              <input type="text" class="form-control" id="fb_url" name="zip_code" placeholder="Ex: www.facebook.com/john_doe" v-model.trim="fb_url" @input="$v.fb_url.$touch()">
+                              <input type="text" class="form-control" id="fb_url" name="fb" placeholder="Ex: www.facebook.com/john_doe" v-model.trim="fb_url" @input="$v.fb_url.$touch()">
                               <span class="text-danger" v-if="$v.fb_url.$error && !$v.fb_url.required">Facebook profile is required</span>
                             </div>   
                           </div>

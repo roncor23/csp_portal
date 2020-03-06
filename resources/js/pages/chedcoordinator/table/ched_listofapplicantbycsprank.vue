@@ -359,8 +359,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>HEI Status</th>
                     <th>CHED Status</th>     
                     <th>ValidatedByCHED</th>
-                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
+                    <th>Applied Date</th>
                     <th>Action</th>
                       </tr>
                     </thead>
@@ -381,8 +381,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                     <th>HEI Status</th>
                     <th>CHED Status</th>
                     <th>ValidatedByCHED</th>
-                    <th>CHEDLastUpdate</th>
                     <th>ValidatedByHEI</th>
+                    <th>Applied Date</th>
                     <th>Action</th>
                       </tr>
                     </tfoot>  
@@ -427,10 +427,10 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                         <td v-if="i.verified_admin == 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED == null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
-                        <td v-if="i.update_date == null" style="color:blue">NOT YET UPDATED BY CHED</td>
-                        <td v-if="i.update_date != null">{{i.update_date}}</td>
                         <td v-if="i.validatedByHEI == null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
+                        <td v-if="i.app_created_at == null" style="color:blue">NOT YET UPDATED BY CHED</td>
+                        <td v-if="i.app_created_at != null">{{i.app_created_at}}</td>
                         <td>
                           <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
                         </td>
@@ -697,8 +697,8 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                           <input type="text" class="form-control" v-model="selectedItem.rank_points" disabled>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Applied Date</span>
-                          <input type="text" class="form-control" v-model="selectedItem.app_created_at" disabled>
+                          <span style="font-size:10px;font-weight:bold">CHEDLastUpdate</span>
+                          <input type="text" class="form-control" v-model="selectedItem.update_date" disabled>
                         </div>
                       </div>
                       <div class="form-row">
