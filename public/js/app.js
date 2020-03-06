@@ -19712,6 +19712,15 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_html_to_paper__WEBPACK_IMPORT
         $('#last_school_attended').css('border-color', 'red');
         return false;
       }
+    },
+    note: function note() {
+      this.$swal.fire({
+        title: '<strong style="color:red">ATTENTION!</strong>',
+        icon: 'info',
+        html: 'Use A4 or short size bond paper; Portrait!',
+        showCloseButton: true,
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay'
+      });
     }
   },
   mounted: function () {
@@ -19729,8 +19738,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_html_to_paper__WEBPACK_IMPORT
               this.fetchProvince();
               this.fetchProgram();
               this.fetchHEI();
+              this.note();
 
-            case 7:
+            case 8:
             case "end":
               return _context.stop();
           }

@@ -1080,7 +1080,19 @@ Vue.use(VueHtmlToPaper, options);
             return false;
           }
 
-      }
+      },
+      note() {
+      
+       this.$swal.fire({
+          title: '<strong style="color:red">ATTENTION!</strong>',
+          icon: 'info',
+          html:
+            'Use A4 or short size bond paper; Portrait!',
+          showCloseButton: true,
+          confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Okay',
+        })
+     }
 
     },
     async mounted() {
@@ -1091,6 +1103,7 @@ Vue.use(VueHtmlToPaper, options);
       this.fetchProvince();
       this.fetchProgram();
       this.fetchHEI();
+      this.note();
     },
     components: {
       //
