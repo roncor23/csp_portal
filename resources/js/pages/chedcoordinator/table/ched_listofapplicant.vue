@@ -357,7 +357,7 @@ Vue.component("ched-list-of-applicant", {
                     <th>HEI Status</th>
                     <th>CHED Status</th>     
                     <th>ValidatedByCHED</th>
-                    <th>CHEDLastUpdate</th>
+                    <th>AppliedDate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
@@ -379,7 +379,7 @@ Vue.component("ched-list-of-applicant", {
                     <th>HEI Status</th>
                     <th>CHED Status</th>
                     <th>ValidatedByCHED</th>
-                    <th>CHEDLastUpdate</th>
+                    <th>AppliedDate</th>
                     <th>ValidatedByHEI</th>
                     <th>Action</th>
                       </tr>
@@ -425,8 +425,8 @@ Vue.component("ched-list-of-applicant", {
                         <td v-if="i.verified_admin == 3" style="color:red">INVALID APPLICATION</td>
                         <td v-if="i.validatedByCHED == null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
-                        <td v-if="i.update_date == null" style="color:blue">NOT YET UPDATED BY CHED</td>
-                        <td v-if="i.update_date != null">{{i.update_date}}</td>
+                        <td v-if="i.app_created_at == null" style="color:blue">NOT YET UPDATED BY CHED</td>
+                        <td v-if="i.app_created_at != null">{{i.app_created_at}}</td>
                         <td v-if="i.validatedByHEI == null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
@@ -773,7 +773,7 @@ Vue.component("ched-list-of-applicant", {
 
         return this.applicants.filter((applicants) => {
 
-           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.update_date.match(filter_search);
+           return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.app_created_at.match(filter_search);
 
         });
       }
