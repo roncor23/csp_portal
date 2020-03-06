@@ -889,12 +889,14 @@ Vue.component("ched-list-of-applicant-by-tdp-rank", {
                 })
                 return false;
               }
+                this.fetchApplicantByTDPRank();
+                $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Updated Successfully!',
                 })
-                $('#applicantModal').click();
+
               
             })
             .catch(error => {

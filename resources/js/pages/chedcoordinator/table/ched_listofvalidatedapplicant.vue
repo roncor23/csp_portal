@@ -921,6 +921,7 @@ Vue.component("ched-list-of-validated-applicant", {
                 })
                 return false;
               }
+               this.fetchOfValidatedApplicant();
                $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',

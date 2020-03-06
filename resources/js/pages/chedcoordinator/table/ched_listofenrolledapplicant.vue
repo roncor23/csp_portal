@@ -905,6 +905,7 @@ Vue.component("ched-list-of-enrolled-applicant", {
                 })
                 return false;
               }
+               this.fetchEnrolledApplicant();
                $('#applicantModal').click();
                this.$swal.fire({
                   icon: 'success',

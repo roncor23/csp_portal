@@ -9737,6 +9737,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant", {
             return false;
           }
 
+          _this7.fetchApplicant();
+
           $('#applicantModal').click();
 
           _this7.$swal.fire({
@@ -10405,13 +10407,15 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
             return false;
           }
 
+          _this7.fetchApplicantByCSPRank();
+
+          $('#applicantModal').click();
+
           _this7.$swal.fire({
             icon: 'success',
             title: 'Great...',
             text: 'Validated Successfully!'
           });
-
-          $('#applicantModal').click();
         })["catch"](function (error) {
           _this7.errors = error.response.data.errors;
           console.log(_this7.errors);
@@ -11077,6 +11081,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
             return false;
           }
 
+          _this7.fetchApplicant_by_hei();
+
           $('#applicantModal').click();
 
           _this7.$swal.fire({
@@ -11737,13 +11743,15 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-applicant-by-
             return false;
           }
 
+          _this7.fetchApplicantByTDPRank();
+
+          $('#applicantModal').click();
+
           _this7.$swal.fire({
             icon: 'success',
             title: 'Great...',
             text: 'Updated Successfully!'
           });
-
-          $('#applicantModal').click();
         })["catch"](function (error) {
           _this7.errors = error.response.data.errors;
           console.log(_this7.errors);
@@ -12405,6 +12413,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-enrolled-appl
 
             return false;
           }
+
+          _this7.fetchEnrolledApplicant();
 
           $('#applicantModal').click();
 
@@ -14086,6 +14096,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
             return false;
           }
 
+          _this7.fetchApplicant();
+
           $('#applicantModal').click();
 
           _this7.$swal.fire({
@@ -14766,6 +14778,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-validated-app
 
             return false;
           }
+
+          _this7.fetchOfValidatedApplicant();
 
           $('#applicantModal').click();
 
@@ -16535,13 +16549,15 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("hei-list-of-applicant", {
             'content-Type': 'multipart/form-data'
           }
         }).then(function (response) {
+          _this7.fetchApplicant();
+
+          $('#applicantModal').click();
+
           _this7.$swal.fire({
             icon: 'success',
             title: 'Great...',
             text: 'Validated Successfully!'
           });
-
-          $('#applicantModal').click();
         })["catch"](function (error) {
           _this7.errors = error.response.data.errors;
           console.log(_this7.errors);

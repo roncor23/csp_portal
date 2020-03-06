@@ -732,13 +732,15 @@ Vue.component("hei-list-of-applicant", {
 
           axios.post('hei_coordinator/update_applicant/' + $id, this.formData, {headers: {'content-Type': 'multipart/form-data'}})
             .then(response => {
-               
+
+               this.fetchApplicant();
+               $('#applicantModal').click();  
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Validated Successfully!'
                 });
-               $('#applicantModal').click();
+
 
             })
             .catch(error => {

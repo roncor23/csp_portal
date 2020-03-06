@@ -922,6 +922,7 @@ Vue.component("ched-list-of-applicant", {
                 })
                 return false;
               }
+                this.fetchApplicant();
                 $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',

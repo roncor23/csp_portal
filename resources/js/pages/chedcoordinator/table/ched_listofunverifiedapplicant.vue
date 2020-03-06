@@ -918,6 +918,7 @@ Vue.component("ched-list-of-unverified-applicant", {
                 })
                 return false;
               }
+               this.fetchApplicant();
                $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',

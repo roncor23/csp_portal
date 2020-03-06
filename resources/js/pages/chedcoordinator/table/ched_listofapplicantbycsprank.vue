@@ -893,12 +893,13 @@ Vue.component("ched-list-of-applicant-by-csp-rank", {
                 })
                 return false;
               }
+                this.fetchApplicantByCSPRank();
+                $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',
                   text: 'Validated Successfully!',
                 })
-                $('#applicantModal').click();
               
             })
             .catch(error => {

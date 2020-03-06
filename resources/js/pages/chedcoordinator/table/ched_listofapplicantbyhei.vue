@@ -909,6 +909,7 @@ Vue.component("ched-list-of-applicant-by-hei", {
                 })
                 return false;
               }
+               this.fetchApplicant_by_hei();
                $('#applicantModal').click();
                 this.$swal.fire({
                   icon: 'success',
