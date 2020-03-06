@@ -27,9 +27,18 @@ class AuthController extends Controller
                             ->where('mname', strtoupper($request->middleName))
                             ->first();
 
+                                    //Check if applicant is already in the system.
+        $result2 = $applicants::where('lname', strtoupper($request->lastName))
+                            ->where('fname', strtoupper($request->firstName))
+                            ->first();
+
         $email = $user::where('email', $request->emailAddress)->first();
 
         if($result) {
+            return response()->json(0); // Already in the system.
+        }
+
+        if($result2) {
             return response()->json(0); // Already in the system.
         }
 
@@ -50,7 +59,6 @@ class AuthController extends Controller
         $user->save();
         //Date
         $dt = Carbon::now();
-
 
         $applicants->fname = strtoupper($request->firstName);
         $applicants->mname = strtoupper($request->middleName);

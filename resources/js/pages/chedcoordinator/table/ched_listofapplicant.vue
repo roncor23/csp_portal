@@ -388,46 +388,46 @@ Vue.component("ched-list-of-applicant", {
                     <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.index">
                         <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
-                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
-                        <td v-if="i.ay === 8">2020</td>
-                        <td v-if="i.yr_lvl === null" style="color:blue">NOT YET SET BY HEI</td>
-                        <td v-if="i.yr_lvl === 1">1st Year</td>
-                        <td v-if="i.yr_lvl === 2">2nd Year</td>
-                        <td v-if="i.yr_lvl === 3">3rd Year</td>
-                        <td v-if="i.yr_lvl === 4">4th Year</td>
-                        <td v-if="i.yr_lvl === 5">5th Year and above.</td>
+                        <td v-if="i.ay == null" style="color:blue">NOT YET SET BY CHED</td>
+                        <td v-if="i.ay == 8">2020</td>
+                        <td v-if="i.yr_lvl == null" style="color:blue">NOT YET SET BY HEI</td>
+                        <td v-if="i.yr_lvl == 1">1st Year</td>
+                        <td v-if="i.yr_lvl == 2">2nd Year</td>
+                        <td v-if="i.yr_lvl == 3">3rd Year</td>
+                        <td v-if="i.yr_lvl == 4">4th Year</td>
+                        <td v-if="i.yr_lvl == 5">5th Year and above.</td>
                         <td>{{i.lname}}</td>
                         <td>{{i.fname}}</td>
                         <td>{{i.mname}}</td>
                         <td>{{i.xname}}</td>
-                        <td v-if="i.gender === 1">MALE</td>
-                        <td v-if="i.gender === 2">FEMALE</td>
-                        <td v-if="i.gwa === null" style="color:blue">GWA NOT YET SET</td>
+                        <td v-if="i.gender == 1">MALE</td>
+                        <td v-if="i.gender == 2">FEMALE</td>
+                        <td v-if="i.gwa == null" style="color:blue">GWA NOT YET SET</td>
                         <td v-if="i.gwa != null">{{i.gwa}}</td>
-                        <td v-if="i.rank_points === null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>
+                        <td v-if="i.rank_points == null" style="color:blue">RANKING POINTS NOT AVAILABLE</td>
                         <td v-if="i.rank_points != null" style="color:green">{{i.rank_points}}</td>
-                        <td v-if="i.ranking_status === null" style="color:blue">NOT YET ASSIGN</td>
-                        <td v-if="i.ranking_status === 1">Ranking System Off</td>
-                        <td v-if="i.ranking_status === 2">WAITING FOR RANKING</td>
-                        <td v-if="i.ranking_status === 3">WAITING LIST...</td>
-                        <td v-if="i.ranking_status === 4">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>
-                        <td v-if="i.ranking_status === 5">QUALIFIED AS TDP</td>
-                        <td v-if="i.ranking_status === 6">QUALIFIED AS HALF PESFA</td>
-                        <td v-if="i.ranking_status === 7">QUALIFIED AS FULL SSP</td>
-                        <td v-if="i.ranking_status === 8">QUALIFIED AS FULL PESFA</td>
-                        <td v-if="i.ranking_status === 9">QUALIFIED AS FULL SSP</td>
-                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECKED BY HEI</td>
-                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
-                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
-                        <td v-if="i.verified_admin === null" style="color:blue">NOT YET CHECKED BY CHED</td>
-                        <td v-if="i.verified_admin === 1" style="color:green">VALIDATED</td>
-                        <td v-if="i.verified_admin === 2" style="color:red">LACKING DOCUMENTS</td>
-                        <td v-if="i.verified_admin === 3" style="color:red">INVALID APPLICATION</td>
-                        <td v-if="i.validatedByCHED === null" style="color:blue">NOT YET VALIDATED BY CHED</td>
+                        <td v-if="i.ranking_status == null" style="color:blue">NOT YET ASSIGN</td>
+                        <td v-if="i.ranking_status == 1">Ranking System Off</td>
+                        <td v-if="i.ranking_status == 2">WAITING FOR RANKING</td>
+                        <td v-if="i.ranking_status == 3">WAITING LIST...</td>
+                        <td v-if="i.ranking_status == 4">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>
+                        <td v-if="i.ranking_status == 5">QUALIFIED AS TDP</td>
+                        <td v-if="i.ranking_status == 6">QUALIFIED AS HALF PESFA</td>
+                        <td v-if="i.ranking_status == 7">QUALIFIED AS FULL SSP</td>
+                        <td v-if="i.ranking_status == 8">QUALIFIED AS FULL PESFA</td>
+                        <td v-if="i.ranking_status == 9">QUALIFIED AS FULL SSP</td>
+                        <td v-if="i.verified_hei == 3" style="color:blue">NOT YET CHECKED BY HEI</td>
+                        <td v-if="i.verified_hei == 1" style="color:green">ENROLLED</td>
+                        <td v-if="i.verified_hei == 2" style="color:red">NOT ENROLLED</td>
+                        <td v-if="i.verified_admin == null" style="color:blue">NOT YET CHECKED BY CHED</td>
+                        <td v-if="i.verified_admin == 1" style="color:green">VALIDATED</td>
+                        <td v-if="i.verified_admin == 2" style="color:red">LACKING DOCUMENTS</td>
+                        <td v-if="i.verified_admin == 3" style="color:red">INVALID APPLICATION</td>
+                        <td v-if="i.validatedByCHED == null" style="color:blue">NOT YET VALIDATED BY CHED</td>
                         <td v-if="i.validatedByCHED != null">{{i.validatedByCHED}}</td>
-                        <td v-if="i.update_date === null" style="color:blue">NOT YET UPDATED BY CHED</td>
+                        <td v-if="i.update_date == null" style="color:blue">NOT YET UPDATED BY CHED</td>
                         <td v-if="i.update_date != null">{{i.update_date}}</td>
-                        <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
+                        <td v-if="i.validatedByHEI == null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
                           <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
@@ -682,9 +682,9 @@ Vue.component("ched-list-of-applicant", {
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">HEI Status</span>
-                          <input v-if="selectedItem.verified_hei === 3" placeholder="Not Yet Check" type="text" class="form-control" disabled>
-                          <input v-if="selectedItem.verified_hei === 2" placeholder="Not Enrolled" type="text" class="form-control" disabled>
-                          <input v-if="selectedItem.verified_hei === 1" placeholder="Enrolled" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei == 3" placeholder="Not Yet Check" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei == 2" placeholder="Not Enrolled" type="text" class="form-control" disabled>
+                          <input v-if="selectedItem.verified_hei == 1" placeholder="Enrolled" type="text" class="form-control" disabled>
                         </div>
                         <div class="form-group col-md-2">
                           <span style="font-size:10px;font-weight:bold">Year</span>
@@ -913,7 +913,7 @@ Vue.component("ched-list-of-applicant", {
             .then(response => {
 
 
-              if(response.data === 0) {
+              if(response.data == 0) {
                 $('#gwa').css('border-color','red');
                 this.$swal.fire({
                   icon: 'error',
@@ -923,7 +923,6 @@ Vue.component("ched-list-of-applicant", {
                 return false;
               }
                 $('#applicantModal').click();
-                this.fetchApplicant();
                 this.$swal.fire({
                   icon: 'success',
                   title: 'Great...',

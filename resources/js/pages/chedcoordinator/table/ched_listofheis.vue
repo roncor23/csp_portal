@@ -363,7 +363,7 @@ Vue.component("ched-list-of-heis", {
                    <tbody v-if="filteredBlogs.length > 0">
                     <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
                         <td>{{index+1}}</td>
-                        <td v-for="complete_hei in complete_heis" v-bind:value="complete_hei.hei_id" v-if="i.hei_hei_id === complete_hei.hei_id"><router-link :to="{ name: 'ched_coordinator.list_of_applicants_by_hei_dashboard', params: { hei_id: complete_hei.hei_id} }"><a href="#">{{complete_hei.hei_name}}</a></router-link></td>
+                        <td v-for="complete_hei in complete_heis" v-bind:value="complete_hei.hei_id" v-if="i.hei_hei_id == complete_hei.hei_id"><router-link :to="{ name: 'ched_coordinator.list_of_applicants_by_hei_dashboard', params: { hei_id: complete_hei.hei_id} }"><a href="#">{{complete_hei.hei_name}}</a></router-link></td>
                         <td>{{i.name}}</td>
                         <td>{{i.email}}</td>             
                     </tr> 

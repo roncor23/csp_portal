@@ -376,26 +376,26 @@ Vue.component("hei-list-of-applicant", {
                     <tr class="table_data" v-for="(i,index) in pageOfItems" :key="i.id">
                         <td>{{index+1}}</td>
                         <td>{{i.reference_no}}</td>
-                        <td v-if="i.ay === null" style="color:blue">NOT YET SET BY CHED</td>
-                        <td v-if="i.ay === 8">2020</td>
-                        <td v-if="i.yr_lvl === null" style="color:blue">NOT YET SET BY HEI</td>
-                        <td v-if="i.yr_lvl === 1">1st Year</td>
-                        <td v-if="i.yr_lvl === 2">2nd Year</td>
-                        <td v-if="i.yr_lvl === 3">3rd Year</td>
-                        <td v-if="i.yr_lvl === 4">4th Year</td>
-                        <td v-if="i.yr_lvl === 5">5th Year and above.</td>
-                        <td v-if="i.verified_hei === 3" style="color:blue">NOT YET CHECK BY HEI</td>
-                        <td v-if="i.verified_hei === 1" style="color:green">ENROLLED</td>
-                        <td v-if="i.verified_hei === 2" style="color:red">NOT ENROLLED</td>
+                        <td v-if="i.ay == null" style="color:blue">NOT YET SET BY CHED</td>
+                        <td v-if="i.ay == 8">2020</td>
+                        <td v-if="i.yr_lvl == null" style="color:blue">NOT YET SET BY HEI</td>
+                        <td v-if="i.yr_lvl == 1">1st Year</td>
+                        <td v-if="i.yr_lvl == 2">2nd Year</td>
+                        <td v-if="i.yr_lvl == 3">3rd Year</td>
+                        <td v-if="i.yr_lvl == 4">4th Year</td>
+                        <td v-if="i.yr_lvl == 5">5th Year and above.</td>
+                        <td v-if="i.verified_hei == 3" style="color:blue">NOT YET CHECK BY HEI</td>
+                        <td v-if="i.verified_hei == 1" style="color:green">ENROLLED</td>
+                        <td v-if="i.verified_hei == 2" style="color:red">NOT ENROLLED</td>
                         <td>{{i.lname}}</td>
                         <td>{{i.fname}}</td>
                         <td>{{i.mname}}</td>
                         <td>{{i.xname}}</td>
-                        <td v-if="i.gender === 1">MALE</td>
-                        <td v-if="i.gender === 2">FEMALE</td>
+                        <td v-if="i.gender == 1">MALE</td>
+                        <td v-if="i.gender == 2">FEMALE</td>
                         <td>{{i.contact}}</td>
                         <td>{{i.email}}</td>
-                        <td v-if="i.validatedByHEI === null" style="color:blue">NOT YET VALIDATED BY HEI</td>
+                        <td v-if="i.validatedByHEI == null" style="color:blue">NOT YET VALIDATED BY HEI</td>
                         <td v-if="i.validatedByHEI != null">{{i.validatedByHEI}}</td>
                         <td>
                           <button type="button" class="btn btn-primary btn-sm" @click="editItem(i)" data-toggle="modal" data-target="#applicantModal"><i class="fas fa-pen-square"></i></button>
@@ -739,7 +739,6 @@ Vue.component("hei-list-of-applicant", {
                   text: 'Validated Successfully!'
                 });
                $('#applicantModal').click();
-               this.fetchApplicant();
 
             })
             .catch(error => {

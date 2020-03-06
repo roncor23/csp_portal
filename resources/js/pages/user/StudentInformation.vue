@@ -36,10 +36,10 @@
 		<!-- Content -->
 
 		<div class="main">
-      <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm === 0">
+      <div class="jumbotron" style="background-color:#ff000024" v-for="applicant in applicants" v-if="applicant.confirm == 0">
          <p>Please check your email at <span><a href="#">{{applicant.email}}</a></span> with your code. Your code is 7 characters in length. Verify first before you use this portal. Thanks!</p>
       </div>
-     <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm === 1">
+     <div class="jumbotron" v-for="applicant in applicants" v-if="applicant.confirm == 1">
       <div class="d-flex justify-content-start">
         <i class="fas fa-print" @click="print" style="cursor:pointer;padding:3px"><a href="#" style="padding:3px;color:#6495ED">Print</a></i>
         <i class="fas fa-edit" @click="editItem(applicant)" style="cursor:pointer;padding:3px" data-toggle="modal" data-target="#applicantModal"><a href="#" style="padding:3px;color:#6495ED">Edit</a></i>
@@ -92,13 +92,13 @@
             <tr style="font-size:10px">
               <td>{{applicant.birthdate}}</td>
               <td>{{applicant.place_of_birth}}</td>
-              <td v-if="applicant.gender === 1">Male</td>
-              <td v-if="applicant.gender === 2">Female</td>
-              <td v-if="applicant.civil_status === 1">Single</td>
-              <td v-if="applicant.civil_status === 2">Maried</td>
-              <td v-if="applicant.civil_status === 3">Separated</td>
-              <td v-if="applicant.civil_status === 4">Devorced</td>
-              <td v-if="applicant.civil_status === 5">Widowed</td>
+              <td v-if="applicant.gender == 1">Male</td>
+              <td v-if="applicant.gender == 2">Female</td>
+              <td v-if="applicant.civil_status == 1">Single</td>
+              <td v-if="applicant.civil_status == 2">Maried</td>
+              <td v-if="applicant.civil_status == 3">Separated</td>
+              <td v-if="applicant.civil_status == 4">Devorced</td>
+              <td v-if="applicant.civil_status == 5">Widowed</td>
             </tr>
           </tbody>
           <thead>
@@ -111,8 +111,8 @@
           </thead>
           <tbody>
             <tr style="font-size:10px">       
-              <td v-if="applicant.citizenship === 1">Filipino</td>
-              <td v-if="applicant.citizenship === 2">American</td>
+              <td v-if="applicant.citizenship == 1">Filipino</td>
+              <td v-if="applicant.citizenship == 2">American</td>
               <td>{{applicant.contact}}</td>
               <td>{{applicant.email}}</td>
               <td>{{applicant.present_address}}</td>
@@ -128,9 +128,9 @@
           </thead>
           <tbody>
             <tr style="font-size:10px">   
-              <td v-for="city in citys" v-bind:value="city.city_id" v-if="applicant.town_city === city.city_id">{{city.mun_city_name}}</td>
-              <td v-for="brgy in brgys" v-bind:value="brgy.brgy_id" v-if="applicant.brgy === brgy.brgy_id">{{brgy.name}}</td>
-              <td v-for="province in provinces" v-bind:value="province.province_id" v-if="applicant.province === province.province_id">{{province.prov_name}}</td>
+              <td v-for="city in citys" v-bind:value="city.city_id" v-if="applicant.town_city == city.city_id">{{city.mun_city_name}}</td>
+              <td v-for="brgy in brgys" v-bind:value="brgy.brgy_id" v-if="applicant.brgy == brgy.brgy_id">{{brgy.name}}</td>
+              <td v-for="province in provinces" v-bind:value="province.province_id" v-if="applicant.province == province.province_id">{{province.prov_name}}</td>
               <td>{{applicant.zipcode}}</td>
             </tr>
           </tbody>
@@ -218,13 +218,13 @@
           </thead>
           <tbody>
             <tr style="font-size:10px">   
-              <td v-if="applicant.applicant_type === 1">Incoming College Freshmen</td>
-              <td v-if="applicant.applicant_type === 3">College Earned Units</td>
-              <td v-if="applicant.applicant_type === 4">ALS passer</td>
-              <td v-if="applicant.applicant_type === 5">PEPT passer</td>      
+              <td v-if="applicant.applicant_type == 1">Incoming College Freshmen</td>
+              <td v-if="applicant.applicant_type == 3">College Earned Units</td>
+              <td v-if="applicant.applicant_type == 4">ALS passer</td>
+              <td v-if="applicant.applicant_type == 5">PEPT passer</td>      
               <td>{{applicant.name_of_school_last_attended}}</td>
-              <td v-for="hei in heis" v-bind:value="hei.hei_id" v-if="applicant.hei === hei.hei_id">{{hei.hei_name}}</td>
-              <td v-for="program in programs" v-bind:value="program.course_id" v-if="applicant.course === program.course_id">{{program.course_name}}</td>
+              <td v-for="hei in heis" v-bind:value="hei.hei_id" v-if="applicant.hei == hei.hei_id">{{hei.hei_name}}</td>
+              <td v-for="program in programs" v-bind:value="program.course_id" v-if="applicant.course == program.course_id">{{program.course_name}}</td>
             </tr>
           </tbody>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>MARGINALIZED GROUP</th><th></th><th></th><th></th></tr></thead>
@@ -238,14 +238,14 @@
           </thead>
           <tbody>
             <tr style="font-size:10px">   
-              <td v-if="applicant.ips === 1">Yes</td>
-              <td v-if="applicant.ips === 2">No</td>
-              <td v-if="applicant.pwd === 1">Yes</td>
-              <td v-if="applicant.pwd === 2">No</td>
-              <td v-if="applicant.forps === 1">Yes</td>
-              <td v-if="applicant.forps === 2">No</td>
-              <td v-if="applicant.senior_citizen === 1">Yes</td>
-              <td v-if="applicant.senior_citizen === 2">No</td>
+              <td v-if="applicant.ips == 1">Yes</td>
+              <td v-if="applicant.ips == 2">No</td>
+              <td v-if="applicant.pwd == 1">Yes</td>
+              <td v-if="applicant.pwd == 2">No</td>
+              <td v-if="applicant.forps == 1">Yes</td>
+              <td v-if="applicant.forps == 2">No</td>
+              <td v-if="applicant.senior_citizen == 1">Yes</td>
+              <td v-if="applicant.senior_citizen == 2">No</td>
             </tr>
           </tbody>
           <thead>
@@ -258,10 +258,10 @@
           </thead>
           <tbody>
             <tr style="font-size:10px">   
-              <td v-if="applicant.applicant_solo_parent === 1">Yes</td>
-              <td v-if="applicant.supported_by_solo_parent === 1">Yes</td>
-              <td v-if="applicant.applicant_solo_parent === 2">No</td>
-              <td v-if="applicant.supported_by_solo_parent === 2">No</td>
+              <td v-if="applicant.applicant_solo_parent == 1">Yes</td>
+              <td v-if="applicant.supported_by_solo_parent == 1">Yes</td>
+              <td v-if="applicant.applicant_solo_parent == 2">No</td>
+              <td v-if="applicant.supported_by_solo_parent == 2">No</td>
             </tr>
           </tbody>
         </table>
@@ -1019,7 +1019,7 @@ Vue.use(VueHtmlToPaper, options);
             .then(response => {
                this.fetchApplicant();
 
-               if(response.data === 0) {
+               if(response.data == 0) {
 
                   this.$swal.fire({
                     icon: 'error',

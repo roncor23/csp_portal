@@ -1,5 +1,5 @@
 <template>
-<!--   <div class="body">
+  <div class="body">
     <div >
       <div class="form-group d-flex justify-content-center">
             <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
@@ -23,15 +23,15 @@
           </tab-content>    
       </form-wizard>
     </div>
-  </div>  -->
+  </div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
         <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 6, 2020 / 9:00AM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 
@@ -44,11 +44,13 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 .main.active {
   padding-left: 275px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 .main .jumbotron {
   background-color: #fff;
   padding: 30px !important;
@@ -57,6 +59,7 @@
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+
 .main .jumbotron h1 {
   font-size: 24px;
   margin: 0;
@@ -72,8 +75,8 @@
 
 }
 
-
 @keyframes gradient {
+
   0% {
     background-position: 0% 50%;
   }
@@ -83,6 +86,7 @@
   100% {
     background-position: 0% 50%;
   }
+
 }
 
 
@@ -196,7 +200,7 @@ Vue.component("step1", {
                     </div>
                     <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
                       <label>Email</label> <span style="color:red">*</span>
-                      <input type="email" class="form-control" placeholder="Ex: john@gmail.com" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
+                      <input type="email" class="form-control" placeholder="Ex: john@test.com" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.required">Email address is required</span>
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.email">This is not a valid email!</span>
                     </div>
@@ -776,16 +780,17 @@ Vue.component("step5", {
     template: `<div>
                       <div class="form-row">
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.ips.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Indigenous Peoples (IP)</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Indigenous Peoples (IP)</label><span v-if="ips == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="ips" @input="$v.ips.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
                               </select>
                               <span class="text-danger" v-if="$v.ips.$error && !$v.ips.required">Indigenous Peoples is required</span>
+
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.pwd.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Person with Disability (PWD)</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Person with Disability (PWD)</label><span v-if="pwd == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="pwd" @input="$v.pwd.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -795,7 +800,7 @@ Vue.component("step5", {
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.for_4ps.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4Ps</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4Ps</label><span v-if="for_4ps == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="for_4ps" @input="$v.for_4ps.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -804,7 +809,7 @@ Vue.component("step5", {
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.senior_citizen.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Senior Citizen</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Senior Citizen</label><span v-if="senior_citizen == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="senior_citizen" @input="$v.senior_citizen.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -814,7 +819,7 @@ Vue.component("step5", {
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.a_solo_parent.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Solo Parent</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Solo Parent</label><span v-if="a_solo_parent == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="a_solo_parent" @input="$v.a_solo_parent.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -823,7 +828,7 @@ Vue.component("step5", {
                           </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.solo_parent.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Solo Parent</label>
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Solo Parent</label><span v-if="solo_parent == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="solo_parent" @input="$v.solo_parent.$touch()">
                                 <option value="1">Yes</option>
                                 <option value="2">No</option>
@@ -1034,7 +1039,7 @@ Vue.component("step5", {
                   this.$swal.fire({
                     icon: 'error',
                     title: 'Opps...',
-                    text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern.',
+                    text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern or Visit CHED CARAGA Regional Office, Ampayon Butuan City..',
                     footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
                   })
                   this.loading = false;
