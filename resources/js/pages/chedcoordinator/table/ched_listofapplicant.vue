@@ -707,8 +707,8 @@ Vue.component("ched-list-of-applicant", {
                           <input type="text" class="form-control" v-model="selectedItem.rank_points" disabled>
                         </div>
                         <div class="form-group col-md-2">
-                          <span style="font-size:10px;font-weight:bold">Applied Date</span>
-                          <input type="text" class="form-control" v-model="selectedItem.app_created_at" disabled>
+                          <span style="font-size:10px;font-weight:bold">CHEDLastUpdate</span>
+                          <input type="text" class="form-control" v-model="selectedItem.update_date" disabled>
                         </div>
                       </div>
                       <div class="form-row">
