@@ -200,7 +200,7 @@ Vue.component("step1", {
                     </div>
                     <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.emailAddress.$error }">
                       <label>Email</label> <span style="color:red">*</span>
-                      <input type="email" class="form-control" placeholder="Ex: john@test.com" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
+                      <input type="email" class="form-control" v-model.trim="emailAddress" @input="$v.emailAddress.$touch()">
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.required">Email address is required</span>
                       <span class="text-danger" v-if="$v.emailAddress.$error && !$v.emailAddress.email">This is not a valid email!</span>
                     </div>
@@ -988,8 +988,6 @@ Vue.component("step5", {
      methods: {
 
     onComplete: function() {
-
-
           this.formData = new FormData();
           this.formData.append('userName', this.applicationModel.userName);
           this.formData.append('emailAddress', this.applicationModel.emailAddress);
