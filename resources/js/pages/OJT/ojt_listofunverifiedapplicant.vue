@@ -639,9 +639,9 @@ Vue.component("OJT-one-user-name", {
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
-                  <router-link to="/ched-coordinator/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
-                  <router-link to="/ched-coordinator/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
-                  <router-link to="/ched-coordinator/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
+                  <router-link to="/OJT-dashboard/change-password"><a class="dropdown-item" href="#">Change Password</a></router-link>
+                  <router-link to="/OJT-dashboard/reset-password"><a class="dropdown-item" href="#">Reset Password</a></router-link>
+                  <router-link to="/OJT-dashboard/force-verified"><a class="dropdown-item" href="#">Force Verified</a></router-link>
                 </div>
               </li>
             </ul>

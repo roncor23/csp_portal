@@ -11,7 +11,7 @@
          <p v-if="$auth.check(1)" class="subheading">Looks like the page you were looking for is no longer here. <br><br><router-link to="/student-dashboard"><button type="button" class="btn btn-dark">Go back in initial page, is better.</button></router-link></p>
          <p v-if="$auth.check(2)" class="subheading">Looks like the page you were looking for is no longer here. <br><br><router-link to="/ched-coordinator"><button type="button" class="btn btn-dark">Go back in initial page, is better.</button></router-link></p>
          <p v-if="$auth.check(3)" class="subheading">Looks like the page you were looking for is no longer here. <br><br><router-link to="/hei-coordinator"><button type="button" class="btn btn-dark">Go back in initial page, is better.</button></router-link></p>
-
+         <p v-if="$auth.check(5)" class="subheading">Looks like the page you were looking for is no longer here. <br><br><router-link to="/hei-coordinator"><button type="button" class="btn btn-dark">Go back in initial page, is better.</button></router-link></p>
         </div>
       </div>
       <div class="right-section">

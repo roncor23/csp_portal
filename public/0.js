@@ -145,6 +145,31 @@ var render = function() {
                 ],
                 1
               )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$auth.check(5)
+            ? _c(
+                "p",
+                { staticClass: "subheading" },
+                [
+                  _vm._v(
+                    "Looks like the page you were looking for is no longer here. "
+                  ),
+                  _c("br"),
+                  _c("br"),
+                  _c("router-link", { attrs: { to: "/hei-coordinator" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Go back in initial page, is better.")]
+                    )
+                  ])
+                ],
+                1
+              )
             : _vm._e()
         ])
       ]),
