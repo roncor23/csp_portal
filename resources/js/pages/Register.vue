@@ -1081,15 +1081,19 @@ Vue.component("step5", {
          }
      },
      note() {
+      
        this.$swal.fire({
-          title: '<h2 style="color:red">Attention!</h2>',
-          text: 'Please provide a valid email using gmail.com or yahoo.com before you register for this application to ensure that you will receive a verification code. Thanks!',
-          showClass: {
-            popup: 'animated fadeInDown faster'
-          },
-          hideClass: {
-            popup: 'animated fadeOutUp faster'
-          }
+          title: '<strong style="color:red">ATTENTION!</strong>',
+          icon: 'info',
+          html:
+            'Please provide a valid email using ' +
+            '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
+            'or ' +
+            '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
+            'before you register for this application to ensure that you will receive a verification code. Thanks! ',
+          showCloseButton: true,
+          confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Okay',
         })
      }
     },

@@ -7236,14 +7236,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     },
     note: function note() {
       this.$swal.fire({
-        title: '<h2 style="color:red">Attention!</h2>',
-        text: 'Please provide a valid email using gmail.com or yahoo.com before you register for this application to ensure that you will receive a verification code. Thanks!',
-        showClass: {
-          popup: 'animated fadeInDown faster'
-        },
-        hideClass: {
-          popup: 'animated fadeOutUp faster'
-        }
+        title: '<strong style="color:red">ATTENTION!</strong>',
+        icon: 'info',
+        html: 'Please provide a valid email using ' + '<a href="//gmail.com" target="_blank">gmail.com</a> ' + 'or ' + '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' + 'before you register for this application to ensure that you will receive a verification code. Thanks! ',
+        showCloseButton: true,
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay'
       });
     }
   },
@@ -53646,10 +53643,6 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('jw-pagination', jw_vue_pag
 var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"]
-});
-$(document).ready(function () {
-  // document is loaded and DOM is ready
-  $(".se-pre-con").fadeOut("slow");
 });
 $('#menu-action').click(function () {
   $('.sidebar').toggleClass('active');

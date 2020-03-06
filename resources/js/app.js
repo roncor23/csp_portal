@@ -42,19 +42,9 @@ Vue.use(Notifications)
 import JwPagination from 'jw-vue-pagination';
 Vue.component('jw-pagination', JwPagination);
 
-
-
-
-
-
 const app = new Vue({
   el: '#app',
   router,
-});
-
-  $(document).ready(function() {
-    // document is loaded and DOM is ready
-    $(".se-pre-con").fadeOut("slow");
 });
 
 
