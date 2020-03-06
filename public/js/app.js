@@ -7237,7 +7237,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     note: function note() {
       this.$swal.fire({
         title: '<h2 style="color:red">Attention!</h2>',
-        text: 'Please provide a valid email or create a new one to ensure that you will receive a confirmation code. Thanks!',
+        text: 'Please provide a valid email using gmail.com or yahoo.com before you register for this application to ensure that you will receive a verification code. Thanks!',
         showClass: {
           popup: 'animated fadeInDown faster'
         },
@@ -29903,50 +29903,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "body" }, [
-    _c(
-      "div",
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
-        _vm._v(" "),
-        _c("form-wizard", {
-          attrs: { shape: "circle", color: "#2F4F4F" },
-          on: { "on-complete": _vm.onComplete }
-        })
-      ],
-      1
-    )
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group d-flex justify-content-center" },
-      [
-        _c(
-          "h4",
-          {
-            staticStyle: {
-              "font-size": "20px",
-              color: "#fff",
-              "text-align": "center",
-              padding: "14px"
-            }
-          },
-          [
-            _vm._v("Online Application "),
-            _c("br"),
-            _c("small", [_vm._v("Nothing worth having comes easy!")])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "main" }, [
+      _c("div", { staticClass: "jumbotron" }, [
+        _c("h1", { staticStyle: { color: "red" } }, [
+          _vm._v("System Maintenance Notice")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 7, 2020 / 1:30PM."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("We regret for the inconvenience.")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
