@@ -28,7 +28,7 @@
   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
-        <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 7, 2020 / 1:30PM.</p>
+        <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 9, 2020 / 9:00AM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
   </div>
