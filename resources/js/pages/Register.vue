@@ -786,9 +786,25 @@ Vue.component("step5", {
                                 <option value="2">No</option>
                               </select>
                               <span class="text-danger" v-if="$v.ips.$error && !$v.ips.required">Indigenous Peoples is required</span>
-
                           </div>
-
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.a_solo_parent.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Solo Parent</label><span v-if="a_solo_parent == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
+                              <select class="form-control" v-model.trim="a_solo_parent" @input="$v.a_solo_parent.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.a_solo_parent.$error && !$v.a_solo_parent.required">Solo Parent is required</span>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.senior_citizen.$error }">
+                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Senior Citizen</label><span v-if="senior_citizen == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
+                              <select class="form-control" v-model.trim="senior_citizen" @input="$v.senior_citizen.$touch()">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                              </select>
+                              <span class="text-danger" v-if="$v.senior_citizen.$error && !$v.senior_citizen.required">Dependent of a Senior Citizen is required</span>
+                          </div>
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.pwd.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Person with Disability (PWD)</label><span v-if="pwd == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
                               <select class="form-control" v-model.trim="pwd" @input="$v.pwd.$touch()">
@@ -799,33 +815,6 @@ Vue.component("step5", {
                           </div>
                         </div>
                         <div class="form-row">
-                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.for_4ps.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">4Ps</label><span v-if="for_4ps == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
-                              <select class="form-control" v-model.trim="for_4ps" @input="$v.for_4ps.$touch()">
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                              </select>
-                              <span class="text-danger" v-if="$v.for_4ps.$error && !$v.for_4ps.required">4ps is required</span>
-                          </div>
-
-                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.senior_citizen.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Senior Citizen</label><span v-if="senior_citizen == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
-                              <select class="form-control" v-model.trim="senior_citizen" @input="$v.senior_citizen.$touch()">
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                              </select>
-                              <span class="text-danger" v-if="$v.senior_citizen.$error && !$v.senior_citizen.required">Dependent of a Senior Citizen is required</span>
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.a_solo_parent.$error }">
-                              <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Solo Parent</label><span v-if="a_solo_parent == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
-                              <select class="form-control" v-model.trim="a_solo_parent" @input="$v.a_solo_parent.$touch()">
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                              </select>
-                              <span class="text-danger" v-if="$v.a_solo_parent.$error && !$v.a_solo_parent.required">Solo Parent is required</span>
-                          </div>
 
                           <div class="form-group col-md-6" v-bind:class="{ 'has-error': $v.solo_parent.$error }">
                               <span style="color:red">*</span><label style="float:left;font-size:12px;font-weight:bold">Dependent of a Solo Parent</label><span v-if="solo_parent == 1" style="color:#fff;font-size:14px; float:right">Note: Submit certification or valid I.D</span>
