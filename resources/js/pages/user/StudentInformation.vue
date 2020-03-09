@@ -62,7 +62,7 @@
 
   			<!-- Applicant Information -->
         <table class="table table-sm mt-4">
-          <thead><tr style="font-size:14px;font-weight:bold;color:red"><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th><th></th><th></th><th></th></tr></thead>
+          <thead><tr style="font-size:14px;font-weight:bold;color:red"><th>REFERENCE #:&nbsp; {{applicant.reference_no}}</th><th></th><th colspan="2">NOTE: INCOMPLETE DOCUMENTS WILL NOT BE ACCEPTED.</th><th></th></tr></thead>
           <thead><tr style="font-size:10px;font-weight:bold;color:blue"><th>PERSONAL INFORMATION</th><th></th><th></th><th></th></tr></thead>
           <thead>
             <tr style="font-size:10px">

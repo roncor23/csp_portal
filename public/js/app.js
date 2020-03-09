@@ -35061,7 +35061,11 @@ var render = function() {
                             )
                           ]),
                           _c("th"),
-                          _c("th"),
+                          _c("th", { attrs: { colspan: "2" } }, [
+                            _vm._v(
+                              "NOTE: INCOMPLETE DOCUMENTS WILL NOT BE ACCEPTED."
+                            )
+                          ]),
                           _c("th")
                         ]
                       )
