@@ -101,8 +101,8 @@
                       <ul>
                         <li>Latest Income Tax Return of parents/guardian</li>
                         <li>Certificate of Tax Exemption from the BIR</li>
-                        <li>Certificate of Indigency from their Barangay</li>
-                        <li>Certificate / Case Study from DSWD</li>
+                        <li>Certificate of Indigence from their Barangay or DSWD</li>
+                        <li>Case Study from DSWD</li>
                         <li>Latest copy of contract or proof of income for children of OFW and seafarers</li>
                       </ul>
                     </li>

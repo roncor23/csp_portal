@@ -29425,13 +29425,11 @@ var staticRenderFns = [
                               _vm._v(" "),
                               _c("li", [
                                 _vm._v(
-                                  "Certificate of Indigency from their Barangay"
+                                  "Certificate of Indigence from their Barangay or DSWD"
                                 )
                               ]),
                               _vm._v(" "),
-                              _c("li", [
-                                _vm._v("Certificate / Case Study from DSWD")
-                              ]),
+                              _c("li", [_vm._v("Case Study from DSWD")]),
                               _vm._v(" "),
                               _c("li", [
                                 _vm._v(
@@ -37528,10 +37526,10 @@ var staticRenderFns = [
                 _c("li", [_vm._v("Certificate of Tax Exemption from the BIR")]),
                 _vm._v(" "),
                 _c("li", [
-                  _vm._v("Certificate of Indigency from their Barangay")
+                  _vm._v("Certificate of Indigence from their Barangay or DSWD")
                 ]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Certificate / Case Study from DSWD")]),
+                _c("li", [_vm._v("Case Study from DSWD")]),
                 _vm._v(" "),
                 _c("li", [
                   _vm._v(
