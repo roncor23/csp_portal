@@ -1,5 +1,5 @@
 <template>
-<!--   <div class="body">
+  <div class="body">
     <div >
       <div class="form-group d-flex justify-content-center">
             <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
@@ -23,15 +23,15 @@
           </tab-content>    
       </form-wizard>
     </div>
-  </div>  -->
+  </div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
-        <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 9, 2020 / 9:00AM.</p>
+        <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 10, 2020 / 9:00AM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 

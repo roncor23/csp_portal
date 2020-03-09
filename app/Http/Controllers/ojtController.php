@@ -59,6 +59,19 @@ class ojtController extends Controller
 
         return response()->json($users);
     }
+    //Fetch all list of verified Applicant
+    public function fetch_verified_applicant() {
+
+        $users = DB::table('users')
+                    ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+                    ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+                    ->where('role',1)
+                    ->where('confirm', 1)
+                    ->orderBy('lname', 'asc')
+                    ->get();
+
+        return response()->json($users);
+    }
 
         //RESET PASSWORD
     public function reset_password(Request $request) {

@@ -5,7 +5,7 @@
     <i class="fa fa-bars"></i>
     <span>Close</span>
   </a>
-  <OJT-one-user-name></OJT-one-user-name>
+  <OJT-five-user-name></OJT-five-user-name>
   <div class="logo">
   OJT DASHBOARD
   </div>
@@ -23,7 +23,7 @@
 <div class="main">
 
     <div class="jumbotron">
-       <ojt-list-of-unverified-applicant></ojt-list-of-unverified-applicant>
+       <ojt-list-of-verified-applicant></ojt-list-of-verified-applicant>
     </div>
 
 </div>
@@ -322,7 +322,7 @@ Vue.use(window.vuelidate.default);
 const { required, minLength, email, sameAs, numeric, alphaNum, alpha } = window.validators;
 
 
-Vue.component("ojt-list-of-unverified-applicant", {
+Vue.component("ojt-list-of-verified-applicant", {
     template: `<div>
                 <div style="float:right;margin-bottom:10px">
                   <span>Search:</span>&nbsp;<input type="text" v-model="search">
@@ -447,7 +447,7 @@ Vue.component("ojt-list-of-unverified-applicant", {
       },
     fetchApplicant: function() {
             this.loading = true;
-            axios.get('OJT/fetch_unverified_applicant/').then(result => {
+            axios.get('OJT/fetch_verified_applicant/').then(result => {
                 this.loading = false;
                 this.applicants = result.data;
                 console.log(this.applicants);
@@ -472,7 +472,7 @@ Vue.component("ojt-list-of-unverified-applicant", {
 
 
 
-Vue.component("OJT-one-user-name", {
+Vue.component("OJT-five-user-name", {
     template: `<div>
             <ul class="" style="float:right;margin-right:30px;list-style-type:none; text-transform: uppercase;">           
               <!-- Dropdown -->

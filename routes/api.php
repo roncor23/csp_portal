@@ -129,6 +129,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('OJT/fetch_user_name','ojtController@fetch_user_name')->middleware('isCHED_ojt');
     // OJT list of unverified applicant
     Route::get('OJT/fetch_unverified_applicant','ojtController@fetch_unverified_applicant')->middleware('isCHED_ojt');
+    // OJT list of verified applicant
+    Route::get('OJT/fetch_verified_applicant','ojtController@fetch_verified_applicant')->middleware('isCHED_ojt');
     // OJT Admin reset users password
     Route::post('OJT/reset_password','ojtController@reset_password')->middleware('isCHED_ojt');
     // OJT Admin force verified

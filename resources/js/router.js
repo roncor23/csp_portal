@@ -28,6 +28,7 @@ import AdminForceVerified from './pages/chedcoordinator/force_verified'
 
 import OJT from './pages/OJT/dashboard'
 import OJTListOfUnverifiedApplicants from './pages/OJT/ojt_listofunverifiedapplicant'
+import OJTListOfVerifiedApplicants from './pages/OJT/ojt_listofverifiedapplicant'
 import OJTResetPassword from './pages/OJT/reset_password'
 import OJTForceVerified from './pages/OJT/force_verified'
 import OJTChangePassword from './pages/OJT/change_password'
@@ -89,6 +90,14 @@ const routes = [
     path: '/OJT-dashboard/list-of-unverified-applicants',
     name: 'OJT.list_of_unverified_applicants_dashboard',
     component: OJTListOfUnverifiedApplicants,
+    meta: {
+      auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/OJT-dashboard/list-of-verified-applicants',
+    name: 'OJT.list_of_verified_applicants_dashboard',
+    component: OJTListOfVerifiedApplicants,
     meta: {
       auth: {roles: 5, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

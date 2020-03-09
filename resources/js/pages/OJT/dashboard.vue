@@ -29,6 +29,7 @@
     <ul>
       <router-link to="/OJT-dashboard"><li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li></router-link>
       <router-link to="/OJT-dashboard/list-of-unverified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Unverified applicants</span></a></li></router-link>
+      <router-link to="/OJT-dashboard/list-of-verified-applicants"><li><a href="#"><i class="fas fa-list-ul"></i><span>Verified applicants</span></a></li></router-link>
     </ul>
   </div>
   <!-- Content -->
