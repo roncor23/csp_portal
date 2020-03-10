@@ -917,10 +917,6 @@ Vue.component("step5", {
         ips: {
             required
         },
-        for_4ps: {
-            required
-
-        },
         senior_citizen: {
             required
         },
@@ -931,7 +927,7 @@ Vue.component("step5", {
             required
         },
 
-        form: ["pwd", "ips", "for_4ps", "senior_citizen","a_solo_parent", "solo_parent"]
+        form: ["pwd", "ips", "senior_citizen","a_solo_parent", "solo_parent"]
     },
     methods: {
         validate() {

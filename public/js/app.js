@@ -7420,9 +7420,6 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     ips: {
       required: required
     },
-    for_4ps: {
-      required: required
-    },
     senior_citizen: {
       required: required
     },
@@ -7432,7 +7429,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     a_solo_parent: {
       required: required
     },
-    form: ["pwd", "ips", "for_4ps", "senior_citizen", "a_solo_parent", "solo_parent"]
+    form: ["pwd", "ips", "senior_citizen", "a_solo_parent", "solo_parent"]
   },
   methods: {
     validate: function validate() {
