@@ -82,7 +82,6 @@ class AuthController extends Controller
         $applicants->applicant_type = $request->applicant_type;
         $applicants->ips = $request->ips;
         $applicants->pwd = $request->pwd;
-        $applicants->forps = $request->for_4ps;
         $applicants->senior_citizen = $request->senior_citizen;
         $applicants->applicant_solo_parent = $request->a_solo_parent;
         $applicants->supported_by_solo_parent = $request->solo_parent;

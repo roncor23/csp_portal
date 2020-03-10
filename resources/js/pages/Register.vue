@@ -904,7 +904,6 @@ Vue.component("step5", {
         return {
             pwd: "",
             ips: "",
-            for_4ps: "",
             senior_citizen: "",
             solo_parent: "",
             a_solo_parent: ""
@@ -927,7 +926,7 @@ Vue.component("step5", {
             required
         },
 
-        form: ["pwd", "ips", "senior_citizen","a_solo_parent", "solo_parent"]
+        form: ["pwd", "ips","senior_citizen","a_solo_parent", "solo_parent"]
     },
     methods: {
         validate() {
@@ -1009,7 +1008,6 @@ Vue.component("step5", {
           this.formData.append('degreeProgram', this.applicationModel.degreeProgram);
           this.formData.append('applicant_type', this.applicationModel.applicant_type);
           this.formData.append('ips', this.applicationModel.ips);
-          this.formData.append('for_4ps', this.applicationModel.for_4ps);
           this.formData.append('senior_citizen', this.applicationModel.senior_citizen);
           this.formData.append('a_solo_parent', this.applicationModel.a_solo_parent);
           this.formData.append('solo_parent', this.applicationModel.solo_parent);
