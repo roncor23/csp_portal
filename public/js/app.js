@@ -19854,9 +19854,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -35320,14 +35317,6 @@ var render = function() {
                           ? _c("td", [_vm._v("No")])
                           : _vm._e(),
                         _vm._v(" "),
-                        applicant.forps == 1
-                          ? _c("td", [_vm._v("Yes")])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        applicant.forps == 2
-                          ? _c("td", [_vm._v("No")])
-                          : _vm._e(),
-                        _vm._v(" "),
                         applicant.senior_citizen == 1
                           ? _c("td", [_vm._v("Yes")])
                           : _vm._e(),
@@ -37436,8 +37425,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Persons with Disability (PWDs)")
         ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("4ps")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Senior Citizen")])
       ])

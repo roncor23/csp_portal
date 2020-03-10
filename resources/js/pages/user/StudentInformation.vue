@@ -232,7 +232,6 @@
             <tr style="font-size:10px">
               <th scope="col">Indigenous Peoples (IP)</th>
               <th scope="col">Persons with Disability (PWDs)</th>
-              <th scope="col">4ps</th>
               <th scope="col">Senior Citizen</th>
             </tr>
           </thead>
@@ -242,8 +241,6 @@
               <td v-if="applicant.ips == 2">No</td>
               <td v-if="applicant.pwd == 1">Yes</td>
               <td v-if="applicant.pwd == 2">No</td>
-              <td v-if="applicant.forps == 1">Yes</td>
-              <td v-if="applicant.forps == 2">No</td>
               <td v-if="applicant.senior_citizen == 1">Yes</td>
               <td v-if="applicant.senior_citizen == 2">No</td>
             </tr>
