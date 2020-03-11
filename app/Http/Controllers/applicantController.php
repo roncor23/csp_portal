@@ -164,6 +164,9 @@ class applicantController extends Controller
             return response()->json(['status' => 'success'], 200);
         }
 
+        $users->email = $request->email;  
+        $users->save(); 
+
         $applicants->fname = strtoupper($request->fname);
         $applicants->mname = strtoupper($request->mname);
         $applicants->lname = strtoupper($request->lname);
