@@ -14309,7 +14309,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-unverified-ap
     filteredBlogs: function filteredBlogs() {
       var filter_search = this.search;
       return this.applicants.filter(function (applicants) {
-        return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search);
+        return applicants.fname.match(filter_search) || applicants.lname.match(filter_search) || applicants.mname.match(filter_search) || applicants.xname.match(filter_search) || applicants.email.match(filter_search) || applicants.email.match(filter_search) || applicants.contact.match(filter_search) || applicants.reference_no.match(filter_search) || applicants.app_created_at.match(filter_search);
       });
     }
   },
