@@ -7081,6 +7081,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
  //local registration
 
@@ -7497,7 +7500,48 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
 
     return mounted;
   }()
-});
+}); // Vue.component("step6", {
+//     template: `<div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6" >
+//                       <label >Certified true copy of birth certificate</label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="birth_certificate" @change="addFile4()" style="border: 1px solid #fff">
+//                     </div>
+//                   </div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6">
+//                       <label >Certified true copy of grades for grade 11</label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
+//                     </div>
+//                   </div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6">
+//                       <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
+//                     </div>
+//                   </div>
+//                    <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
+//         </div>`,
+//     data() {
+//         return {
+//             birth_certificate: '',
+//             grade11: '',
+//             grade12: '',
+//             income_requirements: '',
+//             other: '',
+//             formData: {}
+//         }
+//     },
+//     methods: {
+//         validate() {
+//             this.$v.form.$touch();
+//             var isValid = !this.$v.form.$invalid;
+//             this.$emit("on-validate", this.$data, isValid);
+//             return isValid;
+//         }
+//     }
+// });
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -30506,28 +30550,123 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main" }, [
-    _vm._m(0),
-    _vm._v(" "),
+  return _c("div", { staticClass: "body" }, [
     _c(
       "div",
-      { staticClass: "jumbotron" },
       [
-        _c("h1", { staticStyle: { color: "red" } }, [_vm._v("ATTENTION !")]),
+        _vm._m(0),
         _vm._v(" "),
-        _c("P", [
-          _vm._v("Please provide a valid email using "),
-          _c("a", { attrs: { href: "//www.gmail.com", target: "_blank" } }, [
-            _vm._v("gmail.com")
-          ]),
-          _vm._v(" or "),
-          _c("a", { attrs: { href: "//www.yahoo.com" } }, [
-            _vm._v("yahoo.com")
-          ]),
-          _vm._v(
-            " before you register for this application to ensure that you will receive a verification code. Thanks!"
-          )
-        ])
+        _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "form-wizard",
+          {
+            attrs: { shape: "circle", color: "#2F4F4F" },
+            on: { "on-complete": _vm.onComplete }
+          },
+          [
+            _c(
+              "tab-content",
+              {
+                attrs: {
+                  title: "Account Setup",
+                  icon: "ti-user",
+                  "before-change": function() {
+                    return _vm.validateStep("step1")
+                  }
+                }
+              },
+              [
+                _c("step1", {
+                  ref: "step1",
+                  on: { "on-validate": _vm.mergePartialModels }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              {
+                attrs: {
+                  title: "Personal Information",
+                  icon: "ti-id-badge",
+                  "before-change": function() {
+                    return _vm.validateStep("step2")
+                  }
+                }
+              },
+              [
+                _c("step2", {
+                  ref: "step2",
+                  on: { "on-validate": _vm.mergePartialModels }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              {
+                attrs: {
+                  title: "Family Background",
+                  icon: "ti-view-list",
+                  "before-change": function() {
+                    return _vm.validateStep("step3")
+                  }
+                }
+              },
+              [
+                _c("step3", {
+                  ref: "step3",
+                  on: { "on-validate": _vm.mergePartialModels }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              {
+                attrs: {
+                  title: "Preferred School",
+                  icon: "ti-home",
+                  "before-change": function() {
+                    return _vm.validateStep("step4")
+                  }
+                }
+              },
+              [
+                _c("step4", {
+                  ref: "step4",
+                  on: { "on-validate": _vm.mergePartialModels }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              {
+                attrs: {
+                  title: "Marginalized Group",
+                  icon: "ti-layers-alt",
+                  "before-change": function() {
+                    return _vm.validateStep("step5")
+                  }
+                }
+              },
+              [
+                _c("step5", {
+                  ref: "step5",
+                  on: { "on-validate": _vm.mergePartialModels }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
       ],
       1
     )
@@ -30538,19 +30677,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "jumbotron" }, [
-      _c("h1", { staticStyle: { color: "red" } }, [
-        _vm._v("System Maintenance Notice")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 13, 2020 / 8:00AM."
+    return _c(
+      "div",
+      { staticClass: "form-group d-flex justify-content-center" },
+      [
+        _c(
+          "h4",
+          {
+            staticStyle: {
+              "font-size": "20px",
+              color: "#fff",
+              "text-align": "center",
+              padding: "14px"
+            }
+          },
+          [
+            _vm._v("Online Application "),
+            _c("br"),
+            _c("small", [_vm._v("Nothing worth having comes easy!")])
+          ]
         )
-      ]),
-      _vm._v(" "),
-      _c("p", [_vm._v("We regret for the inconvenience.")])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true

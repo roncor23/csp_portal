@@ -1,5 +1,5 @@
 <template>
-<!--   <div class="body">
+  <div class="body">
     <div >
       <div class="form-group d-flex justify-content-center">
             <h4 style="font-size:20px;color:#fff;text-align:center;padding:14px">Online Application <br><small>Nothing worth having comes easy!</small></h4>
@@ -20,12 +20,15 @@
           </tab-content>
           <tab-content title="Marginalized Group" icon="ti-layers-alt" :before-change="()=>validateStep('step5')">
               <step5 ref="step5" @on-validate="mergePartialModels"></step5>
-          </tab-content>    
+          </tab-content>  
+<!--           <tab-content title="Upload Required Documents" icon="ti-upload" :before-change="()=>validateStep('step6')">
+              <step6 ref="step6" @on-validate="mergePartialModels"></step6>
+          </tab-content>   -->  
       </form-wizard>
     </div>
-  </div>  -->
+  </div> 
   <!-- Content -->
-  <div class="main">
+<!--   <div class="main">
       <div class="jumbotron">
         <h1 style="color:red">System Maintenance Notice</h1>
         <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 13, 2020 / 8:00AM.</p>
@@ -35,7 +38,7 @@
         <h1 style="color:red">ATTENTION !</h1>
         <P>Please provide a valid email using <a href="//www.gmail.com" target="_blank">gmail.com</a> or <a href="//www.yahoo.com">yahoo.com</a> before you register for this application to ensure that you will receive a verification code. Thanks!</P>
       </div>
-  </div>
+  </div> -->
 </template>
 <style scoped>
 
@@ -964,6 +967,52 @@ Vue.component("step5", {
     }
 });
 
+
+// Vue.component("step6", {
+//     template: `<div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6" >
+//                       <label >Certified true copy of birth certificate</label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="birth_certificate" @change="addFile4()" style="border: 1px solid #fff">
+
+//                     </div>
+
+
+//                   </div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6">
+//                       <label >Certified true copy of grades for grade 11</label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
+//                     </div>
+//                   </div>
+//                   <div class="form-row">
+//                     <div class="form-group col-md-6">
+//                       <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>              
+//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
+//                     </div>
+//                   </div>
+
+//                    <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
+//         </div>`,
+//     data() {
+//         return {
+//             birth_certificate: '',
+//             grade11: '',
+//             grade12: '',
+//             income_requirements: '',
+//             other: '',
+//             formData: {}
+//         }
+//     },
+//     methods: {
+//         validate() {
+//             this.$v.form.$touch();
+//             var isValid = !this.$v.form.$invalid;
+//             this.$emit("on-validate", this.$data, isValid);
+//             return isValid;
+//         }
+//     }
+// });
  export default {
     data() {
       return {
