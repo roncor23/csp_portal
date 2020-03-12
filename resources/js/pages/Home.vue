@@ -662,7 +662,7 @@ import axios from 'axios';
           title: '<strong style="color:red;font-size:">Advisory on Covid-19 Alert !</strong>',
           icon: 'info',
           html:
-            '<p style="text-align:center">Walk-in/Personal submission of documentary requriements to support your online application is temporarily discouraged. The use of any courier is instead highly recommended.</p>' +
+            '<p style="text-align:center">Walk-in/Personal submission of documentary requirements to support your online application is temporarily discouraged. The use of any courier is instead highly recommended.</p>' +
             '<p style="color:red">Extended !!!</p>' +
             '<p>Submission of required documents will still be accepted until June 30,2020.</p>' +
             '<p>visit link:</p>' +
