@@ -659,11 +659,11 @@ import axios from 'axios';
       note() {
       
        this.$swal.fire({
-          title: '<strong style="color:red;font-size:">Advisory on Covid-19 Alert !</strong>',
-          icon: 'info',
+          title: '<strong style="color:red;font-size:45px">Advisory on COVID-19</strong>',
+          icon: 'warning',
           html:
             '<p style="text-align:center">Walk-in/Personal submission of documentary requirements to support your online application is temporarily discouraged. The use of any courier is instead highly recommended.</p>' +
-            '<p style="color:red">Extended !!!</p>' +
+            '<p style="color:red; font-size:20px;font-weight:bold">Extended !!!</p>' +
             '<p>Submission of required documents will still be accepted until June 30,2020.</p>' +
             '<p>visit link:</p>' +
             '<a target="_blank" href="https://ched.gov.ph/wp-content/uploads/Guidelines-for-the-Prevention-Control-and-Mitigation-of-the-Spread-of-the-2019-nCoV-ARD-in-Higher-Education-Institutions-HEIs.pdf" target="_blank">Department of Health </a> ' +
@@ -673,7 +673,8 @@ import axios from 'axios';
           showCloseButton: true,
           confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Okay',
-            width: 900
+            width: 900,
+
         })
      }
     },
