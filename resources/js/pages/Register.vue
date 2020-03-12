@@ -31,6 +31,10 @@
         <p>Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 13, 2020 / 8:00AM.</p>
         <p>We regret for the inconvenience.</p>
       </div>
+      <div class="jumbotron">
+        <h1 style="color:red">ATTENTION !</h1>
+        <P>Please provide a valid email using <a href="//www.gmail.com" target="_blank">gmail.com</a> or <a href="//www.yahoo.com">yahoo.com</a> before you register for this application to ensure that you will receive a verification code. Thanks!</P>
+      </div>
   </div>
 </template>
 <style scoped>
@@ -1066,17 +1070,21 @@ Vue.component("step5", {
      note() {
       
        this.$swal.fire({
-          title: '<strong style="color:red">ATTENTION!</strong>',
-          icon: 'info',
-          html:
-            'Please provide a valid email using ' +
-            '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
-            'or ' +
-            '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
-            'before you register for this application to ensure that you will receive a verification code. Thanks! ',
+          // title: '<strong style="color:red">ATTENTION!</strong>',
+          // html:
+          //   'Please provide a valid email using ' +
+          //   '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
+          //   'or ' +
+          //   '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
+          //   'before you register for this application to ensure that you will receive a verification code. Thanks! ',
           showCloseButton: true,
           confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Okay',
+          imageUrl: 'image/flowchart.png',
+          imageWidth: 500,
+          imageHeight: 450,
+          width: 500,
+          imageAlt: 'Custom image',
         })
      }
     },

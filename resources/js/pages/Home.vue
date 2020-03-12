@@ -673,7 +673,7 @@ import axios from 'axios';
           showCloseButton: true,
           confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Okay',
-            width: 900,
+            width: 900
 
         })
      }

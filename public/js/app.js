@@ -7077,6 +7077,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
  //local registration
 
@@ -7610,11 +7614,20 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     },
     note: function note() {
       this.$swal.fire({
-        title: '<strong style="color:red">ATTENTION!</strong>',
-        icon: 'info',
-        html: 'Please provide a valid email using ' + '<a href="//gmail.com" target="_blank">gmail.com</a> ' + 'or ' + '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' + 'before you register for this application to ensure that you will receive a verification code. Thanks! ',
+        // title: '<strong style="color:red">ATTENTION!</strong>',
+        // html:
+        //   'Please provide a valid email using ' +
+        //   '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
+        //   'or ' +
+        //   '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
+        //   'before you register for this application to ensure that you will receive a verification code. Thanks! ',
         showCloseButton: true,
-        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay'
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay',
+        imageUrl: 'image/flowchart.png',
+        imageWidth: 500,
+        imageHeight: 450,
+        width: 500,
+        imageAlt: 'Custom image'
       });
     }
   },
@@ -30493,27 +30506,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "main" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "jumbotron" },
+      [
+        _c("h1", { staticStyle: { color: "red" } }, [_vm._v("ATTENTION !")]),
+        _vm._v(" "),
+        _c("P", [
+          _vm._v("Please provide a valid email using "),
+          _c("a", { attrs: { href: "//www.gmail.com", target: "_blank" } }, [
+            _vm._v("gmail.com")
+          ]),
+          _vm._v(" or "),
+          _c("a", { attrs: { href: "//www.yahoo.com" } }, [
+            _vm._v("yahoo.com")
+          ]),
+          _vm._v(
+            " before you register for this application to ensure that you will receive a verification code. Thanks!"
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "main" }, [
-      _c("div", { staticClass: "jumbotron" }, [
-        _c("h1", { staticStyle: { color: "red" } }, [
-          _vm._v("System Maintenance Notice")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 13, 2020 / 8:00AM."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v("We regret for the inconvenience.")])
-      ])
+    return _c("div", { staticClass: "jumbotron" }, [
+      _c("h1", { staticStyle: { color: "red" } }, [
+        _vm._v("System Maintenance Notice")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Our system is undergoing a scheduled constructive maintenance to upgrade the system, and will be available on March 13, 2020 / 8:00AM."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("We regret for the inconvenience.")])
     ])
   }
 ]
