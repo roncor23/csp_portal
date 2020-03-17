@@ -7502,25 +7502,93 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
   }()
 }); // Vue.component("step6", {
 //     template: `<div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6" >
-//                       <label >Certified true copy of birth certificate</label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="birth_certificate" @change="addFile4()" style="border: 1px solid #fff">
-//                     </div>
-//                   </div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6">
-//                       <label >Certified true copy of grades for grade 11</label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
-//                     </div>
-//                   </div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6">
-//                       <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
-//                     </div>
-//                   </div>
-//                    <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
+// <div class="form-row">
+//   <div class="form-group col-md-6" >
+//     <label >Birth certificate (Certified true copy)</label><span style="color:red">*</span>
+//     <span v-if="valid_birth_certificate" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//     <span v-if="invalid_birth_certificate" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>              
+//      <input class="form-control-file" type="file" id="file_birth_certificate" ref="file_birth_certificate" @change="addFileBirth()" style="border: 1px solid #fff">
+//   </div>
+//   <div class="form-group col-md-6">
+//       <label>Income Requirements</label><span style="color:red">*</span>  
+//       <select id="select_income" name="select_income" class="form-control" v-model="select_income" @change="income_requirements_func()">
+//         <option value="1">Latest Income Tax Return of parents/guardian</option>
+//         <option value="2">Certificate of Tax Exemption from the BIR</option>
+//         <option value="3">Certificate of Indigence from their Barangay or DSWD</option>
+//         <option value="4">Case Study from DSWD</option>
+//         <option value="5">Latest copy of contract or proof of income for children of OFW and seafarers</option>
+//       </select>
+//   </div>
+// </div>
+// <div class="form-row">
+//     <div class="form-group col-md-6">
+//       <label >Grade Requirements (Certified true copy)</label><span style="color:red">*</span>  
+//       <select id="select_grade" name="select_grade" class="form-control" v-model="select_grade" @change="grade_requirements_func()">
+//         <option value="1">High school report card for incoming freshmen students eligible for college</option>
+//         <option value="2">Grade 11 and 1st semester of Grade 12 for graduating high school students</option>
+//         <option value="3">ALS graduate</option>
+//       </select>
+//     </div>
+//     <div class="form-group col-md-6" v-if="select_income == 1">
+//       <label >Latest Income Tax Return of parents/guardian</label><span style="color:red">*</span>              
+//       <span v-if="valid_itr" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//       <span v-if="invalid_itr" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>   
+//        <input v-if="uploadITR" class="form-control-file" id="file_itr" type="file" ref="file_itr" @change="addFileITR()" style="border: 1px solid #fff">
+//     </div>
+//     <div class="form-group col-md-6" v-if="select_income == 2">
+//       <label >Certificate of Tax Exemption from the BIR</label><span style="color:red">*</span>
+//       <span v-if="valid_tax_excemption" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//       <span v-if="invalid_tax_excemption" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//        <input v-if="uploadTaxExemption" class="form-control-file" id="file_certificate_of_tax_exemption" type="file" ref="file_certificate_of_tax_exemption" @change="addFileCertificate_Of_Tax_Excemption()" style="border: 1px solid #fff">
+//     </div>
+//     <div class="form-group col-md-6" v-if="select_income == 3">
+//       <label >Certificate of Indigence from their Barangay or DSWD</label><span style="color:red">*</span>
+//       <span v-if="valid_indigence" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//       <span v-if="invalid_indigence" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//        <input v-if="uploadIndigence" class="form-control-file" type="file" id="file_certificate_of_indigence" ref="file_certificate_of_indigence" @change="addFileCertificate_Of_Indigence()" style="border: 1px solid #fff">
+//     </div>
+//     <div class="form-group col-md-6" v-if="select_income == 4">
+//       <label >Case Study from DSWD</label><span style="color:red">*</span>
+//       <span v-if="valid_case_study" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//       <span v-if="invalid_case_study" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//        <input v-if="uploadCaseStudy" class="form-control-file" type="file" id="file_case_study" ref="file_case_study" @change="addFileCase_Study()" style="border: 1px solid #fff">
+//     </div>
+//     <div class="form-group col-md-6" v-if="select_income == 5">
+//       <label >Latest copy of contract or proof of income for children of OFW and seafarers</label><span style="color:red">*</span>
+//       <span v-if="valid_seafarers" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//       <span v-if="invalid_seafarers" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//        <input v-if="uploadSeaFarers" class="form-control-file" type="file" id="file_seafarers" ref="file_seafarers" @change="addFileSeafarers()" style="border: 1px solid #fff">
+//     </div>
+// </div>
+// <div class="form-row">
+//   <div class="form-group col-md-6" v-if="select_grade == 3">
+//     <label>ALS Grade</label><span style="color:red">*</span>
+//     <span v-if="valid_als" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//     <span v-if="invalid_als" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//      <input class="form-control-file" v-if="uploadALS" type="file" id="file_als" ref="file_als" @change="addFileALS()" style="border: 1px solid #fff">
+//   </div>
+//   <div class="form-group col-md-6" v-if="select_grade == 2">
+//     <label>Certified true copy of grades for grade 11</label><span style="color:red">*</span>
+//     <span v-if="valid_grade11" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//     <span v-if="invalid_grade11" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//      <input class="form-control-file" v-if="uploadGrade11" type="file" id="file_grade11" ref="file_grade11" @change="addFileGrade11()" style="border: 1px solid #fff">
+//   </div>
+//   <div class="form-group col-md-6" v-if="select_grade == 1">
+//     <label >High School Report Card</label><span style="color:red">*</span>
+//     <span v-if="valid_highschool" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//     <span v-if="invalid_highschool" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//     <input class="form-control-file" v-if="uploadhighschool" type="file" id="file_highschool" ref="file_highschool" @change="addFileHighSchool()" style="border: 1px solid #fff">
+//   </div>
+// </div>
+// <div class="form-row">
+//   <div class="form-group col-md-6" v-if="select_grade == 2">
+//     <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>
+//     <span v-if="valid_grade12" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+//     <span v-if="invalid_grade12" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+//      <input class="form-control-file" v-if="uploadGrade12" type="file" id="file_grade12" ref="file_grade12" @change="addFileGrade12()" style="border: 1px solid #fff">
+//   </div>
+// </div>
+//  <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
 //         </div>`,
 //     data() {
 //         return {
@@ -7529,16 +7597,376 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
 //             grade12: '',
 //             income_requirements: '',
 //             other: '',
+//             select_grade: '',
+//             select_income: '',
+//             valid_birth_certificate: false,
+//             valid_grade11: false,
+//             valid_grade12: false,
+//             valid_highschool: false,
+//             valid_itr: false,
+//             valid_tax_excemption: false,
+//             valid_indigence: false,
+//             valid_case_study: false,
+//             valid_seafarers: false,
+//             valid_als: false,
+//             invalid_birth_certificate: false,
+//             invalid_grade11: false,
+//             invalid_grade12: false,
+//             invalid_highschool: false,
+//             invalid_itr: false,
+//             invalid_tax_excemption: false,
+//             invalid_indigence: false,
+//             invalid_case_study: false,
+//             invalid_seafarers: false,
+//             invalid_als: false,
+//             uploadGrade11: true,
+//             uploadGrade12: true,
+//             uploadhighschool: true,
+//             uploadIndigence: true,
+//             uploadITR: true,
+//             uploadSeaFarers: true,
+//             uploadCaseStudy: true,
+//             uploadTaxExemption: true,
+//             uploadALS: true,
 //             formData: {}
 //         }
 //     },
+//     validations: {
+//         form: []
+//     },
 //     methods: {
-//         validate() {
-//             this.$v.form.$touch();
-//             var isValid = !this.$v.form.$invalid;
-//             this.$emit("on-validate", this.$data, isValid);
-//             return isValid;
+//           validate() {
+//               this.$v.form.$touch();
+//               var isValid = !this.$v.form.$invalid;
+//               this.$emit("on-validate", this.$data, isValid);
+//               return isValid;
+//           },
+//     addFileALS() {
+//       this.valid_als = false;
+//       this.invalid_als = false;
+//       $('#file_als').css('border-color','');
+//       var file = $('#file_als').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_als.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_als = true;
+//             $('#file_als').css('border-color','#fff');
+//             this.attachmentALS = this.$refs.file_als.files[0];
+//             console.log(this.attachmentALS);
+//             return false;
 //         }
+//       } else {
+//         this.invalid_als = true;
+//         $('#file_als').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//       }
+//   },
+//   addFileBirth() {
+//       this.valid_birth_certificate = false;
+//       this.invalid_birth_certificate = false;
+//       $('#file_birth_certificate').css('border-color','');
+//       var file = $('#file_birth_certificate').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_birth_certificate.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_birth_certificate = true;
+//             $('#file_birth_certificate').css('border-color','#fff');
+//             this.attachmentBirthCertificate = this.$refs.file_birth_certificate.files[0];
+//             console.log(this.attachmentBirthCertificate);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_birth_certificate = true;
+//         $('#file_birth_certificate').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//       }
+//   },
+//   addFileITR() {
+//       this.valid_itr = false;
+//       this.invalid_itr = false;
+//       $('#file_itr').css('border-color','');
+//       var file = $('#file_itr').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_itr.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_itr = true;
+//             $('#file_itr').css('border-color','#fff');
+//             this.attachmentITR = this.$refs.file_itr.files[0];
+//             console.log(this.attachmentITR);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_itr = true;
+//         $('#file_itr').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//       }
+//   },
+//   addFileCertificate_Of_Tax_Excemption() {
+//       this.valid_tax_excemption = false;
+//       this.invalid_tax_excemption = false;
+//       $('#file_certificate_of_tax_exemption').css('border-color','');
+//       var file = $('#file_certificate_of_tax_exemption').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_certificate_of_tax_exemption.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_tax_excemption = true;
+//             $('#file_certificate_of_tax_exemption').css('border-color','#fff');
+//             this.attachmentCertificateExemption = this.$refs.file_certificate_of_tax_exemption.files[0];
+//             console.log(this.attachmentCertificateExemption);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_tax_excemption = true;
+//         $('#file_certificate_of_tax_exemption').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//       }
+//   },
+//   addFileCertificate_Of_Indigence() {
+//       this.valid_indigence = false;
+//       this.invalid_indigence = false;
+//       $('#file_certificate_of_indigence').css('border-color','');
+//       var file = $('#file_certificate_of_indigence').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_certificate_of_indigence.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_indigence = true;
+//             $('#file_certificate_of_indigence').css('border-color','#fff');
+//             this.attachmentCertificateIndigence = this.$refs.file_certificate_of_indigence.files[0];
+//             console.log(this.attachmentCertificateIndigence);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_indigence = true;
+//         $('#file_certificate_of_indigence').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//   }
+// },
+//   addFileCase_Study() {
+//       this.valid_case_study = false;
+//       this.invalid_case_study = false;
+//       $('#file_case_study').css('border-color','');
+//       var file = $('#file_case_study').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_case_study.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_case_study = true;
+//             $('#file_case_study').css('border-color','#fff');
+//             this.attachmentCaseStudy = this.$refs.file_case_study.files[0];
+//             console.log(this.attachmentCaseStudy);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_case_study = true;
+//         $('#file_case_study').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//     }
+//   },
+//   addFileSeafarers() {
+//       this.valid_seafarers = false;
+//       this.invalid_seafarers = false;
+//       $('#file_seafarers').css('border-color','');
+//       var file = $('#file_seafarers').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_seafarers.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_seafarers = true;
+//             $('#file_seafarers').css('border-color','#fff');
+//             this.attachmentSeaFarers = this.$refs.file_seafarers.files[0];
+//             console.log(this.attachmentSeaFarers);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_seafarers = true;
+//         $('#file_seafarers').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//     }
+//   },
+//   addFileGrade11() {
+//       this.valid_grade11 = false;
+//       this.invalid_grade11 = false;
+//       $('#file_grade11').css('border-color','');
+//       var file = $('#file_grade11').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_grade11.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_grade11 = true;
+//             $('#file_grade11').css('border-color','#fff');
+//             this.attachmentGrade11 = this.$refs.file_grade11.files[0];
+//             console.log(this.attachmentGrade11);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_grade11 = true;
+//         $('#file_grade11').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//     }
+//   },
+//   addFileHighSchool() {
+//       this.valid_highschool = false;
+//       this.invalid_highschool = false;
+//       $('#file_highschool').css('border-color','');
+//       var file = $('#file_highschool').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_highschool.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_highschool = true;
+//             $('#file_highschool').css('border-color','#fff');
+//             this.attachmentHighSchool = this.$refs.file_highschool.files[0];
+//             console.log(this.attachmentHighSchool);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_highschool = true;
+//         $('#file_highschool').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//     }
+//   },
+//   addFileGrade12() {
+//       this.valid_grade12 = false;
+//       this.invalid_grade12 = false;
+//       $('#file_grade12').css('border-color','');
+//       var file = $('#file_grade12').val();
+//       var ext = ['pdf'];
+//       if(file) {
+//       var get_ext = file.split('.');
+//       get_ext = get_ext.reverse();
+//       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+//         if(this.$refs.file_grade12.files[0].size > 999999) {
+//             swal("Opps!", "File size required less than 1mb.", "error");
+//             return false;
+//         }else{
+//             this.valid_grade12 = true;
+//             $('#file_grade12').css('border-color','#fff');
+//             this.attachmentGrade12 = this.$refs.file_grade12.files[0];
+//             console.log(this.attachmentGrade12);
+//             return false;
+//         }
+//       } else {
+//         this.invalid_grade12 = true;
+//         $('#file_grade12').css('border-color','red');
+//         return false;
+//       }
+//       console.log(file);
+//     }
+//   },
+//   grade_requirements_func() {
+//    this.valid_highschool = false;
+//    this.invalid_highschool = false;
+//    this.valid_grade12 = false;
+//    this.valid_grade11 = false;
+//    this.valid_als = false;
+//    this.invalid_grade11 = false;
+//    this.invalid_grade12 = false;
+//    this.invalid_als = false;
+//    this.uploadGrade11 = false;
+//    this.uploadGrade12 = false;
+//    this.uploadhighschool = false;
+//    this.uploadALS = false;
+//    this.$nextTick(() => {
+//       this.uploadGrade11 = true;
+//       this.uploadGrade12 = true;
+//       this.uploadhighschool = true;
+//       this.uploadALS = true;
+//    });
+//    return false;
+//  },
+// income_requirements_func() {
+//   this.valid_seafarers = false;
+//   this.invalid_seafarers = false;
+//   this.valid_indigence = false;
+//   this.invalid_indigence = false;
+//   this.valid_itr = false;
+//   this.invalid_itr = false;
+//   this.valid_case_study = false;
+//   this.invalid_case_study = false;
+//   this.valid_tax_excemption = false;
+//   this.invalid_tax_excemption = false;
+//   this.uploadIndigence = false;
+//   this.uploadITR = false;
+//   this.uploadCaseStudy = false;
+//   this.uploadTaxExemption = false;
+//   this.uploadSeaFarers = false;
+//    this.$nextTick(() => {
+//       this.uploadIndigence = true;
+//       this.uploadITR = true;
+//       this.uploadCaseStudy = true;
+//       this.uploadTaxExemption = true;
+//       this.uploadSeaFarers = true;
+//    });
+//    return false;
+//  },
 //     }
 // });
 
@@ -7553,8 +7981,6 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
   },
   methods: {
     onComplete: function onComplete() {
-      var _this8 = this;
-
       this.formData = new FormData();
       this.formData.append('userName', this.applicationModel.userName);
       this.formData.append('emailAddress', this.applicationModel.emailAddress);
@@ -7595,56 +8021,52 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
       this.formData.append('a_solo_parent', this.applicationModel.a_solo_parent);
       this.formData.append('solo_parent', this.applicationModel.solo_parent);
       this.formData.append('pwd', this.applicationModel.pwd);
-      this.loading = true;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('applicant/register/', this.formData, {
-        headers: {
-          'content-Type': 'multipart/form-data'
-        }
-      }).then(function (response) {
-        if (response.data === 0) {
-          //Applicants already in the system.
-          _this8.$swal.fire({
-            icon: 'error',
-            title: 'Opps...',
-            text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern or Visit CHED CARAGA Regional Office, Ampayon Butuan City..',
-            footer: "<h4>Contact #:<h4 style=\"color:blue\">&nbsp; 0912-089-2045</h4></h4>"
-          });
+      this.formData.append('file_grade11', this.applicationModel.attachmentGrade11);
+      this.formData.append('file_grade12', this.applicationModel.attachmentGrade12);
+      this.formData.append('file_als', this.applicationModel.attachmentALS);
+      this.formData.append('file_seafarers', this.applicationModel.attachmentSeaFarers);
+      this.formData.append('file_case_study', this.applicationModel.attachmentCaseStudy);
+      this.formData.append('file_certificate_of_indigence', this.applicationModel.attachmentCertificateIndigence);
+      this.formData.append('file_certificate_of_tax_exemption', this.applicationModel.attachmentCertificateExemption);
+      this.formData.append('file_highschool', this.applicationModel.attachmentHighSchool);
+      this.formData.append('file_birth_certificate', this.applicationModel.attachmentBirthCertificate);
+      this.formData.append('file_itr', this.applicationModel.attachmentITR); // this.loading = true;
+      // axios.post('applicant/register/', this.formData, {headers: {'content-Type': 'multipart/form-data'}})
+      //   .then(response => {
+      //        if(response.data === 0) { //Applicants already in the system.
+      //         this.$swal.fire({
+      //           icon: 'error',
+      //           title: 'Opps...',
+      //           text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern or Visit CHED CARAGA Regional Office, Ampayon Butuan City..',
+      //           footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
+      //         })
+      //         this.loading = false;
+      //         return false;
+      //       }
+      //       if(response.data === 2) { //Email already in used.
+      //         this.$swal.fire({
+      //           icon: 'error',
+      //           title: 'Opps...',
+      //           text: 'Email address is already in used in this system. Please try new one.',
+      //         })
+      //         this.loading = false;
+      //         return false;
+      //       }
+      //       this.loading = false;
+      //       this.$swal.fire({
+      //         icon: 'success',
+      //         title: 'Great...',
+      //         text: `Application successfully submitted! A verification code sent to ${response.data.email}. Please check your email and verify your account, you must login first.`
+      //         // footer: `<h3>Reference #:<h3 style="color:red">&nbsp;${response.data.reference_no}</h3></h3>`
+      //       })
+      //       this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+      //   })
+      //   .catch(error => {
+      //       this.errors = error.response.data.errors;
+      //       console.log(this.errors);
+      //   });
 
-          _this8.loading = false;
-          return false;
-        }
-
-        if (response.data === 2) {
-          //Email already in used.
-          _this8.$swal.fire({
-            icon: 'error',
-            title: 'Opps...',
-            text: 'Email address is already in used in this system. Please try new one.'
-          });
-
-          _this8.loading = false;
-          return false;
-        }
-
-        _this8.loading = false;
-
-        _this8.$swal.fire({
-          icon: 'success',
-          title: 'Great...',
-          text: "Application successfully submitted! A verification code sent to ".concat(response.data.email, ". Please check your email and verify your account, you must login first.") // footer: `<h3>Reference #:<h3 style="color:red">&nbsp;${response.data.reference_no}</h3></h3>`
-
-        });
-
-        _this8.$router.push({
-          name: 'login',
-          params: {
-            successRegistrationRedirect: true
-          }
-        });
-      })["catch"](function (error) {
-        _this8.errors = error.response.data.errors;
-        console.log(_this8.errors);
-      });
+      console.log(this.applicationModel.attachmentBirthCertificate);
     },
     validateStep: function validateStep(name) {
       var refToValidate = this.$refs[name];
@@ -7658,13 +8080,6 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("step5", {
     },
     note: function note() {
       this.$swal.fire({
-        // title: '<strong style="color:red">ATTENTION!</strong>',
-        // html:
-        //   'Please provide a valid email using ' +
-        //   '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
-        //   'or ' +
-        //   '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
-        //   'before you register for this application to ensure that you will receive a verification code. Thanks! ',
         showCloseButton: true,
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay',
         imageUrl: 'image/flowchart.png',
@@ -13853,7 +14268,7 @@ var _window$validators = window.validators,
     alphaNum = _window$validators.alphaNum,
     alpha = _window$validators.alpha;
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("ched-list-of-not-enrolled-applicant", {
-  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay === null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay === 8\">2020</td>\n                        <td v-if=\"i.yr_lvl === null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl === 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl === 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl === 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl === 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl === 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender === 1\">MALE</td>\n                        <td v-if=\"i.gender === 2\">FEMALE</td>\n                        <td v-if=\"i.gwa === null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points === null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status === null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status === 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status === 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status === 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status === 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status === 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status === 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status === 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status === 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status === 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei === 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei === 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei === 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin === null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin === 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin === 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin === 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED === null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.update_date === null\" style=\"color:blue\">NOT YET UPDATED BY CHED</td>\n                        <td v-if=\"i.update_date != null\">{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI === null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Not Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>         \n                  </div>\n                </div>\n              </div>\n        </div>",
+  template: "<div>\n                <div style=\"float:right;margin-bottom:10px\">\n                  <span>Search:</span>&nbsp;<input type=\"text\" v-model=\"search\">\n                </div>\n                <div v-if=\"loading\" class=\"loading\">\n                  Loading...\n                </div>\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" style=\"font-size:9px\">\n                    <thead >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>             \n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>     \n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                      </tr>\n                    </thead>\n                    <tfoot >\n                      <tr>\n                    <th>No.</th>\n                    <th>Reference #</th>\n                    <th>Year</th>\n                    <th>Year Level</th>\n                    <th>Last Name</th>\n                    <th>First Name</th>\n                    <th>Middle Name</th>\n                    <th>Ext. Name</th>\n                    <th>Gender</th>\n                    <th>GWA</th>\n                    <th>Rank Points</th>\n                    <th>Ranking Status</th>\n                    <th>HEI Status</th>\n                    <th>CHED Status</th>\n                    <th>ValidatedByCHED</th>\n                    <th>CHEDLastUpdate</th>\n                    <th>ValidatedByHEI</th>\n                      </tr>\n                    </tfoot>  \n            <tbody v-if=\"filteredBlogs.length > 0\">\n                    <tr class=\"table_data\" v-for=\"(i,index) in pageOfItems\" :key=\"i.index\">\n                        <td>{{index+1}}</td>\n                        <td>{{i.reference_no}}</td>\n                        <td v-if=\"i.ay == null\" style=\"color:blue\">NOT YET SET BY CHED</td>\n                        <td v-if=\"i.ay == 8\">2020</td>\n                        <td v-if=\"i.yr_lvl == null\" style=\"color:blue\">NOT YET SET BY HEI</td>\n                        <td v-if=\"i.yr_lvl == 1\">1st Year</td>\n                        <td v-if=\"i.yr_lvl == 2\">2nd Year</td>\n                        <td v-if=\"i.yr_lvl == 3\">3rd Year</td>\n                        <td v-if=\"i.yr_lvl == 4\">4th Year</td>\n                        <td v-if=\"i.yr_lvl == 5\">5th Year and above.</td>\n                        <td>{{i.lname}}</td>\n                        <td>{{i.fname}}</td>\n                        <td>{{i.mname}}</td>\n                        <td>{{i.xname}}</td>\n                        <td v-if=\"i.gender == 1\">MALE</td>\n                        <td v-if=\"i.gender == 2\">FEMALE</td>\n                        <td v-if=\"i.gwa == null\" style=\"color:blue\">GWA NOT YET SET</td>\n                        <td v-if=\"i.gwa != null\">{{i.gwa}}</td>\n                        <td v-if=\"i.rank_points == null\" style=\"color:blue\">RANKING POINTS NOT AVAILABLE</td>\n                        <td v-if=\"i.rank_points != null\" style=\"color:green\">{{i.rank_points}}</td>\n                        <td v-if=\"i.ranking_status == null\" style=\"color:blue\">NOT YET ASSIGN</td>\n                        <td v-if=\"i.ranking_status == 1\">Ranking System Off</td>\n                        <td v-if=\"i.ranking_status == 2\">WAITING FOR RANKING</td>\n                        <td v-if=\"i.ranking_status == 3\">WAITING LIST...</td>\n                        <td v-if=\"i.ranking_status == 4\">DID NOT MEET THE REQUIREMENTS, PLEASE RE-APPLY IN THE NEXT ROUND.</td>\n                        <td v-if=\"i.ranking_status == 5\">QUALIFIED AS TDP</td>\n                        <td v-if=\"i.ranking_status == 6\">QUALIFIED AS HALF PESFA</td>\n                        <td v-if=\"i.ranking_status == 7\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.ranking_status == 8\">QUALIFIED AS FULL PESFA</td>\n                        <td v-if=\"i.ranking_status == 9\">QUALIFIED AS FULL SSP</td>\n                        <td v-if=\"i.verified_hei == 3\" style=\"color:blue\">NOT YET CHECKED BY HEI</td>\n                        <td v-if=\"i.verified_hei == 1\" style=\"color:green\">ENROLLED</td>\n                        <td v-if=\"i.verified_hei == 2\" style=\"color:red\">NOT ENROLLED</td>\n                        <td v-if=\"i.verified_admin == null\" style=\"color:blue\">NOT YET CHECKED BY CHED</td>\n                        <td v-if=\"i.verified_admin == 1\" style=\"color:green\">VALIDATED</td>\n                        <td v-if=\"i.verified_admin == 2\" style=\"color:red\">LACKING DOCUMENTS</td>\n                        <td v-if=\"i.verified_admin == 3\" style=\"color:red\">INVALID APPLICATION</td>\n                        <td v-if=\"i.validatedByCHED == null\" style=\"color:blue\">NOT YET VALIDATED BY CHED</td>\n                        <td v-if=\"i.validatedByCHED != null\">{{i.validatedByCHED}}</td>\n                        <td v-if=\"i.update_date == null\" style=\"color:blue\">NOT YET UPDATED BY CHED</td>\n                        <td v-if=\"i.update_date != null\">{{i.update_date}}</td>\n                        <td v-if=\"i.validatedByHEI == null\" style=\"color:blue\">NOT YET VALIDATED BY HEI</td>\n                        <td v-if=\"i.validatedByHEI != null\">{{i.validatedByHEI}}</td>\n                    </tr> \n                    </tbody>\n                    <tbody  v-else>\n                       <tr>\n                        <td colspan=\"16\"><p style=\"color:red; text-align:center; font-size:12px\">NO DATA FOUND!</p></td>\n                       </tr>\n                    </tbody>              \n                    </table>\n                    <div class=\"form-row\">\n                      <div class=\"form-group col-md-3\">\n                        <span style=\"font-weight:bold\">Total Not Enrolled: </span>{{filteredBlogs.length}}\n                      </div>\n                      <div class=\"form-group col-md-3\">\n                      </div>\n                      <div class=\"form-group col-md-6\">\n                        <nav aria-label=\"Page navigation\" style=\"float:right\">\n                            <jw-pagination v-if=\"filteredBlogs.length\" :items=\"filteredBlogs\"  :pageSize=\"countPage\" :maxPages=\"5\" @changePage=\"onChangePage\"></jw-pagination> \n                        </nav>\n                      </div>\n                     </div>\n                </div>         \n                  </div>\n                </div>\n              </div>\n        </div>",
   data: function data() {
     return {
       applicants: [],
@@ -18851,6 +19266,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -21173,6 +21589,957 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("applicant-change-password"
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    var _ref;
+
+    return _ref = {
+      username: '',
+      loading: false,
+      logo: 'image/logo.png'
+    }, _defineProperty(_ref, "logo", '../image/logo.png'), _defineProperty(_ref, "birth_certificate", ''), _defineProperty(_ref, "grade11", ''), _defineProperty(_ref, "grade12", ''), _defineProperty(_ref, "income_requirements", ''), _defineProperty(_ref, "other", ''), _defineProperty(_ref, "select_grade", ''), _defineProperty(_ref, "select_income", ''), _defineProperty(_ref, "valid_birth_certificate", false), _defineProperty(_ref, "valid_grade11", false), _defineProperty(_ref, "valid_grade12", false), _defineProperty(_ref, "valid_highschool", false), _defineProperty(_ref, "valid_itr", false), _defineProperty(_ref, "valid_tax_excemption", false), _defineProperty(_ref, "valid_indigence", false), _defineProperty(_ref, "valid_case_study", false), _defineProperty(_ref, "valid_seafarers", false), _defineProperty(_ref, "valid_als", false), _defineProperty(_ref, "invalid_birth_certificate", false), _defineProperty(_ref, "invalid_grade11", false), _defineProperty(_ref, "invalid_grade12", false), _defineProperty(_ref, "invalid_highschool", false), _defineProperty(_ref, "invalid_itr", false), _defineProperty(_ref, "invalid_tax_excemption", false), _defineProperty(_ref, "invalid_indigence", false), _defineProperty(_ref, "invalid_case_study", false), _defineProperty(_ref, "invalid_seafarers", false), _defineProperty(_ref, "invalid_als", false), _defineProperty(_ref, "uploadGrade11", true), _defineProperty(_ref, "uploadGrade12", true), _defineProperty(_ref, "uploadhighschool", true), _defineProperty(_ref, "uploadIndigence", true), _defineProperty(_ref, "uploadITR", true), _defineProperty(_ref, "uploadSeaFarers", true), _defineProperty(_ref, "uploadCaseStudy", true), _defineProperty(_ref, "uploadTaxExemption", true), _defineProperty(_ref, "uploadALS", true), _defineProperty(_ref, "formData", {}), _ref;
+  },
+  methods: {
+    fetchUsername: function fetchUsername() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('applicant/fetch_user_name/').then(function (result) {
+        _this.username = result.data;
+        console.log(_this.username);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addFileALS: function addFileALS() {
+      this.valid_als = false;
+      this.invalid_als = false;
+      $('#file_als').css('border-color', '');
+      var file = $('#file_als').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_als.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_als = true;
+            $('#file_als').css('border-color', '#ddd');
+            this.attachmentALS = this.$refs.file_als.files[0];
+            console.log(this.attachmentALS);
+            return false;
+          }
+        } else {
+          this.invalid_als = true;
+          $('#file_als').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileBirth: function addFileBirth() {
+      this.valid_birth_certificate = false;
+      this.invalid_birth_certificate = false;
+      $('#file_birth_certificate').css('border-color', '');
+      var file = $('#file_birth_certificate').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_birth_certificate.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_birth_certificate = true;
+            $('#file_birth_certificate').css('border-color', '#ddd');
+            this.attachmentBirthCertificate = this.$refs.file_birth_certificate.files[0];
+            console.log(this.attachmentBirthCertificate);
+            return false;
+          }
+        } else {
+          this.invalid_birth_certificate = true;
+          $('#file_birth_certificate').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileITR: function addFileITR() {
+      this.valid_itr = false;
+      this.invalid_itr = false;
+      $('#file_itr').css('border-color', '');
+      var file = $('#file_itr').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_itr.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_itr = true;
+            $('#file_itr').css('border-color', '#ddd');
+            this.attachmentITR = this.$refs.file_itr.files[0];
+            console.log(this.attachmentITR);
+            return false;
+          }
+        } else {
+          this.invalid_itr = true;
+          $('#file_itr').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileCertificate_Of_Tax_Excemption: function addFileCertificate_Of_Tax_Excemption() {
+      this.valid_tax_excemption = false;
+      this.invalid_tax_excemption = false;
+      $('#file_certificate_of_tax_exemption').css('border-color', '');
+      var file = $('#file_certificate_of_tax_exemption').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_certificate_of_tax_exemption.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_tax_excemption = true;
+            $('#file_certificate_of_tax_exemption').css('border-color', '#ddd');
+            this.attachmentCertificateExemption = this.$refs.file_certificate_of_tax_exemption.files[0];
+            console.log(this.attachmentCertificateExemption);
+            return false;
+          }
+        } else {
+          this.invalid_tax_excemption = true;
+          $('#file_certificate_of_tax_exemption').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileCertificate_Of_Indigence: function addFileCertificate_Of_Indigence() {
+      this.valid_indigence = false;
+      this.invalid_indigence = false;
+      $('#file_certificate_of_indigence').css('border-color', '');
+      var file = $('#file_certificate_of_indigence').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_certificate_of_indigence.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_indigence = true;
+            $('#file_certificate_of_indigence').css('border-color', '#ddd');
+            this.attachmentCertificateIndigence = this.$refs.file_certificate_of_indigence.files[0];
+            console.log(this.attachmentCertificateIndigence);
+            return false;
+          }
+        } else {
+          this.invalid_indigence = true;
+          $('#file_certificate_of_indigence').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileCase_Study: function addFileCase_Study() {
+      this.valid_case_study = false;
+      this.invalid_case_study = false;
+      $('#file_case_study').css('border-color', '');
+      var file = $('#file_case_study').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_case_study.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_case_study = true;
+            $('#file_case_study').css('border-color', '#ddd');
+            this.attachmentCaseStudy = this.$refs.file_case_study.files[0];
+            console.log(this.attachmentCaseStudy);
+            return false;
+          }
+        } else {
+          this.invalid_case_study = true;
+          $('#file_case_study').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileSeafarers: function addFileSeafarers() {
+      this.valid_seafarers = false;
+      this.invalid_seafarers = false;
+      $('#file_seafarers').css('border-color', '');
+      var file = $('#file_seafarers').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_seafarers.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_seafarers = true;
+            $('#file_seafarers').css('border-color', '#ddd');
+            this.attachmentSeaFarers = this.$refs.file_seafarers.files[0];
+            console.log(this.attachmentSeaFarers);
+            return false;
+          }
+        } else {
+          this.invalid_seafarers = true;
+          $('#file_seafarers').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileGrade11: function addFileGrade11() {
+      this.valid_grade11 = false;
+      this.invalid_grade11 = false;
+      $('#file_grade11').css('border-color', '');
+      var file = $('#file_grade11').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_grade11.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_grade11 = true;
+            $('#file_grade11').css('border-color', '#ddd');
+            this.attachmentGrade11 = this.$refs.file_grade11.files[0];
+            console.log(this.attachmentGrade11);
+            return false;
+          }
+        } else {
+          this.invalid_grade11 = true;
+          $('#file_grade11').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileHighSchool: function addFileHighSchool() {
+      this.valid_highschool = false;
+      this.invalid_highschool = false;
+      $('#file_highschool').css('border-color', '');
+      var file = $('#file_highschool').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_highschool.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_highschool = true;
+            $('#file_highschool').css('border-color', '#ddd');
+            this.attachmentHighSchool = this.$refs.file_highschool.files[0];
+            console.log(this.attachmentHighSchool);
+            return false;
+          }
+        } else {
+          this.invalid_highschool = true;
+          $('#file_highschool').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    addFileGrade12: function addFileGrade12() {
+      this.valid_grade12 = false;
+      this.invalid_grade12 = false;
+      $('#file_grade12').css('border-color', '');
+      var file = $('#file_grade12').val();
+      var ext = ['pdf'];
+
+      if (file) {
+        var get_ext = file.split('.');
+        get_ext = get_ext.reverse();
+
+        if ($.inArray(get_ext[0].toLowerCase(), ext) > -1) {
+          if (this.$refs.file_grade12.files[0].size > 999999) {
+            swal("Opps!", "File size required less than 1mb.", "error");
+            return false;
+          } else {
+            this.valid_grade12 = true;
+            $('#file_grade12').css('border-color', '#ddd');
+            this.attachmentGrade12 = this.$refs.file_grade12.files[0];
+            console.log(this.attachmentGrade12);
+            return false;
+          }
+        } else {
+          this.invalid_grade12 = true;
+          $('#file_grade12').css('border-color', 'red');
+          return false;
+        }
+
+        console.log(file);
+      }
+    },
+    grade_requirements_func: function grade_requirements_func() {
+      var _this2 = this;
+
+      this.valid_highschool = false;
+      this.invalid_highschool = false;
+      this.valid_grade12 = false;
+      this.valid_grade11 = false;
+      this.valid_als = false;
+      this.invalid_grade11 = false;
+      this.invalid_grade12 = false;
+      this.invalid_als = false;
+      this.uploadGrade11 = false;
+      this.uploadGrade12 = false;
+      this.uploadhighschool = false;
+      this.uploadALS = false;
+      this.$nextTick(function () {
+        _this2.uploadGrade11 = true;
+        _this2.uploadGrade12 = true;
+        _this2.uploadhighschool = true;
+        _this2.uploadALS = true;
+      });
+      return false;
+    },
+    income_requirements_func: function income_requirements_func() {
+      var _this3 = this;
+
+      this.valid_seafarers = false;
+      this.invalid_seafarers = false;
+      this.valid_indigence = false;
+      this.invalid_indigence = false;
+      this.valid_itr = false;
+      this.invalid_itr = false;
+      this.valid_case_study = false;
+      this.invalid_case_study = false;
+      this.valid_tax_excemption = false;
+      this.invalid_tax_excemption = false;
+      this.uploadIndigence = false;
+      this.uploadITR = false;
+      this.uploadCaseStudy = false;
+      this.uploadTaxExemption = false;
+      this.uploadSeaFarers = false;
+      this.$nextTick(function () {
+        _this3.uploadIndigence = true;
+        _this3.uploadITR = true;
+        _this3.uploadCaseStudy = true;
+        _this3.uploadTaxExemption = true;
+        _this3.uploadSeaFarers = true;
+      });
+      return false;
+    },
+    upload_documents: function upload_documents() {
+      var _this4 = this;
+
+      this.formData = new FormData();
+      this.formData.append('file_grade11', this.attachmentGrade11);
+      this.formData.append('file_grade12', this.attachmentGrade12);
+      this.formData.append('file_als', this.attachmentALS);
+      this.formData.append('file_seafarers', this.attachmentSeaFarers);
+      this.formData.append('file_case_study', this.attachmentCaseStudy);
+      this.formData.append('file_certificate_of_indigence', this.attachmentCertificateIndigence);
+      this.formData.append('file_certificate_of_tax_exemption', this.attachmentCertificateExemption);
+      this.formData.append('file_highschool', this.attachmentHighSchool);
+      this.formData.append('file_birth_certificate', this.attachmentBirthCertificate);
+      this.formData.append('file_itr', this.attachmentITR);
+
+      if ((this.attachmentGrade11 && this.attachmentGrade12 || this.attachmentALS || this.attachmentHighSchool) && (this.attachmentSeaFarers || this.attachmentCaseStudy || this.attachmentCertificateIndigence || this.attachmentCertificateExemption || this.attachmentITR) && this.attachmentBirthCertificate) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('applicant/upload_documents/', this.formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (result) {
+          if (result.data == 1) {
+            _this4.$swal.fire({
+              icon: 'success',
+              title: 'Great...',
+              text: "Uploaded successfully."
+            });
+
+            return false;
+          }
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+
+      if (!this.attachmentBirthCertificate) {
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Opps...',
+          text: "Birth certificate no file chosen."
+        });
+        return false;
+      }
+
+      if (!(this.attachmentGrade11 && this.attachmentGrade12) || this.attachmentHighSchool || this.attachmentALS) {
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Opps...',
+          text: "Grade requirements no file chosen."
+        });
+        return false;
+      }
+
+      if (!(this.attachmentSeaFarers || this.attachmentCaseStudy || this.attachmentCertificateIndigence || this.attachmentCertificateExemption || this.attachmentITR)) {
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Opps...',
+          text: "Income requirements no file chosen."
+        });
+        return false;
+      }
+    }
+  },
+  mounted: function () {
+    var _mounted = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.fetchUsername();
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function mounted() {
+      return _mounted.apply(this, arguments);
+    }
+
+    return mounted;
+  }(),
+  components: {//
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sweetalert2/dist/sweetalert2.min.css":
 /*!*******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/sweetalert2/dist/sweetalert2.min.css ***!
@@ -21870,6 +23237,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.dropdown-item.active[data-v-411e1094],\r\n.dropdown-item[data-v-411e1094]:active {\r\n  color: #fff;\r\n  text-decoration: none;\r\n  background-color: #dfe8f1;\n}\na[data-v-411e1094]:hover {\r\n  color: #1d68a7;\r\n  text-decoration: none;\n}\n*[data-v-411e1094]:before,\r\n*[data-v-411e1094]:after {\r\n  box-sizing: border-box;\n}\nbody[data-v-411e1094] {\r\n  background: #f5f5f5;\r\n  padding: 0;\r\n  margin: 0;\n}\ni.fa[data-v-411e1094] {\r\n  font-size: 16px;\n}\np[data-v-411e1094] {\r\n  font-size: 16px;\r\n  line-height: 1.42857143;\n}\n.logo[data-v-411e1094] {\r\n  width: 30px;\r\n  height: 30px;\n}\n.header[data-v-411e1094] {\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\n}\n.header[data-v-411e1094] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  top: 0;\r\n  left: 0;\r\n  background: #1c3961;\r\n  width: 100%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  color: #fff;\n}\n.header .logo[data-v-411e1094] {\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\n}\n.header #menu-action[data-v-411e1094] {\r\n  display: block;\r\n  float: left;\r\n  width: 60px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  margin-right: 15px;\r\n  color: #fff;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  background: rgba(0, 0, 0, 0.15);\r\n  font-size: 13px;\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action i[data-v-411e1094] {\r\n  display: inline-block;\r\n  margin: 0 5px;\n}\n.header #menu-action span[data-v-411e1094] {\r\n  width: 0px;\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action[data-v-411e1094]:hover {\r\n  background: rgba(0, 0, 0, 0.25);\n}\n.header #menu-action.active[data-v-411e1094] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action.active span[data-v-411e1094] {\r\n  display: inline;\r\n  width: auto;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-411e1094] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  left: 0;\r\n  top: 50px;\r\n  height: 100%;\r\n  width: 60px;\r\n  background: #1c3961;\r\n  border-right: 1px solid #ddd;\r\n  text-align: center;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-411e1094]:hover,\r\n.sidebar.active[data-v-411e1094],\r\n.sidebar.hovered[data-v-411e1094] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar ul[data-v-411e1094] {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\n}\n.sidebar ul li[data-v-411e1094] {\r\n  display: block;\n}\n.sidebar ul li a[data-v-411e1094] {\r\n  display: block;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  border-bottom: 1px solid #ddd;\r\n  color: #fff;\r\n  text-align: left;\n}\n.sidebar ul li a i[data-v-411e1094] {\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 60px;\r\n  text-align: center;\r\n  -webkit-animation-duration: 0.7s;\r\n  animation-duration: 0.7s;\r\n  -webkit-animation-fill-mode: both;\r\n  animation-fill-mode: both;\n}\n.sidebar ul li a span[data-v-411e1094] {\r\n  display: inline-block;\r\n  height: 60px;\r\n  line-height: 60px;\n}\n.sidebar ul li a[data-v-411e1094]:hover {\r\n  background-color: #1a3150;\n}\n.main[data-v-411e1094] {\r\n  position: relative;\r\n  display: block;\r\n  top: 50px;\r\n  left: 0;\r\n  padding: 15px;\r\n  padding-left: 75px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main.active[data-v-411e1094] {\r\n  padding-left: 275px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main .jumbotron[data-v-411e1094] {\r\n  background-color: #fff;\r\n  padding: 30px !important;\r\n  border: 1px solid #dfe8f1;\r\n  border-radius: 3px;\n}\n.main .jumbotron h1[data-v-411e1094] {\r\n  font-size: 24px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 12px;\n}\n@-webkit-keyframes swing-data-v-411e1094 {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n@keyframes swing-data-v-411e1094 {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n.swing[data-v-411e1094] {\r\n  transform-origin: top center;\r\n  -webkit-animation-name: swing-data-v-411e1094;\r\n  animation-name: swing-data-v-411e1094;\n}\n.bs-callout[data-v-411e1094] {\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border: 1px solid #eee;\r\n  border-left-width: 5px;\r\n  border-radius: 3px;\r\n  background: white;\n}\ntable[data-v-411e1094] {\r\n  background: white;\n}\n.bs-callout h4[data-v-411e1094] {\r\n  margin-top: 0;\r\n  margin-bottom: 5px;\n}\n.bs-callout p[data-v-411e1094]:last-child {\r\n  margin-bottom: 0;\n}\n.bs-callout code[data-v-411e1094] {\r\n  border-radius: 3px;\n}\n.bs-callout + .bs-callout[data-v-411e1094] {\r\n  margin-top: -5px;\n}\n.bs-callout-default[data-v-411e1094] {\r\n  border-left-color: #777;\n}\n.bs-callout-default h4[data-v-411e1094] {\r\n  color: #777;\n}\n.bs-callout-primary[data-v-411e1094] {\r\n  border-left-color: #428bca;\n}\n.bs-callout-primary h4[data-v-411e1094] {\r\n  color: #428bca;\n}\n.bs-callout-success[data-v-411e1094] {\r\n  border-left-color: #5cb85c;\n}\n.bs-callout-success h4[data-v-411e1094] {\r\n  color: #5cb85c;\n}\n.bs-callout-danger[data-v-411e1094] {\r\n  border-left-color: #d9534f;\n}\n.bs-callout-danger h4[data-v-411e1094] {\r\n  color: #d9534f;\n}\n.bs-callout-warning[data-v-411e1094] {\r\n  border-left-color: #f0ad4e;\n}\n.bs-callout-warning h4[data-v-411e1094] {\r\n  color: #f0ad4e;\n}\n.bs-callout-info[data-v-411e1094] {\r\n  border-left-color: #5bc0de;\n}\n.bs-callout-info h4[data-v-411e1094] {\r\n  color: #5bc0de;\n}\r\n\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dropdown-item.active[data-v-4ed6aafc],\r\n.dropdown-item[data-v-4ed6aafc]:active {\r\n  color: #fff;\r\n  text-decoration: none;\r\n  background-color: #dfe8f1;\n}\na[data-v-4ed6aafc]:hover {\r\n  color: #1d68a7;\r\n  text-decoration: none;\n}\n.se-pre-con[data-v-4ed6aafc] {\r\n    position: fixed;\r\n    left: 0px;\r\n    top: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n    background: url(/image/loading.gif) center no-repeat rgba(0, 196, 255, 0.2);\n}\n.logo[data-v-4ed6aafc] {\r\n  width: 30px;\r\n  height: 30px;\n}\n*[data-v-4ed6aafc]:before,\r\n*[data-v-4ed6aafc]:after {\r\n  box-sizing: border-box;\n}\ni.fa[data-v-4ed6aafc] {\r\n  font-size: 16px;\n}\np[data-v-4ed6aafc] {\r\n  font-size: 16px;\r\n  line-height: 1.42857143;\n}\n.header[data-v-4ed6aafc] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  top: 0;\r\n  left: 0;\r\n  background: #1c3961;\r\n  width: 100%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  color: #fff;\n}\n.header[data-v-4ed6aafc] {\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\n}\n.header #menu-action[data-v-4ed6aafc] {\r\n  display: block;\r\n  float: left;\r\n  width: 60px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  margin-right: 15px;\r\n  color: #fff;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  background: rgba(0, 0, 0, 0.15);\r\n  font-size: 13px;\r\n  text-transform: uppercase;\r\n  letter-spacing: 1px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action i[data-v-4ed6aafc] {\r\n  display: inline-block;\r\n  margin: 0 5px;\n}\n.header #menu-action span[data-v-4ed6aafc] {\r\n  width: 0px;\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action[data-v-4ed6aafc]:hover {\r\n  background: rgba(0, 0, 0, 0.25);\n}\n.header #menu-action.active[data-v-4ed6aafc] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.header #menu-action.active span[data-v-4ed6aafc] {\r\n  display: inline;\r\n  width: auto;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-4ed6aafc] {\r\n  position: fixed;\r\n  z-index: 10;\r\n  left: 0;\r\n  top: 50px;\r\n  height: 100%;\r\n  width: 60px;\r\n  background: #1c3961;\r\n  border-right: 1px solid #ddd;\r\n  text-align: center;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar[data-v-4ed6aafc]:hover,\r\n.sidebar.active[data-v-4ed6aafc],\r\n.sidebar.hovered[data-v-4ed6aafc] {\r\n  width: 250px;\r\n  transition: all 0.2s ease-in-out;\n}\n.sidebar ul[data-v-4ed6aafc] {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\n}\n.sidebar ul li[data-v-4ed6aafc] {\r\n  display: block;\n}\n.sidebar ul li a[data-v-4ed6aafc] {\r\n  display: block;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  border-bottom: 1px solid #ddd;\r\n  color: #fff;\r\n  text-align: left;\n}\n.sidebar ul li a i[data-v-4ed6aafc] {\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 60px;\r\n  text-align: center;\r\n  -webkit-animation-duration: 0.7s;\r\n  animation-duration: 0.7s;\r\n  -webkit-animation-fill-mode: both;\r\n  animation-fill-mode: both;\n}\n.sidebar ul li a span[data-v-4ed6aafc] {\r\n  display: inline-block;\r\n  height: 60px;\r\n  line-height: 60px;\n}\n.sidebar ul li a[data-v-4ed6aafc]:hover {\r\n  background-color: #1a3150;\n}\n.main[data-v-4ed6aafc] {\r\n  position: relative;\r\n  display: block;\r\n  top: 50px;\r\n  left: 0;\r\n  padding: 15px;\r\n  padding-left: 75px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main.active[data-v-4ed6aafc] {\r\n  padding-left: 275px;\r\n  transition: all 0.2s ease-in-out;\n}\n.main .jumbotron[data-v-4ed6aafc] {\r\n  background-color: #fff;\r\n  padding: 30px !important;\r\n  border: 1px solid #dfe8f1;\r\n  border-radius: 3px;\n}\n.main .jumbotron h1[data-v-4ed6aafc] {\r\n  font-size: 24px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 12px;\n}\n@-webkit-keyframes swing-data-v-4ed6aafc {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n@keyframes swing-data-v-4ed6aafc {\n20% {\r\n    transform: rotate3d(0, 0, 1, 15deg);\n}\n40% {\r\n    transform: rotate3d(0, 0, 1, -10deg);\n}\n60% {\r\n    transform: rotate3d(0, 0, 1, 5deg);\n}\n80% {\r\n    transform: rotate3d(0, 0, 1, -5deg);\n}\n100% {\r\n    transform: rotate3d(0, 0, 1, 0deg);\n}\n}\n.swing[data-v-4ed6aafc] {\r\n  transform-origin: top center;\r\n  -webkit-animation-name: swing-data-v-4ed6aafc;\r\n  animation-name: swing-data-v-4ed6aafc;\n}\n.bs-callout[data-v-4ed6aafc] {\r\n  padding: 20px;\r\n  margin: 20px 0;\r\n  border: 1px solid #eee;\r\n  border-left-width: 5px;\r\n  border-radius: 3px;\r\n  background: white;\n}\n.bs-callout h4[data-v-4ed6aafc] {\r\n  margin-top: 0;\r\n  margin-bottom: 5px;\n}\n.bs-callout p[data-v-4ed6aafc]:last-child {\r\n  margin-bottom: 0;\n}\n.bs-callout code[data-v-4ed6aafc] {\r\n  border-radius: 3px;\n}\n.bs-callout + .bs-callout[data-v-4ed6aafc] {\r\n  margin-top: -5px;\n}\n.bs-callout-default[data-v-4ed6aafc] {\r\n  border-left-color: #777;\n}\n.bs-callout-default h4[data-v-4ed6aafc] {\r\n  color: #777;\n}\n.bs-callout-primary[data-v-4ed6aafc] {\r\n  border-left-color: #428bca;\n}\n.bs-callout-primary h4[data-v-4ed6aafc] {\r\n  color: #428bca;\n}\n.bs-callout-success[data-v-4ed6aafc] {\r\n  border-left-color: #5cb85c;\n}\n.bs-callout-success h4[data-v-4ed6aafc] {\r\n  color: #5cb85c;\n}\n.bs-callout-danger[data-v-4ed6aafc] {\r\n  border-left-color: #d9534f;\n}\n.bs-callout-danger h4[data-v-4ed6aafc] {\r\n  color: #d9534f;\n}\n.bs-callout-warning[data-v-4ed6aafc] {\r\n  border-left-color: #f0ad4e;\n}\n.bs-callout-warning h4[data-v-4ed6aafc] {\r\n  color: #f0ad4e;\n}\n.bs-callout-info[data-v-4ed6aafc] {\r\n  border-left-color: #5bc0de;\n}\n.bs-callout-info h4[data-v-4ed6aafc] {\r\n  color: #5bc0de;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -25313,6 +26699,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./changepassword.vue?vue&type=style&index=0&id=411e1094&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/changepassword.vue?vue&type=style&index=0&id=411e1094&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -34560,7 +35976,20 @@ var render = function() {
                 _c("span", [_vm._v("Check Status")])
               ])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/student-dashboard/upload-documents" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-upload" }),
+                  _c("span", [_vm._v("Upload Documents")])
+                ])
+              ])
+            ]
+          )
         ],
         1
       )
@@ -38254,6 +39683,879 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", [_vm._v("Close")])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.loading ? _c("div", { staticClass: "se-pre-con" }) : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "header" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", [
+        _c("img", { staticClass: "logo", attrs: { src: _vm.logo } }),
+        _vm._v(" CSP\n            "),
+        _c(
+          "ul",
+          {
+            staticStyle: {
+              float: "right",
+              "margin-right": "30px",
+              "list-style-type": "none"
+            }
+          },
+          [
+            _c("li", { staticClass: "nav-item dropdown" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link dropdown-toggle",
+                  staticStyle: { color: "#fff" },
+                  attrs: {
+                    href: "#",
+                    id: "navbardrop",
+                    "data-toggle": "dropdown"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(_vm.username) +
+                      " Profile\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dropdown-menu" },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-item",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.$auth.logout()
+                        }
+                      }
+                    },
+                    [_vm._v("Logout")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/student-dashboard/change-password" } },
+                    [
+                      _c(
+                        "a",
+                        { staticClass: "dropdown-item", attrs: { href: "#" } },
+                        [_vm._v("Change Password")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "sidebar" }, [
+      _c(
+        "ul",
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "/student-information" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-user" }),
+                _c("span", [_vm._v("My Information")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "/student-status" } }, [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-question" }),
+                _c("span", [_vm._v("Check Status")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: "/student-dashboard/upload-documents" } },
+            [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "fas fa-upload" }),
+                  _c("span", [_vm._v("Upload Documents")])
+                ])
+              ])
+            ]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "main" }, [
+      _c("div", { staticClass: "jumbotron" }, [
+        _c(
+          "form",
+          {
+            staticClass: "col-md-12",
+            attrs: { method: "post", action: "foobar" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.upload_documents($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", [
+                  _vm._v("Birth certificate (Certified true copy)")
+                ]),
+                _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+                _vm._v(" "),
+                _vm.valid_birth_certificate
+                  ? _c(
+                      "span",
+                      {
+                        staticStyle: {
+                          color: "green",
+                          "font-size": "14px",
+                          float: "right"
+                        }
+                      },
+                      [_vm._v("Valid file.")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.invalid_birth_certificate
+                  ? _c(
+                      "span",
+                      {
+                        staticStyle: {
+                          color: "red",
+                          "font-size": "14px",
+                          float: "right"
+                        }
+                      },
+                      [_vm._v("Invalid file (only pdf extension)")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("input", {
+                  ref: "file_birth_certificate",
+                  staticClass: "form-control-file",
+                  staticStyle: { border: "1px solid #ddd" },
+                  attrs: { type: "file", id: "file_birth_certificate" },
+                  on: {
+                    change: function($event) {
+                      return _vm.addFileBirth()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", [_vm._v("Income Requirements")]),
+                _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.select_income,
+                        expression: "select_income"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "select_income", name: "select_income" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.select_income = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.income_requirements_func()
+                        }
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "1" } }, [
+                      _vm._v("Latest Income Tax Return of parents/guardian")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("Certificate of Tax Exemption from the BIR")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v(
+                        "Certificate of Indigence from their Barangay or DSWD"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [
+                      _vm._v("Case Study from DSWD")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [
+                      _vm._v(
+                        "Latest copy of contract or proof of income for children of OFW and seafarers"
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", [
+                  _vm._v("Grade Requirements (Certified true copy)")
+                ]),
+                _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.select_grade,
+                        expression: "select_grade"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "select_grade", name: "select_grade" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.select_grade = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.grade_requirements_func()
+                        }
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "1" } }, [
+                      _vm._v(
+                        "High school report card for incoming freshmen students eligible for college"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v(
+                        "Grade 11 and 1st semester of Grade 12 for graduating high school students"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("ALS graduate")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm.select_income == 1
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v("Latest Income Tax Return of parents/guardian")
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_itr
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_itr
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadITR
+                      ? _c("input", {
+                          ref: "file_itr",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { id: "file_itr", type: "file" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileITR()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_income == 2
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v("Certificate of Tax Exemption from the BIR")
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_tax_excemption
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_tax_excemption
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadTaxExemption
+                      ? _c("input", {
+                          ref: "file_certificate_of_tax_exemption",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: {
+                            id: "file_certificate_of_tax_exemption",
+                            type: "file"
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileCertificate_Of_Tax_Excemption()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_income == 3
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v(
+                        "Certificate of Indigence from their Barangay or DSWD"
+                      )
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_indigence
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_indigence
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadIndigence
+                      ? _c("input", {
+                          ref: "file_certificate_of_indigence",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: {
+                            type: "file",
+                            id: "file_certificate_of_indigence"
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileCertificate_Of_Indigence()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_income == 4
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [_vm._v("Case Study from DSWD")]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_case_study
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_case_study
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadCaseStudy
+                      ? _c("input", {
+                          ref: "file_case_study",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_case_study" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileCase_Study()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_income == 5
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v(
+                        "Latest copy of contract or proof of income for children of OFW and seafarers"
+                      )
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_seafarers
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_seafarers
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadSeaFarers
+                      ? _c("input", {
+                          ref: "file_seafarers",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_seafarers" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileSeafarers()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _vm.select_grade == 3
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [_vm._v("ALS Grade")]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_als
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_als
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadALS
+                      ? _c("input", {
+                          ref: "file_als",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_als" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileALS()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_grade == 2
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v("Certified true copy of grades for grade 11")
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_grade11
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_grade11
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadGrade11
+                      ? _c("input", {
+                          ref: "file_grade11",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_grade11" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileGrade11()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.select_grade == 1
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [_vm._v("High School Report Card")]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_highschool
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_highschool
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadhighschool
+                      ? _c("input", {
+                          ref: "file_highschool",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_highschool" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileHighSchool()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _vm.select_grade == 2
+                ? _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [
+                      _vm._v(
+                        "Certified true copy of grades for grade 12 (1st semester) "
+                      )
+                    ]),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v("*")
+                    ]),
+                    _vm._v(" "),
+                    _vm.valid_grade12
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "green",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Valid file.")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.invalid_grade12
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "red",
+                              "font-size": "14px",
+                              float: "right"
+                            }
+                          },
+                          [_vm._v("Invalid file (only pdf extension)")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.uploadGrade12
+                      ? _c("input", {
+                          ref: "file_grade12",
+                          staticClass: "form-control-file",
+                          staticStyle: { border: "1px solid #ddd" },
+                          attrs: { type: "file", id: "file_grade12" },
+                          on: {
+                            change: function($event) {
+                              return _vm.addFileGrade12()
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                staticStyle: { float: "right" }
+              },
+              [_vm._v("Upload Documents")]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", id: "menu-action" } }, [
+      _c("i", { staticClass: "fa fa-bars" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Close")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-home" }),
+        _c("span", [_vm._v("Home")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      { staticClass: "container", staticStyle: { "font-size": "12px" } },
+      [
+        _vm._v("Note: Fields marked with an asterisk ("),
+        _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+        _vm._v(") are required.")
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -57366,6 +59668,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/user/uploaddocuments.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/pages/user/uploaddocuments.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true& */ "./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true&");
+/* harmony import */ var _uploaddocuments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./uploaddocuments.vue?vue&type=script&lang=js& */ "./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& */ "./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _uploaddocuments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4ed6aafc",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/user/uploaddocuments.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./uploaddocuments.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=style&index=0&id=4ed6aafc&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_style_index_0_id_4ed6aafc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/user/uploaddocuments.vue?vue&type=template&id=4ed6aafc&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_uploaddocuments_vue_vue_type_template_id_4ed6aafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/router.js":
 /*!********************************!*\
   !*** ./resources/js/router.js ***!
@@ -57384,32 +59773,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_user_StudentInformation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/user/StudentInformation */ "./resources/js/pages/user/StudentInformation.vue");
 /* harmony import */ var _pages_user_StudentStatus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/user/StudentStatus */ "./resources/js/pages/user/StudentStatus.vue");
 /* harmony import */ var _pages_user_changepassword__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/user/changepassword */ "./resources/js/pages/user/changepassword.vue");
-/* harmony import */ var _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/chedcoordinator/dashboard */ "./resources/js/pages/chedcoordinator/dashboard.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofunverifiedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofunverifiedapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbyhei */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbyhei.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofenrolledapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofnotenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofnotenrolledapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofheis */ "./resources/js/pages/chedcoordinator/table/ched_listofheis.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbycsprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbycsprank.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbytdprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbytdprank.vue");
-/* harmony import */ var _pages_chedcoordinator_table_ched_listofvalidatedapplicant__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofvalidatedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofvalidatedapplicant.vue");
-/* harmony import */ var _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/chedcoordinator/changepassword */ "./resources/js/pages/chedcoordinator/changepassword.vue");
-/* harmony import */ var _pages_chedcoordinator_reset_password__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/chedcoordinator/reset_password */ "./resources/js/pages/chedcoordinator/reset_password.vue");
-/* harmony import */ var _pages_chedcoordinator_force_verified__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/chedcoordinator/force_verified */ "./resources/js/pages/chedcoordinator/force_verified.vue");
-/* harmony import */ var _pages_OJT_dashboard__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/OJT/dashboard */ "./resources/js/pages/OJT/dashboard.vue");
-/* harmony import */ var _pages_OJT_ojt_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/OJT/ojt_listofunverifiedapplicant */ "./resources/js/pages/OJT/ojt_listofunverifiedapplicant.vue");
-/* harmony import */ var _pages_OJT_ojt_listofverifiedapplicant__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/OJT/ojt_listofverifiedapplicant */ "./resources/js/pages/OJT/ojt_listofverifiedapplicant.vue");
-/* harmony import */ var _pages_OJT_reset_password__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/OJT/reset_password */ "./resources/js/pages/OJT/reset_password.vue");
-/* harmony import */ var _pages_OJT_force_verified__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/OJT/force_verified */ "./resources/js/pages/OJT/force_verified.vue");
-/* harmony import */ var _pages_OJT_change_password__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/OJT/change_password */ "./resources/js/pages/OJT/change_password.vue");
-/* harmony import */ var _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/heicoordinator/dashboard */ "./resources/js/pages/heicoordinator/dashboard.vue");
-/* harmony import */ var _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/heicoordinator/hei_listofapplicant */ "./resources/js/pages/heicoordinator/hei_listofapplicant.vue");
-/* harmony import */ var _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/heicoordinator/changepassword */ "./resources/js/pages/heicoordinator/changepassword.vue");
-/* harmony import */ var _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/superadmin/dashboard */ "./resources/js/pages/superadmin/dashboard.vue");
-/* harmony import */ var _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/superadmin/AddAccount */ "./resources/js/pages/superadmin/AddAccount.vue");
-/* harmony import */ var _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/superadmin/resetpassword */ "./resources/js/pages/superadmin/resetpassword.vue");
+/* harmony import */ var _pages_user_uploaddocuments__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/user/uploaddocuments */ "./resources/js/pages/user/uploaddocuments.vue");
+/* harmony import */ var _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/chedcoordinator/dashboard */ "./resources/js/pages/chedcoordinator/dashboard.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofunverifiedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofunverifiedapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbyhei */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbyhei.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofenrolledapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofnotenrolledapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofnotenrolledapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofheis */ "./resources/js/pages/chedcoordinator/table/ched_listofheis.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbycsprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbycsprank.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofapplicantbytdprank */ "./resources/js/pages/chedcoordinator/table/ched_listofapplicantbytdprank.vue");
+/* harmony import */ var _pages_chedcoordinator_table_ched_listofvalidatedapplicant__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/chedcoordinator/table/ched_listofvalidatedapplicant */ "./resources/js/pages/chedcoordinator/table/ched_listofvalidatedapplicant.vue");
+/* harmony import */ var _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/chedcoordinator/changepassword */ "./resources/js/pages/chedcoordinator/changepassword.vue");
+/* harmony import */ var _pages_chedcoordinator_reset_password__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/chedcoordinator/reset_password */ "./resources/js/pages/chedcoordinator/reset_password.vue");
+/* harmony import */ var _pages_chedcoordinator_force_verified__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/chedcoordinator/force_verified */ "./resources/js/pages/chedcoordinator/force_verified.vue");
+/* harmony import */ var _pages_OJT_dashboard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/OJT/dashboard */ "./resources/js/pages/OJT/dashboard.vue");
+/* harmony import */ var _pages_OJT_ojt_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/OJT/ojt_listofunverifiedapplicant */ "./resources/js/pages/OJT/ojt_listofunverifiedapplicant.vue");
+/* harmony import */ var _pages_OJT_ojt_listofverifiedapplicant__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/OJT/ojt_listofverifiedapplicant */ "./resources/js/pages/OJT/ojt_listofverifiedapplicant.vue");
+/* harmony import */ var _pages_OJT_reset_password__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/OJT/reset_password */ "./resources/js/pages/OJT/reset_password.vue");
+/* harmony import */ var _pages_OJT_force_verified__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/OJT/force_verified */ "./resources/js/pages/OJT/force_verified.vue");
+/* harmony import */ var _pages_OJT_change_password__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/OJT/change_password */ "./resources/js/pages/OJT/change_password.vue");
+/* harmony import */ var _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/heicoordinator/dashboard */ "./resources/js/pages/heicoordinator/dashboard.vue");
+/* harmony import */ var _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/heicoordinator/hei_listofapplicant */ "./resources/js/pages/heicoordinator/hei_listofapplicant.vue");
+/* harmony import */ var _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/heicoordinator/changepassword */ "./resources/js/pages/heicoordinator/changepassword.vue");
+/* harmony import */ var _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/superadmin/dashboard */ "./resources/js/pages/superadmin/dashboard.vue");
+/* harmony import */ var _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/superadmin/AddAccount */ "./resources/js/pages/superadmin/AddAccount.vue");
+/* harmony import */ var _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/superadmin/resetpassword */ "./resources/js/pages/superadmin/resetpassword.vue");
  // Pages
+
 
 
 
@@ -57477,7 +59868,7 @@ var routes = [{
 {
   path: '/OJT-dashboard',
   name: 'OJT.dashboard',
-  component: _pages_OJT_dashboard__WEBPACK_IMPORTED_MODULE_22__["default"],
+  component: _pages_OJT_dashboard__WEBPACK_IMPORTED_MODULE_23__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57490,7 +59881,7 @@ var routes = [{
 }, {
   path: '/OJT-dashboard/list-of-unverified-applicants',
   name: 'OJT.list_of_unverified_applicants_dashboard',
-  component: _pages_OJT_ojt_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_23__["default"],
+  component: _pages_OJT_ojt_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_24__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57503,7 +59894,7 @@ var routes = [{
 }, {
   path: '/OJT-dashboard/list-of-verified-applicants',
   name: 'OJT.list_of_verified_applicants_dashboard',
-  component: _pages_OJT_ojt_listofverifiedapplicant__WEBPACK_IMPORTED_MODULE_24__["default"],
+  component: _pages_OJT_ojt_listofverifiedapplicant__WEBPACK_IMPORTED_MODULE_25__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57516,7 +59907,7 @@ var routes = [{
 }, {
   path: '/OJT-dashboard/reset-password',
   name: 'ojt_dashboard_reset_password',
-  component: _pages_OJT_reset_password__WEBPACK_IMPORTED_MODULE_25__["default"],
+  component: _pages_OJT_reset_password__WEBPACK_IMPORTED_MODULE_26__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57529,7 +59920,7 @@ var routes = [{
 }, {
   path: '/OJT-dashboard/force-verified',
   name: 'ojt_dashboard_force_verified',
-  component: _pages_OJT_force_verified__WEBPACK_IMPORTED_MODULE_26__["default"],
+  component: _pages_OJT_force_verified__WEBPACK_IMPORTED_MODULE_27__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57542,7 +59933,7 @@ var routes = [{
 }, {
   path: '/OJT-dashboard/change-password',
   name: 'ojt_dashboard_change_password',
-  component: _pages_OJT_change_password__WEBPACK_IMPORTED_MODULE_27__["default"],
+  component: _pages_OJT_change_password__WEBPACK_IMPORTED_MODULE_28__["default"],
   meta: {
     auth: {
       roles: 5,
@@ -57557,6 +59948,19 @@ var routes = [{
   path: '/student-dashboard',
   name: 'dashboard',
   component: _pages_user_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+  meta: {
+    auth: {
+      roles: 1,
+      redirect: {
+        name: 'login'
+      },
+      forbiddenRedirect: '/403'
+    }
+  }
+}, {
+  path: '/student-dashboard/upload-documents',
+  name: 'dashboard_upload',
+  component: _pages_user_uploaddocuments__WEBPACK_IMPORTED_MODULE_9__["default"],
   meta: {
     auth: {
       roles: 1,
@@ -57609,7 +60013,7 @@ var routes = [{
 {
   path: '/ched-coordinator',
   name: 'ched_coordinator.dashboard',
-  component: _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_9__["default"],
+  component: _pages_chedcoordinator_dashboard__WEBPACK_IMPORTED_MODULE_10__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57622,7 +60026,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants',
   name: 'ched_coordinator.list_of_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_10__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicant__WEBPACK_IMPORTED_MODULE_11__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57635,7 +60039,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-unverified-applicants',
   name: 'ched_coordinator.list_of_unverified_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_11__["default"],
+  component: _pages_chedcoordinator_table_ched_listofunverifiedapplicant__WEBPACK_IMPORTED_MODULE_12__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57648,7 +60052,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-ched-validated-applicants',
   name: 'ched_coordinator.list_of_validated_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofvalidatedapplicant__WEBPACK_IMPORTED_MODULE_18__["default"],
+  component: _pages_chedcoordinator_table_ched_listofvalidatedapplicant__WEBPACK_IMPORTED_MODULE_19__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57661,7 +60065,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-hei/:hei_id',
   name: 'ched_coordinator.list_of_applicants_by_hei_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_12__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbyhei__WEBPACK_IMPORTED_MODULE_13__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57674,7 +60078,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-csp-rank',
   name: 'ched_coordinator.list_of_applicants_by_csp_rank',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_16__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbycsprank__WEBPACK_IMPORTED_MODULE_17__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57687,7 +60091,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-applicants-by-tdp-rank',
   name: 'ched_coordinator.list_of_applicants_by_tdp_rank',
-  component: _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_17__["default"],
+  component: _pages_chedcoordinator_table_ched_listofapplicantbytdprank__WEBPACK_IMPORTED_MODULE_18__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57700,7 +60104,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-enrolled-applicants',
   name: 'ched_coordinator.list_of_enrolled_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_13__["default"],
+  component: _pages_chedcoordinator_table_ched_listofenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57713,7 +60117,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-not-enrolled-applicants',
   name: 'ched_coordinator.list_of_not_enrolled_applicants_dashboard',
-  component: _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_14__["default"],
+  component: _pages_chedcoordinator_table_ched_listofnotenrolledapplicant__WEBPACK_IMPORTED_MODULE_15__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57726,7 +60130,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/list-of-heis',
   name: 'ched_coordinator.list_of_heis',
-  component: _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_15__["default"],
+  component: _pages_chedcoordinator_table_ched_listofheis__WEBPACK_IMPORTED_MODULE_16__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57739,7 +60143,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/change-password',
   name: 'ched_coordinator_change_password',
-  component: _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_19__["default"],
+  component: _pages_chedcoordinator_changepassword__WEBPACK_IMPORTED_MODULE_20__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57752,7 +60156,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/reset-password',
   name: 'ched_coordinator_reset_password',
-  component: _pages_chedcoordinator_reset_password__WEBPACK_IMPORTED_MODULE_20__["default"],
+  component: _pages_chedcoordinator_reset_password__WEBPACK_IMPORTED_MODULE_21__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57765,7 +60169,7 @@ var routes = [{
 }, {
   path: '/ched-coordinator/force-verified',
   name: 'ched_coordinator_force_verified',
-  component: _pages_chedcoordinator_force_verified__WEBPACK_IMPORTED_MODULE_21__["default"],
+  component: _pages_chedcoordinator_force_verified__WEBPACK_IMPORTED_MODULE_22__["default"],
   meta: {
     auth: {
       roles: 2,
@@ -57779,7 +60183,7 @@ var routes = [{
 {
   path: '/hei-coordinator',
   name: 'hei_coordinator.dashboard',
-  component: _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_28__["default"],
+  component: _pages_heicoordinator_dashboard__WEBPACK_IMPORTED_MODULE_29__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -57792,7 +60196,7 @@ var routes = [{
 }, {
   path: '/hei-coordinator/list-of-applicants',
   name: 'hei_coordinator.list_of_applicants_dashboard',
-  component: _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_29__["default"],
+  component: _pages_heicoordinator_hei_listofapplicant__WEBPACK_IMPORTED_MODULE_30__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -57805,7 +60209,7 @@ var routes = [{
 }, {
   path: '/hei-coordinator/change-password',
   name: 'hei_coordinator_change_password',
-  component: _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_30__["default"],
+  component: _pages_heicoordinator_changepassword__WEBPACK_IMPORTED_MODULE_31__["default"],
   meta: {
     auth: {
       roles: 3,
@@ -57819,7 +60223,7 @@ var routes = [{
 {
   path: '/super-admin',
   name: 'super_admin.dashboard',
-  component: _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_31__["default"],
+  component: _pages_superadmin_dashboard__WEBPACK_IMPORTED_MODULE_32__["default"],
   meta: {
     auth: {
       roles: 4,
@@ -57832,7 +60236,7 @@ var routes = [{
 }, {
   path: '/add-account',
   name: 'super_admin.add_account',
-  component: _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_32__["default"],
+  component: _pages_superadmin_AddAccount__WEBPACK_IMPORTED_MODULE_33__["default"],
   meta: {
     auth: {
       roles: 4,
@@ -57845,7 +60249,7 @@ var routes = [{
 }, {
   path: '/reset-password',
   name: 'super_admin.reset_password',
-  component: _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_33__["default"],
+  component: _pages_superadmin_resetpassword__WEBPACK_IMPORTED_MODULE_34__["default"],
   meta: {
     auth: {
       roles: 4,

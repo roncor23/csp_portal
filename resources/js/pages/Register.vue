@@ -967,32 +967,110 @@ Vue.component("step5", {
     }
 });
 
-
 // Vue.component("step6", {
 //     template: `<div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6" >
-//                       <label >Certified true copy of birth certificate</label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="birth_certificate" @change="addFile4()" style="border: 1px solid #fff">
+                  // <div class="form-row">
+                  //   <div class="form-group col-md-6" >
+                  //     <label >Birth certificate (Certified true copy)</label><span style="color:red">*</span>
+                  //     <span v-if="valid_birth_certificate" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //     <span v-if="invalid_birth_certificate" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>              
+                  //      <input class="form-control-file" type="file" id="file_birth_certificate" ref="file_birth_certificate" @change="addFileBirth()" style="border: 1px solid #fff">
+                  //   </div>
+                  //   <div class="form-group col-md-6">
+                  //       <label>Income Requirements</label><span style="color:red">*</span>  
+                  //       <select id="select_income" name="select_income" class="form-control" v-model="select_income" @change="income_requirements_func()">
+                  //         <option value="1">Latest Income Tax Return of parents/guardian</option>
+                  //         <option value="2">Certificate of Tax Exemption from the BIR</option>
+                  //         <option value="3">Certificate of Indigence from their Barangay or DSWD</option>
+                  //         <option value="4">Case Study from DSWD</option>
+                  //         <option value="5">Latest copy of contract or proof of income for children of OFW and seafarers</option>
+                  //       </select>
+                  //   </div>
+                  // </div>
+                  // <div class="form-row">
+                  //     <div class="form-group col-md-6">
+                  //       <label >Grade Requirements (Certified true copy)</label><span style="color:red">*</span>  
+                  //       <select id="select_grade" name="select_grade" class="form-control" v-model="select_grade" @change="grade_requirements_func()">
+                  //         <option value="1">High school report card for incoming freshmen students eligible for college</option>
+                  //         <option value="2">Grade 11 and 1st semester of Grade 12 for graduating high school students</option>
+                  //         <option value="3">ALS graduate</option>
+                  //       </select>
+                  //     </div>
 
-//                     </div>
+                  //     <div class="form-group col-md-6" v-if="select_income == 1">
+                  //       <label >Latest Income Tax Return of parents/guardian</label><span style="color:red">*</span>              
+                  //       <span v-if="valid_itr" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //       <span v-if="invalid_itr" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>   
+                  //        <input v-if="uploadITR" class="form-control-file" id="file_itr" type="file" ref="file_itr" @change="addFileITR()" style="border: 1px solid #fff">
+                  //     </div>
+
+                  //     <div class="form-group col-md-6" v-if="select_income == 2">
+                  //       <label >Certificate of Tax Exemption from the BIR</label><span style="color:red">*</span>
+                  //       <span v-if="valid_tax_excemption" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //       <span v-if="invalid_tax_excemption" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //        <input v-if="uploadTaxExemption" class="form-control-file" id="file_certificate_of_tax_exemption" type="file" ref="file_certificate_of_tax_exemption" @change="addFileCertificate_Of_Tax_Excemption()" style="border: 1px solid #fff">
+                  //     </div>
+
+                  //     <div class="form-group col-md-6" v-if="select_income == 3">
+                  //       <label >Certificate of Indigence from their Barangay or DSWD</label><span style="color:red">*</span>
+                  //       <span v-if="valid_indigence" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //       <span v-if="invalid_indigence" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //        <input v-if="uploadIndigence" class="form-control-file" type="file" id="file_certificate_of_indigence" ref="file_certificate_of_indigence" @change="addFileCertificate_Of_Indigence()" style="border: 1px solid #fff">
+                  //     </div>
+
+                  //     <div class="form-group col-md-6" v-if="select_income == 4">
+                  //       <label >Case Study from DSWD</label><span style="color:red">*</span>
+                  //       <span v-if="valid_case_study" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //       <span v-if="invalid_case_study" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //        <input v-if="uploadCaseStudy" class="form-control-file" type="file" id="file_case_study" ref="file_case_study" @change="addFileCase_Study()" style="border: 1px solid #fff">
+                  //     </div>
+
+                  //     <div class="form-group col-md-6" v-if="select_income == 5">
+                  //       <label >Latest copy of contract or proof of income for children of OFW and seafarers</label><span style="color:red">*</span>
+                  //       <span v-if="valid_seafarers" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //       <span v-if="invalid_seafarers" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //        <input v-if="uploadSeaFarers" class="form-control-file" type="file" id="file_seafarers" ref="file_seafarers" @change="addFileSeafarers()" style="border: 1px solid #fff">
+                  //     </div>
+
+                  // </div>
+
+                  // <div class="form-row">
+
+                  //   <div class="form-group col-md-6" v-if="select_grade == 3">
+                  //     <label>ALS Grade</label><span style="color:red">*</span>
+                  //     <span v-if="valid_als" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //     <span v-if="invalid_als" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //      <input class="form-control-file" v-if="uploadALS" type="file" id="file_als" ref="file_als" @change="addFileALS()" style="border: 1px solid #fff">
+                  //   </div>
+
+                  //   <div class="form-group col-md-6" v-if="select_grade == 2">
+                  //     <label>Certified true copy of grades for grade 11</label><span style="color:red">*</span>
+                  //     <span v-if="valid_grade11" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //     <span v-if="invalid_grade11" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //      <input class="form-control-file" v-if="uploadGrade11" type="file" id="file_grade11" ref="file_grade11" @change="addFileGrade11()" style="border: 1px solid #fff">
+                  //   </div>
+
+                  //   <div class="form-group col-md-6" v-if="select_grade == 1">
+                  //     <label >High School Report Card</label><span style="color:red">*</span>
+                  //     <span v-if="valid_highschool" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //     <span v-if="invalid_highschool" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //     <input class="form-control-file" v-if="uploadhighschool" type="file" id="file_highschool" ref="file_highschool" @change="addFileHighSchool()" style="border: 1px solid #fff">
+                  //   </div>
+
+                  // </div>
 
 
-//                   </div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6">
-//                       <label >Certified true copy of grades for grade 11</label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
-//                     </div>
-//                   </div>
-//                   <div class="form-row">
-//                     <div class="form-group col-md-6">
-//                       <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>              
-//                        <input class="form-control-file" type="file" ref="file4" @change="addFile4()" style="border: 1px solid #fff">
-//                     </div>
-//                   </div>
 
-//                    <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
+                  // <div class="form-row">
+                  //   <div class="form-group col-md-6" v-if="select_grade == 2">
+                  //     <label >Certified true copy of grades for grade 12 (1st semester) </label><span style="color:red">*</span>
+                  //     <span v-if="valid_grade12" style="color:#fff;font-size:14px; float:right">Valid file.</span>  
+                  //     <span v-if="invalid_grade12" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
+                  //      <input class="form-control-file" v-if="uploadGrade12" type="file" id="file_grade12" ref="file_grade12" @change="addFileGrade12()" style="border: 1px solid #fff">
+                  //   </div>
+                  // </div>
+
+                  //  <span class="container" style="font-size:12px">Note: Fields marked with an asterisk (<span style="color:red">*</span>) are required.</span>   
 //         </div>`,
 //     data() {
 //         return {
@@ -1001,18 +1079,515 @@ Vue.component("step5", {
 //             grade12: '',
 //             income_requirements: '',
 //             other: '',
+//             select_grade: '',
+//             select_income: '',
+//             valid_birth_certificate: false,
+//             valid_grade11: false,
+//             valid_grade12: false,
+//             valid_highschool: false,
+//             valid_itr: false,
+//             valid_tax_excemption: false,
+//             valid_indigence: false,
+//             valid_case_study: false,
+//             valid_seafarers: false,
+//             valid_als: false,
+//             invalid_birth_certificate: false,
+//             invalid_grade11: false,
+//             invalid_grade12: false,
+//             invalid_highschool: false,
+//             invalid_itr: false,
+//             invalid_tax_excemption: false,
+//             invalid_indigence: false,
+//             invalid_case_study: false,
+//             invalid_seafarers: false,
+//             invalid_als: false,
+//             uploadGrade11: true,
+//             uploadGrade12: true,
+//             uploadhighschool: true,
+//             uploadIndigence: true,
+//             uploadITR: true,
+//             uploadSeaFarers: true,
+//             uploadCaseStudy: true,
+//             uploadTaxExemption: true,
+//             uploadALS: true,
 //             formData: {}
 //         }
 //     },
+//     validations: {
+
+
+//         form: []
+//     },
 //     methods: {
-//         validate() {
-//             this.$v.form.$touch();
-//             var isValid = !this.$v.form.$invalid;
-//             this.$emit("on-validate", this.$data, isValid);
-//             return isValid;
-//         }
+
+//           validate() {
+//               this.$v.form.$touch();
+//               var isValid = !this.$v.form.$invalid;
+//               this.$emit("on-validate", this.$data, isValid);
+//               return isValid;
+//           },
+
+      //     addFileALS() {
+
+      //       this.valid_als = false;
+      //       this.invalid_als = false;
+      //       $('#file_als').css('border-color','');
+      //       var file = $('#file_als').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_als.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_als = true;
+      //             $('#file_als').css('border-color','#fff');
+      //             this.attachmentALS = this.$refs.file_als.files[0];
+      //             console.log(this.attachmentALS);
+      //             return false;
+
+      //         }
+
+      //       } else {
+      //         this.invalid_als = true;
+      //         $('#file_als').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+
+      //       }
+      
+      //   },
+      //   addFileBirth() {
+
+      //       this.valid_birth_certificate = false;
+      //       this.invalid_birth_certificate = false;
+      //       $('#file_birth_certificate').css('border-color','');
+      //       var file = $('#file_birth_certificate').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_birth_certificate.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_birth_certificate = true;
+      //             $('#file_birth_certificate').css('border-color','#fff');
+      //             this.attachmentBirthCertificate = this.$refs.file_birth_certificate.files[0];
+      //             console.log(this.attachmentBirthCertificate);
+      //             return false;
+
+      //         }
+
+      //       } else {
+      //         this.invalid_birth_certificate = true;
+      //         $('#file_birth_certificate').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+
+      //       }
+      
+      //   },
+      //   addFileITR() {
+
+      //       this.valid_itr = false;
+      //       this.invalid_itr = false;
+      //       $('#file_itr').css('border-color','');
+      //       var file = $('#file_itr').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_itr.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_itr = true;
+      //             $('#file_itr').css('border-color','#fff');
+      //             this.attachmentITR = this.$refs.file_itr.files[0];
+      //             console.log(this.attachmentITR);
+      //             return false;
+
+      //         }
+
+      //       } else {
+      //         this.invalid_itr = true;
+      //         $('#file_itr').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+
+      //       }
+      
+      //   },
+      //   addFileCertificate_Of_Tax_Excemption() {
+
+      //       this.valid_tax_excemption = false;
+      //       this.invalid_tax_excemption = false;
+      //       $('#file_certificate_of_tax_exemption').css('border-color','');
+      //       var file = $('#file_certificate_of_tax_exemption').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_certificate_of_tax_exemption.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_tax_excemption = true;
+      //             $('#file_certificate_of_tax_exemption').css('border-color','#fff');
+      //             this.attachmentCertificateExemption = this.$refs.file_certificate_of_tax_exemption.files[0];
+      //             console.log(this.attachmentCertificateExemption);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_tax_excemption = true;
+      //         $('#file_certificate_of_tax_exemption').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+
+      //       }
+      
+      //   },
+      //   addFileCertificate_Of_Indigence() {
+
+      //       this.valid_indigence = false;
+      //       this.invalid_indigence = false;
+      //       $('#file_certificate_of_indigence').css('border-color','');
+      //       var file = $('#file_certificate_of_indigence').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_certificate_of_indigence.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_indigence = true;
+      //             $('#file_certificate_of_indigence').css('border-color','#fff');
+      //             this.attachmentCertificateIndigence = this.$refs.file_certificate_of_indigence.files[0];
+      //             console.log(this.attachmentCertificateIndigence);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_indigence = true;
+      //         $('#file_certificate_of_indigence').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //   }
+      // },
+      //   addFileCase_Study() {
+
+
+      //       this.valid_case_study = false;
+      //       this.invalid_case_study = false;
+      //       $('#file_case_study').css('border-color','');
+      //       var file = $('#file_case_study').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_case_study.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_case_study = true;
+      //             $('#file_case_study').css('border-color','#fff');
+      //             this.attachmentCaseStudy = this.$refs.file_case_study.files[0];
+      //             console.log(this.attachmentCaseStudy);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_case_study = true;
+      //         $('#file_case_study').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //     }
+      
+      //   },
+      //   addFileSeafarers() {
+
+      //       this.valid_seafarers = false;
+      //       this.invalid_seafarers = false;
+      //       $('#file_seafarers').css('border-color','');
+      //       var file = $('#file_seafarers').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_seafarers.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_seafarers = true;
+      //             $('#file_seafarers').css('border-color','#fff');
+      //             this.attachmentSeaFarers = this.$refs.file_seafarers.files[0];
+      //             console.log(this.attachmentSeaFarers);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_seafarers = true;
+      //         $('#file_seafarers').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //     }
+      
+      //   },
+      //   addFileGrade11() {
+
+      //       this.valid_grade11 = false;
+      //       this.invalid_grade11 = false;
+      //       $('#file_grade11').css('border-color','');
+      //       var file = $('#file_grade11').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_grade11.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_grade11 = true;
+      //             $('#file_grade11').css('border-color','#fff');
+      //             this.attachmentGrade11 = this.$refs.file_grade11.files[0];
+      //             console.log(this.attachmentGrade11);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_grade11 = true;
+      //         $('#file_grade11').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //     }
+      
+      //   },
+      //   addFileHighSchool() {
+
+      //       this.valid_highschool = false;
+      //       this.invalid_highschool = false;
+      //       $('#file_highschool').css('border-color','');
+      //       var file = $('#file_highschool').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_highschool.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_highschool = true;
+      //             $('#file_highschool').css('border-color','#fff');
+      //             this.attachmentHighSchool = this.$refs.file_highschool.files[0];
+      //             console.log(this.attachmentHighSchool);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_highschool = true;
+      //         $('#file_highschool').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //     }
+      
+      //   },
+      //   addFileGrade12() {
+
+      //       this.valid_grade12 = false;
+      //       this.invalid_grade12 = false;
+      //       $('#file_grade12').css('border-color','');
+      //       var file = $('#file_grade12').val();
+      //       var ext = ['pdf'];
+
+      //       if(file) {
+
+      //       var get_ext = file.split('.');
+
+      //       get_ext = get_ext.reverse();
+
+      //       if($.inArray ( get_ext[0].toLowerCase(), ext) > -1) {
+            
+      //         if(this.$refs.file_grade12.files[0].size > 999999) {
+      
+      //             swal("Opps!", "File size required less than 1mb.", "error");
+      //             return false;
+
+      //         }else{
+      //             this.valid_grade12 = true;
+      //             $('#file_grade12').css('border-color','#fff');
+      //             this.attachmentGrade12 = this.$refs.file_grade12.files[0];
+      //             console.log(this.attachmentGrade12);
+      //             return false;
+      //         }
+
+      //       } else {
+      //         this.invalid_grade12 = true;
+      //         $('#file_grade12').css('border-color','red');
+      //         return false;
+      //       }
+
+      //       console.log(file);
+      
+      //     }
+      
+      //   },
+      //   grade_requirements_func() {
+
+      //    this.valid_highschool = false;
+      //    this.invalid_highschool = false;
+      //    this.valid_grade12 = false;
+      //    this.valid_grade11 = false;
+      //    this.valid_als = false;
+      //    this.invalid_grade11 = false;
+      //    this.invalid_grade12 = false;
+      //    this.invalid_als = false;
+      //    this.uploadGrade11 = false;
+      //    this.uploadGrade12 = false;
+      //    this.uploadhighschool = false;
+      //    this.uploadALS = false;
+      //    this.$nextTick(() => {
+      //       this.uploadGrade11 = true;
+      //       this.uploadGrade12 = true;
+      //       this.uploadhighschool = true;
+      //       this.uploadALS = true;
+      //    });
+      //    return false;
+
+      //  },
+      // income_requirements_func() {
+
+      //   this.valid_seafarers = false;
+      //   this.invalid_seafarers = false;
+      //   this.valid_indigence = false;
+      //   this.invalid_indigence = false;
+      //   this.valid_itr = false;
+      //   this.invalid_itr = false;
+      //   this.valid_case_study = false;
+      //   this.invalid_case_study = false;
+      //   this.valid_tax_excemption = false;
+      //   this.invalid_tax_excemption = false;
+      //   this.uploadIndigence = false;
+      //   this.uploadITR = false;
+      //   this.uploadCaseStudy = false;
+      //   this.uploadTaxExemption = false;
+      //   this.uploadSeaFarers = false;
+
+      //    this.$nextTick(() => {
+      //       this.uploadIndigence = true;
+      //       this.uploadITR = true;
+      //       this.uploadCaseStudy = true;
+      //       this.uploadTaxExemption = true;
+      //       this.uploadSeaFarers = true;
+      //    });
+      //    return false;
+
+      //  },
+
+
+
+
 //     }
 // });
+
  export default {
     data() {
       return {
@@ -1065,45 +1640,58 @@ Vue.component("step5", {
           this.formData.append('a_solo_parent', this.applicationModel.a_solo_parent);
           this.formData.append('solo_parent', this.applicationModel.solo_parent);
           this.formData.append('pwd', this.applicationModel.pwd);
-          this.loading = true;
-          axios.post('applicant/register/', this.formData, {headers: {'content-Type': 'multipart/form-data'}})
-            .then(response => {
 
-                 if(response.data === 0) { //Applicants already in the system.
-                  this.$swal.fire({
-                    icon: 'error',
-                    title: 'Opps...',
-                    text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern or Visit CHED CARAGA Regional Office, Ampayon Butuan City..',
-                    footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
-                  })
-                  this.loading = false;
-                  return false;
-                }
-                if(response.data === 2) { //Email already in used.
-                  this.$swal.fire({
-                    icon: 'error',
-                    title: 'Opps...',
-                    text: 'Email address is already in used in this system. Please try new one.',
-                  })
-                  this.loading = false;
-                  return false;
-                }
-                this.loading = false;
-                this.$swal.fire({
-                  icon: 'success',
-                  title: 'Great...',
-                  text: `Application successfully submitted! A verification code sent to ${response.data.email}. Please check your email and verify your account, you must login first.`
-                  // footer: `<h3>Reference #:<h3 style="color:red">&nbsp;${response.data.reference_no}</h3></h3>`
-                })
-                this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+          this.formData.append('file_grade11', this.applicationModel.attachmentGrade11);
+          this.formData.append('file_grade12', this.applicationModel.attachmentGrade12);
+          this.formData.append('file_als', this.applicationModel.attachmentALS);
+          this.formData.append('file_seafarers', this.applicationModel.attachmentSeaFarers);
+          this.formData.append('file_case_study', this.applicationModel.attachmentCaseStudy);
+          this.formData.append('file_certificate_of_indigence', this.applicationModel.attachmentCertificateIndigence);
+          this.formData.append('file_certificate_of_tax_exemption', this.applicationModel.attachmentCertificateExemption);
+          this.formData.append('file_highschool', this.applicationModel.attachmentHighSchool);
+          this.formData.append('file_birth_certificate', this.applicationModel.attachmentBirthCertificate);
+          this.formData.append('file_itr', this.applicationModel.attachmentITR);
+
+          // this.loading = true;
+          // axios.post('applicant/register/', this.formData, {headers: {'content-Type': 'multipart/form-data'}})
+          //   .then(response => {
+
+          //        if(response.data === 0) { //Applicants already in the system.
+          //         this.$swal.fire({
+          //           icon: 'error',
+          //           title: 'Opps...',
+          //           text: 'You are already registered in the system. Contact CHEDRO coordinator for your concern or Visit CHED CARAGA Regional Office, Ampayon Butuan City..',
+          //           footer: `<h4>Contact #:<h4 style="color:blue">&nbsp; 0912-089-2045</h4></h4>`
+          //         })
+          //         this.loading = false;
+          //         return false;
+          //       }
+          //       if(response.data === 2) { //Email already in used.
+          //         this.$swal.fire({
+          //           icon: 'error',
+          //           title: 'Opps...',
+          //           text: 'Email address is already in used in this system. Please try new one.',
+          //         })
+          //         this.loading = false;
+          //         return false;
+          //       }
+          //       this.loading = false;
+          //       this.$swal.fire({
+          //         icon: 'success',
+          //         title: 'Great...',
+          //         text: `Application successfully submitted! A verification code sent to ${response.data.email}. Please check your email and verify your account, you must login first.`
+          //         // footer: `<h3>Reference #:<h3 style="color:red">&nbsp;${response.data.reference_no}</h3></h3>`
+          //       })
+          //       this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
 
               
-            })
-            .catch(error => {
-                this.errors = error.response.data.errors;
-                console.log(this.errors);
-            });
-   
+          //   })
+          //   .catch(error => {
+          //       this.errors = error.response.data.errors;
+          //       console.log(this.errors);
+          //   });
+
+          console.log(this.applicationModel.attachmentBirthCertificate);
       },
      validateStep(name) {
          var refToValidate = this.$refs[name];
@@ -1119,13 +1707,6 @@ Vue.component("step5", {
      note() {
       
        this.$swal.fire({
-          // title: '<strong style="color:red">ATTENTION!</strong>',
-          // html:
-          //   'Please provide a valid email using ' +
-          //   '<a href="//gmail.com" target="_blank">gmail.com</a> ' +
-          //   'or ' +
-          //   '<a href="//yahoo.com" target="_blank">yahoo.com</a> ' +
-          //   'before you register for this application to ensure that you will receive a verification code. Thanks! ',
           showCloseButton: true,
           confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Okay',

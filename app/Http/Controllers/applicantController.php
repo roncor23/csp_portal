@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App;
 use App\mun_citysModel;
 use App\brgyModel;
@@ -306,5 +307,90 @@ class applicantController extends Controller
 
 
             return response()->json(0); //False
+    }
+
+    public function upload_documents(Request $request) {
+
+        $income_requirements = "income_requirements";
+        $grade_requirements = "grade_requirements";
+        $birth_certificate = "birth_certificate";
+        $grade_11 = "grade_11";
+        $grade_12 = "grade_12";
+        $high_school = "high_school";
+        $als_grade = "als_grade";
+
+        $sea_farers = "sea_farers";
+        $case_study = "case_study";
+        $certificate_indigence = "certificate_indigence";
+        $certificate_tax_excemption = "certificate_tax_excemption";
+        $certificate_itr = "certificate_itr";
+        $required_documents = "required_documents";
+
+        $file_grade11 = $request->file('file_grade11');
+        $file_grade12 = $request->file('file_grade12');
+        $file_als = $request->file('file_als');
+        $file_highschool = $request->file('file_highschool');
+
+        $file_seafarers = $request->file('file_seafarers');
+        $file_case_study = $request->file('file_case_study');
+        $file_certificate_of_indigence = $request->file('file_certificate_of_indigence');
+        $file_certificate_of_tax_exemption = $request->file('file_certificate_of_tax_exemption');
+        $file_itr = $request->file('file_itr');
+
+        $file_birth_certificate = $request->file('file_birth_certificate');
+
+        $ext = "pdf";
+
+        if($request->hasFile('file_grade11')) {
+
+            $file_grade11->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $grade_requirements . '/' . $grade_11 . '/', $this->getUserDir()  . '.' . $ext);
+        }
+        if($request->hasFile('file_grade12')) {
+
+            $file_grade12->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $grade_requirements . '/' . $grade_12 . '/', $this->getUserDir()  . '.' . $ext); 
+        }
+        if($request->hasFile('file_highschool')) {
+
+            $file_highschool->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $grade_requirements . '/' . $high_school . '/', $this->getUserDir()  . '.' . $ext);
+        }
+        if($request->hasFile('file_als')) {
+
+            $file_als->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $grade_requirements . '/' . $als_grade . '/', $this->getUserDir()  . '.' . $ext);  
+        }
+        if($request->hasFile('file_birth_certificate')) {
+
+            $file_birth_certificate->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $birth_certificate .  '/', $this->getUserDir()  . '.' . $ext);
+        } 
+        if($request->hasFile('file_seafarers')) {
+
+            $file_seafarers->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $income_requirements . '/' . $sea_farers . '/', $this->getUserDir()  . '.' . $ext);  
+        } 
+        if($request->hasFile('file_case_study')) {
+
+            $file_case_study->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $income_requirements . '/' . $case_study . '/', $this->getUserDir()  . '.' . $ext);
+        }
+        if($request->hasFile('file_certificate_of_indigence')) {
+
+            $file_certificate_of_indigence->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $income_requirements . '/' . $certificate_indigence . '/', $this->getUserDir()  . '.' . $ext);
+        }
+        if($request->hasFile('file_certificate_of_tax_exemption')) {
+
+            $file_certificate_of_tax_exemption->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $income_requirements . '/' . $certificate_tax_excemption . '/', $this->getUserDir()  . '.' . $ext); 
+        }
+        if($request->hasFile('file_itr')) {
+
+            $file_itr->storeAs('/public/' . $grade_requirements . '/' . $this->getUserDir() . '/' . $income_requirements . '/' . $certificate_itr . '/', $this->getUserDir()  . '.' . $ext); 
+        }
+
+        return response()->json(1); //True
+
+    }
+            /**
+     * Get directory for the specific user
+     * @return string Specific user directory
+     */
+    private function getUserDir()
+    {
+        return Auth::user()->name . '_' . Auth::id();
     }
 }

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use App\applicantsModel;
 use App\parentsModel;
 use Carbon\Carbon;
@@ -48,8 +49,7 @@ class AuthController extends Controller
 
         //Confirmation Code
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-        $shuffle =  substr(str_shuffle($data),0,7);
-  
+        $shuffle =  substr(str_shuffle($data),0,7);  
        
         $user->name = $request->userName;
         $user->email = $request->emailAddress;
@@ -109,8 +109,7 @@ class AuthController extends Controller
         $parents->father_contact_number = $request->fatherContact;
         $parents->user_id = $user->id;
         $parents->save();
-
-
+    
         $username = $request->userName;
         $email = $request->emailAddress;
         $code = $shuffle;
@@ -210,6 +209,7 @@ class AuthController extends Controller
 
         return response()->json(['error' => 'refresh_token_error'], 401);
     }
+
 
     private function guard()
     {

@@ -10,6 +10,7 @@ import ForgotPassword from './pages/forgotpassword.vue'
 import StudentInformation from './pages/user/StudentInformation'
 import StudentStatus from './pages/user/StudentStatus'
 import StudentChangePassword from './pages/user/changepassword'
+import StudentUploadDocuments from './pages/user/uploaddocuments'
 
 import ChedCoordinator from './pages/chedcoordinator/dashboard'
 import ChedCoordinatorListOfApplicants from './pages/chedcoordinator/table/ched_listofapplicant' 
@@ -131,6 +132,14 @@ const routes = [
     path: '/student-dashboard',
     name: 'dashboard',
     component: Dashboard,
+    meta: {
+      auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/student-dashboard/upload-documents',
+    name: 'dashboard_upload',
+    component: StudentUploadDocuments,
     meta: {
       auth: {roles: 1, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }

@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('applicant/new_email/','applicantController@new_email')->middleware('isApplicant');
     // Applicant verify code
     Route::post('applicant/verify_code/','applicantController@verify_code')->middleware('isApplicant');
+    // Applicant upload documents
+    Route::post('applicant/upload_documents/','applicantController@upload_documents')->middleware('isApplicant');
 
 
     // Super Admin add account
