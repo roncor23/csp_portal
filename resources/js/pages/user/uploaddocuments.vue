@@ -44,7 +44,7 @@
                        <input class="form-control-file" type="file" id="file_birth_certificate" ref="file_birth_certificate" @change="addFileBirth()" style="border: 1px solid #ddd">
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Income Requirements</label><span style="color:red">*</span>  
+                        <label>Income Requirements (any of the following)</label><span style="color:red">*</span>  
                         <select id="select_income" name="select_income" class="form-control" v-model="select_income" @change="income_requirements_func()">
                           <option value="1">Latest Income Tax Return of parents/guardian</option>
                           <option value="2">Certificate of Tax Exemption from the BIR</option>
@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label >Grade Requirements (Certified true copy)</label><span style="color:red">*</span>  
+                        <label >Grade Requirements (any of the following)</label><span style="color:red"></span>  
                         <select id="select_grade" name="select_grade" class="form-control" v-model="select_grade" @change="grade_requirements_func()">
                           <option value="1">High school report card for incoming freshmen students eligible for college</option>
                           <option value="2">Grade 11 and 1st semester of Grade 12 for graduating high school students</option>
@@ -104,7 +104,7 @@
                   <div class="form-row">
 
                     <div class="form-group col-md-6" v-if="select_grade == 3">
-                      <label>ALS Grade</label><span style="color:red">*</span>
+                      <label>Certified true copy of ALS Grade</label><span style="color:red">*</span>
                       <span v-if="valid_als" style="color:green;font-size:14px; float:right">Valid file.</span>  
                       <span v-if="invalid_als" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
                        <input class="form-control-file" v-if="uploadALS" type="file" id="file_als" ref="file_als" @change="addFileALS()" style="border: 1px solid #ddd">
@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="form-group col-md-6" v-if="select_grade == 1">
-                      <label >High School Report Card</label><span style="color:red">*</span>
+                      <label >Certified true copy of High School Report Card</label><span style="color:red">*</span>
                       <span v-if="valid_highschool" style="color:green;font-size:14px; float:right">Valid file.</span>  
                       <span v-if="invalid_highschool" style="color:red;font-size:14px; float:right">Invalid file (only pdf extension)</span>                 
                       <input class="form-control-file" v-if="uploadhighschool" type="file" id="file_highschool" ref="file_highschool" @change="addFileHighSchool()" style="border: 1px solid #ddd">
@@ -920,6 +920,8 @@ import axios from 'axios';
         },
         grade_requirements_func() {
 
+         $('#select_grade').css('border-color','');
+         $('#select_income').css('border-color','');
          this.valid_highschool = false;
          this.invalid_highschool = false;
          this.valid_grade12 = false;
@@ -943,6 +945,9 @@ import axios from 'axios';
        },
       income_requirements_func() {
 
+
+        $('#select_grade').css('border-color','');
+        $('#select_income').css('border-color','');
         this.valid_seafarers = false;
         this.invalid_seafarers = false;
         this.valid_indigence = false;
@@ -983,7 +988,7 @@ import axios from 'axios';
           this.formData.append('file_birth_certificate', this.attachmentBirthCertificate);
           this.formData.append('file_itr', this.attachmentITR);
 
-          if((this.attachmentGrade11 && this.attachmentGrade12 || this.attachmentALS || this.attachmentHighSchool) && (this.attachmentSeaFarers || this.attachmentCaseStudy || this.attachmentCertificateIndigence || this.attachmentCertificateExemption || this. attachmentITR) && this.attachmentBirthCertificate) {
+          if(((this.attachmentGrade11 && this.attachmentGrade12) || this.attachmentALS || this.attachmentHighSchool) && (this.attachmentSeaFarers || this.attachmentCaseStudy || this.attachmentCertificateIndigence || this.attachmentCertificateExemption || this.attachmentITR) && this.attachmentBirthCertificate) {
 
           axios.post('applicant/upload_documents/', this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(result => {
 
@@ -1003,7 +1008,7 @@ import axios from 'axios';
 
         }
          if(!this.attachmentBirthCertificate) {
-
+          $('#file_birth_certificate').css('border-color','red');
             this.$swal.fire({
               icon: 'error',
               title: 'Opps...',
@@ -1013,28 +1018,175 @@ import axios from 'axios';
             return false;
          }
 
-        if(!(this.attachmentGrade11 && this.attachmentGrade12) || this.attachmentHighSchool || this.attachmentALS) {
-
+         if(!this.select_grade) {
+          $('#select_grade').css('border-color','red');
             this.$swal.fire({
               icon: 'error',
               title: 'Opps...',
-              text: `Grade requirements no file chosen.`,
+              text: `Please select Grade requirements.`,
             })
+
+            return false;
+         }
+        if(!this.select_income) {
+          $('#select_income').css('border-color','red');
+            this.$swal.fire({
+              icon: 'error',
+              title: 'Opps...',
+              text: `Please select Income requirements.`,
+            })
+
+            return false;
+         }
+
+        if(this.select_income == 1) {
+
+              if(!this.attachmentITR) {
+                $('#file_itr').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Income Tax Return no file chosen.`,
+                })  
+
+              }        
 
             return false;
         }
 
-        if(!(this.attachmentSeaFarers || this.attachmentCaseStudy || this.attachmentCertificateIndigence || this.attachmentCertificateExemption || this.attachmentITR) ) {
+        if(this.select_income == 2) {
 
-            this.$swal.fire({
-              icon: 'error',
-              title: 'Opps...',
-              text: `Income requirements no file chosen.`,
-            })
+              if(!this.attachmentCertificateExemption) {
+                $('#file_certificate_of_tax_exemption').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Certificate of Tax Exemption no file chosen.`,
+                })  
+
+              }        
 
             return false;
+        }
 
-       }
+        if(this.select_income == 3) {
+
+              if(!this.attachmentCertificateIndigence) {
+                $('#file_certificate_of_indigence').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Certificate of Indigence no file chosen.`,
+                })  
+
+              }        
+
+            return false;
+        }
+
+        if(this.select_income == 4) {
+
+              if(!this.attachmentCaseStudy) {
+                $('#file_case_study').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Case Study no file chosen.`,
+                })  
+
+              }        
+
+            return false;
+        }
+
+        if(this.select_income == 5) {
+
+              if(!this.attachmentSeaFarers) {
+                $('#file_seafarers').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Latest copy of contract or proof of income for children of OFW and seafarers no file chosen.`,
+                })  
+
+              }        
+
+            return false;
+        }
+
+         if(this.select_grade == 1) {
+
+              if(!this.attachmentHighSchool) {
+                $('#file_highschool').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `High school grade no file chosen.`,
+                })  
+
+              }        
+
+            return false;
+         }
+          if(this.select_grade == 2) {
+
+              if(!this.attachmentGrade11 && !this.attachmentGrade12) {
+                $('#file_grade11').css('border-color','red');
+                $('#file_grade12').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Grades of grade 11 and grade 12 no file chosen.`,
+                })  
+
+                return false;
+
+              } 
+
+              if(!this.attachmentGrade11) {
+                $('#file_grade11').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Grades of grade 11 no file chosen.`,
+                })  
+
+                return false;
+
+              }        
+
+              if(!this.attachmentGrade12) {
+                $('#file_grade12').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `Grades of grade 12 no file chosen.`,
+                })  
+                
+                return false;
+
+              }  
+
+            return false;
+         }
+
+         if(this.select_grade == 3) {
+
+              if(!this.attachmentALS) {
+                $('#file_als').css('border-color','red');
+                this.$swal.fire({
+                  icon: 'error',
+                  title: 'Opps...',
+                  text: `ALS grade no file chosen.`,
+                })  
+                return false;
+              }        
+
+            return false;
+         }
+
+
+
 
 
      }

@@ -716,8 +716,14 @@ Vue.component("ched-list-of-applicant", {
                            <span style="font-size:10px;font-weight:bold">Facebook profile</span>
                         <input type="text" class="form-control" v-model="selectedItem.fb_url">
                         </div>
+                        <div class="col-md-3"></div>
+                        <div class="form-group col-md-3">
+                        <span style="font-size:10px;font-weight:bold;color:#fff">Invi</span>
+                        <button type="button" class="form-control btn btn-info" style="color:#fff" data-toggle="modal" data-target="#exampleModal" @click="view_docs(selectedItem)">View Documents</button>
+                        </div>
                       </div>
                       <div class="modal-footer">
+
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         <button v-if="loader1" type="submit" class="btn btn-success">Validate</button>
                         <button v-if="loader" class="btn btn-success" type="button" disabled>
@@ -732,7 +738,54 @@ Vue.component("ched-list-of-applicant", {
                 </div>
               </div>
 
+                  <!-- VIEW DOCUMENTS -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content" style="background-color:#20B2AA">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Scan Documents</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
 
+                          <div class="form-group col-md-12" style="cursor:pointer">
+                              <span>Birth Certificate </span><a href="#" style="float:right;color:#fff" @click="pdf_birth_cert_func">check</a>
+                              <iframe v-if="pdf_birth_cert" :src="'../storage' + '/scan_documents/' + viewDocs.name + '_' + viewDocs.user_id + '/birth_certificate/' + viewDocs.name + '_' + viewDocs.user_id + '.pdf'" width="450" height="700">asd</iframe>
+                          </div>
+                          <div class="form-group col-md-12" style="cursor:pointer">
+                              <span>Grade Requirements
+                              <ul>
+                                <li>Grade 11</li><a href="#" style="float:right;color:#fff" @click="pdf_grade11_func">check</a>
+                                <li>Grade 12</li><a href="#" style="float:right;color:#fff" @click="pdf_grade12_func">check</a>
+                                <li>Old High School Curiculum</li><a href="#" style="float:right;color:#fff" @click="pdf_high_school_func">check</a>
+                                <li>ALS Passer</li><a href="#" style="float:right;color:#fff" @click="pdf_als_func">check</a>
+                              </ul>
+                              </span>
+
+                          </div>
+                          <div class="form-group col-md-12" style="cursor:pointer">
+                              <span>Income Requirements
+                                  <ul>
+                                    <li>Income Tax Return</li><a href="#" style="float:right;color:#fff" @click="pdf_itr_func">check</a>
+                                    <li>Certificate of Tax Exemption</li><a href="#" style="float:right;color:#fff" @click="pdf_tax_func">check</a>
+                                    <li>Certificate of Indigency</li><a href="#" style="float:right;color:#fff" @click="pdf_indigence_func">check</a>
+                                    <li>Case Study</li><a href="#" style="float:right;color:#fff" @click="pdf_case_study_func">check</a>
+                                    <li>OFW and seafarers</li><a href="#" style="float:right;color:#fff" @click="pdf_ofw_seafarers_func">check</a>
+                                  </ul>
+                              </span>
+                          </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
         </div>`,
 
     data() {
@@ -762,7 +815,18 @@ Vue.component("ched-list-of-applicant", {
           v_verified_admin: false,
           loading: false,
           loader1: true,
-          loader: false
+          loader: false,
+          viewDocs: {},
+          pdf_birth_cert: false,
+          pdf_grade11: false,
+          pdf_grade12: false,
+          pdf_high_school: false,
+          pdf_als: false,
+          pdf_itr: false,
+          pdf_tax: false,
+          pdf_indigence: false,
+          pdf_case_study: false,
+          pdf_ofw_seafarers: false
           
         }
     },
@@ -786,6 +850,37 @@ Vue.component("ched-list-of-applicant", {
       this.$htmlToPaper('list_of_applicant');
 
       },
+    pdf_birth_cert_func() {
+      this.pdf_birth_cert = true;
+      return false;
+    },
+    pdf_grade11_func() {
+
+    },
+    pdf_grade12_func() {
+
+    },
+    pdf_high_school_func() {
+
+    },
+    pdf_als_func() {
+
+    },
+    pdf_itr_func() {
+
+    },
+    pdf_tax_func() {
+
+    },
+    pdf_indigence_func() {
+
+    },
+    pdf_ofw_seafarers_func() {
+
+    },
+    pdf_case_study_func() {
+
+    },
     fetchApplicant: function() {
             this.loading = true;
             axios.get('ched_admin/fetch_applicant/').then(result => {
@@ -852,6 +947,9 @@ Vue.component("ched-list-of-applicant", {
       this.selectedItem = i;
       this.loader1 = true;
       this.loader = false;
+    },
+    view_docs: function(i) {
+      this.viewDocs = i;
     },
     updateData: function($id) {
 
