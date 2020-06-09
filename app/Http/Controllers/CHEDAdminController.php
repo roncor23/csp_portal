@@ -19,13 +19,21 @@ class CHEDAdminController extends Controller
 	//Fetch all list of Applicant
     public function fetch_applicant() {
 
-		$users = DB::table('users')
-		            ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
-		            ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
-		            ->where('role',1)
-                    ->where('confirm', 1)
-		            ->orderBy('lname', 'asc')
-		            ->get();
+		// $users = DB::table('users')
+		//             ->leftJoin('applicants', 'users.id', '=', 'applicants.user_id')
+		//             ->leftJoin('parents', 'users.id', '=', 'parents.user_id')
+		//             ->where('role',1)
+  //                   ->where('confirm', 1)
+		//             ->orderBy('lname', 'asc')
+		//             ->get();
+
+        $users = DB::table('users')
+            ->join('applicants', 'users.id', '=', 'applicants.user_id')
+            ->join('parents', 'users.id', '=', 'parents.user_id')
+            ->select('users.*', 'applicants.reference_no','applicants.fname','applicants.lname','applicants.mname','applicants.xname','applicants.gender','applicants.reference_no','applicants.gwa','applicants.rank_points','applicants.yr_lvl','applicants.ay','applicants.ranking_status','applicants.verified_hei','applicants.verified_admin','applicants.validatedByCHED','applicants.validatedByHEI','applicants.app_created_at','applicants.birthdate','applicants.civil_status','applicants.citizenship','applicants.contact','applicants.present_address','applicants.town_city','applicants.brgy','applicants.province','applicants.zipcode','applicants.name_of_school_last_attended','applicants.hei','applicants.course','applicants.applicant_type','applicants.pwd','applicants.ips','applicants.forps','applicants.supported_by_solo_parent','applicants.applicant_solo_parent','applicants.status','applicants.senior_citizen','applicants.verified_admin','applicants.update_date','applicants.fb_url','applicants.place_of_birth','applicants.parent_income')
+            ->where('role',1)
+            ->where('confirm', 1)
+            ->get();
 
         return response()->json($users);
     }

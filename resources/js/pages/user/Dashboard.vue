@@ -27,7 +27,7 @@
           <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
            <router-link to="/student-information"><li><a href="#"><i class="fas fa-user"></i><span>My Information</span></a></li></router-link>
           <router-link to="/student-status"><li><a href="#"><i class="fas fa-question"></i><span>Check Status</span></a></li></router-link>
-          <router-link to="/student-dashboard/upload-documents"><li><a href="#"><i class="fas fa-upload"></i><span>Upload Documents</span></a></li></router-link>
+<!--           <router-link to="/student-dashboard/upload-documents"><li><a href="#"><i class="fas fa-upload"></i><span>Upload Documents</span></a></li></router-link> -->
         </ul>
       </div>
 

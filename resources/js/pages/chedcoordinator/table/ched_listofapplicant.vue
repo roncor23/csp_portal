@@ -719,7 +719,7 @@ Vue.component("ched-list-of-applicant", {
                         <div class="col-md-3"></div>
                         <div class="form-group col-md-3">
                         <span style="font-size:10px;font-weight:bold;color:#fff">Invi</span>
-                        <button type="button" class="form-control btn btn-info" style="color:#fff" data-toggle="modal" data-target="#exampleModal" @click="view_docs(selectedItem)">View Documents</button>
+                        <!-- <button type="button" class="form-control btn btn-info" style="color:#fff" data-toggle="modal" data-target="#exampleModal" @click="view_docs(selectedItem)">View Documents</button> -->
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -786,6 +786,10 @@ Vue.component("ched-list-of-applicant", {
                     </div>
                   </div>
                   </div>
+
+
+
+
         </div>`,
 
     data() {
